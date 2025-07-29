@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardFooter, CardHeader } from '@tailwind-demo/ui-components';
+import { Button, Card, CardContent, CardFooter, CardHeader } from '@tailwindspark/ui-components';
 import { Calendar, MapPin, Star, User } from 'lucide-react';
 import React from 'react';
 

@@ -1,4 +1,4 @@
-import { Button } from '@tailwind-demo/ui-components';
+import { Button } from '@tailwindspark/ui-components';
 import { Download, Heart, Star } from 'lucide-react';
 import React from 'react';
 

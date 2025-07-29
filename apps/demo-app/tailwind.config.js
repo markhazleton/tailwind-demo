@@ -1,4 +1,4 @@
-import { tailwindConfig } from '@tailwind-demo/design-tokens';
+import { tailwindConfig } from '@tailwindspark/design-tokens';
 
 /** @type {import('tailwindcss').Config} */
 export default {

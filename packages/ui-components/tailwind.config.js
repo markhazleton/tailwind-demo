@@ -1,4 +1,4 @@
-const { tailwindConfig } = require('@tailwind-demo/design-tokens');
+const { tailwindConfig } = require('@tailwindspark/design-tokens');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
