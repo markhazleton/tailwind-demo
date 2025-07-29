@@ -1,8 +1,14 @@
 {
-  "name": "@tailwind-demo/ui-components",
+  "name": "@tailwindspark/ui-components",
   "version": "1.0.0",
-  "description": "Reusable UI components built with React, TypeScript, and Tailwind CSS",
+  "description": "TailwindSpark UI Components - Reusable React components built with TypeScript and Tailwind CSS",
   "type": "module",
+  "author": {
+    "name": "Mark Hazleton",
+    "email": "mark@markhazleton.com", 
+    "url": "https://markhazleton.com"
+  },
+  "homepage": "https://markhazleton.github.io/tailwind-demo/",
   "main": "dist/index.es.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
@@ -23,7 +29,7 @@
   "dependencies": {
     "clsx": "^2.1.0",
     "lucide-react": "^0.456.0",
-    "@tailwind-demo/design-tokens": "*"
+    "@tailwindspark/design-tokens": "*"
   },
   "devDependencies": {
     "@types/react": "^19.1.8",

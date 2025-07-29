@@ -1,8 +1,15 @@
 {
-  "name": "@tailwind-demo/demo-app",
+  "name": "@tailwindspark/demo-app",
   "private": true,
   "version": "1.0.0",
+  "description": "TailwindSpark Demo Application - Interactive showcase of Tailwind CSS components and design system",
   "type": "module",
+  "author": {
+    "name": "Mark Hazleton",
+    "email": "mark@markhazleton.com",
+    "url": "https://markhazleton.com"
+  },
+  "homepage": "https://markhazleton.github.io/tailwind-demo/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -12,8 +19,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@tailwind-demo/design-tokens": "*",
-    "@tailwind-demo/ui-components": "*",
+    "@tailwindspark/design-tokens": "*",
+    "@tailwindspark/ui-components": "*",
     "@types/react-router-dom": "^5.3.3",
     "clsx": "^2.1.0",
     "lucide-react": "^0.456.0",
