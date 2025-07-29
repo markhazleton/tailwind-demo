@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "build:deploy": "turbo run build --filter=@tailwind-demo/demo-app...",
-    "build:ci": "npm run build --workspace=@tailwind-demo/design-tokens && npm run build --workspace=@tailwind-demo/ui-components && npm run build --workspace=@tailwind-demo/demo-app",
+    "build:deploy": "turbo run build --filter=@tailwind-demo/demo-app",
+    "build:ci": "npx turbo run build --filter=@tailwind-demo/design-tokens && npx turbo run build --filter=@tailwind-demo/ui-components && npx turbo run build --filter=@tailwind-demo/demo-app",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
@@ -28,6 +28,7 @@
     "eslint": "^8.56.0",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "rimraf": "^6.0.1",
     "turbo": "^1.12.4",
     "typescript": "^5.3.3"
   },
