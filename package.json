@@ -1,7 +1,27 @@
 {
-  "name": "tailwind-demo-monorepo",
+  "name": "tailwindspark-monorepo",
   "version": "1.0.0",
-  "description": "A comprehensive Tailwind CSS demonstration monorepo with React and TypeScript",
+  "description": "TailwindSpark - A comprehensive Tailwind CSS showcase monorepo with React and TypeScript. Part of the WebSpark portfolio by Mark Hazleton.",
+  "keywords": [
+    "tailwind",
+    "react",
+    "typescript",
+    "monorepo",
+    "design-system",
+    "webspark",
+    "ui-components",
+    "dashboard"
+  ],
+  "author": {
+    "name": "Mark Hazleton",
+    "email": "mark@markhazleton.com",
+    "url": "https://markhazleton.com"
+  },
+  "homepage": "https://markhazleton.github.io/tailwind-demo/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markhazleton/tailwind-demo.git"
+  },
   "private": true,
   "workspaces": [
     "packages/*",
@@ -9,8 +29,8 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "build:deploy": "turbo run build --filter=@tailwind-demo/demo-app",
-    "build:ci": "npx turbo run build --filter=@tailwind-demo/design-tokens && npx turbo run build --filter=@tailwind-demo/ui-components && npx turbo run build --filter=@tailwind-demo/demo-app",
+    "build:deploy": "turbo run build --filter=@tailwindspark/demo-app",
+    "build:ci": "npx turbo run build --filter=@tailwindspark/design-tokens && npx turbo run build --filter=@tailwindspark/ui-components && npx turbo run build --filter=@tailwindspark/demo-app",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
@@ -28,7 +48,6 @@
     "eslint": "^8.56.0",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "rimraf": "^6.0.1",
     "turbo": "^1.12.4",
     "typescript": "^5.3.3"
   },
