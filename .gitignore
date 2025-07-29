@@ -357,6 +357,19 @@ PublishScripts/
 **/[Pp]ackages/*
 # except build/, which is used as an MSBuild target.
 !**/[Pp]ackages/build/
+# except our monorepo packages (but not their build outputs or node_modules)
+!packages/
+!packages/*/
+!packages/*/package.json
+!packages/*/tsconfig.json
+!packages/*/tailwind.config.js
+!packages/*/vite.config.ts
+!packages/*/index.js
+!packages/*/index.d.ts
+!packages/*/src/
+!packages/*/src/**
+!packages/*/tokens/
+!packages/*/tokens/**
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/[Pp]ackages/repositories.config
 # NuGet v3's project.json files produces more ignorable files

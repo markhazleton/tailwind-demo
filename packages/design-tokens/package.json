@@ -1,0 +1,25 @@
+{
+  "name": "@tailwind-demo/design-tokens",
+  "version": "1.0.0",
+  "description": "Shared design tokens and Tailwind CSS configuration",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "tailwind.config.js",
+    "index.js",
+    "index.d.ts",
+    "tokens"
+  ],
+  "scripts": {
+    "build": "echo 'Design tokens built'",
+    "clean": "echo 'Design tokens cleaned'",
+    "type-check": "echo 'Design tokens type-checked'"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
