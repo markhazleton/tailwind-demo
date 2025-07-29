@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family:
+      'Inter',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      'Roboto',
+      'Oxygen',
+      'Ubuntu',
+      'Cantarell',
+      'Fira Sans',
+      'Droid Sans',
+      'Helvetica Neue',
+      sans-serif;
+  }
+
+  body {
+    @apply dark:bg-secondary-900 text-secondary-900 dark:text-secondary-100 bg-white transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .prose-custom {
+    @apply prose prose-secondary dark:prose-invert max-w-none;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-custom {
+    @apply section-padding mx-auto max-w-7xl;
+  }
+}
