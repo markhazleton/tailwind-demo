@@ -32,8 +32,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Debug workspace info
+        run: |
+          echo "Workspace packages:"
+          npm ls --workspaces --depth=0
+          echo "Turbo version:"
+          npx turbo --version
+
       - name: Build all packages
-        run: npx turbo run build --filter=@tailwind-demo/demo-app --no-cache
+        run: npx turbo run build --no-cache
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
