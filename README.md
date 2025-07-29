@@ -159,7 +159,7 @@ The demo app will be available at `http://localhost:5173`
 
 ## 📦 Packages
 
-### `@tailwind-demo/design-tokens`
+### `@tailwindspark/design-tokens`
 
 Centralized design system containing:
 
@@ -170,7 +170,7 @@ Centralized design system containing:
 - **Shadows**: Elevation system with multiple shadow levels
 - **Animations**: Custom keyframes and transitions
 
-### `@tailwind-demo/ui-components`
+### `@tailwindspark/ui-components`
 
 Reusable React components with TypeScript interfaces:
 
@@ -557,7 +557,7 @@ function App() {
 **Issue 1: Module Resolution Errors**
 
 ```
-Error: Could not resolve "@tailwind-demo/ui-components"
+Error: Could not resolve "@tailwindspark/ui-components"
 ```
 
 *Solution*: Ensure all packages in the monorepo are tracked in git. Check `.gitignore` doesn't exclude the `packages/` directory.
@@ -706,7 +706,7 @@ If you encounter deployment issues, follow this systematic troubleshooting appro
   git commit -m "Add packages to git tracking"
   ```
 
-**"Module not found: @tailwind-demo/[package-name]"**
+**"Module not found: @tailwindspark/[package-name]"**
 
 - **Cause**: Monorepo dependencies not built in correct order
 - **Fix**: Update GitHub Actions to build packages individually:

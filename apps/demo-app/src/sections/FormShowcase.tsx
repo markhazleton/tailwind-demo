@@ -1,4 +1,4 @@
-import { Button, Checkbox, Input, Radio, Select, Textarea } from '@tailwind-demo/ui-components';
+import { Button, Checkbox, Input, Radio, Select, Textarea } from '@tailwindspark/ui-components';
 import { Lock, Mail, Search, User } from 'lucide-react';
 import React from 'react';
 

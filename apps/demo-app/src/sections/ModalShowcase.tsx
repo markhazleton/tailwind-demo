@@ -1,4 +1,4 @@
-import { Button, Modal, ModalContent, ModalFooter } from '@tailwind-demo/ui-components';
+import { Button, Modal, ModalContent, ModalFooter } from '@tailwindspark/ui-components';
 import { AlertCircle, CheckCircle, Info } from 'lucide-react';
 import React from 'react';
 
