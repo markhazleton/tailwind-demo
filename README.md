@@ -21,7 +21,9 @@ A comprehensive demonstration monorepo showcasing modern web development with Re
 
 ## 🌐 Live Demo
 
-Visit the live demo at: <http://localhost:5173> (when running locally)
+**🔥 GitHub Pages Deployment**: [https://markhazleton.github.io/tailwind-demo/](https://markhazleton.github.io/tailwind-demo/)
+
+**Local Development**: Visit <http://localhost:5173> when running locally
 
 ### Available Routes
 
@@ -438,28 +440,303 @@ All components are built with accessibility in mind:
 
 ## 🚀 Deployment
 
-The demo application can be deployed to various platforms:
+### GitHub Pages Deployment (Live Demo)
 
-### Vercel (Recommended)
+This project is automatically deployed to GitHub Pages at: **https://markhazleton.github.io/tailwind-demo/**
+
+#### Automated Deployment Process
+
+The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that:
+
+1. **Triggers**: Automatically deploys on every push to the `main` branch
+2. **Environment**: Runs on Ubuntu with Node.js 18
+3. **Build Process**: Builds packages in dependency order
+4. **Deployment**: Uses GitHub's built-in Pages deployment action
+
+#### GitHub Pages Configuration Requirements
+
+For successful deployment, the following configurations were essential:
+
+**1. Vite Configuration (`apps/demo-app/vite.config.ts`)**
+```typescript
+export default defineConfig({
+  plugins: [react()],
+  base: '/tailwind-demo/', // GitHub Pages subdirectory
+  build: {
+    outDir: '../../dist',  // Build to root for GitHub Actions
+  },
+})
+```
+
+**2. React Router Configuration (SPA Support)**
+```typescript
+// Using HashRouter for GitHub Pages compatibility
+import { HashRouter as Router } from 'react-router-dom';
+
+function App() {
+  return (
+    <Router>
+      {/* Your routes */}
+    </Router>
+  );
+}
+```
+
+**3. 404.html for Single Page Application**
+```html
+<!-- public/404.html - Redirects to index.html for SPA routing -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tailwind Demo</title>
+    <script type="text/javascript">
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + 
+        '/?/' + l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
+```
+
+#### Common Issues and Solutions
+
+**Issue 1: Module Resolution Errors**
+```
+Error: Could not resolve "@tailwind-demo/ui-components"
+```
+*Solution*: Ensure all packages in the monorepo are tracked in git. Check `.gitignore` doesn't exclude the `packages/` directory.
+
+**Issue 2: ESM/CommonJS Compatibility**
+```
+Error [ERR_REQUIRE_ESM]: require() of ES Module not supported
+```
+*Solution*: Add `"type": "module"` to package.json and ensure compatible versions:
+```json
+{
+  "type": "module",
+  "devDependencies": {
+    "vite": "^7.0.4",
+    "@vitejs/plugin-react": "^4.6.0"
+  }
+}
+```
+
+**Issue 3: Build Dependencies**
+```
+Error: Package not found in workspace
+```
+*Solution*: Build packages in correct dependency order:
+```yaml
+# GitHub Actions workflow
+- name: Build design tokens
+  run: npm run build
+  working-directory: packages/design-tokens
+
+- name: Build UI components  
+  run: npm run build
+  working-directory: packages/ui-components
+
+- name: Build demo app
+  run: npm run build
+  working-directory: apps/demo-app
+```
+
+**Issue 4: .gitignore Conflicts**
+```
+# Problem: .NET ignore patterns excluded Node.js packages
+**/[Pp]ackages/*
+
+# Solution: Add exceptions for monorepo packages
+**/[Pp]ackages/*
+!packages/
+!packages/*/
+!packages/**/*.ts
+!packages/**/*.tsx
+!packages/**/*.js
+!packages/**/*.json
+!packages/**/*.config.*
+```
+
+#### Manual Deployment Steps
+
+If you need to deploy manually:
+
+```bash
+# 1. Build all packages
+npm run build
+
+# 2. The dist folder contains the built application
+# 3. Deploy the contents of ./dist to your hosting provider
+```
+
+### Alternative Deployment Options
+
+#### Vercel (Recommended for Production)
+
+1. **Connect Repository**: Link your GitHub repo to Vercel
+2. **Build Settings**:
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - Install Command: `npm install`
+3. **Environment Variables**: None required for this demo
+
+#### Netlify
+
+1. **Build Settings**:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+2. **Redirects**: Add `_redirects` file for SPA routing:
+   ```
+   /*    /index.html   200
+   ```
+
+#### Static Hosting
+
+For any static hosting provider:
 
 ```bash
 npm run build
-# Deploy the apps/demo-app/dist folder
+# Upload the contents of ./dist folder
 ```
 
-### Netlify
+### Deployment Verification
+
+After deployment, verify these features work correctly:
+
+- ✅ **Routing**: All routes (`/`, `/design-system`, `/animations`, `/dashboard/*`) load correctly
+- ✅ **Assets**: CSS, JS, and image assets load properly
+- ✅ **SPA Navigation**: Browser back/forward buttons work
+- ✅ **Direct URL Access**: Typing URLs directly in browser works
+- ✅ **Mobile Responsive**: Layout adapts to different screen sizes
+- ✅ **Dark Mode**: Theme toggle persists across page refreshes
+
+### Development vs Production
+
+| Feature | Development | Production (GitHub Pages) |
+|---------|-------------|---------------------------|
+| Base URL | `/` | `/tailwind-demo/` |
+| Router | BrowserRouter | HashRouter |
+| Build Output | `apps/demo-app/dist` | `./dist` |
+| Hot Reload | ✅ Enabled | ❌ Static files |
+| Source Maps | ✅ Enabled | ❌ Disabled |
+
+### Troubleshooting GitHub Pages Deployment
+
+If you encounter deployment issues, follow this systematic troubleshooting approach:
+
+#### Step 1: Check GitHub Actions Logs
+
+1. Go to your repository's **Actions** tab
+2. Click on the failed deployment run
+3. Expand the build steps to see detailed error messages
+
+#### Step 2: Common Error Patterns
+
+**"No such file or directory: packages/[package-name]"**
+- **Cause**: Package directories not tracked in git
+- **Fix**: Check `.gitignore` and ensure packages are committed:
+  ```bash
+  git add packages/
+  git commit -m "Add packages to git tracking"
+  ```
+
+**"Module not found: @tailwind-demo/[package-name]"**
+- **Cause**: Monorepo dependencies not built in correct order
+- **Fix**: Update GitHub Actions to build packages individually:
+  ```yaml
+  - run: npm run build
+    working-directory: packages/design-tokens
+  - run: npm run build  
+    working-directory: packages/ui-components
+  - run: npm run build
+    working-directory: apps/demo-app
+  ```
+
+**"ERR_REQUIRE_ESM" or module system errors**
+- **Cause**: Incompatible Vite/plugin versions or missing module type
+- **Fix**: Update package.json in affected packages:
+  ```json
+  {
+    "type": "module",
+    "devDependencies": {
+      "vite": "^7.0.4",
+      "@vitejs/plugin-react": "^4.6.0"
+    }
+  }
+  ```
+
+#### Step 3: Local Testing
+
+Before pushing changes, always test locally:
 
 ```bash
-npm run build
-# Deploy the apps/demo-app/dist folder
+# Test individual package builds
+cd packages/design-tokens && npm run build
+cd ../ui-components && npm run build  
+cd ../../apps/demo-app && npm run build
+
+# Test the built application
+npm run preview
 ```
 
-### GitHub Pages
+#### Step 4: Validate Git Tracking
+
+Ensure all necessary files are tracked:
 
 ```bash
-npm run build
-# Deploy the apps/demo-app/dist folder to gh-pages branch
+# Check what packages files are in git
+git ls-files packages/
+
+# Should include:
+# packages/design-tokens/package.json
+# packages/design-tokens/tailwind.config.js
+# packages/ui-components/src/
+# packages/ui-components/package.json
+# etc.
 ```
+
+#### Step 5: Deployment Checklist
+
+Before each deployment, verify:
+
+- [ ] All packages build successfully locally
+- [ ] `dist` folder is excluded from git (build artifact)
+- [ ] `packages/` source files are tracked in git
+- [ ] Vite config has correct `base` path
+- [ ] HashRouter is used instead of BrowserRouter
+- [ ] 404.html exists in public folder
+- [ ] GitHub Pages is enabled in repository settings
+
+### CI/CD Pipeline
+
+The deployment pipeline includes:
+
+1. **Dependency Installation**: `npm install` with workspace support
+2. **Package Builds**: Individual package builds in dependency order
+3. **Type Checking**: TypeScript compilation across all packages  
+4. **Asset Optimization**: Vite production build with minification
+5. **Deployment**: GitHub Pages deployment with artifact upload
+6. **Cache Management**: Turborepo caching for faster subsequent builds
+
+### Deployment History
+
+This project overcame several technical challenges during GitHub Pages setup:
+
+1. **Initial Setup**: Configured Vite base path and HashRouter for SPA compatibility
+2. **Module Resolution**: Fixed monorepo package discovery in CI environment  
+3. **Build Dependencies**: Resolved Turborepo workspace detection issues
+4. **Git Tracking**: Corrected .gitignore patterns that excluded packages directory
+5. **Version Compatibility**: Updated Vite and React plugin versions for ESM support
+
+The current deployment process is stable and automatically deploys on every push to main.
 
 ## 🤝 Contributing
 
