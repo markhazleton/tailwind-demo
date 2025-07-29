@@ -1,7 +1,13 @@
 {
-  "name": "@tailwind-demo/design-tokens",
+  "name": "@tailwindspark/design-tokens",
   "version": "1.0.0",
-  "description": "Shared design tokens and Tailwind CSS configuration",
+  "description": "TailwindSpark Design Tokens - Shared design system and Tailwind CSS configuration for the WebSpark portfolio",
+  "author": {
+    "name": "Mark Hazleton",
+    "email": "mark@markhazleton.com",
+    "url": "https://markhazleton.com"
+  },
+  "homepage": "https://markhazleton.github.io/tailwind-demo/",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [

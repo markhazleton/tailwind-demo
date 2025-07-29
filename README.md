@@ -1,6 +1,24 @@
-# Tailwind CSS Demo Monorepo
+# TailwindSpark ✨
 
-A comprehensive demonstration monorepo showcasing modern web development with React, TypeScript, and Tailwind CSS, organized using Turborepo for efficient workspace management.
+**Part of the [WebSpark](https://webspark.markhazleton.com) Portfolio by [Mark Hazleton](https://markhazleton.com)**
+
+> *A comprehensive demonstration monorepo showcasing modern web development with React, TypeScript, and Tailwind CSS, designed as an interactive showcase of utility-first CSS framework capabilities.*
+
+TailwindSpark is a cutting-edge React TypeScript monorepo that demonstrates the full power of Tailwind CSS through interactive components, animations, and a complete SaaS dashboard implementation. Built with modern development practices, it serves as both a learning resource and a template for production-ready applications.
+
+## 🎯 About TailwindSpark
+
+TailwindSpark represents the intersection of design and development, showcasing how utility-first CSS can create beautiful, responsive, and accessible user interfaces. As part of the WebSpark suite of applications, it demonstrates practical implementations of modern web technologies while maintaining focus on real-world usability and performance.
+
+**Created by Mark Hazleton** - Solutions Architect passionate about making technology work for business. This project embodies a lifelong learning approach, focusing on substance over style.
+
+### 🌟 Why TailwindSpark?
+
+- **Educational Resource**: Learn Tailwind CSS through interactive examples
+- **Production Template**: Use as a starting point for your own projects
+- **Design System Reference**: Comprehensive component library with TypeScript
+- **Modern Architecture**: Monorepo structure with build optimization
+- **Accessibility First**: WCAG compliant components throughout
 
 ## 🚀 Features
 
@@ -19,9 +37,22 @@ A comprehensive demonstration monorepo showcasing modern web development with Re
 - **Accessibility**: WCAG compliant components with proper ARIA attributes
 - **Modern Tooling**: Vite, ESLint, Prettier, and VS Code integration
 
-## 🌐 Live Demo
+## 🌐 Live Demo & Portfolio Integration
 
-**🔥 GitHub Pages Deployment**: [https://markhazleton.github.io/tailwind-demo/](https://markhazleton.github.io/tailwind-demo/)
+### 🔥 TailwindSpark Live Demo
+**[https://markhazleton.github.io/tailwind-demo/](https://markhazleton.github.io/tailwind-demo/)**
+
+### 🌐 WebSpark Portfolio
+This project is part of the comprehensive WebSpark suite:
+- **[WebSpark Main Site](https://webspark.markhazleton.com)** - Complete portfolio overview
+- **[Mark Hazleton](https://markhazleton.com)** - Professional profile and articles
+- **[WebSpark Evolution Article](https://markhazleton.com/articles/webspark-the-next-evolution-of-web-project-mechanics.html)** - The story behind WebSpark
+
+### 🚀 Other WebSpark Applications
+- **PromptSpark** - AI prompt management for Large Language Models
+- **RecipeSpark** - Recipe organization and sharing platform  
+- **TriviaSpark** - Interactive quizzes and trivia games
+- **TailwindSpark** - This comprehensive Tailwind CSS showcase
 
 **Local Development**: Visit <http://localhost:5173> when running locally
 
@@ -40,7 +71,7 @@ A comprehensive demonstration monorepo showcasing modern web development with Re
   - Interactive animations (loading states, modal transitions)
   - Complex animations (floating effects, morphing buttons)
   - User-triggered animations and state-based transitions
-- **SaaS Dashboard** (`/dashboard`): Full-featured business dashboard for "PromptSpark" with:
+- **SaaS Dashboard** (`/dashboard`): Full-featured business dashboard inspired by "PromptSpark" design patterns with:
   - **Dashboard Overview**: Revenue metrics, charts, transaction history, and activity feed
   - **Analytics** (`/dashboard/analytics`): Detailed metrics, traffic sources, top pages, and data visualization
   - **User Management** (`/dashboard/users`): User filtering, search, role management, and bulk actions
@@ -78,7 +109,19 @@ tailwind-demo/
 └── package.json                  # Root dependencies
 ```
 
-## 🛠️ Getting Started
+## � SEO & Metadata
+
+**Keywords**: Tailwind CSS, React, TypeScript, Component Library, Design System, SaaS Dashboard, Web Development, UI Components, WebSpark, Mark Hazleton
+
+**Description**: TailwindSpark - A comprehensive React TypeScript monorepo showcasing Tailwind CSS capabilities through interactive components, animations, and SaaS dashboard implementations. Part of the WebSpark portfolio by Mark Hazleton.
+
+**Technologies**: React 19, TypeScript 5.3, Tailwind CSS 3.4, Vite 7, Turborepo 1.12, GitHub Pages
+
+**Author**: Mark Hazleton - Solutions Architect | [markhazleton.com](https://markhazleton.com) | [LinkedIn](https://www.linkedin.com/in/markhazleton/) | [GitHub](https://github.com/markhazleton/)
+
+**Portfolio Integration**: This project demonstrates practical application of modern web technologies as part of the WebSpark suite, showcasing real-world implementations rather than theoretical concepts.
+
+## �🛠️ Getting Started
 
 ### Prerequisites
 
@@ -442,7 +485,7 @@ All components are built with accessibility in mind:
 
 ### GitHub Pages Deployment (Live Demo)
 
-This project is automatically deployed to GitHub Pages at: **https://markhazleton.github.io/tailwind-demo/**
+This project is automatically deployed to GitHub Pages at: **<https://markhazleton.github.io/tailwind-demo/>**
 
 #### Automated Deployment Process
 
@@ -458,6 +501,7 @@ The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml
 For successful deployment, the following configurations were essential:
 
 **1. Vite Configuration (`apps/demo-app/vite.config.ts`)**
+
 ```typescript
 export default defineConfig({
   plugins: [react()],
@@ -469,6 +513,7 @@ export default defineConfig({
 ```
 
 **2. React Router Configuration (SPA Support)**
+
 ```typescript
 // Using HashRouter for GitHub Pages compatibility
 import { HashRouter as Router } from 'react-router-dom';
@@ -483,6 +528,7 @@ function App() {
 ```
 
 **3. 404.html for Single Page Application**
+
 ```html
 <!-- public/404.html - Redirects to index.html for SPA routing -->
 <!DOCTYPE html>
@@ -509,16 +555,21 @@ function App() {
 #### Common Issues and Solutions
 
 **Issue 1: Module Resolution Errors**
+
 ```
 Error: Could not resolve "@tailwind-demo/ui-components"
 ```
+
 *Solution*: Ensure all packages in the monorepo are tracked in git. Check `.gitignore` doesn't exclude the `packages/` directory.
 
 **Issue 2: ESM/CommonJS Compatibility**
+
 ```
 Error [ERR_REQUIRE_ESM]: require() of ES Module not supported
 ```
+
 *Solution*: Add `"type": "module"` to package.json and ensure compatible versions:
+
 ```json
 {
   "type": "module",
@@ -530,10 +581,13 @@ Error [ERR_REQUIRE_ESM]: require() of ES Module not supported
 ```
 
 **Issue 3: Build Dependencies**
+
 ```
 Error: Package not found in workspace
 ```
+
 *Solution*: Build packages in correct dependency order:
+
 ```yaml
 # GitHub Actions workflow
 - name: Build design tokens
@@ -550,6 +604,7 @@ Error: Package not found in workspace
 ```
 
 **Issue 4: .gitignore Conflicts**
+
 ```
 # Problem: .NET ignore patterns excluded Node.js packages
 **/[Pp]ackages/*
@@ -594,6 +649,7 @@ npm run build
    - Build command: `npm run build`
    - Publish directory: `dist`
 2. **Redirects**: Add `_redirects` file for SPA routing:
+
    ```
    /*    /index.html   200
    ```
@@ -641,16 +697,20 @@ If you encounter deployment issues, follow this systematic troubleshooting appro
 #### Step 2: Common Error Patterns
 
 **"No such file or directory: packages/[package-name]"**
+
 - **Cause**: Package directories not tracked in git
 - **Fix**: Check `.gitignore` and ensure packages are committed:
+
   ```bash
   git add packages/
   git commit -m "Add packages to git tracking"
   ```
 
 **"Module not found: @tailwind-demo/[package-name]"**
+
 - **Cause**: Monorepo dependencies not built in correct order
 - **Fix**: Update GitHub Actions to build packages individually:
+
   ```yaml
   - run: npm run build
     working-directory: packages/design-tokens
@@ -661,8 +721,10 @@ If you encounter deployment issues, follow this systematic troubleshooting appro
   ```
 
 **"ERR_REQUIRE_ESM" or module system errors**
+
 - **Cause**: Incompatible Vite/plugin versions or missing module type
 - **Fix**: Update package.json in affected packages:
+
   ```json
   {
     "type": "module",
@@ -738,7 +800,9 @@ This project overcame several technical challenges during GitHub Pages setup:
 
 The current deployment process is stable and automatically deploys on every push to main.
 
-## 🤝 Contributing
+## 🤝 Contributing to TailwindSpark
+
+TailwindSpark is part of the open-source WebSpark portfolio. Contributions are welcome!
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -746,12 +810,21 @@ The current deployment process is stable and automatically deploys on every push
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+### Contributing Guidelines
+
+- Follow the existing code style and conventions
+- Add TypeScript types for new components
+- Include accessibility features (ARIA labels, keyboard navigation)
+- Test responsive design across different screen sizes
+- Update documentation for new features
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## 🙏 Acknowledgments & Credits
 
+### Technology Stack
 - [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
 - [React](https://reactjs.org) - JavaScript library for building user interfaces
 - [React Router](https://reactrouter.com) - Declarative routing for React applications
@@ -760,15 +833,43 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Turborepo](https://turbo.build) - High-performance build system
 - [Lucide React](https://lucide.dev) - Beautiful & consistent icon toolkit
 
-## 📞 Support
+### WebSpark Portfolio
+Created by **Mark Hazleton** as part of the WebSpark suite of applications:
+- **Portfolio**: [markhazleton.com](https://markhazleton.com)
+- **WebSpark Main**: [webspark.markhazleton.com](https://webspark.markhazleton.com)
+- **Professional**: [LinkedIn](https://www.linkedin.com/in/markhazleton/) | [GitHub](https://github.com/markhazleton/)
 
-If you have any questions or need help getting started, please:
+## 📞 Support & Community
 
-1. Check the [Issues](https://github.com/MarkHazleton/tailwind-demo/issues) page
-2. Create a new issue if your question isn't already addressed
-3. Provide detailed information about your setup and the problem you're experiencing
+### Getting Help
+1. **Documentation**: Check this comprehensive README first
+2. **Issues**: [GitHub Issues](https://github.com/MarkHazleton/tailwind-demo/issues) for bug reports and feature requests
+3. **Portfolio**: Visit [WebSpark](https://webspark.markhazleton.com) for related projects
+4. **Articles**: Read about the [WebSpark Evolution](https://markhazleton.com/articles/webspark-the-next-evolution-of-web-project-mechanics.html)
+
+### Connect with the Creator
+- **Professional Profile**: [Mark Hazleton](https://markhazleton.com)
+- **LinkedIn**: [Connect on LinkedIn](https://www.linkedin.com/in/markhazleton/)
+- **GitHub**: [Follow on GitHub](https://github.com/markhazleton/)
+- **Articles**: [Read Web Development Articles](https://markhazleton.com/articles.html)
 
 ---
 
-**Built with ❤️ using React, TypeScript, and Tailwind CSS**
-A Demo of the Tailwind CSS Library
+## 🌟 About the Creator
+
+**Mark Hazleton** is a Solutions Architect passionate about making technology work for business. With over two decades of web development experience, Mark focuses on practical solutions that deliver real value without unnecessary complexity.
+
+### Philosophy
+> "Lifelong learner, not sidetracked by sizzle" - Mark Hazleton
+
+This project embodies that philosophy by focusing on:
+- **Practical Implementation** over theoretical concepts
+- **Real-world Usability** over flashy features  
+- **Educational Value** over marketing hype
+- **Accessible Design** over exclusive aesthetics
+
+---
+
+**TailwindSpark** ✨ | Part of [WebSpark Portfolio](https://webspark.markhazleton.com) | Built with ❤️ by [Mark Hazleton](https://markhazleton.com)
+
+*Showcasing the power of Tailwind CSS through practical, accessible, and beautiful user interfaces*
