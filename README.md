@@ -9,6 +9,7 @@ A comprehensive demonstration monorepo showcasing modern web development with Re
 - **Tailwind CSS**: Utility-first CSS framework with custom design tokens
 - **Component Library**: Reusable UI components (Button, Card, Modal, Forms) with multiple variants
 - **Design System Showcase**: Comprehensive demonstration of all components with interactive examples
+- **Animation Showcase**: Complete demonstration of Tailwind's transition and animation utilities
 - **Routing**: React Router integration with dedicated pages for different features
 - **Dark Mode**: System preference detection with manual toggle and persistent storage
 - **Form Components**: Complete form library with validation, icons, and accessibility
@@ -29,17 +30,23 @@ Visit the live demo at: <http://localhost:5173> (when running locally)
   - Card layouts (3 variants with headers, content, and footers)
   - Modal dialogs (5 sizes with accessibility features)
   - Interactive examples with live code demonstration
+- **Animation Showcase** (`/animations`): Complete demonstration of Tailwind's animation utilities including:
+  - Transition effects (scale, color, opacity, rotate, translate, shadow)
+  - Keyframe animations (spin, ping, pulse, bounce)
+  - Interactive animations (loading states, modal transitions)
+  - Complex animations (floating effects, morphing buttons)
+  - User-triggered animations and state-based transitions
 
 ## 📁 Project Structure
 
-```
+```text
 tailwind-demo/
 ├── apps/
 │   └── demo-app/                 # Vite React demo application
 │       ├── src/
 │       │   ├── components/       # Shared components (Layout, ThemeToggle)
-│       │   ├── pages/            # Route pages (HomePage, DesignSystemPage)
-│       │   ├── sections/         # Component showcases (ButtonShowcase, FormShowcase, etc.)
+│       │   ├── pages/            # Route pages (HomePage, DesignSystemPage, AnimationPage)
+│       │   ├── sections/         # Component showcases (ButtonShowcase, FormShowcase, AnimationShowcase, etc.)
 │       │   └── App.tsx           # Main application with routing
 │       ├── tailwind.config.js    # Tailwind configuration
 │       └── package.json
@@ -150,14 +157,50 @@ Complete form library with accessibility and validation:
 Comprehensive showcase featuring:
 
 - **Design System Page**: Interactive examples of all components with live demonstrations
+- **Animation Showcase Page**: Complete demonstration of Tailwind's animation and transition utilities
 - **Component Gallery**: Button, form, card, and modal variations
-- **Routing**: React Router with navigation between Home and Design System pages
+- **Animation Gallery**: Transition effects, keyframe animations, and interactive examples
+- **Routing**: React Router with navigation between Home, Design System, and Animation pages
 - **Responsive Layouts**: Grid systems and flexible designs
 - **Dark Mode Toggle**: System preference detection with manual override
 - **Form Validation**: Live examples with error states and validation
+- **Animation Interactions**: User-triggered animations and state-based transitions
 - **Accessibility Demos**: Keyboard navigation and screen reader support
 
 ## 🎨 Design System
+
+### Animation Showcase
+
+The Animation Showcase demonstrates Tailwind CSS's powerful animation and transition utilities:
+
+#### Transition Effects
+
+- **Scale Transforms**: Hover effects with smooth scaling animations
+- **Color Transitions**: Smooth color changes between states
+- **Opacity Fades**: Elegant fade in/out effects
+- **Rotate Transforms**: Spinning and rotation animations
+- **Translate Animations**: Slide and movement effects
+- **Shadow Growth**: Dynamic shadow changes for depth
+
+#### Keyframe Animations
+
+- **Spin**: Loading spinners and rotating elements
+- **Ping**: Notification dots with expanding ripple effects
+- **Pulse**: Breathing animations for emphasis
+- **Bounce**: Playful bouncing effects for interactive elements
+
+#### Interactive Animations
+
+- **Loading States**: Button animations with loading indicators
+- **Modal Transitions**: Smooth modal entrance and exit animations
+- **User-Triggered**: Click and hover-activated animations
+- **State-Based**: Animations that respond to component state changes
+
+#### Complex Animations
+
+- **Floating Cards**: Multi-property animations with scale, rotate, and shadow
+- **Morphing Buttons**: Gradient transitions with transform effects
+- **Backdrop Effects**: Animated overlays and background transitions
 
 ### Color Palette
 
@@ -195,6 +238,16 @@ Each component supports multiple variants for different use cases:
 <Select label="Country" options={countryOptions} />
 <Checkbox label="Subscribe to newsletter" />
 <Radio name="plan" value="pro" label="Pro Plan" />
+
+// Animation examples
+<div className="transition-transform duration-300 hover:scale-110">
+  Scale on hover
+</div>
+<div className="animate-pulse">Pulsing element</div>
+<div className="animate-bounce">Bouncing element</div>
+<div className="transition-colors duration-500 hover:bg-blue-500">
+  Color transition
+</div>
 ```
 
 ## 🔧 Development
@@ -254,6 +307,7 @@ The application uses React Router for client-side routing:
 
 - **Home** (`/`): Landing page with feature overview and quick navigation
 - **Design System** (`/design-system`): Complete component showcase with live examples
+- **Animation Showcase** (`/animations`): Comprehensive demonstration of Tailwind's animation utilities
 
 ### Navigation Features
 
@@ -269,6 +323,7 @@ The application uses React Router for client-side routing:
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/design-system" element={<DesignSystemShowcase />} />
+      <Route path="/animations" element={<AnimationPage />} />
     </Routes>
   </Layout>
 </Router>

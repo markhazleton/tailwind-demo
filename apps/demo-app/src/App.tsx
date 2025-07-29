@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
+import { AnimationPage } from './pages/AnimationPage';
 import { DesignSystemShowcase } from './pages/DesignSystemPage';
 import { HomePage } from './pages/HomePage';
 
@@ -34,6 +35,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/design-system" element={<DesignSystemShowcase />} />
+          <Route path="/animations" element={<AnimationPage />} />
         </Routes>
       </Layout>
     </Router>
