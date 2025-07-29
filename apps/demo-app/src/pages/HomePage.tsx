@@ -1,4 +1,4 @@
-import { Button } from '@tailwind-demo/ui-components';
+import { Button } from '@tailwindspark/ui-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,12 +8,44 @@ export const HomePage: React.FC = () => {
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-            Welcome to Tailwind Demo
+            Welcome to TailwindSpark ✨
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A modern React application showcasing Tailwind CSS components with TypeScript.
-            Explore our comprehensive design system and component library.
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-6">
+            A comprehensive React TypeScript showcase of Tailwind CSS components, animations, and design systems. 
+            Part of the <a href="https://webspark.markhazleton.com" target="_blank" rel="noopener noreferrer" 
+            className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold">WebSpark Portfolio</a> by 
+            <a href="https://markhazleton.com" target="_blank" rel="noopener noreferrer" 
+            className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold ml-1">Mark Hazleton</a>.
           </p>
+          <p className="text-lg text-gray-500 dark:text-gray-500 italic">
+            "Making technology work for business - lifelong learner, not sidetracked by sizzle."
+          </p>
+        </div>
+
+        {/* WebSpark Portfolio Integration */}
+        <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 p-6 rounded-lg mb-12 border border-purple-200 dark:border-purple-800">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
+            🌐 Part of the WebSpark Ecosystem
+          </h3>
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
+            TailwindSpark demonstrates practical application of modern web technologies as part of the WebSpark suite, 
+            showcasing real-world implementations rather than theoretical concepts. Explore other WebSpark applications:
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <a href="https://webspark.markhazleton.com" target="_blank" rel="noopener noreferrer" 
+               className="inline-flex items-center px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm font-medium hover:bg-purple-200 dark:hover:bg-purple-800 transition-colors">
+              🌟 WebSpark Portfolio
+            </a>
+            <span className="inline-flex items-center px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
+              🤖 PromptSpark - AI Prompts
+            </span>
+            <span className="inline-flex items-center px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">
+              🍳 RecipeSpark - Recipe Management
+            </span>
+            <span className="inline-flex items-center px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-sm font-medium">
+              🧠 TriviaSpark - Interactive Quizzes
+            </span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -22,25 +54,25 @@ export const HomePage: React.FC = () => {
               Component Library
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
-              Reusable UI components built with Tailwind CSS and TypeScript.
+              Production-ready UI components built with Tailwind CSS, TypeScript, and accessibility best practices.
             </p>
           </div>
           
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-              Dark Mode
+              Dark Mode & Accessibility
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
-              Automatic dark mode support with system preference detection.
+              WCAG compliant components with automatic dark mode support and system preference detection.
             </p>
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-              SaaS Dashboard
+              TailwindSpark Dashboard
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-3">
-              Full-featured analytics dashboard for PromptSpark with responsive design.
+              Full-featured SaaS dashboard showcasing modern UI patterns with responsive design and interactive analytics.
             </p>
             <Link to="/dashboard" className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium text-sm">
               View Dashboard →
@@ -52,17 +84,29 @@ export const HomePage: React.FC = () => {
           <div className="inline-flex flex-wrap gap-4 justify-center">
             <Link to="/design-system">
               <Button variant="primary" size="lg">
-                View Design System
+                Explore Components
+              </Button>
+            </Link>
+            <Link to="/animations">
+              <Button variant="secondary" size="lg">
+                View Animations
               </Button>
             </Link>
             <Link to="/dashboard">
-              <Button variant="secondary" size="lg">
-                SaaS Dashboard
+              <Button variant="ghost" size="lg">
+                SaaS Dashboard Demo
               </Button>
             </Link>
-            <Button variant="ghost" size="lg">
-              Learn More
-            </Button>
+          </div>
+          <div className="mt-6">
+            <a 
+              href="https://webspark.markhazleton.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium"
+            >
+              Visit WebSpark Portfolio →
+            </a>
           </div>
         </div>
 
@@ -70,10 +114,10 @@ export const HomePage: React.FC = () => {
         <div className="mt-20">
           <div className="text-center mb-12">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              Features
+              TailwindSpark Features
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
-              Everything you need to build modern web applications
+              Professional-grade components and patterns for modern web applications
             </p>
           </div>
 
@@ -86,10 +130,11 @@ export const HomePage: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                  Design System
+                  Professional Design System
                 </h4>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Complete design system with buttons, forms, cards, modals, and more. All components come with multiple variants and states.
+                  Production-ready component library with buttons, forms, cards, modals, and animations. 
+                  All components include TypeScript definitions and accessibility features.
                 </p>
               </div>
             </div>
@@ -102,10 +147,11 @@ export const HomePage: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                  Performance Optimized
+                  Performance & Modern Stack
                 </h4>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Built with Vite for fast development and optimized production builds. TypeScript for type safety.
+                  Built with React 19, TypeScript 5.3, Tailwind CSS 3.4, and Vite 7 for optimal performance. 
+                  Monorepo architecture with Turborepo for efficient builds.
                 </p>
               </div>
             </div>

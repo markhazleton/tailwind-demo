@@ -147,8 +147,8 @@ export const DashboardPage: React.FC = () => {
 
   return (
     <DashboardLayout 
-      pageTitle="Dashboard" 
-      pageDescription="Welcome back, John! Here's what's happening with PromptSpark today."
+      pageTitle="TailwindSpark Dashboard" 
+      pageDescription="Welcome to the TailwindSpark SaaS dashboard demo. Explore modern UI patterns and responsive design components."
       headerActions={headerActions}
     >
       <div className="p-6">

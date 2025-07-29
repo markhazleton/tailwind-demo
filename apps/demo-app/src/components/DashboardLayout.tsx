@@ -40,12 +40,12 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
       } lg:translate-x-0 transition-transform duration-300 ease-in-out`}>
         <div className="flex items-center gap-3 p-6 border-b border-gray-200 dark:border-gray-700">
-          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-sm">PS</span>
+          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center">
+            <span className="text-white font-bold text-sm">✨</span>
           </div>
           <div>
-            <h1 className="font-bold text-gray-900 dark:text-gray-100">PromptSpark</h1>
-            <p className="text-xs text-gray-600 dark:text-gray-400">Analytics Dashboard</p>
+            <h1 className="font-bold text-gray-900 dark:text-gray-100">TailwindSpark</h1>
+            <p className="text-xs text-gray-600 dark:text-gray-400">Dashboard Demo</p>
           </div>
         </div>
 
@@ -82,13 +82,23 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
-              JD
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
+              MH
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">John Doe</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Admin</p>
+              <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">Mark Hazleton</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">WebSpark Creator</p>
             </div>
+          </div>
+          <div className="mt-2 pt-2 border-t border-gray-100 dark:border-gray-700">
+            <a 
+              href="https://webspark.markhazleton.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300"
+            >
+              WebSpark Portfolio →
+            </a>
           </div>
         </div>
       </div>

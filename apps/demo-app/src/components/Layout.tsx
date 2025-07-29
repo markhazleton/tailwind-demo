@@ -12,9 +12,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
 
   const navItems = [
     { path: '/', label: 'Home' },
-    { path: '/design-system', label: 'Design System' },
+    { path: '/design-system', label: 'Components' },
     { path: '/animations', label: 'Animations' },
-    { path: '/dashboard', label: 'SaaS Dashboard' },
+    { path: '/dashboard', label: 'Dashboard' },
   ];
 
   return (
@@ -25,13 +25,15 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
               <Link to="/" className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg"></div>
+                <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">✨</span>
+                </div>
                 <div>
                   <h1 className="font-bold text-gray-900 dark:text-gray-100">
-                    Tailwind Demo
+                    TailwindSpark
                   </h1>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    React + TypeScript + Tailwind CSS
+                    WebSpark Portfolio
                   </p>
                 </div>
               </Link>
@@ -44,7 +46,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
                     to={item.path}
                     className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                       location.pathname === item.path
-                        ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
+                        ? 'bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300'
                         : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800'
                     }`}
                   >
@@ -77,28 +79,63 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded"></div>
+              <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-blue-600 rounded flex items-center justify-center">
+                <span className="text-white text-xs">✨</span>
+              </div>
               <span className="font-semibold text-gray-900 dark:text-gray-100">
-                Tailwind Demo
+                TailwindSpark
               </span>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
-              Built with React, TypeScript, and Tailwind CSS in a Turborepo monorepo.
+            <p className="text-gray-600 dark:text-gray-400 mb-2">
+              Part of the <a
+                href="https://webspark.markhazleton.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium"
+              >
+                WebSpark Portfolio
+              </a> by <a
+                href="https://markhazleton.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium"
+              >
+                Mark Hazleton
+              </a>
             </p>
-            <div className="flex justify-center gap-4">
+            <p className="text-sm text-gray-500 dark:text-gray-500 mb-4">
+              Built with React 19, TypeScript, and Tailwind CSS in a Turborepo monorepo.
+            </p>
+            <div className="flex justify-center gap-4 flex-wrap">
               <a
                 href="https://github.com/MarkHazleton/tailwind-demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm"
               >
                 GitHub
+              </a>
+              <a
+                href="https://webspark.markhazleton.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm"
+              >
+                WebSpark
+              </a>
+              <a
+                href="https://markhazleton.com/articles.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm"
+              >
+                Articles
               </a>
               <a
                 href="https://tailwindcss.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm"
               >
                 Tailwind CSS
               </a>
@@ -106,7 +143,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
                 href="https://reactjs.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm"
               >
                 React
               </a>
