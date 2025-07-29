@@ -7,11 +7,28 @@ A comprehensive demonstration monorepo showcasing modern web development with Re
 - **Monorepo Architecture**: Organized with Turborepo for optimal build caching and task orchestration
 - **TypeScript First**: Full type safety across all packages with comprehensive interfaces
 - **Tailwind CSS**: Utility-first CSS framework with custom design tokens
-- **Component Library**: Reusable UI components (Button, Card, Modal) with multiple variants
+- **Component Library**: Reusable UI components (Button, Card, Modal, Forms) with multiple variants
+- **Design System Showcase**: Comprehensive demonstration of all components with interactive examples
+- **Routing**: React Router integration with dedicated pages for different features
 - **Dark Mode**: System preference detection with manual toggle and persistent storage
+- **Form Components**: Complete form library with validation, icons, and accessibility
 - **Responsive Design**: Mobile-first approach with adaptive layouts
 - **Accessibility**: WCAG compliant components with proper ARIA attributes
 - **Modern Tooling**: Vite, ESLint, Prettier, and VS Code integration
+
+## 🌐 Live Demo
+
+Visit the live demo at: <http://localhost:5173> (when running locally)
+
+### Available Routes
+
+- **Home** (`/`): Welcome page with feature overview and navigation
+- **Design System** (`/design-system`): Comprehensive showcase of all Tailwind components including:
+  - Button variations (6 variants, 4 sizes, with icons and states)
+  - Form components (inputs, textareas, selects, checkboxes, radio buttons)
+  - Card layouts (3 variants with headers, content, and footers)
+  - Modal dialogs (5 sizes with accessibility features)
+  - Interactive examples with live code demonstration
 
 ## 📁 Project Structure
 
@@ -20,9 +37,10 @@ tailwind-demo/
 ├── apps/
 │   └── demo-app/                 # Vite React demo application
 │       ├── src/
-│       │   ├── components/       # App-specific components
-│       │   ├── sections/         # Page sections
-│       │   └── App.tsx           # Main application
+│       │   ├── components/       # Shared components (Layout, ThemeToggle)
+│       │   ├── pages/            # Route pages (HomePage, DesignSystemPage)
+│       │   ├── sections/         # Component showcases (ButtonShowcase, FormShowcase, etc.)
+│       │   └── App.tsx           # Main application with routing
 │       ├── tailwind.config.js    # Tailwind configuration
 │       └── package.json
 ├── packages/
@@ -32,7 +50,7 @@ tailwind-demo/
 │   │   └── package.json
 │   └── ui-components/            # Reusable UI components
 │       ├── src/
-│       │   ├── components/       # Button, Card, Modal
+│       │   ├── components/       # Button, Card, Modal, Form components
 │       │   └── index.ts          # Component exports
 │       ├── tailwind.config.js    # Component-specific config
 │       └── package.json
@@ -103,6 +121,17 @@ Reusable React components with TypeScript interfaces:
 - **States**: loading, disabled
 - **Features**: icons, full width, custom styling
 
+#### Form Components
+
+Complete form library with accessibility and validation:
+
+- **Input**: Text inputs with icons, validation states, helper text
+- **Textarea**: Multi-line text input with auto-resize
+- **Select**: Dropdown with customizable options
+- **Checkbox**: Checkboxes with labels and helper text
+- **Radio**: Radio button groups for single selection
+- **Features**: TypeScript interfaces, validation states, accessibility
+
 #### Card Component
 
 - **Variants**: default, bordered, elevated
@@ -120,10 +149,13 @@ Reusable React components with TypeScript interfaces:
 
 Comprehensive showcase featuring:
 
-- **Component Gallery**: Interactive examples of all components
+- **Design System Page**: Interactive examples of all components with live demonstrations
+- **Component Gallery**: Button, form, card, and modal variations
+- **Routing**: React Router with navigation between Home and Design System pages
 - **Responsive Layouts**: Grid systems and flexible designs
 - **Dark Mode Toggle**: System preference detection with manual override
-- **Live Examples**: Real-world usage patterns and configurations
+- **Form Validation**: Live examples with error states and validation
+- **Accessibility Demos**: Keyboard navigation and screen reader support
 
 ## 🎨 Design System
 
@@ -157,6 +189,12 @@ Each component supports multiple variants for different use cases:
 <Card variant="default">Basic card</Card>
 <Card variant="bordered">Card with border</Card>
 <Card variant="elevated">Card with shadow</Card>
+
+// Form components
+<Input label="Email" type="email" leftIcon={<Mail />} />
+<Select label="Country" options={countryOptions} />
+<Checkbox label="Subscribe to newsletter" />
+<Radio name="plan" value="pro" label="Pro Plan" />
 ```
 
 ## 🔧 Development
@@ -206,6 +244,34 @@ The application supports dark mode through:
 <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
   Content that adapts to theme
 </div>
+```
+
+## 🧭 Routing & Navigation
+
+The application uses React Router for client-side routing:
+
+### Route Structure
+
+- **Home** (`/`): Landing page with feature overview and quick navigation
+- **Design System** (`/design-system`): Complete component showcase with live examples
+
+### Navigation Features
+
+- **Sticky Header**: Persistent navigation with active route highlighting
+- **Responsive Menu**: Adapts to different screen sizes
+- **Theme Toggle**: Available on all pages with state preservation
+- **Smooth Transitions**: CSS transitions between route changes
+
+```tsx
+// Routing implementation
+<Router>
+  <Layout isDark={isDark} toggleTheme={toggleTheme}>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/design-system" element={<DesignSystemShowcase />} />
+    </Routes>
+  </Layout>
+</Router>
 ```
 
 ## 📱 Responsive Design
@@ -279,6 +345,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
 - [React](https://reactjs.org) - JavaScript library for building user interfaces
+- [React Router](https://reactrouter.com) - Declarative routing for React applications
 - [TypeScript](https://typescriptlang.org) - Typed superset of JavaScript
 - [Vite](https://vitejs.dev) - Next generation frontend tooling
 - [Turborepo](https://turbo.build) - High-performance build system
