@@ -37,19 +37,27 @@ export const HomePage: React.FC = () => {
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-              Monorepo Setup
+              SaaS Dashboard
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Organized with Turborepo for efficient development workflow.
+            <p className="text-gray-600 dark:text-gray-400 mb-3">
+              Full-featured analytics dashboard for PromptSpark with responsive design.
             </p>
+            <Link to="/dashboard" className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium text-sm">
+              View Dashboard →
+            </Link>
           </div>
         </div>
 
         <div className="text-center">
-          <div className="inline-flex gap-4">
+          <div className="inline-flex flex-wrap gap-4 justify-center">
             <Link to="/design-system">
               <Button variant="primary" size="lg">
                 View Design System
+              </Button>
+            </Link>
+            <Link to="/dashboard">
+              <Button variant="secondary" size="lg">
+                SaaS Dashboard
               </Button>
             </Link>
             <Button variant="ghost" size="lg">
