@@ -38,9 +38,22 @@ jobs:
           npm ls --workspaces --depth=0
           echo "Turbo version:"
           npx turbo --version
+          echo "Directory structure:"
+          find . -name "package.json" -type f | head -10
+          echo "Turbo configuration:"
+          cat turbo.json
 
-      - name: Build all packages
-        run: npx turbo run build --no-cache
+      - name: Build design tokens
+        working-directory: packages/design-tokens
+        run: npm run build
+
+      - name: Build UI components
+        working-directory: packages/ui-components
+        run: npm run build
+
+      - name: Build demo app
+        working-directory: apps/demo-app
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
