@@ -13,6 +13,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/design-system', label: 'Design System' },
+    { path: '/animations', label: 'Animations' },
   ];
 
   return (
