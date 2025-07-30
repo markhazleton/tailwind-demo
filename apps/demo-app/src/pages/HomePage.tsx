@@ -97,6 +97,11 @@ export const HomePage: React.FC = () => {
                 SaaS Dashboard Demo
               </Button>
             </Link>
+            <Link to="/ecommerce">
+              <Button variant="ghost" size="lg">
+                E-commerce Store Demo
+              </Button>
+            </Link>
           </div>
           <div className="mt-6">
             <a 
