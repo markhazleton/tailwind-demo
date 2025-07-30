@@ -78,6 +78,42 @@ export const HomePage: React.FC = () => {
               View Dashboard →
             </Link>
           </div>
+
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+              E-commerce Store
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-3">
+              Modern online store with product grids, filtering, shopping cart, and responsive checkout flow.
+            </p>
+            <Link to="/ecommerce" className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium text-sm">
+              View Store →
+            </Link>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+              Marketing Landing Page
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-3">
+              Agency-style landing page with hero sections, testimonials, portfolio gallery, and contact forms.
+            </p>
+            <Link to="/marketing" className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium text-sm">
+              View Landing Page →
+            </Link>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+              Animation Showcase
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-3">
+              Interactive animations, transitions, and micro-interactions demonstrating Tailwind's animation utilities.
+            </p>
+            <Link to="/animations" className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium text-sm">
+              View Animations →
+            </Link>
+          </div>
         </div>
 
         <div className="text-center">
@@ -100,6 +136,11 @@ export const HomePage: React.FC = () => {
             <Link to="/ecommerce">
               <Button variant="ghost" size="lg">
                 E-commerce Store Demo
+              </Button>
+            </Link>
+            <Link to="/marketing">
+              <Button variant="ghost" size="lg">
+                Marketing Landing Page
               </Button>
             </Link>
           </div>

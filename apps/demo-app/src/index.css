@@ -46,6 +46,36 @@
     @apply h-5 w-5 cursor-pointer rounded-full border-0 bg-indigo-600;
   }
 
+  /* Custom animations for marketing page */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 1s ease-out both;
+  }
+
+  /* Intersection observer animation classes */
+  .fade-in-up {
+    @apply translate-y-10 opacity-0 transition-all duration-700 ease-out;
+  }
+
+  .fade-in-up.visible {
+    @apply translate-y-0 opacity-100;
+  }
+
+  /* Parallax background pattern */
+  .bg-pattern-dots {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
   /* Aspect ratio utilities for older browsers */
   .aspect-w-4 {
     position: relative;

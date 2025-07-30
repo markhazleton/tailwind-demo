@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { DashboardLayout } from '../components/DashboardLayout';
 
 // Icons (using Unicode symbols for simplicity - in a real app you'd use a proper icon library)
@@ -151,6 +152,19 @@ export const DashboardPage: React.FC = () => {
       pageDescription="Welcome to the TailwindSpark SaaS dashboard demo. Explore modern UI patterns and responsive design components."
       headerActions={headerActions}
     >
+      {/* Back to Demos Link */}
+      <div className="p-6 pb-0">
+        <Link 
+          to="/demos" 
+          className="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium text-sm mb-6 transition-colors"
+        >
+          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Demos Overview
+        </Link>
+      </div>
+      
       <div className="p-6">
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">

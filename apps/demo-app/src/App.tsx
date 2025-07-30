@@ -4,9 +4,11 @@ import { Layout } from './components/Layout';
 import { AnalyticsPage } from './pages/AnalyticsPage';
 import { AnimationPage } from './pages/AnimationPage';
 import { DashboardPage } from './pages/DashboardPage';
+import { DemosPage } from './pages/DemosPage';
 import { DesignSystemShowcase } from './pages/DesignSystemPage';
 import EcommercePage from './pages/EcommercePage';
 import { HomePage } from './pages/HomePage';
+import { MarketingPage } from './pages/MarketingPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { UsersPage } from './pages/UsersPage';
 
@@ -42,10 +44,12 @@ function App() {
         <Route path="/users" element={<UsersPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/ecommerce" element={<EcommercePage />} />
+        <Route path="/marketing" element={<MarketingPage />} />
         <Route path="*" element={
           <Layout isDark={isDark} toggleTheme={toggleTheme}>
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/demos" element={<DemosPage />} />
               <Route path="/design-system" element={<DesignSystemShowcase />} />
               <Route path="/animations" element={<AnimationPage />} />
             </Routes>

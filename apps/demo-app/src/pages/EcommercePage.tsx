@@ -292,8 +292,8 @@ const EcommercePage: React.FC = () => {
               <ol className="flex items-center space-x-2">
                 <li>
                   <div className="flex items-center">
-                    <Link to="/" className="text-indigo-600 hover:text-indigo-700 font-medium">
-                      ← Back to Main App
+                    <Link to="/demos" className="text-indigo-600 hover:text-indigo-700 font-medium">
+                      ← Back to Demos Overview
                     </Link>
                   </div>
                 </li>

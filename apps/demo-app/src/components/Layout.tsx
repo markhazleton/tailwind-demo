@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 interface LayoutProps {
@@ -9,14 +9,36 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme }) => {
   const location = useLocation();
+  const [isDemosOpen, setIsDemosOpen] = useState(false);
+  const demosRef = useRef<HTMLDivElement>(null);
 
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/design-system', label: 'Components' },
     { path: '/animations', label: 'Animations' },
-    { path: '/dashboard', label: 'Dashboard' },
-    { path: '/ecommerce', label: 'E-commerce' },
   ];
+
+  const demoItems = [
+    { path: '/dashboard', label: 'SaaS Dashboard' },
+    { path: '/ecommerce', label: 'E-commerce Store' },
+    { path: '/marketing', label: 'Marketing Landing' },
+  ];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (demosRef.current && !demosRef.current.contains(event.target as Node)) {
+        setIsDemosOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const isDemoPage = demoItems.some(item => location.pathname === item.path) || location.pathname === '/demos';
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
@@ -54,6 +76,56 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
                     {item.label}
                   </Link>
                 ))}
+                
+                {/* Demos Dropdown */}
+                <div className="relative" ref={demosRef}>
+                  <button
+                    onClick={() => setIsDemosOpen(!isDemosOpen)}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-1 ${
+                      isDemoPage
+                        ? 'bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300'
+                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800'
+                    }`}
+                  >
+                    Demos
+                    <svg 
+                      className={`w-4 h-4 transition-transform ${isDemosOpen ? 'rotate-180' : ''}`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  {isDemosOpen && (
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50">
+                      <Link
+                        to="/demos"
+                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                        onClick={() => setIsDemosOpen(false)}
+                      >
+                        <div className="font-medium">All Demos Overview</div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400">Compare all examples</div>
+                      </Link>
+                      <div className="border-t border-gray-200 dark:border-gray-600 my-2"></div>
+                      {demoItems.map((demo) => (
+                        <Link
+                          key={demo.path}
+                          to={demo.path}
+                          className={`block px-4 py-2 text-sm transition-colors ${
+                            location.pathname === demo.path
+                              ? 'bg-purple-50 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300'
+                              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                          }`}
+                          onClick={() => setIsDemosOpen(false)}
+                        >
+                          {demo.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </nav>
             </div>
             
