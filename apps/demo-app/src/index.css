@@ -36,4 +36,37 @@
   .container-custom {
     @apply section-padding mx-auto max-w-7xl;
   }
+
+  /* Custom range slider styles */
+  .slider::-webkit-slider-thumb {
+    @apply h-5 w-5 cursor-pointer appearance-none rounded-full bg-indigo-600;
+  }
+
+  .slider::-moz-range-thumb {
+    @apply h-5 w-5 cursor-pointer rounded-full border-0 bg-indigo-600;
+  }
+
+  /* Aspect ratio utilities for older browsers */
+  .aspect-w-4 {
+    position: relative;
+    padding-bottom: 75%; /* 4:3 Aspect Ratio */
+  }
+
+  .aspect-w-4 > * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  /* Line clamp utility */
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
 }

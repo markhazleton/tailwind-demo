@@ -5,6 +5,7 @@ import { AnalyticsPage } from './pages/AnalyticsPage';
 import { AnimationPage } from './pages/AnimationPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { DesignSystemShowcase } from './pages/DesignSystemPage';
+import EcommercePage from './pages/EcommercePage';
 import { HomePage } from './pages/HomePage';
 import { SettingsPage } from './pages/SettingsPage';
 import { UsersPage } from './pages/UsersPage';
@@ -40,6 +41,7 @@ function App() {
         <Route path="/analytics" element={<AnalyticsPage />} />
         <Route path="/users" element={<UsersPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/ecommerce" element={<EcommercePage />} />
         <Route path="*" element={
           <Layout isDark={isDark} toggleTheme={toggleTheme}>
             <Routes>

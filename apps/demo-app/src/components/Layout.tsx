@@ -15,6 +15,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
     { path: '/design-system', label: 'Components' },
     { path: '/animations', label: 'Animations' },
     { path: '/dashboard', label: 'Dashboard' },
+    { path: '/ecommerce', label: 'E-commerce' },
   ];
 
   return (
