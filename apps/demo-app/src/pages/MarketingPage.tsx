@@ -1,0 +1,519 @@
+import React, { useEffect, useState } from 'react';
+import { MarketingLayout } from '../components/MarketingLayout';
+
+const testimonials = [
+  {
+    name: 'Sarah Johnson',
+    role: 'CEO, TechStart Inc.',
+    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b784?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+    content: 'TailwindSpark transformed our brand completely. The attention to detail and creative vision exceeded all our expectations. Our conversion rate increased by 250% after the redesign.',
+    rating: 5
+  },
+  {
+    name: 'Michael Chen',
+    role: 'Founder, GreenLeaf Co.',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+    content: 'Working with Mark and his team was an absolute pleasure. They delivered a stunning website that perfectly captured our brand essence. The results speak for themselves.',
+    rating: 5
+  },
+  {
+    name: 'Emily Rodriguez',
+    role: 'Marketing Director, FoodieApp',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+    content: 'The marketing campaign they created was phenomenal. Our user acquisition cost dropped by 40% while engagement rates soared. Truly exceptional work.',
+    rating: 5
+  }
+];
+
+export const MarketingPage: React.FC = () => {
+  const [scrollY, setScrollY] = useState(0);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Auto-rotate testimonials
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const services = [
+    {
+      icon: '🎨',
+      title: 'Brand Design',
+      description: 'Create stunning brand identities that capture your unique essence and resonate with your target audience.',
+      features: ['Logo Design', 'Brand Guidelines', 'Visual Identity', 'Brand Strategy']
+    },
+    {
+      icon: '💻',
+      title: 'Web Development',
+      description: 'Build lightning-fast, responsive websites using cutting-edge technologies and modern design principles.',
+      features: ['React Development', 'Tailwind CSS', 'Performance Optimization', 'Mobile-First Design']
+    },
+    {
+      icon: '📱',
+      title: 'Digital Marketing',
+      description: 'Amplify your reach with data-driven marketing strategies that convert visitors into loyal customers.',
+      features: ['SEO Optimization', 'Social Media', 'Content Strategy', 'Analytics & Reporting']
+    }
+  ];
+
+  const portfolioItems = [
+    {
+      id: 1,
+      title: 'E-commerce Platform',
+      category: 'Web Development',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Modern e-commerce solution with seamless user experience'
+    },
+    {
+      id: 2,
+      title: 'Tech Startup Branding',
+      category: 'Brand Design',
+      image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Complete brand identity for innovative tech company'
+    },
+    {
+      id: 3,
+      title: 'Marketing Campaign',
+      category: 'Digital Marketing',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Multi-channel campaign that increased conversions by 300%'
+    },
+    {
+      id: 4,
+      title: 'Mobile App Design',
+      category: 'UI/UX Design',
+      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Intuitive mobile experience for healthcare platform'
+    },
+    {
+      id: 5,
+      title: 'Restaurant Website',
+      category: 'Web Development',
+      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Beautiful restaurant site with online ordering system'
+    },
+    {
+      id: 6,
+      title: 'SaaS Platform',
+      category: 'Web Development',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Enterprise SaaS dashboard with advanced analytics'
+    }
+  ];
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const validateForm = () => {
+    const errors: Record<string, string> = {};
+    
+    if (!formData.name.trim()) errors.name = 'Name is required';
+    if (!formData.email.trim()) errors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = 'Email is invalid';
+    if (!formData.message.trim()) errors.message = 'Message is required';
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+    
+    setFormStatus('submitting');
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    setFormStatus('success');
+    setFormData({ name: '', email: '', company: '', message: '' });
+    
+    setTimeout(() => setFormStatus('idle'), 3000);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear error when user starts typing
+    if (formErrors[name]) {
+      setFormErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  return (
+    <MarketingLayout>
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700">
+          <div 
+            className="absolute inset-0 opacity-30 bg-pattern-dots transform transition-transform duration-1000 ease-out"
+            style={{ '--scroll-offset': `${scrollY * 0.5}px`, transform: 'translateY(var(--scroll-offset))' } as React.CSSProperties}
+          />
+        </div>
+
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+          <div className="opacity-0 translate-y-10 animate-[fadeInUp_1s_ease-out_0.2s_both]">
+            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
+              Ignite Your Brand's
+              <span className="block bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                Digital Spark
+              </span>
+            </h1>
+          </div>
+          
+          <div className="opacity-0 translate-y-10 animate-[fadeInUp_1s_ease-out_0.4s_both]">
+            <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+              We craft extraordinary digital experiences that captivate audiences and drive results. 
+              From stunning brand identities to cutting-edge web development.
+            </p>
+          </div>
+
+          <div className="opacity-0 translate-y-10 animate-[fadeInUp_1s_ease-out_0.6s_both] flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-4 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+              Start Your Project
+            </button>
+            <button className="border-2 border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-4 rounded-full font-semibold transition-all duration-300">
+              View Our Work
+            </button>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-gray-50" id="services">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Our Services
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We offer comprehensive digital solutions to elevate your brand and drive business growth
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl shadow-xl hover:shadow-2xl p-8 transform hover:-translate-y-2 transition-all duration-300 group"
+              >
+                <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {service.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+                <ul className="space-y-2">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-gray-700">
+                      <svg className="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section className="py-20 bg-white" id="portfolio">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Our Portfolio
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover the impact of our work through these selected case studies
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {portfolioItems.map((item) => (
+              <div
+                key={item.id}
+                className="relative overflow-hidden rounded-lg group cursor-pointer aspect-[4/3]"
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-75 transition-all duration-300 flex items-center justify-center">
+                  <div className="text-white text-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 p-6">
+                    <span className="inline-block px-3 py-1 bg-indigo-600 rounded-full text-sm font-medium mb-2">
+                      {item.category}
+                    </span>
+                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <p className="text-gray-200">{item.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-gray-50" id="testimonials">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              What Our Clients Say
+            </h2>
+            <p className="text-xl text-gray-600">
+              Don't just take our word for it - hear from our satisfied clients
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
+              <div className="flex items-center mb-6">
+                {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              
+              <blockquote className="text-xl md:text-2xl text-gray-700 italic mb-8 leading-relaxed">
+                "{testimonials[activeTestimonial].content}"
+              </blockquote>
+              
+              <div className="flex items-center">
+                <img
+                  src={testimonials[activeTestimonial].avatar}
+                  alt={testimonials[activeTestimonial].name}
+                  className="w-16 h-16 rounded-full mr-4 object-cover"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-900">{testimonials[activeTestimonial].name}</h4>
+                  <p className="text-gray-600">{testimonials[activeTestimonial].role}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial Navigation Dots */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveTestimonial(index)}
+                  className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                    index === activeTestimonial ? 'bg-indigo-600' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900" id="contact">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Let's Create Something Amazing
+            </h2>
+            <p className="text-xl text-gray-300">
+              Ready to transform your digital presence? Get in touch with us today.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <div className="bg-white rounded-2xl shadow-2xl p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h3>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className={`w-full px-4 py-3 rounded-lg border-2 transition-colors duration-300 ${
+                      formErrors.name
+                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
+                        : 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500'
+                    }`}
+                    placeholder="Your full name"
+                  />
+                  {formErrors.name && <p className="mt-1 text-sm text-red-600">{formErrors.name}</p>}
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className={`w-full px-4 py-3 rounded-lg border-2 transition-colors duration-300 ${
+                      formErrors.email
+                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
+                        : 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500'
+                    }`}
+                    placeholder="your@email.com"
+                  />
+                  {formErrors.email && <p className="mt-1 text-sm text-red-600">{formErrors.email}</p>}
+                </div>
+
+                <div>
+                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                    Company
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 transition-colors duration-300"
+                    placeholder="Your company name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className={`w-full px-4 py-3 rounded-lg border-2 transition-colors duration-300 resize-none ${
+                      formErrors.message
+                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
+                        : 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500'
+                    }`}
+                    placeholder="Tell us about your project..."
+                  />
+                  {formErrors.message && <p className="mt-1 text-sm text-red-600">{formErrors.message}</p>}
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={formStatus === 'submitting'}
+                  className={`w-full py-4 px-6 rounded-lg font-semibold transition-all duration-300 ${
+                    formStatus === 'success'
+                      ? 'bg-green-600 hover:bg-green-700 text-white'
+                      : formStatus === 'submitting'
+                      ? 'bg-gray-400 cursor-not-allowed text-white'
+                      : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105'
+                  }`}
+                >
+                  {formStatus === 'submitting' && (
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                  )}
+                  {formStatus === 'submitting' ? 'Sending...' : formStatus === 'success' ? 'Message Sent!' : 'Send Message'}
+                </button>
+              </form>
+            </div>
+
+            {/* Company Info */}
+            <div className="text-white">
+              <h3 className="text-2xl font-bold mb-8">Get in Touch</h3>
+              
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="bg-white bg-opacity-20 rounded-lg p-3 mr-4">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Office Location</h4>
+                    <p className="text-gray-300">123 Innovation Drive<br />Tech City, TC 12345</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-white bg-opacity-20 rounded-lg p-3 mr-4">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Email Us</h4>
+                    <p className="text-gray-300">hello@tailwindspark.com<br />support@tailwindspark.com</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-white bg-opacity-20 rounded-lg p-3 mr-4">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Call Us</h4>
+                    <p className="text-gray-300">+1 (555) 123-4567<br />Mon-Fri 9AM-6PM</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-12">
+                <h4 className="font-semibold mb-4">Follow Us</h4>
+                <div className="flex space-x-4">
+                  {['Twitter', 'LinkedIn', 'Instagram', 'GitHub'].map((social) => (
+                    <a
+                      key={social}
+                      href="#"
+                      className="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg p-3 transition-all duration-300 transform hover:scale-110"
+                    >
+                      <span className="sr-only">{social}</span>
+                      <div className="w-6 h-6 bg-white rounded"></div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </MarketingLayout>
+  );
+};
