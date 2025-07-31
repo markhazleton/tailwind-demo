@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
+import { SearchComponent } from './SearchComponent';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,7 +12,18 @@ interface LayoutProps {
 export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme }) => {
   const location = useLocation();
   const [isDemosOpen, setIsDemosOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const demosRef = useRef<HTMLDivElement>(null);
+
+  // Keyboard shortcuts
+  useKeyboardShortcuts({
+    onSearch: () => setIsSearchOpen(true),
+    onThemeToggle: toggleTheme,
+    onEscape: () => {
+      setIsSearchOpen(false);
+      setIsDemosOpen(false);
+    }
+  });
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -131,6 +144,13 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
             
             <div className="flex items-center gap-3">
               <button
+                onClick={() => setIsSearchOpen(true)}
+                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                aria-label="Search"
+              >
+                🔍
+              </button>
+              <button
                 onClick={toggleTheme}
                 className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                 aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -146,6 +166,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
       <main>
         {children}
       </main>
+
+      {/* Search Component */}
+      <SearchComponent isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
       {/* Footer */}
       <footer className="py-12 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
