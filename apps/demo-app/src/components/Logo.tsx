@@ -27,7 +27,7 @@ export const Logo: React.FC<LogoProps> = ({
     xl: 'text-3xl'
   };
 
-  // Use public path that works with Vite's base configuration
+  // Use absolute path with base URL for GitHub Pages compatibility
   const logoSrc = `${import.meta.env.BASE_URL}TailwindSpark.png`;
 
   if (textOnly) {
