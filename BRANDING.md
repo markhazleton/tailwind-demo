@@ -13,6 +13,7 @@ This document outlines the branding improvements made to the TailwindSpark demo 
   - Added `textOnly` prop for text-only brand display
   - Proper alt text and accessibility attributes
   - Lazy loading for performance
+- **CI/CD Fix**: Updated to use `import.meta.env.BASE_URL` for reliable path resolution in all environments
 
 ### 2. TailwindSparkBrand Component (`src/components/TailwindSparkBrand.tsx`)
 
@@ -76,10 +77,15 @@ This document outlines the branding improvements made to the TailwindSpark demo 
 The logo path is correctly handled for GitHub Pages deployment through:
 
 1. **Vite Configuration**: `base: '/tailwind-demo/'` in `vite.config.ts`
-2. **Asset Import**: `import tailwindSparkLogo from '/TailwindSpark.png'` in components
-3. **Automatic Resolution**: Vite automatically resolves to `/tailwind-demo/TailwindSpark.png` for production builds
+2. **Asset Path**: Uses `import.meta.env.BASE_URL` for dynamic path resolution
+3. **CI/CD Compatible**: Works in both development and GitHub Actions build environments
 
-This ensures the logo works correctly both in development (`http://localhost:5173/tailwind-demo/`) and production (`https://markhazleton.github.io/tailwind-demo/`).
+The implementation uses `${import.meta.env.BASE_URL}TailwindSpark.png` which automatically resolves to:
+
+- Development: `/tailwind-demo/TailwindSpark.png`
+- Production: `/tailwind-demo/TailwindSpark.png`
+
+This ensures the logo works correctly in all environments including GitHub Actions CI/CD pipeline.
 
 ## Usage Examples
 

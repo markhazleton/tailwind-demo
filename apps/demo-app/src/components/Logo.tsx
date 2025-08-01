@@ -1,5 +1,4 @@
 import React from 'react';
-import tailwindSparkLogo from '/TailwindSpark.png';
 
 interface LogoProps {
   className?: string;
@@ -28,6 +27,9 @@ export const Logo: React.FC<LogoProps> = ({
     xl: 'text-3xl'
   };
 
+  // Use public path that works with Vite's base configuration
+  const logoSrc = `${import.meta.env.BASE_URL}TailwindSpark.png`;
+
   if (textOnly) {
     return (
       <span className={`font-bold bg-gradient-to-r from-primary-600 to-accent-700 bg-clip-text text-transparent ${textSizes[size]} ${className}`}>
@@ -40,7 +42,7 @@ export const Logo: React.FC<LogoProps> = ({
     <div className={`flex items-center gap-2 ${className}`}>
       {/* TailwindSpark Brand Logo */}
       <img 
-        src={tailwindSparkLogo} 
+        src={logoSrc} 
         alt="TailwindSpark Logo" 
         className={`${sizeClasses[size]} object-contain`}
         loading="lazy"
