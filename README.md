@@ -813,6 +813,217 @@ The deployment pipeline includes:
 5. **Deployment**: GitHub Pages deployment with artifact upload
 6. **Cache Management**: Turborepo caching for faster subsequent builds
 
+## 📖 GitHub Pages Deployment Saga: The Complete Journey
+
+This section documents the complete journey of getting TailwindSpark to work perfectly on GitHub Pages, including all the challenges encountered, solutions attempted, and what ultimately worked. This serves as both a learning resource and troubleshooting guide for similar projects.
+
+### 🎯 The Goal
+
+**Objective**: Make the GitHub Pages deployment (`https://markhazleton.github.io/tailwind-demo/`) function identically to the local development version, with all assets loading correctly and routing working properly.
+
+### 🚧 The Challenges Encountered
+
+#### **Phase 1: Initial Asset Loading Issues**
+
+**Problem**: TailwindSpark.png logo showing 404 errors on GitHub Pages
+
+- **Symptoms**: Logo displayed locally but failed to load on deployment
+- **Error**: `Failed to load resource: the server responded with a status of 404 ()`
+- **URL Pattern**: `https://markhazleton.github.io/tailwind-demo/TailwindSpark.png`
+
+#### **Phase 2: Routing System Complications**  
+
+**Problem**: URLs contained unwanted `#` hash symbols
+
+- **Symptoms**: GitHub Pages URLs looked like `https://markhazleton.github.io/tailwind-demo/#/`
+- **Issue**: HashRouter was causing client-side routing conflicts with asset resolution
+- **Impact**: Navigation worked but assets loaded from incorrect base paths
+
+#### **Phase 3: CI/CD Build Failures**
+
+**Problem**: GitHub Actions build pipeline failing
+
+- **Error**: `Rollup failed to resolve import '/TailwindSpark.png'`
+- **Cause**: Absolute import paths failing in CI environment
+- **Impact**: Prevented deployment entirely
+
+#### **Phase 4: Asset Path Resolution**
+
+**Problem**: Multiple assets returning 404 errors after routing fixes
+
+- **Affected Assets**: `TailwindSpark.png`, `site.webmanifest`, `sw.js`, favicon files
+- **Root Cause**: Hardcoded absolute paths not accounting for `/tailwind-demo/` base path
+- **Scope**: Service worker registration, PWA manifest, all static assets
+
+### 🔧 Solutions Attempted
+
+#### **Attempt 1: Vite Asset Import System**
+
+```tsx
+// TRIED: Using Vite's import system
+import logoImage from '/TailwindSpark.png';
+```
+
+- **Result**: ❌ Failed - Caused CI build failures
+- **Lesson**: Absolute imports can fail in different environments
+
+#### **Attempt 2: BASE_URL Dynamic Resolution**
+
+```tsx
+// TRIED: Environment-aware path resolution
+const logoSrc = `${import.meta.env.BASE_URL}TailwindSpark.png`;
+```
+
+- **Result**: ✅ Partially Successful - Fixed logo loading but routing issues remained
+- **Lesson**: Environment variables work across dev/prod but don't solve routing conflicts
+
+#### **Attempt 3: HashRouter Approach**
+
+```tsx
+// TRIED: Client-side routing with hash
+import { HashRouter as Router } from 'react-router-dom';
+```
+
+- **Result**: ❌ Failed - Created URL fragments that confused asset loading
+- **Issue**: Assets loaded from hash route context instead of base path
+
+### ✅ The Complete Solution
+
+#### **Step 1: BrowserRouter with Basename**
+
+```tsx
+// SOLUTION: Proper base path configuration
+import { BrowserRouter as Router } from 'react-router-dom';
+
+function App() {
+  return (
+    <Router basename="/tailwind-demo">
+      {/* Routes work correctly within base path */}
+    </Router>
+  );
+}
+```
+
+#### **Step 2: Service Worker Path Fix**
+
+```javascript
+// BEFORE: Absolute path (failed)
+navigator.serviceWorker.register('/sw.js')
+
+// AFTER: Base path aware (works)
+navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`)
+```
+
+#### **Step 3: HTML Asset Path Updates**
+
+```html
+<!-- BEFORE: Root-relative paths (failed) -->
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- AFTER: Base path includes (works) -->
+<link rel="icon" href="/tailwind-demo/favicon.ico" />
+<link rel="manifest" href="/tailwind-demo/site.webmanifest" />
+```
+
+#### **Step 4: Web Manifest Configuration**
+
+```json
+{
+  "name": "TailwindSpark",
+  "start_url": "/tailwind-demo/",
+  "scope": "/tailwind-demo/",
+  "icons": [
+    {
+      "src": "/tailwind-demo/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
+```
+
+#### **Step 5: Service Worker Cache URLs**
+
+```javascript
+const urlsToCache = [
+  '/tailwind-demo/',
+  '/tailwind-demo/index.html',
+  '/tailwind-demo/TailwindSpark.png',
+  '/tailwind-demo/TailwindSpark.svg',
+];
+```
+
+### 🎯 What Worked vs. What Didn't
+
+| Approach | Status | Result | Lesson Learned |
+|----------|--------|--------|----------------|
+| Vite Asset Imports | ❌ Failed | CI build errors | Absolute imports unreliable in CI |
+| HashRouter | ❌ Failed | URL fragments, asset conflicts | Client-side routing complicates asset loading |
+| BASE_URL for Assets | ✅ Works | Cross-environment compatibility | Environment variables are reliable |
+| BrowserRouter + basename | ✅ Works | Clean URLs, proper routing | Requires SPA configuration for GitHub Pages |
+| Hardcoded Base Paths | ✅ Works | All assets load correctly | Static paths work when properly configured |
+
+### 📋 The Final Checklist
+
+For successful GitHub Pages deployment with subdirectory paths:
+
+#### **React Router Configuration**
+
+- [ ] Use `BrowserRouter` instead of `HashRouter`
+- [ ] Set `basename="/your-repo-name"` prop
+- [ ] Configure 404.html for SPA routing
+
+#### **Asset Path Management**
+
+- [ ] All HTML assets use `/repo-name/` prefix
+- [ ] Service worker registration uses `BASE_URL`
+- [ ] Web manifest paths include base directory
+- [ ] Service worker cache URLs include base path
+
+#### **Build Configuration**
+
+- [ ] Vite config has correct `base: '/repo-name/'`
+- [ ] Logo component uses `BASE_URL` for dynamic paths
+- [ ] Build output goes to correct directory structure
+
+#### **Static Files Update**
+
+- [ ] Update `site.webmanifest` icon paths and start URL
+- [ ] Update `sw.js` cache URL array
+- [ ] Verify all `index.html` asset references
+
+### 🚀 Results Achieved
+
+**Before vs. After Comparison:**
+
+| Aspect | Before (Broken) | After (Working) |
+|--------|----------------|-----------------|
+| **URL Structure** | `site.com/#/page` | `site.com/page` |
+| **Logo Loading** | ❌ 404 errors | ✅ Loads perfectly |
+| **Service Worker** | ❌ Registration failed | ✅ Caches correctly |
+| **Web Manifest** | ❌ 404 errors | ✅ PWA ready |
+| **Navigation** | ❌ Broken links | ✅ All routes work |
+| **CI/CD Pipeline** | ❌ Build failures | ✅ Automatic deployment |
+
+### 🎓 Key Learnings
+
+1. **Environment Parity**: Development and production environments can behave differently with asset loading
+2. **Router Impact**: Router choice significantly affects how assets are resolved
+3. **Base Path Consistency**: All static files must be updated when using subdirectory deployment
+4. **CI/CD Considerations**: Build systems may handle imports differently than dev servers
+5. **Static File Management**: PWA files (manifest, service worker) need manual path updates
+
+### 💡 Best Practices Derived
+
+1. **Always use basename** with BrowserRouter for subdirectory deployments
+2. **Audit all static files** when changing base paths - HTML, manifest, service worker
+3. **Test asset loading** in production-like environments before deployment
+4. **Use environment variables** for dynamic path resolution where possible
+5. **Document the deployment path** for future maintenance and troubleshooting
+
+This journey demonstrates the complexity of modern web deployment and the importance of understanding how different systems interact. The final solution is robust, maintainable, and provides a template for similar projects.
+
 ### Deployment History
 
 This project overcame several technical challenges during GitHub Pages setup:
@@ -822,6 +1033,8 @@ This project overcame several technical challenges during GitHub Pages setup:
 3. **Build Dependencies**: Resolved Turborepo workspace detection issues
 4. **Git Tracking**: Corrected .gitignore patterns that excluded packages directory
 5. **Version Compatibility**: Updated Vite and React plugin versions for ESM support
+6. **Asset Path Resolution**: Complete overhaul of routing system and static file paths
+7. **PWA Configuration**: Updated manifest and service worker for subdirectory deployment
 
 The current deployment process is stable and automatically deploys on every push to main.
 
