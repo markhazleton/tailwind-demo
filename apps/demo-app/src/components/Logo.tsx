@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImage from '/TailwindSpark.png';
 
 interface LogoProps {
   className?: string;
@@ -27,8 +28,8 @@ export const Logo: React.FC<LogoProps> = ({
     xl: 'text-3xl'
   };
 
-  // Use absolute path with base URL for GitHub Pages compatibility
-  const logoSrc = `${import.meta.env.BASE_URL}TailwindSpark.png`;
+  // Use imported image for proper Vite handling
+  const logoSrc = logoImage;
 
   if (textOnly) {
     return (
