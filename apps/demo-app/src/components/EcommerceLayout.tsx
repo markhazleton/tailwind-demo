@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { CartItem } from '../types/ecommerce';
+import { Logo } from './Logo';
 
 interface EcommerceLayoutProps {
   children: React.ReactNode;
@@ -53,8 +54,8 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
             {/* Logo */}
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <Link to="/ecommerce" className="text-2xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors">
-                  ShopDemo
+                <Link to="/ecommerce">
+                  <Logo size="md" />
                 </Link>
               </div>
             </div>

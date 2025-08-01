@@ -120,7 +120,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
                 <div className={`w-2 h-2 rounded-full mt-2 ${
                   result.category === 'component' ? 'bg-blue-500' :
                   result.category === 'animation' ? 'bg-green-500' :
-                  result.category === 'demo' ? 'bg-purple-500' :
+                  result.category === 'demo' ? 'bg-primary-500' :
                   'bg-gray-500'
                 }`} />
                 <div className="flex-1">

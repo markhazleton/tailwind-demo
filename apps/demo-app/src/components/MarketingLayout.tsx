@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Logo } from './Logo';
 
 interface MarketingLayoutProps {
   children: React.ReactNode;
@@ -42,16 +43,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="flex items-center">
-                  <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center mr-3">
-                    <span className="text-white font-bold text-xl">⚡</span>
-                  </div>
-                  <span
-                    className={`text-xl font-bold transition-colors duration-300 ${
-                      isScrolled ? 'text-gray-900' : 'text-white'
-                    }`}
-                  >
-                    TailwindSpark
-                  </span>
+                  <Logo size="md" />
                 </div>
               </div>
             </div>
@@ -191,7 +183,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
             {/* Company Info */}
             <div className="md:col-span-2">
               <div className="flex items-center mb-6">
-                <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center mr-3">
+                <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-accent-700 rounded-lg flex items-center justify-center mr-3">
                   <span className="text-white font-bold text-xl">⚡</span>
                 </div>
                 <span className="text-xl font-bold">TailwindSpark</span>

@@ -20,7 +20,7 @@ const SettingsSection: React.FC<SettingsSectionProps> = ({ title, description, i
   <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
     <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-400">
+                    <div className="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center text-primary-600 dark:text-primary-400">
           {icon}
         </div>
         <div>

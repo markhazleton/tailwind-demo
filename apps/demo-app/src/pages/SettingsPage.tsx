@@ -20,7 +20,7 @@ const SettingsSection: React.FC<SettingsSectionProps> = ({ title, description, i
   <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
     <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-400">
+                    <div className="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center text-primary-600 dark:text-primary-400">
           {icon}
         </div>
         <div>
@@ -75,8 +75,8 @@ const ToggleField: React.FC<{
     </div>
     <button
       type="button"
-      className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${
-        enabled ? 'bg-purple-600' : 'bg-gray-200 dark:bg-gray-700'
+      className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none         focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
+        enabled ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'
       }`}
       role="switch"
       aria-checked={enabled ? 'true' : 'false'}
@@ -139,7 +139,7 @@ export const SettingsPage: React.FC = () => {
         hasUnsavedChanges && (
           <button
             onClick={handleSaveSettings}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+            className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
           >
             <IconSave />
             Save Changes
