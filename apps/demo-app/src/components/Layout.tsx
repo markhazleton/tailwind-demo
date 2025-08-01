@@ -4,7 +4,6 @@ import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
 import { BuildInfo } from './BuildInfo';
 import { Logo } from './Logo';
 import { SearchComponent } from './SearchComponent';
-import { TailwindSparkBrand } from './TailwindSparkBrand';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -171,7 +170,16 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
       {/* Footer */}
       <footer className="py-12 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4">
-          <TailwindSparkBrand variant="footer" />
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="flex items-center gap-2">
+              <Logo size="lg" showText={false} />
+            </div>
+            <h3 className="text-4xl md:text-5xl font-bold">
+              <span className="bg-gradient-to-r from-primary-600 to-accent-700 bg-clip-text text-transparent">
+                TailwindSpark
+              </span>
+            </h3>
+          </div>
           <p className="text-sm text-gray-500 dark:text-gray-500 mb-4 text-center">
             Built with React 19, TypeScript, and Tailwind CSS in a Turborepo monorepo.
           </p>

@@ -1,13 +1,20 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+// Extend Window interface to include gtag
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 export const useAnalytics = () => {
   const location = useLocation();
 
   useEffect(() => {
     // Track page views
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('config', 'G-319249408', {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('config', 'G-319249408', {
         page_path: location.pathname + location.hash,
         page_title: getPageTitle(location.pathname + location.hash),
       });
@@ -15,8 +22,8 @@ export const useAnalytics = () => {
   }, [location]);
 
   const trackEvent = (action: string, category: string, label?: string, value?: number) => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', action, {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', action, {
         event_category: category,
         event_label: label,
         value: value,
