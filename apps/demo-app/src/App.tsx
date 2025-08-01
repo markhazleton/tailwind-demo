@@ -39,7 +39,7 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <Router>
+      <Router basename="/tailwind-demo">
         <Routes>
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
