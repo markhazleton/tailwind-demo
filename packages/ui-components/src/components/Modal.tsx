@@ -157,7 +157,7 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
   );
 };
 
-export interface ModalContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type ModalContentProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const ModalContent: React.FC<ModalContentProps> = ({
   className,
@@ -171,7 +171,7 @@ export const ModalContent: React.FC<ModalContentProps> = ({
   );
 };
 
-export interface ModalFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type ModalFooterProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const ModalFooter: React.FC<ModalFooterProps> = ({
   className,

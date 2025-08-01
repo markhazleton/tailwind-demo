@@ -28,7 +28,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     id,
     ...props
   }, ref) => {
-    const inputId = id || `input-${React.useId()}`;
+    const generatedId = React.useId();
+    const inputId = id || `input-${generatedId}`;
     const actualVariant = error ? 'error' : variant;
 
     return (
@@ -103,7 +104,8 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     id,
     ...props
   }, ref) => {
-    const textareaId = id || `textarea-${React.useId()}`;
+    const generatedId = React.useId();
+    const textareaId = id || `textarea-${generatedId}`;
     const actualVariant = error ? 'error' : variant;
 
     return (
@@ -162,7 +164,8 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     id,
     ...props
   }, ref) => {
-    const selectId = id || `select-${React.useId()}`;
+    const generatedId = React.useId();
+    const selectId = id || `select-${generatedId}`;
     const actualVariant = error ? 'error' : variant;
 
     return (
@@ -223,7 +226,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     id,
     ...props
   }, ref) => {
-    const checkboxId = id || `checkbox-${React.useId()}`;
+    const generatedId = React.useId();
+    const checkboxId = id || `checkbox-${generatedId}`;
 
     return (
       <div className="space-y-2">
@@ -274,7 +278,8 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     id,
     ...props
   }, ref) => {
-    const radioId = id || `radio-${React.useId()}`;
+    const generatedId = React.useId();
+    const radioId = id || `radio-${generatedId}`;
 
     return (
       <div className="flex items-center">
