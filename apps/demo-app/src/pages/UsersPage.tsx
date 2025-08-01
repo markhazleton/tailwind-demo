@@ -29,7 +29,7 @@ const UserRow: React.FC<{ user: User; onEdit: (user: User) => void; onDelete: (u
   const roleColors = {
     Admin: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
     Manager: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    Editor: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
+    Editor: 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300',
     Viewer: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300'
   };
 
@@ -37,7 +37,7 @@ const UserRow: React.FC<{ user: User; onEdit: (user: User) => void; onDelete: (u
     <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-medium">
+                      <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-accent-700 rounded-full flex items-center justify-center text-white font-medium">
             {user.name.split(' ').map(n => n.charAt(0)).join('')}
           </div>
           <div className="ml-4">
@@ -197,7 +197,7 @@ export const UsersPage: React.FC = () => {
       headerActions={
         <button
           onClick={handleInviteUser}
-          className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                        className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
         >
           Invite User
         </button>
@@ -216,7 +216,7 @@ export const UsersPage: React.FC = () => {
               placeholder="Search by name or email..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             />
           </div>
 
@@ -228,7 +228,7 @@ export const UsersPage: React.FC = () => {
               id="role-filter"
               value={roleFilter}
               onChange={(e) => setRoleFilter(e.target.value)}
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             >
               <option value="all">All Roles</option>
               <option value="Admin">Admin</option>
@@ -246,7 +246,7 @@ export const UsersPage: React.FC = () => {
               id="status-filter"
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>

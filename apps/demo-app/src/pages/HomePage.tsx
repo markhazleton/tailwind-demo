@@ -1,29 +1,23 @@
 import { Button } from '@tailwindspark/ui-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { TailwindSparkBrand } from '../components/TailwindSparkBrand';
 
 export const HomePage: React.FC = () => {
   return (
     <div className="py-16">
       <div className="container mx-auto px-4 max-w-4xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-            Welcome to TailwindSpark ✨
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-6">
-            A comprehensive React TypeScript showcase of Tailwind CSS components, animations, and design systems. 
-            Part of the <a href="https://webspark.markhazleton.com" target="_blank" rel="noopener noreferrer" 
-            className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold">WebSpark Portfolio</a> by 
-            <a href="https://markhazleton.com" target="_blank" rel="noopener noreferrer" 
-            className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold ml-1">Mark Hazleton</a>.
-          </p>
-          <p className="text-lg text-gray-500 dark:text-gray-500 italic">
-            "Making technology work for business - lifelong learner, not sidetracked by sizzle."
-          </p>
+        <div className="mb-12">
+          <TailwindSparkBrand variant="hero" logoTitleTogether={true} />
+          <div className="text-center mt-8">
+            <p className="text-lg text-gray-500 dark:text-gray-500 italic">
+              "Making technology work for business - lifelong learner, not sidetracked by sizzle."
+            </p>
+          </div>
         </div>
 
         {/* WebSpark Portfolio Integration */}
-        <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 p-6 rounded-lg mb-12 border border-purple-200 dark:border-purple-800">
+        <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 p-6 rounded-lg mb-12 border border-primary-200 dark:border-primary-800">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
             🌐 Part of the WebSpark Ecosystem
           </h3>
@@ -33,7 +27,7 @@ export const HomePage: React.FC = () => {
           </p>
           <div className="flex flex-wrap gap-3">
             <a href="https://webspark.markhazleton.com" target="_blank" rel="noopener noreferrer" 
-               className="inline-flex items-center px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm font-medium hover:bg-purple-200 dark:hover:bg-purple-800 transition-colors">
+               className="inline-flex items-center px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full text-sm font-medium hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors">
               🌟 WebSpark Portfolio
             </a>
             <span className="inline-flex items-center px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
@@ -74,7 +68,7 @@ export const HomePage: React.FC = () => {
             <p className="text-gray-600 dark:text-gray-400 mb-3">
               Full-featured SaaS dashboard showcasing modern UI patterns with responsive design and interactive analytics.
             </p>
-            <Link to="/dashboard" className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium text-sm">
+            <Link to="/dashboard" className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm">
               View Dashboard →
             </Link>
           </div>
@@ -86,7 +80,7 @@ export const HomePage: React.FC = () => {
             <p className="text-gray-600 dark:text-gray-400 mb-3">
               Modern online store with product grids, filtering, shopping cart, and responsive checkout flow.
             </p>
-            <Link to="/ecommerce" className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium text-sm">
+            <Link to="/ecommerce" className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm">
               View Store →
             </Link>
           </div>
@@ -98,7 +92,7 @@ export const HomePage: React.FC = () => {
             <p className="text-gray-600 dark:text-gray-400 mb-3">
               Agency-style landing page with hero sections, testimonials, portfolio gallery, and contact forms.
             </p>
-            <Link to="/marketing" className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium text-sm">
+            <Link to="/marketing" className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm">
               View Landing Page →
             </Link>
           </div>
@@ -110,7 +104,7 @@ export const HomePage: React.FC = () => {
             <p className="text-gray-600 dark:text-gray-400 mb-3">
               Interactive animations, transitions, and micro-interactions demonstrating Tailwind's animation utilities.
             </p>
-            <Link to="/animations" className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium text-sm">
+            <Link to="/animations" className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm">
               View Animations →
             </Link>
           </div>
@@ -149,7 +143,7 @@ export const HomePage: React.FC = () => {
               href="https://webspark.markhazleton.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium"
+              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium"
             >
               Visit WebSpark Portfolio →
             </a>
@@ -204,7 +198,7 @@ export const HomePage: React.FC = () => {
 
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-accent-500 rounded-lg flex items-center justify-center">
                   <span className="text-white font-semibold">🌙</span>
                 </div>
               </div>

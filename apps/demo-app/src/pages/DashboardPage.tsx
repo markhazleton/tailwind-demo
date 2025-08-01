@@ -64,7 +64,7 @@ const TransactionRow: React.FC<{ transaction: Transaction }> = ({ transaction })
     <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center">
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                      <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-700 rounded-full flex items-center justify-center text-white text-sm font-medium">
             {transaction.customer.charAt(0).toUpperCase()}
           </div>
           <div className="ml-3">
@@ -139,7 +139,7 @@ export const DashboardPage: React.FC = () => {
   const headerActions = (
     <button
       onClick={handleRefresh}
-      className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors duration-200"
+                    className="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors duration-200"
       disabled={isLoading}
     >
       {isLoading ? 'Refreshing...' : 'Refresh Data'}
@@ -156,7 +156,7 @@ export const DashboardPage: React.FC = () => {
       <div className="p-6 pb-0">
         <Link 
           to="/demos" 
-          className="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium text-sm mb-6 transition-colors"
+                        className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm mb-6 transition-colors"
         >
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -186,7 +186,7 @@ export const DashboardPage: React.FC = () => {
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Revenue Trend</h3>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 bg-purple-500 rounded-full"></span>
+                <span className="w-3 h-3 bg-primary-500 rounded-full"></span>
                 <span className="text-sm text-gray-600 dark:text-gray-400">This Month</span>
               </div>
             </div>
@@ -208,7 +208,7 @@ export const DashboardPage: React.FC = () => {
               ].map((bar, index) => (
                 <div
                   key={index}
-                  className={`bg-gradient-to-t from-purple-500 to-purple-400 rounded-t-sm flex-1 transition-all duration-300 hover:from-purple-600 hover:to-purple-500 ${bar.height}`}
+                  className={`bg-gradient-to-t from-primary-500 to-primary-400 rounded-t-sm flex-1 transition-all duration-300 hover:from-primary-600 hover:to-primary-500 ${bar.height}`}
                   title={bar.percent}
                 />
               ))}
@@ -296,7 +296,7 @@ export const DashboardPage: React.FC = () => {
               {users.map((user, index) => (
                 <div key={index} className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                    <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-700 rounded-full flex items-center justify-center text-white text-sm font-medium">
                       {user.name.split(' ').map(n => n.charAt(0)).join('')}
                     </div>
                     <div>

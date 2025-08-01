@@ -1,15 +1,20 @@
 import React from 'react';
+import { Logo } from './Logo';
 
 interface LoadingSpinnerProps {
   size?: 'sm' | 'md' | 'lg';
   color?: 'primary' | 'secondary' | 'white';
   className?: string;
+  withLogo?: boolean;
+  message?: string;
 }
 
 export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ 
   size = 'md', 
   color = 'primary',
-  className = ''
+  className = '',
+  withLogo = false,
+  message = 'Loading...'
 }) => {
   const sizeClasses = {
     sm: 'w-4 h-4',
@@ -22,6 +27,22 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
     secondary: 'text-secondary-600',
     white: 'text-white'
   };
+
+  if (withLogo) {
+    return (
+      <div className={`flex flex-col items-center justify-center gap-4 ${className}`}>
+        <div className="relative">
+          <Logo size={size === 'sm' ? 'md' : size === 'md' ? 'lg' : 'xl'} showText={false} />
+          <div className="absolute inset-0 animate-pulse bg-primary-500/20 rounded-full"></div>
+        </div>
+        {message && (
+          <p className="text-sm text-gray-600 dark:text-gray-400 animate-pulse">
+            {message}
+          </p>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className={`animate-spin ${sizeClasses[size]} ${colorClasses[color]} ${className}`}>

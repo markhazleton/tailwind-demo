@@ -27,9 +27,9 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
+    "@tailwindspark/design-tokens": "*",
     "clsx": "^2.1.0",
-    "lucide-react": "^0.456.0",
-    "@tailwindspark/design-tokens": "*"
+    "lucide-react": "^0.456.0"
   },
   "devDependencies": {
     "@types/react": "^19.1.8",
@@ -47,6 +47,6 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
     "vite": "^7.0.4",
-    "vite-plugin-dts": "^3.7.3"
+    "vite-plugin-dts": "^4.5.4"
   }
 }

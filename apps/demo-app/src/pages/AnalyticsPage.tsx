@@ -54,14 +54,14 @@ export const AnalyticsPage: React.FC = () => {
   const metrics = [
     { title: 'Page Views', value: '127,543', change: '+12.5%', trend: 'up' as const, icon: '👁️', color: 'bg-blue-500' },
     { title: 'Unique Visitors', value: '23,847', change: '+8.2%', trend: 'up' as const, icon: '👥', color: 'bg-green-500' },
-    { title: 'Click Rate', value: '3.24%', change: '-2.1%', trend: 'down' as const, icon: '👆', color: 'bg-purple-500' },
+    { title: 'Click Rate', value: '3.24%', change: '-2.1%', trend: 'down' as const, icon: '👆', color: 'bg-primary-500' },
     { title: 'Avg. Session', value: '4m 32s', change: '+15.3%', trend: 'up' as const, icon: '⏱️', color: 'bg-orange-500' },
   ];
 
   const trafficSources = [
     { source: 'Organic Search', visitors: '45,231', percentage: 45, color: 'bg-blue-500' },
     { source: 'Direct Traffic', visitors: '28,847', percentage: 28, color: 'bg-green-500' },
-    { source: 'Social Media', visitors: '15,429', percentage: 15, color: 'bg-purple-500' },
+    { source: 'Social Media', visitors: '15,429', percentage: 15, color: 'bg-primary-500' },
     { source: 'Email Campaign', visitors: '8,934', percentage: 9, color: 'bg-orange-500' },
     { source: 'Referrals', visitors: '3,102', percentage: 3, color: 'bg-pink-500' },
   ];
@@ -82,7 +82,7 @@ export const AnalyticsPage: React.FC = () => {
         <select
           value={timeRange}
           onChange={(e) => setTimeRange(e.target.value)}
-          className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
           aria-label="Select time range"
           title="Select time range"
         >

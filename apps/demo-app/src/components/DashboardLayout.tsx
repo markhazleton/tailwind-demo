@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Logo } from './Logo';
 
 // Icons
 const IconDashboard = () => <span>📊</span>;
@@ -40,9 +41,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
       } lg:translate-x-0 transition-transform duration-300 ease-in-out`}>
         <div className="flex items-center gap-3 p-6 border-b border-gray-200 dark:border-gray-700">
-          <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-sm">✨</span>
-          </div>
+          <Logo size="sm" showText={false} />
           <div>
             <h1 className="font-bold text-gray-900 dark:text-gray-100">TailwindSpark</h1>
             <p className="text-xs text-gray-600 dark:text-gray-400">Dashboard Demo</p>
@@ -57,7 +56,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                   to={item.href}
                   className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     location.pathname === item.href
-                      ? 'bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300'
+                      ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
                       : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
                 >
@@ -82,7 +81,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
+            <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-700 rounded-full flex items-center justify-center text-white text-sm font-medium">
               MH
             </div>
             <div className="flex-1 min-w-0">
@@ -95,7 +94,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
               href="https://webspark.markhazleton.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-xs text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300"
+              className="text-xs text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300"
             >
               WebSpark Portfolio →
             </a>
@@ -159,7 +158,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
               {/* Profile */}
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-700 rounded-full flex items-center justify-center text-white text-sm font-medium">
                   JD
                 </div>
                 <span className="hidden md:block text-sm font-medium text-gray-900 dark:text-gray-100">John Doe</span>
