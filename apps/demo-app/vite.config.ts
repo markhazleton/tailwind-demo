@@ -9,4 +9,8 @@ export default defineConfig({
     outDir: '../../dist',
     emptyOutDir: true,
   },
+  define: {
+    __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
+    __BUILD_VERSION__: JSON.stringify(`${new Date().getFullYear()}.${(new Date().getMonth() + 1).toString().padStart(2, '0')}.${new Date().getDate().toString().padStart(2, '0')}.${new Date().getHours().toString().padStart(2, '0')}${new Date().getMinutes().toString().padStart(2, '0')}`),
+  },
 });
