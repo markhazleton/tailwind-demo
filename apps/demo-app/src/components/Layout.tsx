@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
+import { BuildInfo } from './BuildInfo';
 import { Logo } from './Logo';
 import { SearchComponent } from './SearchComponent';
 import { TailwindSparkBrand } from './TailwindSparkBrand';
@@ -174,7 +175,13 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
           <p className="text-sm text-gray-500 dark:text-gray-500 mb-4 text-center">
             Built with React 19, TypeScript, and Tailwind CSS in a Turborepo monorepo.
           </p>
-          <div className="flex justify-center gap-4 flex-wrap">
+          
+          {/* Build Information */}
+          <div className="flex justify-center mb-4">
+            <BuildInfo className="text-center" />
+          </div>
+          
+          <div className="flex justify-center gap-4 flex-wrap">{/* Links continue below */}
             <a
               href="https://github.com/MarkHazleton/tailwind-demo"
               target="_blank"
