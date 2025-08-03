@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { CartItem } from '../types/ecommerce';
 import { Logo } from './Logo';
@@ -44,6 +44,30 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
     { name: 'Home & Garden', href: '/ecommerce' },
     { name: 'Sports', href: '/ecommerce' }
   ];
+
+  // Close mobile menu on window resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) { // md breakpoint
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        setIsCartOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    document.addEventListener('keydown', handleEscape);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -135,9 +159,14 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="md:hidden text-gray-700 hover:text-indigo-600 p-2 rounded-full hover:bg-gray-100 transition-colors"
                 title="Toggle mobile menu"
+                aria-label="Toggle mobile menu"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  {isMobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
                 </svg>
               </button>
             </div>
@@ -146,12 +175,13 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
           {/* Mobile menu */}
           {isMobileMenuOpen && (
             <div className="md:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200 bg-white">
                 {categories.map((category) => (
                   <Link
                     key={category.name}
                     to={category.href}
-                    className="text-gray-700 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
+                    className="text-gray-700 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {category.name}
                   </Link>
