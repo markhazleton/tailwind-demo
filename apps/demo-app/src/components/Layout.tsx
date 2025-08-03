@@ -15,6 +15,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
   const location = useLocation();
   const [isDemosOpen, setIsDemosOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const demosRef = useRef<HTMLDivElement>(null);
 
   // Keyboard shortcuts
@@ -24,6 +25,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
     onEscape: () => {
       setIsSearchOpen(false);
       setIsDemosOpen(false);
+      setIsMobileMenuOpen(false);
     }
   });
 
@@ -53,6 +55,20 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
     };
   }, []);
 
+  // Close mobile menu on window resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) { // md breakpoint
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const isDemoPage = demoItems.some(item => location.pathname === item.path) || location.pathname === '/demos';
 
   return (
@@ -64,11 +80,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
             <div className="flex items-center gap-8">
               <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
                 <Logo size="md" />
-                <div className="hidden sm:block">
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    WebSpark Portfolio
-                  </p>
-                </div>
               </Link>
               
               {/* Navigation */}
@@ -140,6 +151,36 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
             </div>
             
             <div className="flex items-center gap-3">
+              {/* Mobile menu button - only visible on small screens */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                aria-label="Toggle mobile menu"
+              >
+                <svg 
+                  className="h-6 w-6" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  {isMobileMenuOpen ? (
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M6 18L18 6M6 6l12 12" 
+                    />
+                  ) : (
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M4 6h16M4 12h16M4 18h16" 
+                    />
+                  )}
+                </svg>
+              </button>
+              
               <button
                 onClick={() => setIsSearchOpen(true)}
                 className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
@@ -157,6 +198,56 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
             </div>
           </div>
         </div>
+        
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-gray-200 dark:border-gray-700">
+            <div className="px-4 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-900">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                    location.pathname === item.path
+                      ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              
+              {/* Mobile Demos Section */}
+              <div className="pt-2">
+                <div className="px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  Demos
+                </div>
+                <Link
+                  to="/demos"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  All Demos Overview
+                </Link>
+                {demoItems.map((demo) => (
+                  <Link
+                    key={demo.path}
+                    to={demo.path}
+                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      location.pathname === demo.path
+                        ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
+                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800'
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {demo.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Main Content */}
