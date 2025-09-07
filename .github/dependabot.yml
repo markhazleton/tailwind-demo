@@ -1,0 +1,42 @@
+# Dependabot configuration for automated dependency updates
+version: 2
+updates:
+  # Enable version updates for npm dependencies
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'America/New_York'
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: 'deps'
+      prefix-development: 'deps-dev'
+      include: 'scope'
+    # Group updates by type
+    groups:
+      tailwind:
+        patterns:
+          - '@tailwindcss/*'
+          - 'tailwind*'
+      turbo:
+        patterns:
+          - '@turbo/*'
+          - 'turbo*'
+      typescript:
+        patterns:
+          - '@typescript-eslint/*'
+          - 'typescript*'
+      dev-dependencies:
+        dependency-type: 'development'
+        exclude-patterns:
+          - '@tailwindcss/*'
+          - '@turbo/*'
+          - '@typescript-eslint/*'
+
+  # Monitor GitHub Actions updates
+  - package-ecosystem: 'github-actions'
+    directory: '/.github/workflows'
+    schedule:
+      interval: 'monthly'
