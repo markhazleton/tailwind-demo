@@ -1,5 +1,21 @@
 import '@testing-library/jest-dom';
 import { vi } from 'vitest';
+import React from 'react';
+
+// Mock react-router-dom
+vi.mock('react-router-dom', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('react-router-dom')>();
+  return {
+    ...actual,
+    useNavigate: vi.fn(() => vi.fn()),
+    useLocation: vi.fn(() => ({ pathname: '/', search: '', hash: '', state: null, key: 'default' })),
+    useParams: vi.fn(() => ({})),
+    Link: ({ children, to, ...props }: any) =>
+      React.createElement('a', { href: to, ...props }, children),
+    NavLink: ({ children, to, ...props }: any) =>
+      React.createElement('a', { href: to, ...props }, children),
+  };
+});
 
 // Mock global constants that are injected by Vite
 (
