@@ -5,4 +5,6 @@ Allow: /
 Sitemap: https://markhazleton.github.io/tailwind-demo/sitemap.xml
 
 # Crawl-delay
-Crawl-delay: 1 
+Crawl-delay: 1
+
+# Generated: 2025-09-07

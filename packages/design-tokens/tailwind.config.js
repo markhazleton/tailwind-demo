@@ -1,4 +1,3 @@
-import aspectRatio from '@tailwindcss/aspect-ratio';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 
@@ -126,7 +125,33 @@ const config = {
   darkMode: 'class',
   theme: {
     extend: {
-      colors,
+      colors: {
+        ...colors,
+        // Semantic color aliases (map to CSS variables defined in theme.css)
+        brand: {
+          DEFAULT: 'var(--color-brand)',
+          hover: 'var(--color-brand-hover)',
+          fg: 'var(--color-brand-fg)',
+        },
+        'brand-hover': 'var(--color-brand-hover)',
+        surface: {
+          DEFAULT: 'var(--color-surface)',
+          alt: 'var(--color-surface-alt)',
+          inverse: 'var(--color-surface-inverse)',
+        },
+        'surface-alt': 'var(--color-surface-alt)',
+        text: {
+          DEFAULT: 'var(--color-text)',
+          inverse: 'var(--color-text-inverse)',
+          muted: 'var(--color-text-muted)',
+        },
+        'text-muted': 'var(--color-text-muted)',
+        border: {
+          DEFAULT: 'var(--color-border)',
+          strong: 'var(--color-border-strong)',
+        },
+        'border-strong': 'var(--color-border-strong)',
+      },
       spacing,
       borderRadius,
       boxShadow: shadows,
@@ -173,7 +198,8 @@ const config = {
       },
     },
   },
-  plugins: [typography, forms, aspectRatio],
+  // aspect-ratio plugin removed (now core in Tailwind v4)
+  plugins: [typography, forms],
 };
 
 export default config;

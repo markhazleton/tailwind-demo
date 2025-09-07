@@ -58,7 +58,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                   to={item.href}
                   className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
                     location.pathname === item.href
-                      ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
+                      ? 'bg-brand/10 dark:bg-brand/20 text-brand'
                       : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100'
                   }`}
                 >
@@ -83,7 +83,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
         <div className="absolute bottom-0 left-0 right-0 border-t border-gray-200 p-4 dark:border-gray-700">
           <div className="flex items-center gap-3">
-            <div className="from-primary-500 to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
+            <div className="from-brand to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
               MH
             </div>
             <div className="min-w-0 flex-1">
@@ -98,7 +98,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
               href="https://webspark.markhazleton.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-xs"
+              className="text-brand hover:text-brand-hover text-xs"
             >
               WebSpark Portfolio →
             </a>
@@ -162,7 +162,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
               {/* Profile */}
               <div className="flex items-center gap-2">
-                <div className="from-primary-500 to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
+                <div className="from-brand to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
                   JD
                 </div>
                 <span className="hidden text-sm font-medium text-gray-900 md:block dark:text-gray-100">
