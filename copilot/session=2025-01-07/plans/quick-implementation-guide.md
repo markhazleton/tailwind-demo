@@ -19,14 +19,11 @@ Mixed ESLint configurations causing inconsistent linting behavior across the mon
    export default [
      // Global ignores
      { ignores: ['**/dist/**', '**/node_modules/**', '**/.turbo/**'] },
-     
+
      // Base configuration for all JS/TS files
      {
        files: ['**/*.{js,jsx,ts,tsx}'],
-       extends: [
-         js.configs.recommended,
-         ...tseslint.configs.recommended,
-       ],
+       extends: [js.configs.recommended, ...tseslint.configs.recommended],
        languageOptions: {
          ecmaVersion: 2022,
          sourceType: 'module',
@@ -167,23 +164,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          
+
       - name: Install dependencies
         run: npm ci
-        
+
       - name: Run audit
         run: npm audit --audit-level moderate
-        
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
           languages: javascript
-          
+
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
 ```

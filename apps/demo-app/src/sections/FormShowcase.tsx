@@ -27,7 +27,7 @@ export const FormShowcase: React.FC = () => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      console.log('Form submitted:', formData);
+      console.warn('Form submitted:', formData);
     }
   };
 

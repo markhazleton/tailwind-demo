@@ -119,7 +119,7 @@ export const SettingsPage: React.FC = () => {
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
   const handleSaveSettings = () => {
-    console.log('Saving settings...');
+    console.warn('Saving settings...');
     setHasUnsavedChanges(false);
     // In a real app, you'd make an API call here
   };

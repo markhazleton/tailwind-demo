@@ -91,7 +91,7 @@ it('renders with different variants', () => {
 it('calls onClick when clicked', () => {
   const handleClick = vi.fn();
   render(<Button onClick={handleClick}>Click me</Button>);
-  
+
   fireEvent.click(screen.getByRole('button'));
   expect(handleClick).toHaveBeenCalledTimes(1);
 });
@@ -103,7 +103,7 @@ it('calls onClick when clicked', () => {
 it('does not call onClick when disabled', () => {
   const handleClick = vi.fn();
   render(<Button disabled onClick={handleClick}>Click me</Button>);
-  
+
   fireEvent.click(screen.getByRole('button'));
   expect(handleClick).not.toHaveBeenCalled();
 });
@@ -139,10 +139,10 @@ Use React Testing Library queries in this order:
 
 ```typescript
 // ✅ Good - accessible query
-screen.getByRole('button', { name: 'Submit' })
+screen.getByRole('button', { name: 'Submit' });
 
 // ❌ Avoid - implementation detail
-screen.getByClassName('btn-primary')
+screen.getByClassName('btn-primary');
 ```
 
 ### Mocking Guidelines
@@ -185,11 +185,11 @@ import { useCounter } from './useCounter';
 describe('useCounter', () => {
   it('increments counter', () => {
     const { result } = renderHook(() => useCounter());
-    
+
     act(() => {
       result.current.increment();
     });
-    
+
     expect(result.current.count).toBe(1);
   });
 });
@@ -227,9 +227,9 @@ import { AsyncComponent } from './AsyncComponent';
 describe('AsyncComponent', () => {
   it('loads data successfully', async () => {
     render(<AsyncComponent />);
-    
+
     expect(screen.getByText('Loading...')).toBeInTheDocument();
-    
+
     await waitFor(() => {
       expect(screen.getByText('Data loaded')).toBeInTheDocument();
     });
@@ -304,12 +304,7 @@ export default defineConfig({
   test: {
     coverage: {
       reporter: ['text', 'json', 'html'],
-      exclude: [
-        'node_modules/',
-        'dist/',
-        '**/*.config.{js,ts}',
-        '**/*.d.ts',
-      ],
+      exclude: ['node_modules/', 'dist/', '**/*.config.{js,ts}', '**/*.d.ts'],
     },
   },
 });
@@ -346,10 +341,10 @@ import { screen } from '@testing-library/react';
 
 it('debug test', () => {
   render(<Component />);
-  
+
   // See rendered output
   screen.debug();
-  
+
   // Log specific element
   console.log(screen.getByRole('button'));
 });
@@ -363,7 +358,7 @@ Tests are automatically run in the CI/CD pipeline:
 # .github/workflows/deploy.yml
 - name: Run tests
   run: npm run test:coverage
-  
+
 - name: Upload coverage
   uses: codecov/codecov-action@v3
 ```

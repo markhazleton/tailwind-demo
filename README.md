@@ -46,7 +46,7 @@ tailwind-demo/
 ## 📚 Documentation
 
 - **[Getting Started](./docs/GETTING_STARTED.md)** - Setup and development guide
-- **[Architecture](./docs/ARCHITECTURE.md)** - Technical architecture overview  
+- **[Architecture](./docs/ARCHITECTURE.md)** - Technical architecture overview
 - **[Testing](./docs/TESTING.md)** - Testing strategies and best practices
 - **[Deployment](./docs/DEPLOYMENT.md)** - Deployment and CI/CD information
 - **[Branding](./docs/BRANDING.md)** - Brand guidelines and assets
