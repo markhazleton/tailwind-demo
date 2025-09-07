@@ -17,26 +17,30 @@ interface StatCardProps {
 const StatCard: React.FC<StatCardProps> = ({ title, value, change, trend, isLoading = false }) => {
   if (isLoading) {
     return (
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
+      <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <div className="animate-pulse">
-          <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-1/2 mb-4"></div>
-          <div className="h-8 bg-gray-300 dark:bg-gray-600 rounded w-3/4 mb-2"></div>
-          <div className="h-3 bg-gray-300 dark:bg-gray-600 rounded w-1/3"></div>
+          <div className="mb-4 h-4 w-1/2 rounded bg-gray-300 dark:bg-gray-600"></div>
+          <div className="mb-2 h-8 w-3/4 rounded bg-gray-300 dark:bg-gray-600"></div>
+          <div className="h-3 w-1/3 rounded bg-gray-300 dark:bg-gray-600"></div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-200">
-      <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">{title}</h3>
+    <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
+      <h3 className="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">{title}</h3>
       <div className="flex items-end justify-between">
         <p className="text-3xl font-bold text-gray-900 dark:text-gray-100">{value}</p>
         <div className="flex items-center gap-1">
           {trend === 'up' ? <IconArrowUp /> : <IconArrowDown />}
-          <span className={`text-sm font-medium ${
-            trend === 'up' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
-          }`}>
+          <span
+            className={`text-sm font-medium ${
+              trend === 'up'
+                ? 'text-green-600 dark:text-green-400'
+                : 'text-red-600 dark:text-red-400'
+            }`}
+          >
             {change}
           </span>
         </div>
@@ -57,39 +61,49 @@ const TransactionRow: React.FC<{ transaction: Transaction }> = ({ transaction })
   const statusColors = {
     completed: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
     pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-    failed: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300'
+    failed: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
   };
 
   return (
-    <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-      <td className="px-6 py-4 whitespace-nowrap">
+    <tr className="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700">
+      <td className="whitespace-nowrap px-6 py-4">
         <div className="flex items-center">
-                      <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-700 rounded-full flex items-center justify-center text-white text-sm font-medium">
+          <div className="from-primary-500 to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
             {transaction.customer.charAt(0).toUpperCase()}
           </div>
           <div className="ml-3">
-            <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{transaction.customer}</p>
+            <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+              {transaction.customer}
+            </p>
             <p className="text-sm text-gray-500 dark:text-gray-400">ID: {transaction.id}</p>
           </div>
         </div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">{transaction.amount}</td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusColors[transaction.status]}`}>
+      <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">
+        {transaction.amount}
+      </td>
+      <td className="whitespace-nowrap px-6 py-4">
+        <span
+          className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${statusColors[transaction.status]}`}
+        >
           {transaction.status}
         </span>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{transaction.date}</td>
+      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+        {transaction.date}
+      </td>
     </tr>
   );
 };
 
-const ActivityItem: React.FC<{ activity: { user: string; action: string; time: string } }> = ({ activity }) => (
-  <div className="flex items-start gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors">
-    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
+const ActivityItem: React.FC<{ activity: { user: string; action: string; time: string } }> = ({
+  activity,
+}) => (
+  <div className="flex items-start gap-3 rounded-lg p-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700">
+    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-blue-600 text-sm font-medium text-white">
       {activity.user.charAt(0).toUpperCase()}
     </div>
-    <div className="flex-1 min-w-0">
+    <div className="min-w-0 flex-1">
       <p className="text-sm text-gray-900 dark:text-gray-100">
         <span className="font-medium">{activity.user}</span> {activity.action}
       </p>
@@ -109,11 +123,41 @@ export const DashboardPage: React.FC = () => {
   ];
 
   const transactions: Transaction[] = [
-    { id: 'TXN-001', customer: 'Alice Johnson', amount: '$2,450.00', status: 'completed', date: '2024-01-15' },
-    { id: 'TXN-002', customer: 'Bob Smith', amount: '$1,250.00', status: 'pending', date: '2024-01-15' },
-    { id: 'TXN-003', customer: 'Carol Davis', amount: '$3,750.00', status: 'completed', date: '2024-01-14' },
-    { id: 'TXN-004', customer: 'David Wilson', amount: '$890.00', status: 'failed', date: '2024-01-14' },
-    { id: 'TXN-005', customer: 'Emma Brown', amount: '$5,200.00', status: 'completed', date: '2024-01-13' },
+    {
+      id: 'TXN-001',
+      customer: 'Alice Johnson',
+      amount: '$2,450.00',
+      status: 'completed',
+      date: '2024-01-15',
+    },
+    {
+      id: 'TXN-002',
+      customer: 'Bob Smith',
+      amount: '$1,250.00',
+      status: 'pending',
+      date: '2024-01-15',
+    },
+    {
+      id: 'TXN-003',
+      customer: 'Carol Davis',
+      amount: '$3,750.00',
+      status: 'completed',
+      date: '2024-01-14',
+    },
+    {
+      id: 'TXN-004',
+      customer: 'David Wilson',
+      amount: '$890.00',
+      status: 'failed',
+      date: '2024-01-14',
+    },
+    {
+      id: 'TXN-005',
+      customer: 'Emma Brown',
+      amount: '$5,200.00',
+      status: 'completed',
+      date: '2024-01-13',
+    },
   ];
 
   const activities = [
@@ -139,7 +183,7 @@ export const DashboardPage: React.FC = () => {
   const headerActions = (
     <button
       onClick={handleRefresh}
-                    className="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors duration-200"
+      className="bg-primary-600 hover:bg-primary-700 rounded-lg px-4 py-2 font-medium text-white transition-colors duration-200"
       disabled={isLoading}
     >
       {isLoading ? 'Refreshing...' : 'Refresh Data'}
@@ -147,27 +191,32 @@ export const DashboardPage: React.FC = () => {
   );
 
   return (
-    <DashboardLayout 
-      pageTitle="TailwindSpark Dashboard" 
+    <DashboardLayout
+      pageTitle="TailwindSpark Dashboard"
       pageDescription="Welcome to the TailwindSpark SaaS dashboard demo. Explore modern UI patterns and responsive design components."
       headerActions={headerActions}
     >
       {/* Back to Demos Link */}
       <div className="p-6 pb-0">
-        <Link 
-          to="/demos" 
-                        className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm mb-6 transition-colors"
+        <Link
+          to="/demos"
+          className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 mb-6 inline-flex items-center text-sm font-medium transition-colors"
         >
-          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
           Back to Demos Overview
         </Link>
       </div>
-      
+
       <div className="p-6">
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+        <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
           {stats.map((stat, index) => (
             <StatCard
               key={index}
@@ -181,16 +230,18 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         {/* Revenue Chart */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Revenue Trend</h3>
+        <div className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm lg:col-span-2 dark:border-gray-700 dark:bg-gray-800">
+            <div className="mb-6 flex items-center justify-between">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                Revenue Trend
+              </h3>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 bg-primary-500 rounded-full"></span>
+                <span className="bg-primary-500 h-3 w-3 rounded-full"></span>
                 <span className="text-sm text-gray-600 dark:text-gray-400">This Month</span>
               </div>
             </div>
-            <div className="h-64 flex items-end justify-between gap-2">
+            <div className="flex h-64 items-end justify-between gap-2">
               {/* Simple bar chart representation */}
               {[
                 { height: 'h-40', percent: '65%' },
@@ -204,16 +255,16 @@ export const DashboardPage: React.FC = () => {
                 { height: 'h-44', percent: '70%' },
                 { height: 'h-36', percent: '60%' },
                 { height: 'h-52', percent: '85%' },
-                { height: 'h-64', percent: '100%' }
+                { height: 'h-64', percent: '100%' },
               ].map((bar, index) => (
                 <div
                   key={index}
-                  className={`bg-gradient-to-t from-primary-500 to-primary-400 rounded-t-sm flex-1 transition-all duration-300 hover:from-primary-600 hover:to-primary-500 ${bar.height}`}
+                  className={`from-primary-500 to-primary-400 hover:from-primary-600 hover:to-primary-500 flex-1 rounded-t-sm bg-gradient-to-t transition-all duration-300 ${bar.height}`}
                   title={bar.percent}
                 />
               ))}
             </div>
-            <div className="flex justify-between mt-4 text-xs text-gray-500 dark:text-gray-400">
+            <div className="mt-4 flex justify-between text-xs text-gray-500 dark:text-gray-400">
               <span>Jan</span>
               <span>Feb</span>
               <span>Mar</span>
@@ -230,12 +281,16 @@ export const DashboardPage: React.FC = () => {
           </div>
 
           {/* Quick Stats */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Quick Stats</h3>
+          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Quick Stats
+            </h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600 dark:text-gray-400">Today's Revenue</span>
-                <span className="text-sm font-medium text-gray-900 dark:text-gray-100">$12,450</span>
+                <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  $12,450
+                </span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600 dark:text-gray-400">New Signups</span>
@@ -254,22 +309,32 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         {/* Recent Transactions Table */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-200 dark:border-gray-700 mb-8">
-          <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Recent Transactions</h3>
+        <div className="mb-8 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Recent Transactions
+            </h3>
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
               <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Customer</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Amount</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Date</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Customer
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Amount
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Status
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Date
+                  </th>
                 </tr>
               </thead>
-              <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                {transactions.map((transaction) => (
+              <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-800">
+                {transactions.map(transaction => (
                   <TransactionRow key={transaction.id} transaction={transaction} />
                 ))}
               </tbody>
@@ -278,10 +343,12 @@ export const DashboardPage: React.FC = () => {
         </div>
 
         {/* Activity Feed + User List */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {/* Activity Feed */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Recent Activity</h3>
+          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Recent Activity
+            </h3>
             <div className="space-y-1">
               {activities.map((activity, index) => (
                 <ActivityItem key={index} activity={activity} />
@@ -290,29 +357,43 @@ export const DashboardPage: React.FC = () => {
           </div>
 
           {/* User List */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Team Members</h3>
+          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Team Members
+            </h3>
             <div className="space-y-3">
               {users.map((user, index) => (
-                <div key={index} className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                <div
+                  key={index}
+                  className="flex items-center justify-between rounded-lg p-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-700 rounded-full flex items-center justify-center text-white text-sm font-medium">
-                      {user.name.split(' ').map(n => n.charAt(0)).join('')}
+                    <div className="from-primary-500 to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
+                      {user.name
+                        .split(' ')
+                        .map(n => n.charAt(0))
+                        .join('')}
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{user.name}</p>
+                      <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                        {user.name}
+                      </p>
                       <p className="text-xs text-gray-500 dark:text-gray-400">{user.role}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className={`w-2 h-2 rounded-full ${
-                      user.status === 'online' 
-                        ? 'bg-green-500' 
-                        : user.status === 'away' 
-                        ? 'bg-yellow-500' 
-                        : 'bg-gray-400'
-                    }`}></div>
-                    <span className="text-xs text-gray-500 dark:text-gray-400 capitalize">{user.status}</span>
+                    <div
+                      className={`h-2 w-2 rounded-full ${
+                        user.status === 'online'
+                          ? 'bg-green-500'
+                          : user.status === 'away'
+                            ? 'bg-yellow-500'
+                            : 'bg-gray-400'
+                      }`}
+                    ></div>
+                    <span className="text-xs capitalize text-gray-500 dark:text-gray-400">
+                      {user.status}
+                    </span>
                   </div>
                 </div>
               ))}

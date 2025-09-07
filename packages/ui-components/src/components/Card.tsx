@@ -22,15 +22,7 @@ const cardPadding = {
 };
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({
-    className,
-    variant = 'default',
-    padding = 'md',
-    header,
-    footer,
-    children,
-    ...props
-  }, ref) => {
+  ({ className, variant = 'default', padding = 'md', header, footer, children, ...props }, ref) => {
     return (
       <div
         ref={ref}
@@ -43,15 +35,13 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         {...props}
       >
         {header && (
-          <div className="border-b border-secondary-200 dark:border-secondary-700 pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0">
+          <div className="border-secondary-200 dark:border-secondary-700 mb-4 border-b pb-4 last:mb-0 last:border-b-0 last:pb-0">
             {header}
           </div>
         )}
-        <div className={padding === 'none' ? cardPadding.md : ''}>
-          {children}
-        </div>
+        <div className={padding === 'none' ? cardPadding.md : ''}>{children}</div>
         {footer && (
-          <div className="border-t border-secondary-200 dark:border-secondary-700 pt-4 mt-4 first:border-t-0 first:pt-0 first:mt-0">
+          <div className="border-secondary-200 dark:border-secondary-700 mt-4 border-t pt-4 first:mt-0 first:border-t-0 first:pt-0">
             {footer}
           </div>
         )}
@@ -70,20 +60,14 @@ export interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ className, title, subtitle, children, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        className={clsx('space-y-1', className)}
-        {...props}
-      >
+      <div ref={ref} className={clsx('space-y-1', className)} {...props}>
         {title && (
-          <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100">
+          <h3 className="text-secondary-900 dark:text-secondary-100 text-lg font-semibold">
             {title}
           </h3>
         )}
         {subtitle && (
-          <p className="text-sm text-secondary-600 dark:text-secondary-400">
-            {subtitle}
-          </p>
+          <p className="text-secondary-600 dark:text-secondary-400 text-sm">{subtitle}</p>
         )}
         {children}
       </div>
@@ -116,11 +100,7 @@ export type CardFooterProps = React.HTMLAttributes<HTMLDivElement>;
 export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        className={clsx('flex items-center gap-2', className)}
-        {...props}
-      >
+      <div ref={ref} className={clsx('flex items-center gap-2', className)} {...props}>
         {children}
       </div>
     );

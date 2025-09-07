@@ -9,23 +9,23 @@ interface LoadingSpinnerProps {
   message?: string;
 }
 
-export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ 
-  size = 'md', 
+export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
+  size = 'md',
   color = 'primary',
   className = '',
   withLogo = false,
-  message = 'Loading...'
+  message = 'Loading...',
 }) => {
   const sizeClasses = {
     sm: 'w-4 h-4',
     md: 'w-6 h-6',
-    lg: 'w-8 h-8'
+    lg: 'w-8 h-8',
   };
 
   const colorClasses = {
     primary: 'text-primary-600',
     secondary: 'text-secondary-600',
-    white: 'text-white'
+    white: 'text-white',
   };
 
   if (withLogo) {
@@ -33,12 +33,10 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
       <div className={`flex flex-col items-center justify-center gap-4 ${className}`}>
         <div className="relative">
           <Logo size={size === 'sm' ? 'md' : size === 'md' ? 'lg' : 'xl'} showText={false} />
-          <div className="absolute inset-0 animate-pulse bg-primary-500/20 rounded-full"></div>
+          <div className="bg-primary-500/20 absolute inset-0 animate-pulse rounded-full"></div>
         </div>
         {message && (
-          <p className="text-sm text-gray-600 dark:text-gray-400 animate-pulse">
-            {message}
-          </p>
+          <p className="animate-pulse text-sm text-gray-600 dark:text-gray-400">{message}</p>
         )}
       </div>
     );
@@ -46,11 +44,7 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
 
   return (
     <div className={`animate-spin ${sizeClasses[size]} ${colorClasses[color]} ${className}`}>
-      <svg
-        fill="none"
-        viewBox="0 0 24 24"
-        className="w-full h-full"
-      >
+      <svg fill="none" viewBox="0 0 24 24" className="h-full w-full">
         <circle
           className="opacity-25"
           cx="12"
@@ -67,4 +61,4 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
       </svg>
     </div>
   );
-}; 
+};

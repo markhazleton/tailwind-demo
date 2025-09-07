@@ -16,11 +16,16 @@ interface SettingsSectionProps {
   children: React.ReactNode;
 }
 
-const SettingsSection: React.FC<SettingsSectionProps> = ({ title, description, icon, children }) => (
-  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-    <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+const SettingsSection: React.FC<SettingsSectionProps> = ({
+  title,
+  description,
+  icon,
+  children,
+}) => (
+  <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+    <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
       <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center text-primary-600 dark:text-primary-400">
+        <div className="bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex h-8 w-8 items-center justify-center rounded-lg">
           {icon}
         </div>
         <div>
@@ -29,9 +34,7 @@ const SettingsSection: React.FC<SettingsSectionProps> = ({ title, description, i
         </div>
       </div>
     </div>
-    <div className="p-6">
-      {children}
-    </div>
+    <div className="p-6">{children}</div>
   </div>
 );
 
@@ -51,14 +54,12 @@ const FormField: React.FC<{
     <input
       type={type}
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={e => onChange(e.target.value)}
       placeholder={placeholder}
       required={required}
-      className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+      className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-transparent focus:ring-2 focus:ring-purple-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
     />
-    {description && (
-      <p className="text-xs text-gray-500 dark:text-gray-400">{description}</p>
-    )}
+    {description && <p className="text-xs text-gray-500 dark:text-gray-400">{description}</p>}
   </div>
 );
 
@@ -98,18 +99,18 @@ export const SettingsPage: React.FC = () => {
   const [companyEmail, setCompanyEmail] = useState('admin@promptspark.com');
   const [companyWebsite, setCompanyWebsite] = useState('https://promptspark.com');
   const [timezone, setTimezone] = useState('UTC-8');
-  
+
   // Security Settings State
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(true);
   const [passwordPolicy, setPasswordPolicy] = useState(true);
   const [sessionTimeout, setSessionTimeout] = useState('30');
-  
+
   // Notification Settings State
   const [emailNotifications, setEmailNotifications] = useState(true);
   const [pushNotifications, setPushNotifications] = useState(false);
   const [weeklyReports, setWeeklyReports] = useState(true);
   const [securityAlerts, setSecurityAlerts] = useState(true);
-  
+
   // API Settings State
   const [apiKey, setApiKey] = useState('sk-1234567890abcdef...');
   const [webhookUrl, setWebhookUrl] = useState('');
@@ -124,20 +125,23 @@ export const SettingsPage: React.FC = () => {
   };
 
   const handleGenerateApiKey = () => {
-    const newKey = 'sk-' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    const newKey =
+      'sk-' +
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
     setApiKey(newKey);
     setHasUnsavedChanges(true);
   };
 
   return (
-    <DashboardLayout 
+    <DashboardLayout
       pageTitle="Settings"
       pageDescription="Configure your application preferences and security settings."
       headerActions={
         hasUnsavedChanges && (
           <button
             onClick={handleSaveSettings}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+            className="flex items-center gap-2 rounded-lg bg-purple-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-purple-700"
           >
             <IconSave />
             Save Changes
@@ -152,11 +156,11 @@ export const SettingsPage: React.FC = () => {
           description="Basic application settings and preferences"
           icon={<IconGlobe />}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <FormField
               label="Company Name"
               value={companyName}
-              onChange={(value) => {
+              onChange={value => {
                 setCompanyName(value);
                 setHasUnsavedChanges(true);
               }}
@@ -166,7 +170,7 @@ export const SettingsPage: React.FC = () => {
               label="Contact Email"
               type="email"
               value={companyEmail}
-              onChange={(value) => {
+              onChange={value => {
                 setCompanyEmail(value);
                 setHasUnsavedChanges(true);
               }}
@@ -176,23 +180,23 @@ export const SettingsPage: React.FC = () => {
               label="Website URL"
               type="url"
               value={companyWebsite}
-              onChange={(value) => {
+              onChange={value => {
                 setCompanyWebsite(value);
                 setHasUnsavedChanges(true);
               }}
               placeholder="https://example.com"
             />
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Timezone
               </label>
               <select
                 value={timezone}
-                onChange={(e) => {
+                onChange={e => {
                   setTimezone(e.target.value);
                   setHasUnsavedChanges(true);
                 }}
-                className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-transparent focus:ring-2 focus:ring-purple-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
               >
                 <option value="UTC-12">UTC-12 (Baker Island)</option>
                 <option value="UTC-8">UTC-8 (Pacific)</option>
@@ -217,7 +221,7 @@ export const SettingsPage: React.FC = () => {
               label="Two-Factor Authentication"
               description="Require 2FA for all user accounts"
               enabled={twoFactorEnabled}
-              onChange={(enabled) => {
+              onChange={enabled => {
                 setTwoFactorEnabled(enabled);
                 setHasUnsavedChanges(true);
               }}
@@ -226,13 +230,13 @@ export const SettingsPage: React.FC = () => {
               label="Password Policy"
               description="Enforce strong password requirements"
               enabled={passwordPolicy}
-              onChange={(enabled) => {
+              onChange={enabled => {
                 setPasswordPolicy(enabled);
                 setHasUnsavedChanges(true);
               }}
             />
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Session Timeout (minutes)
               </label>
               <input
@@ -240,11 +244,11 @@ export const SettingsPage: React.FC = () => {
                 min="5"
                 max="1440"
                 value={sessionTimeout}
-                onChange={(e) => {
+                onChange={e => {
                   setSessionTimeout(e.target.value);
                   setHasUnsavedChanges(true);
                 }}
-                className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-transparent focus:ring-2 focus:ring-purple-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
               />
             </div>
           </div>
@@ -261,7 +265,7 @@ export const SettingsPage: React.FC = () => {
               label="Email Notifications"
               description="Receive important updates via email"
               enabled={emailNotifications}
-              onChange={(enabled) => {
+              onChange={enabled => {
                 setEmailNotifications(enabled);
                 setHasUnsavedChanges(true);
               }}
@@ -270,7 +274,7 @@ export const SettingsPage: React.FC = () => {
               label="Push Notifications"
               description="Get real-time browser notifications"
               enabled={pushNotifications}
-              onChange={(enabled) => {
+              onChange={enabled => {
                 setPushNotifications(enabled);
                 setHasUnsavedChanges(true);
               }}
@@ -279,7 +283,7 @@ export const SettingsPage: React.FC = () => {
               label="Weekly Reports"
               description="Receive weekly analytics summaries"
               enabled={weeklyReports}
-              onChange={(enabled) => {
+              onChange={enabled => {
                 setWeeklyReports(enabled);
                 setHasUnsavedChanges(true);
               }}
@@ -288,7 +292,7 @@ export const SettingsPage: React.FC = () => {
               label="Security Alerts"
               description="Get notified of security events"
               enabled={securityAlerts}
-              onChange={(enabled) => {
+              onChange={enabled => {
                 setSecurityAlerts(enabled);
                 setHasUnsavedChanges(true);
               }}
@@ -304,7 +308,7 @@ export const SettingsPage: React.FC = () => {
         >
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 API Key
               </label>
               <div className="flex gap-2">
@@ -312,11 +316,11 @@ export const SettingsPage: React.FC = () => {
                   type="password"
                   value={apiKey}
                   readOnly
-                  className="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-gray-50 dark:bg-gray-700 cursor-not-allowed"
+                  className="flex-1 cursor-not-allowed rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
                 />
                 <button
                   onClick={handleGenerateApiKey}
-                  className="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg text-sm font-medium transition-colors"
+                  className="rounded-lg bg-gray-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-700"
                 >
                   Regenerate
                 </button>
@@ -326,7 +330,7 @@ export const SettingsPage: React.FC = () => {
               label="Webhook URL"
               type="url"
               value={webhookUrl}
-              onChange={(value) => {
+              onChange={value => {
                 setWebhookUrl(value);
                 setHasUnsavedChanges(true);
               }}
@@ -336,7 +340,7 @@ export const SettingsPage: React.FC = () => {
               label="Rate Limiting"
               description="Enable API rate limiting protection"
               enabled={rateLimitEnabled}
-              onChange={(enabled) => {
+              onChange={enabled => {
                 setRateLimitEnabled(enabled);
                 setHasUnsavedChanges(true);
               }}
@@ -351,23 +355,25 @@ export const SettingsPage: React.FC = () => {
           icon={<IconCreditCard />}
         >
           <div className="space-y-4">
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+            <div className="rounded-lg bg-gray-50 p-4 dark:bg-gray-700">
               <div className="flex items-center justify-between">
                 <div>
                   <h4 className="font-medium text-gray-900 dark:text-gray-100">Pro Plan</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">$29/month • Next billing: Jan 15, 2024</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    $29/month • Next billing: Jan 15, 2024
+                  </p>
                 </div>
-                <button className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-colors">
+                <button className="rounded-lg bg-purple-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-purple-700">
                   Manage Subscription
                 </button>
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="text-center p-4 border border-gray-200 dark:border-gray-600 rounded-lg">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="rounded-lg border border-gray-200 p-4 text-center dark:border-gray-600">
                 <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">1,234</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">API Calls This Month</div>
               </div>
-              <div className="text-center p-4 border border-gray-200 dark:border-gray-600 rounded-lg">
+              <div className="rounded-lg border border-gray-200 p-4 text-center dark:border-gray-600">
                 <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">89%</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Storage Used</div>
               </div>

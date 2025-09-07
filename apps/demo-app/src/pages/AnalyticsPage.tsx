@@ -11,26 +11,35 @@ interface MetricCardProps {
 }
 
 const MetricCard: React.FC<MetricCardProps> = ({ title, value, change, trend, icon, color }) => (
-  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-200">
-    <div className="flex items-center justify-between mb-4">
-      <div className={`w-12 h-12 ${color} rounded-lg flex items-center justify-center text-white text-xl`}>
+  <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
+    <div className="mb-4 flex items-center justify-between">
+      <div
+        className={`h-12 w-12 ${color} flex items-center justify-center rounded-lg text-xl text-white`}
+      >
         {icon}
       </div>
-      <span className={`text-sm font-medium ${
-        trend === 'up' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
-      }`}>
+      <span
+        className={`text-sm font-medium ${
+          trend === 'up' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
+        }`}
+      >
         {change}
       </span>
     </div>
-    <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">{title}</h3>
+    <h3 className="mb-1 text-sm font-medium text-gray-600 dark:text-gray-400">{title}</h3>
     <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{value}</p>
   </div>
 );
 
-const TrafficSourceItem: React.FC<{ source: string; visitors: string; percentage: number; color: string }> = ({ source, visitors, percentage, color }) => (
-  <div className="flex items-center justify-between p-4 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors">
+const TrafficSourceItem: React.FC<{
+  source: string;
+  visitors: string;
+  percentage: number;
+  color: string;
+}> = ({ source, visitors, percentage, color }) => (
+  <div className="flex items-center justify-between rounded-lg p-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700">
     <div className="flex items-center gap-3">
-      <div className={`w-3 h-3 rounded-full ${color}`}></div>
+      <div className={`h-3 w-3 rounded-full ${color}`}></div>
       <div>
         <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{source}</p>
         <p className="text-xs text-gray-500 dark:text-gray-400">{visitors} visitors</p>
@@ -38,9 +47,9 @@ const TrafficSourceItem: React.FC<{ source: string; visitors: string; percentage
     </div>
     <div className="text-right">
       <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{percentage}%</p>
-      <div className="w-16 h-2 bg-gray-200 dark:bg-gray-600 rounded-full mt-1 relative">
-        <div 
-          className={`h-full ${color} rounded-full absolute top-0 left-0`}
+      <div className="relative mt-1 h-2 w-16 rounded-full bg-gray-200 dark:bg-gray-600">
+        <div
+          className={`h-full ${color} absolute left-0 top-0 rounded-full`}
           data-width={`${percentage}%`}
         ></div>
       </div>
@@ -52,10 +61,38 @@ export const AnalyticsPage: React.FC = () => {
   const [timeRange, setTimeRange] = useState('7d');
 
   const metrics = [
-    { title: 'Page Views', value: '127,543', change: '+12.5%', trend: 'up' as const, icon: '👁️', color: 'bg-blue-500' },
-    { title: 'Unique Visitors', value: '23,847', change: '+8.2%', trend: 'up' as const, icon: '👥', color: 'bg-green-500' },
-    { title: 'Click Rate', value: '3.24%', change: '-2.1%', trend: 'down' as const, icon: '👆', color: 'bg-primary-500' },
-    { title: 'Avg. Session', value: '4m 32s', change: '+15.3%', trend: 'up' as const, icon: '⏱️', color: 'bg-orange-500' },
+    {
+      title: 'Page Views',
+      value: '127,543',
+      change: '+12.5%',
+      trend: 'up' as const,
+      icon: '👁️',
+      color: 'bg-blue-500',
+    },
+    {
+      title: 'Unique Visitors',
+      value: '23,847',
+      change: '+8.2%',
+      trend: 'up' as const,
+      icon: '👥',
+      color: 'bg-green-500',
+    },
+    {
+      title: 'Click Rate',
+      value: '3.24%',
+      change: '-2.1%',
+      trend: 'down' as const,
+      icon: '👆',
+      color: 'bg-primary-500',
+    },
+    {
+      title: 'Avg. Session',
+      value: '4m 32s',
+      change: '+15.3%',
+      trend: 'up' as const,
+      icon: '⏱️',
+      color: 'bg-orange-500',
+    },
   ];
 
   const trafficSources = [
@@ -75,14 +112,14 @@ export const AnalyticsPage: React.FC = () => {
   ];
 
   return (
-    <DashboardLayout 
+    <DashboardLayout
       pageTitle="Analytics"
       pageDescription="Monitor your website performance and user engagement."
       headerActions={
         <select
           value={timeRange}
-          onChange={(e) => setTimeRange(e.target.value)}
-          className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          onChange={e => setTimeRange(e.target.value)}
+          className="focus:ring-primary-500 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:border-transparent focus:ring-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
           aria-label="Select time range"
           title="Select time range"
         >
@@ -94,7 +131,7 @@ export const AnalyticsPage: React.FC = () => {
       }
     >
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+      <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
         {metrics.map((metric, index) => (
           <MetricCard
             key={index}
@@ -109,23 +146,25 @@ export const AnalyticsPage: React.FC = () => {
       </div>
 
       {/* Charts and Data */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+      <div className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Traffic Trend Chart */}
-        <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Traffic Trend</h3>
+        <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm lg:col-span-2 dark:border-gray-700 dark:bg-gray-800">
+          <div className="mb-6 flex items-center justify-between">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Traffic Trend
+            </h3>
             <div className="flex items-center gap-4 text-sm">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 bg-blue-500 rounded-full"></span>
+                <span className="h-3 w-3 rounded-full bg-blue-500"></span>
                 <span className="text-gray-600 dark:text-gray-400">Page Views</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 bg-green-500 rounded-full"></span>
+                <span className="h-3 w-3 rounded-full bg-green-500"></span>
                 <span className="text-gray-600 dark:text-gray-400">Unique Visitors</span>
               </div>
             </div>
           </div>
-          <div className="h-64 flex items-end justify-between gap-1">
+          <div className="flex h-64 items-end justify-between gap-1">
             {/* Traffic chart representation */}
             {[
               { views: 'h-32', visitors: 'h-24' },
@@ -139,15 +178,19 @@ export const AnalyticsPage: React.FC = () => {
               { views: 'h-44', visitors: 'h-36' },
               { views: 'h-40', visitors: 'h-32' },
               { views: 'h-56', visitors: 'h-44' },
-              { views: 'h-64', visitors: 'h-52' }
+              { views: 'h-64', visitors: 'h-52' },
             ].map((bar, index) => (
-              <div key={index} className="flex items-end gap-1 flex-1">
-                <div className={`bg-blue-500 rounded-t-sm w-full ${bar.views} transition-all duration-300 hover:bg-blue-600`}></div>
-                <div className={`bg-green-500 rounded-t-sm w-full ${bar.visitors} transition-all duration-300 hover:bg-green-600`}></div>
+              <div key={index} className="flex flex-1 items-end gap-1">
+                <div
+                  className={`w-full rounded-t-sm bg-blue-500 ${bar.views} transition-all duration-300 hover:bg-blue-600`}
+                ></div>
+                <div
+                  className={`w-full rounded-t-sm bg-green-500 ${bar.visitors} transition-all duration-300 hover:bg-green-600`}
+                ></div>
               </div>
             ))}
           </div>
-          <div className="flex justify-between mt-4 text-xs text-gray-500 dark:text-gray-400">
+          <div className="mt-4 flex justify-between text-xs text-gray-500 dark:text-gray-400">
             <span>Mon</span>
             <span>Tue</span>
             <span>Wed</span>
@@ -159,26 +202,26 @@ export const AnalyticsPage: React.FC = () => {
         </div>
 
         {/* Real-time Stats */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Real-time</h3>
+        <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">Real-time</h3>
           <div className="space-y-4">
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-1">847</div>
+              <div className="mb-1 text-3xl font-bold text-green-600 dark:text-green-400">847</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Active Users</div>
             </div>
-            <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+            <div className="border-t border-gray-200 pt-4 dark:border-gray-700">
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600 dark:text-gray-400">Top Active Page</span>
-                  <span className="text-gray-900 dark:text-gray-100 font-medium">/dashboard</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100">/dashboard</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600 dark:text-gray-400">Active Sessions</span>
-                  <span className="text-gray-900 dark:text-gray-100 font-medium">1,234</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100">1,234</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600 dark:text-gray-400">Page Views/min</span>
-                  <span className="text-gray-900 dark:text-gray-100 font-medium">156</span>
+                  <span className="font-medium text-gray-900 dark:text-gray-100">156</span>
                 </div>
               </div>
             </div>
@@ -187,10 +230,12 @@ export const AnalyticsPage: React.FC = () => {
       </div>
 
       {/* Traffic Sources and Top Pages */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Traffic Sources */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Traffic Sources</h3>
+        <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+            Traffic Sources
+          </h3>
           <div className="space-y-2">
             {trafficSources.map((source, index) => (
               <TrafficSourceItem
@@ -205,28 +250,45 @@ export const AnalyticsPage: React.FC = () => {
         </div>
 
         {/* Top Pages */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Top Pages</h3>
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full">
               <thead className="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Page</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Views</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Bounce Rate</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Page
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Views
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                    Bounce Rate
+                  </th>
                 </tr>
               </thead>
-              <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+              <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-800">
                 {topPages.map((page, index) => (
-                  <tr key={index} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{page.page}</div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">{page.uniqueViews} unique</div>
+                  <tr
+                    key={index}
+                    className="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700"
+                  >
+                    <td className="whitespace-nowrap px-6 py-4">
+                      <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                        {page.page}
+                      </div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">
+                        {page.uniqueViews} unique
+                      </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{page.views}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{page.bounceRate}</td>
+                    <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-100">
+                      {page.views}
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-100">
+                      {page.bounceRate}
+                    </td>
                   </tr>
                 ))}
               </tbody>

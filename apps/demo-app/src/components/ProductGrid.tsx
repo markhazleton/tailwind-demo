@@ -16,7 +16,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
   onWishlistToggle,
   wishlist,
   onQuickView,
-  isLoading
+  isLoading,
 }) => {
   const [imageLoadStates, setImageLoadStates] = useState<Record<number, boolean>>({});
 
@@ -25,16 +25,16 @@ const ProductGrid: React.FC<ProductGridProps> = ({
   };
 
   const ProductSkeleton = () => (
-    <div className="group bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden animate-pulse">
+    <div className="group animate-pulse overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
       <div className="aspect-w-4 aspect-h-3 bg-gray-200">
-        <div className="w-full h-48 bg-gray-200"></div>
+        <div className="h-48 w-full bg-gray-200"></div>
       </div>
       <div className="p-4">
-        <div className="h-4 bg-gray-200 rounded mb-2"></div>
-        <div className="h-3 bg-gray-200 rounded mb-2 w-2/3"></div>
+        <div className="mb-2 h-4 rounded bg-gray-200"></div>
+        <div className="mb-2 h-3 w-2/3 rounded bg-gray-200"></div>
         <div className="flex items-center justify-between">
-          <div className="h-6 bg-gray-200 rounded w-1/3"></div>
-          <div className="h-8 bg-gray-200 rounded w-1/4"></div>
+          <div className="h-6 w-1/3 rounded bg-gray-200"></div>
+          <div className="h-8 w-1/4 rounded bg-gray-200"></div>
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {Array.from({ length: 8 }).map((_, i) => (
           <ProductSkeleton key={i} />
         ))}
@@ -52,9 +52,19 @@ const ProductGrid: React.FC<ProductGridProps> = ({
 
   if (products.length === 0) {
     return (
-      <div className="text-center py-12">
-        <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2 2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+      <div className="py-12 text-center">
+        <svg
+          className="mx-auto h-12 w-12 text-gray-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2 2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+          />
         </svg>
         <h3 className="mt-4 text-lg font-medium text-gray-900">No products found</h3>
         <p className="mt-2 text-gray-500">Try adjusting your search or filter criteria.</p>
@@ -63,36 +73,36 @@ const ProductGrid: React.FC<ProductGridProps> = ({
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      {products.map((product) => (
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {products.map(product => (
         <div
           key={product.id}
-          className="group relative bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300"
+          className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg"
         >
           {/* Product Image */}
           <div className="aspect-w-4 aspect-h-3 relative overflow-hidden">
             {!imageLoadStates[product.id] && (
-              <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
+              <div className="absolute inset-0 animate-pulse bg-gray-200"></div>
             )}
             <img
               src={product.image}
               alt={product.name}
-              className={`w-full h-48 object-cover object-center group-hover:scale-105 transition-transform duration-300 ${
+              className={`h-48 w-full object-cover object-center transition-transform duration-300 group-hover:scale-105 ${
                 imageLoadStates[product.id] ? 'opacity-100' : 'opacity-0'
               }`}
               onLoad={() => handleImageLoad(product.id)}
             />
-            
+
             {/* Sale Badge */}
             {product.salePrice && (
-              <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs font-semibold rounded">
+              <div className="absolute left-2 top-2 rounded bg-red-500 px-2 py-1 text-xs font-semibold text-white">
                 SALE
               </div>
             )}
 
             {/* Stock Badge */}
             {!product.inStock && (
-              <div className="absolute top-2 right-2 bg-gray-900 text-white px-2 py-1 text-xs font-semibold rounded">
+              <div className="absolute right-2 top-2 rounded bg-gray-900 px-2 py-1 text-xs font-semibold text-white">
                 OUT OF STOCK
               </div>
             )}
@@ -100,12 +110,12 @@ const ProductGrid: React.FC<ProductGridProps> = ({
             {/* Wishlist Button */}
             <button
               onClick={() => onWishlistToggle(product.id)}
-              className="absolute top-2 right-2 p-2 rounded-full bg-white shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:scale-110 transform"
+              className="absolute right-2 top-2 transform rounded-full bg-white p-2 opacity-0 shadow-md transition-opacity duration-200 hover:scale-110 group-hover:opacity-100"
               title={wishlist.includes(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
             >
               <svg
                 className={`h-5 w-5 ${
-                  wishlist.includes(product.id) ? 'text-red-500 fill-current' : 'text-gray-400'
+                  wishlist.includes(product.id) ? 'fill-current text-red-500' : 'text-gray-400'
                 }`}
                 fill={wishlist.includes(product.id) ? 'currentColor' : 'none'}
                 viewBox="0 0 24 24"
@@ -123,7 +133,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
             {/* Quick View Button */}
             <button
               onClick={() => onQuickView(product)}
-              className="absolute inset-x-0 bottom-0 bg-black bg-opacity-75 text-white py-2 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-opacity-90"
+              className="absolute inset-x-0 bottom-0 bg-black bg-opacity-75 py-2 text-sm font-medium text-white opacity-0 transition-opacity duration-200 hover:bg-opacity-90 group-hover:opacity-100"
             >
               Quick View
             </button>
@@ -132,14 +142,14 @@ const ProductGrid: React.FC<ProductGridProps> = ({
           {/* Product Info */}
           <div className="p-4">
             <div className="mb-2">
-              <h3 className="text-sm font-medium text-gray-900 line-clamp-2 group-hover:text-indigo-600 transition-colors">
+              <h3 className="line-clamp-2 text-sm font-medium text-gray-900 transition-colors group-hover:text-indigo-600">
                 {product.name}
               </h3>
               <p className="text-sm text-gray-500">{product.brand}</p>
             </div>
 
             {/* Rating */}
-            <div className="flex items-center mb-2">
+            <div className="mb-2 flex items-center">
               <div className="flex items-center">
                 {[...Array(5)].map((_, i) => (
                   <svg
@@ -158,25 +168,38 @@ const ProductGrid: React.FC<ProductGridProps> = ({
             </div>
 
             {/* Colors */}
-            <div className="flex items-center space-x-1 mb-3">
-              {product.colors.slice(0, 4).map((color) => (
+            <div className="mb-3 flex items-center space-x-1">
+              {product.colors.slice(0, 4).map(color => (
                 <div
                   key={color}
-                  className={`w-4 h-4 rounded-full border border-gray-300 ${
-                    color.toLowerCase() === 'black' ? 'bg-black' :
-                    color.toLowerCase() === 'white' ? 'bg-white' :
-                    color.toLowerCase() === 'red' ? 'bg-red-500' :
-                    color.toLowerCase() === 'blue' ? 'bg-blue-500' :
-                    color.toLowerCase() === 'navy' ? 'bg-blue-900' :
-                    color.toLowerCase() === 'gray' ? 'bg-gray-500' :
-                    color.toLowerCase() === 'silver' ? 'bg-gray-400' :
-                    color.toLowerCase() === 'brown' ? 'bg-amber-800' :
-                    color.toLowerCase() === 'tan' ? 'bg-amber-600' :
-                    color.toLowerCase() === 'pink' ? 'bg-pink-500' :
-                    color.toLowerCase() === 'rose gold' ? 'bg-rose-400' :
-                    color.toLowerCase() === 'light blue' ? 'bg-blue-300' :
-                    color.toLowerCase() === 'dark blue' ? 'bg-blue-800' :
-                    'bg-gray-300'
+                  className={`h-4 w-4 rounded-full border border-gray-300 ${
+                    color.toLowerCase() === 'black'
+                      ? 'bg-black'
+                      : color.toLowerCase() === 'white'
+                        ? 'bg-white'
+                        : color.toLowerCase() === 'red'
+                          ? 'bg-red-500'
+                          : color.toLowerCase() === 'blue'
+                            ? 'bg-blue-500'
+                            : color.toLowerCase() === 'navy'
+                              ? 'bg-blue-900'
+                              : color.toLowerCase() === 'gray'
+                                ? 'bg-gray-500'
+                                : color.toLowerCase() === 'silver'
+                                  ? 'bg-gray-400'
+                                  : color.toLowerCase() === 'brown'
+                                    ? 'bg-amber-800'
+                                    : color.toLowerCase() === 'tan'
+                                      ? 'bg-amber-600'
+                                      : color.toLowerCase() === 'pink'
+                                        ? 'bg-pink-500'
+                                        : color.toLowerCase() === 'rose gold'
+                                          ? 'bg-rose-400'
+                                          : color.toLowerCase() === 'light blue'
+                                            ? 'bg-blue-300'
+                                            : color.toLowerCase() === 'blue dark'
+                                              ? 'bg-blue-800'
+                                              : 'bg-gray-300'
                   }`}
                   title={color}
                 />
@@ -198,14 +221,14 @@ const ProductGrid: React.FC<ProductGridProps> = ({
                   <span className="text-lg font-bold text-gray-900">${product.price}</span>
                 )}
               </div>
-              
+
               <button
                 onClick={() => onAddToCart(product)}
                 disabled={!product.inStock}
-                className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+                className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                   product.inStock
-                    ? 'bg-indigo-600 hover:bg-indigo-700 text-white'
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                    : 'cursor-not-allowed bg-gray-300 text-gray-500'
                 }`}
                 title={product.inStock ? 'Add to cart' : 'Out of stock'}
               >

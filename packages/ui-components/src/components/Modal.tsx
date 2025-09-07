@@ -89,28 +89,28 @@ export const Modal: React.FC<ModalProps> = ({
         className="flex min-h-full items-center justify-center p-4 text-center sm:p-0"
         onClick={handleOverlayClick}
       >
-        <div className="fixed inset-0 bg-secondary-900 bg-opacity-75 transition-opacity" />
-        
+        <div className="bg-secondary-900 fixed inset-0 bg-opacity-75 transition-opacity" />
+
         <div
           ref={modalRef}
           className={clsx(
-            'relative transform overflow-hidden rounded-xl bg-white dark:bg-secondary-800 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:p-6',
+            'dark:bg-secondary-800 relative transform overflow-hidden rounded-xl bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:p-6',
             modalSizes[size],
             'animate-scale-in',
             className
           )}
         >
           {(title || showCloseButton) && (
-            <div className="flex items-center justify-between mb-4">
+            <div className="mb-4 flex items-center justify-between">
               {title && (
-                <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100">
+                <h3 className="text-secondary-900 dark:text-secondary-100 text-lg font-semibold">
                   {title}
                 </h3>
               )}
               {showCloseButton && (
                 <button
                   onClick={onClose}
-                  className="rounded-lg p-1 text-secondary-400 hover:text-secondary-600 hover:bg-secondary-100 dark:hover:bg-secondary-700 dark:hover:text-secondary-300 transition-colors"
+                  className="text-secondary-400 hover:text-secondary-600 hover:bg-secondary-100 dark:hover:bg-secondary-700 dark:hover:text-secondary-300 rounded-lg p-1 transition-colors"
                   aria-label="Close modal"
                 >
                   <X size={20} />
@@ -118,10 +118,8 @@ export const Modal: React.FC<ModalProps> = ({
               )}
             </div>
           )}
-          
-          <div className="text-secondary-700 dark:text-secondary-300">
-            {children}
-          </div>
+
+          <div className="text-secondary-700 dark:text-secondary-300">{children}</div>
         </div>
       </div>
     </div>
@@ -143,15 +141,11 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
   return (
     <div className={clsx('mb-4', className)} {...props}>
       {title && (
-        <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100 mb-1">
+        <h3 className="text-secondary-900 dark:text-secondary-100 mb-1 text-lg font-semibold">
           {title}
         </h3>
       )}
-      {subtitle && (
-        <p className="text-sm text-secondary-600 dark:text-secondary-400">
-          {subtitle}
-        </p>
-      )}
+      {subtitle && <p className="text-secondary-600 dark:text-secondary-400 text-sm">{subtitle}</p>}
       {children}
     </div>
   );
@@ -159,11 +153,7 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
 
 export type ModalContentProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const ModalContent: React.FC<ModalContentProps> = ({
-  className,
-  children,
-  ...props
-}) => {
+export const ModalContent: React.FC<ModalContentProps> = ({ className, children, ...props }) => {
   return (
     <div className={clsx('mb-6', className)} {...props}>
       {children}
@@ -173,15 +163,11 @@ export const ModalContent: React.FC<ModalContentProps> = ({
 
 export type ModalFooterProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const ModalFooter: React.FC<ModalFooterProps> = ({
-  className,
-  children,
-  ...props
-}) => {
+export const ModalFooter: React.FC<ModalFooterProps> = ({ className, children, ...props }) => {
   return (
     <div
       className={clsx(
-        'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 space-y-2 space-y-reverse sm:space-y-0',
+        'flex flex-col-reverse space-y-2 space-y-reverse sm:flex-row sm:justify-end sm:space-x-2 sm:space-y-0',
         className
       )}
       {...props}

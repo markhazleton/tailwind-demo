@@ -2,7 +2,7 @@
 
 **Part of the [WebSpark](https://webspark.markhazleton.com) Portfolio by [Mark Hazleton](https://markhazleton.com)**
 
-> *A comprehensive demonstration monorepo showcasing modern web development with React, TypeScript, and Tailwind CSS, designed as an interactive showcase of utility-first CSS framework capabilities with advanced SEO, performance optimizations, and user experience enhancements.*
+> _A comprehensive demonstration monorepo showcasing modern web development with React, TypeScript, and Tailwind CSS, designed as an interactive showcase of utility-first CSS framework capabilities with advanced SEO, performance optimizations, and user experience enhancements._
 
 TailwindSpark is a cutting-edge React TypeScript monorepo that demonstrates the full power of Tailwind CSS through interactive components, animations, and a complete SaaS dashboard implementation. Built with modern development practices, it serves as both a learning resource and a template for production-ready applications with enterprise-grade features.
 
@@ -74,7 +74,7 @@ This project is part of the comprehensive WebSpark suite:
 ### 🚀 Other WebSpark Applications
 
 - **PromptSpark** - AI prompt management for Large Language Models
-- **RecipeSpark** - Recipe organization and sharing platform  
+- **RecipeSpark** - Recipe organization and sharing platform
 - **TriviaSpark** - Interactive quizzes and trivia games
 - **TailwindSpark** - This comprehensive Tailwind CSS showcase
 
@@ -420,7 +420,7 @@ The application supports dark mode through:
 
 ```tsx
 // Dark mode usage example
-<div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<div className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
   Content that adapts to theme
 </div>
 ```
@@ -486,7 +486,7 @@ Components automatically adapt to different screen sizes with responsive variant
 </div>
 
 // Dashboard Layout with responsive sidebar
-<DashboardLayout 
+<DashboardLayout
   pageTitle="Analytics"
   pageDescription="View detailed analytics and insights"
   headerActions={<TimeRangeSelector />}
@@ -533,9 +533,9 @@ export default defineConfig({
   plugins: [react()],
   base: '/tailwind-demo/', // GitHub Pages subdirectory
   build: {
-    outDir: '../../dist',  // Build to root for GitHub Actions
+    outDir: '../../dist', // Build to root for GitHub Actions
   },
-})
+});
 ```
 
 **2. React Router Configuration (SPA Support)**
@@ -560,17 +560,29 @@ function App() {
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Tailwind Demo</title>
     <script type="text/javascript">
       var pathSegmentsToKeep = 1;
       var l = window.location;
       l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + 
-        '/?/' + l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        l.hash
+        l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          l.pathname
+            .split('/')
+            .slice(0, 1 + pathSegmentsToKeep)
+            .join('/') +
+          '/?/' +
+          l.pathname
+            .slice(1)
+            .split('/')
+            .slice(pathSegmentsToKeep)
+            .join('/')
+            .replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash
       );
     </script>
   </head>
@@ -586,7 +598,7 @@ function App() {
 Error: Could not resolve "@tailwindspark/ui-components"
 ```
 
-*Solution*: Ensure all packages in the monorepo are tracked in git. Check `.gitignore` doesn't exclude the `packages/` directory.
+_Solution_: Ensure all packages in the monorepo are tracked in git. Check `.gitignore` doesn't exclude the `packages/` directory.
 
 **Issue 2: ESM/CommonJS Compatibility**
 
@@ -594,7 +606,7 @@ Error: Could not resolve "@tailwindspark/ui-components"
 Error [ERR_REQUIRE_ESM]: require() of ES Module not supported
 ```
 
-*Solution*: Add `"type": "module"` to package.json and ensure compatible versions:
+_Solution_: Add `"type": "module"` to package.json and ensure compatible versions:
 
 ```json
 {
@@ -612,7 +624,7 @@ Error [ERR_REQUIRE_ESM]: require() of ES Module not supported
 Error: Package not found in workspace
 ```
 
-*Solution*: Build packages in correct dependency order:
+_Solution_: Build packages in correct dependency order:
 
 ```yaml
 # GitHub Actions workflow
@@ -620,7 +632,7 @@ Error: Package not found in workspace
   run: npm run build
   working-directory: packages/design-tokens
 
-- name: Build UI components  
+- name: Build UI components
   run: npm run build
   working-directory: packages/ui-components
 
@@ -702,13 +714,13 @@ After deployment, verify these features work correctly:
 
 ### Development vs Production
 
-| Feature | Development | Production (GitHub Pages) |
-|---------|-------------|---------------------------|
-| Base URL | `/` | `/tailwind-demo/` |
-| Router | BrowserRouter | HashRouter |
-| Build Output | `apps/demo-app/dist` | `./dist` |
-| Hot Reload | ✅ Enabled | ❌ Static files |
-| Source Maps | ✅ Enabled | ❌ Disabled |
+| Feature      | Development          | Production (GitHub Pages) |
+| ------------ | -------------------- | ------------------------- |
+| Base URL     | `/`                  | `/tailwind-demo/`         |
+| Router       | BrowserRouter        | HashRouter                |
+| Build Output | `apps/demo-app/dist` | `./dist`                  |
+| Hot Reload   | ✅ Enabled           | ❌ Static files           |
+| Source Maps  | ✅ Enabled           | ❌ Disabled               |
 
 ### Troubleshooting GitHub Pages Deployment
 
@@ -740,7 +752,7 @@ If you encounter deployment issues, follow this systematic troubleshooting appro
   ```yaml
   - run: npm run build
     working-directory: packages/design-tokens
-  - run: npm run build  
+  - run: npm run build
     working-directory: packages/ui-components
   - run: npm run build
     working-directory: apps/demo-app
@@ -768,7 +780,7 @@ Before pushing changes, always test locally:
 ```bash
 # Test individual package builds
 cd packages/design-tokens && npm run build
-cd ../ui-components && npm run build  
+cd ../ui-components && npm run build
 cd ../../apps/demo-app && npm run build
 
 # Test the built application
@@ -809,7 +821,7 @@ The deployment pipeline includes:
 
 1. **Dependency Installation**: `npm install` with workspace support
 2. **Package Builds**: Individual package builds in dependency order
-3. **Type Checking**: TypeScript compilation across all packages  
+3. **Type Checking**: TypeScript compilation across all packages
 4. **Asset Optimization**: Vite production build with minification
 5. **Deployment**: GitHub Pages deployment with artifact upload
 6. **Cache Management**: Turborepo caching for faster subsequent builds
@@ -833,7 +845,7 @@ When deployed to GitHub Pages, the application experienced multiple 404 errors:
 ```console
 Failed to load resource: the server responded with a status of 404 ()
 - TailwindSpark.png
-- favicon.ico 
+- favicon.ico
 - favicon-16x16.png
 - favicon-32x32.png
 - site.webmanifest
@@ -871,7 +883,7 @@ const logoSrc = logoImage; // Vite automatically adds /tailwind-demo/ prefix
 ```json
 {
   "start_url": "/tailwind-demo/",
-  "scope": "/tailwind-demo/", 
+  "scope": "/tailwind-demo/",
   "icons": [
     {
       "src": "/tailwind-demo/TailwindSpark.png",
@@ -896,12 +908,12 @@ export default defineConfig({
 
 All asset loading issues have been resolved:
 
-| Asset Type | Status | URL Resolution |
-|------------|--------|----------------|
-| **Favicons** | ✅ Working | `/tailwind-demo/favicon.ico` |
-| **Logo Images** | ✅ Working | `/tailwind-demo/TailwindSpark.png` |
-| **PWA Manifest** | ✅ Working | `/tailwind-demo/site.webmanifest` |
-| **React Components** | ✅ Working | Vite handles path resolution |
+| Asset Type           | Status     | URL Resolution                     |
+| -------------------- | ---------- | ---------------------------------- |
+| **Favicons**         | ✅ Working | `/tailwind-demo/favicon.ico`       |
+| **Logo Images**      | ✅ Working | `/tailwind-demo/TailwindSpark.png` |
+| **PWA Manifest**     | ✅ Working | `/tailwind-demo/site.webmanifest`  |
+| **React Components** | ✅ Working | Vite handles path resolution       |
 
 **Live Demo**: [https://markhazleton.github.io/tailwind-demo/](https://markhazleton.github.io/tailwind-demo/)
 
@@ -960,7 +972,7 @@ export default defineConfig({
   build: {
     outDir: '../../dist',
     emptyOutDir: true,
-  }
+  },
 });
 ```
 
@@ -971,7 +983,7 @@ For successful GitHub Pages deployment with subdirectory paths:
 #### **React Router Configuration**
 
 - ✅ Use `BrowserRouter` instead of `HashRouter`
-- ✅ Set `basename="/tailwind-demo"` prop  
+- ✅ Set `basename="/tailwind-demo"` prop
 - ✅ Configure 404.html for SPA routing
 
 #### **Asset Path Management**
@@ -990,22 +1002,22 @@ For successful GitHub Pages deployment with subdirectory paths:
 #### **Static Files Update**
 
 - ✅ Updated `site.webmanifest` icon paths and start URL
-- ✅ Updated `sw.js` cache URL array  
+- ✅ Updated `sw.js` cache URL array
 - ✅ Verified all `index.html` asset references
 
 ### 🚀 Deployment Results
 
 **Current Status**: All GitHub Pages deployment issues have been resolved.
 
-| Aspect | Previous Status | Current Status |
-|--------|----------------|----------------|
-| **URL Structure** | Clean URLs ✅ | Clean URLs ✅ |
-| **Logo Loading** | ❌ 404 errors | ✅ Loads perfectly |
-| **Service Worker** | ✅ Working | ✅ Caches correctly |
-| **Web Manifest** | ❌ 404 errors | ✅ PWA ready |
-| **Navigation** | ✅ Working | ✅ All routes work |
-| **CI/CD Pipeline** | ✅ Working | ✅ Automatic deployment |
-| **Favicons** | ❌ 404 errors | ✅ All sizes load correctly |
+| Aspect             | Previous Status | Current Status              |
+| ------------------ | --------------- | --------------------------- |
+| **URL Structure**  | Clean URLs ✅   | Clean URLs ✅               |
+| **Logo Loading**   | ❌ 404 errors   | ✅ Loads perfectly          |
+| **Service Worker** | ✅ Working      | ✅ Caches correctly         |
+| **Web Manifest**   | ❌ 404 errors   | ✅ PWA ready                |
+| **Navigation**     | ✅ Working      | ✅ All routes work          |
+| **CI/CD Pipeline** | ✅ Working      | ✅ Automatic deployment     |
+| **Favicons**       | ❌ 404 errors   | ✅ All sizes load correctly |
 
 ### 🎓 Key Learnings
 
@@ -1030,7 +1042,7 @@ This journey demonstrates the complexity of modern web deployment and the import
 This project overcame several technical challenges during GitHub Pages setup:
 
 1. **Initial Setup**: Configured Vite base path and HashRouter for SPA compatibility
-2. **Module Resolution**: Fixed monorepo package discovery in CI environment  
+2. **Module Resolution**: Fixed monorepo package discovery in CI environment
 3. **Build Dependencies**: Resolved Turborepo workspace detection issues
 4. **Git Tracking**: Corrected .gitignore patterns that excluded packages directory
 5. **Version Compatibility**: Updated Vite and React plugin versions for ESM support
@@ -1105,13 +1117,12 @@ Created by **Mark Hazleton** as part of the WebSpark suite of applications:
 
 ### Philosophy
 
->
 > "Lifelong learner, not sidetracked by sizzle" - Mark Hazleton
 
 This project embodies that philosophy by focusing on:
 
 - **Practical Implementation** over theoretical concepts
-- **Real-world Usability** over flashy features  
+- **Real-world Usability** over flashy features
 - **Educational Value** over marketing hype
 - **Accessible Design** over exclusive aesthetics
 
@@ -1119,4 +1130,4 @@ This project embodies that philosophy by focusing on:
 
 **TailwindSpark** ✨ | Part of [WebSpark Portfolio](https://webspark.markhazleton.com) | Built with ❤️ by [Mark Hazleton](https://markhazleton.com)
 
-*Showcasing the power of Tailwind CSS through practical, accessible, and beautiful user interfaces with enterprise-grade features and optimizations*
+_Showcasing the power of Tailwind CSS through practical, accessible, and beautiful user interfaces with enterprise-grade features and optimizations_

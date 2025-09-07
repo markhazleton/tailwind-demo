@@ -17,28 +17,35 @@ interface User {
   signupDate: string;
 }
 
-const UserRow: React.FC<{ user: User; onEdit: (user: User) => void; onDelete: (user: User) => void }> = ({ user, onEdit, onDelete }) => {
+const UserRow: React.FC<{
+  user: User;
+  onEdit: (user: User) => void;
+  onDelete: (user: User) => void;
+}> = ({ user, onEdit, onDelete }) => {
   const [showActions, setShowActions] = useState(false);
 
   const statusColors = {
     active: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
     inactive: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300',
-    pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300'
+    pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
   };
 
   const roleColors = {
     Admin: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
     Manager: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
     Editor: 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300',
-    Viewer: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300'
+    Viewer: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300',
   };
 
   return (
-    <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-      <td className="px-6 py-4 whitespace-nowrap">
+    <tr className="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700">
+      <td className="whitespace-nowrap px-6 py-4">
         <div className="flex items-center">
-                      <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-accent-700 rounded-full flex items-center justify-center text-white font-medium">
-            {user.name.split(' ').map(n => n.charAt(0)).join('')}
+          <div className="from-primary-500 to-accent-700 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br font-medium text-white">
+            {user.name
+              .split(' ')
+              .map(n => n.charAt(0))
+              .join('')}
           </div>
           <div className="ml-4">
             <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{user.name}</div>
@@ -46,37 +53,45 @@ const UserRow: React.FC<{ user: User; onEdit: (user: User) => void; onDelete: (u
           </div>
         </div>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${roleColors[user.role]}`}>
+      <td className="whitespace-nowrap px-6 py-4">
+        <span
+          className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${roleColors[user.role]}`}
+        >
           {user.role}
         </span>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusColors[user.status]}`}>
+      <td className="whitespace-nowrap px-6 py-4">
+        <span
+          className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${statusColors[user.status]}`}
+        >
           {user.status}
         </span>
       </td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{user.lastActive}</td>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{user.signupDate}</td>
-      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+        {user.lastActive}
+      </td>
+      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+        {user.signupDate}
+      </td>
+      <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
         <div className="relative">
           <button
             onClick={() => setShowActions(!showActions)}
-            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-700 dark:hover:text-gray-300"
             aria-label="User actions"
             title="User actions"
           >
             <IconMore />
           </button>
           {showActions && (
-            <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-700 z-10">
+            <div className="absolute right-0 z-10 mt-2 w-48 rounded-md border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
               <div className="py-1">
                 <button
                   onClick={() => {
                     onEdit(user);
                     setShowActions(false);
                   }}
-                  className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left transition-colors"
+                  className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                 >
                   <IconEdit /> Edit User
                 </button>
@@ -85,7 +100,7 @@ const UserRow: React.FC<{ user: User; onEdit: (user: User) => void; onDelete: (u
                     onDelete(user);
                     setShowActions(false);
                   }}
-                  className="flex items-center gap-2 px-4 py-2 text-sm text-red-700 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 w-full text-left transition-colors"
+                  className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-red-700 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
                 >
                   <IconDelete /> Delete User
                 </button>
@@ -112,7 +127,7 @@ export const UsersPage: React.FC = () => {
       status: 'active',
       lastActive: '2 minutes ago',
       avatar: 'JD',
-      signupDate: '2024-01-15'
+      signupDate: '2024-01-15',
     },
     {
       id: '2',
@@ -122,7 +137,7 @@ export const UsersPage: React.FC = () => {
       status: 'active',
       lastActive: '1 hour ago',
       avatar: 'JS',
-      signupDate: '2024-01-12'
+      signupDate: '2024-01-12',
     },
     {
       id: '3',
@@ -132,7 +147,7 @@ export const UsersPage: React.FC = () => {
       status: 'inactive',
       lastActive: '2 days ago',
       avatar: 'MJ',
-      signupDate: '2024-01-10'
+      signupDate: '2024-01-10',
     },
     {
       id: '4',
@@ -142,7 +157,7 @@ export const UsersPage: React.FC = () => {
       status: 'active',
       lastActive: '5 minutes ago',
       avatar: 'SW',
-      signupDate: '2024-01-08'
+      signupDate: '2024-01-08',
     },
     {
       id: '5',
@@ -152,7 +167,7 @@ export const UsersPage: React.FC = () => {
       status: 'pending',
       lastActive: 'Never',
       avatar: 'AC',
-      signupDate: '2024-01-20'
+      signupDate: '2024-01-20',
     },
     {
       id: '6',
@@ -162,16 +177,17 @@ export const UsersPage: React.FC = () => {
       status: 'active',
       lastActive: '30 minutes ago',
       avatar: 'ED',
-      signupDate: '2024-01-05'
-    }
+      signupDate: '2024-01-05',
+    },
   ];
 
   const filteredUsers = users.filter(user => {
-    const matchesSearch = user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         user.email.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch =
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesRole = roleFilter === 'all' || user.role === roleFilter;
     const matchesStatus = statusFilter === 'all' || user.status === statusFilter;
-    
+
     return matchesSearch && matchesRole && matchesStatus;
   });
 
@@ -191,23 +207,26 @@ export const UsersPage: React.FC = () => {
   };
 
   return (
-    <DashboardLayout 
+    <DashboardLayout
       pageTitle="Users"
       pageDescription="Manage team members and their access permissions."
       headerActions={
         <button
           onClick={handleInviteUser}
-                        className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          className="bg-primary-600 hover:bg-primary-700 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors"
         >
           Invite User
         </button>
       }
     >
       {/* Filters */}
-      <div className="mb-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <div>
-            <label htmlFor="search" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label
+              htmlFor="search"
+              className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Search Users
             </label>
             <input
@@ -215,20 +234,23 @@ export const UsersPage: React.FC = () => {
               type="text"
               placeholder="Search by name or email..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              onChange={e => setSearchTerm(e.target.value)}
+              className="focus:ring-primary-500 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-transparent focus:ring-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
             />
           </div>
 
           <div>
-            <label htmlFor="role-filter" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label
+              htmlFor="role-filter"
+              className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Filter by Role
             </label>
             <select
               id="role-filter"
               value={roleFilter}
-              onChange={(e) => setRoleFilter(e.target.value)}
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              onChange={e => setRoleFilter(e.target.value)}
+              className="focus:ring-primary-500 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-transparent focus:ring-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
             >
               <option value="all">All Roles</option>
               <option value="Admin">Admin</option>
@@ -239,14 +261,17 @@ export const UsersPage: React.FC = () => {
           </div>
 
           <div>
-            <label htmlFor="status-filter" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label
+              htmlFor="status-filter"
+              className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
               Filter by Status
             </label>
             <select
               id="status-filter"
               value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              onChange={e => setStatusFilter(e.target.value)}
+              className="focus:ring-primary-500 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-transparent focus:ring-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
@@ -258,12 +283,10 @@ export const UsersPage: React.FC = () => {
       </div>
 
       {/* Users Table */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-              Team Members
-            </h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Team Members</h3>
             <span className="text-sm text-gray-500 dark:text-gray-400">
               {filteredUsers.length} of {users.length} users
             </span>
@@ -274,19 +297,19 @@ export const UsersPage: React.FC = () => {
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
             <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                   User
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                   Role
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                   Last Active
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                   Joined
                 </th>
                 <th className="relative px-6 py-3">
@@ -294,8 +317,8 @@ export const UsersPage: React.FC = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-              {filteredUsers.map((user) => (
+            <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-800">
+              {filteredUsers.map(user => (
                 <UserRow
                   key={user.id}
                   user={user}
@@ -310,4 +333,3 @@ export const UsersPage: React.FC = () => {
     </DashboardLayout>
   );
 };
-

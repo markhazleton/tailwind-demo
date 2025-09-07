@@ -12,7 +12,7 @@ export const ModalShowcase: React.FC = () => {
   return (
     <section className="space-y-8">
       <div>
-        <h2 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100 mb-4">
+        <h2 className="text-secondary-900 dark:text-secondary-100 mb-4 text-2xl font-bold">
           Modal Components
         </h2>
         <p className="text-secondary-600 dark:text-secondary-400 mb-6">
@@ -22,13 +22,11 @@ export const ModalShowcase: React.FC = () => {
 
       {/* Modal Triggers */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-secondary-800 dark:text-secondary-200">
+        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
           Modal Types
         </h3>
         <div className="flex flex-wrap gap-3">
-          <Button onClick={() => setBasicModal(true)}>
-            Basic Modal
-          </Button>
+          <Button onClick={() => setBasicModal(true)}>Basic Modal</Button>
           <Button variant="secondary" onClick={() => setConfirmModal(true)}>
             Confirmation Modal
           </Button>
@@ -45,22 +43,17 @@ export const ModalShowcase: React.FC = () => {
       </div>
 
       {/* Basic Modal */}
-      <Modal
-        isOpen={basicModal}
-        onClose={() => setBasicModal(false)}
-        title="Basic Modal"
-        size="md"
-      >
+      <Modal isOpen={basicModal} onClose={() => setBasicModal(false)} title="Basic Modal" size="md">
         <ModalContent>
           <p className="text-secondary-600 dark:text-secondary-400">
-            This is a basic modal with default configuration. It can contain any content
-            and provides a clean, accessible interface for user interactions.
+            This is a basic modal with default configuration. It can contain any content and
+            provides a clean, accessible interface for user interactions.
           </p>
-          <div className="mt-4 p-4 bg-secondary-50 dark:bg-secondary-800 rounded-lg">
-            <h4 className="font-semibold text-secondary-900 dark:text-secondary-100 mb-2">
+          <div className="bg-secondary-50 dark:bg-secondary-800 mt-4 rounded-lg p-4">
+            <h4 className="text-secondary-900 dark:text-secondary-100 mb-2 font-semibold">
               Features:
             </h4>
-            <ul className="space-y-1 text-sm text-secondary-600 dark:text-secondary-400">
+            <ul className="text-secondary-600 dark:text-secondary-400 space-y-1 text-sm">
               <li>• Keyboard navigation (ESC to close)</li>
               <li>• Click outside to close</li>
               <li>• Focus management</li>
@@ -72,9 +65,7 @@ export const ModalShowcase: React.FC = () => {
           <Button variant="secondary" onClick={() => setBasicModal(false)}>
             Cancel
           </Button>
-          <Button onClick={() => setBasicModal(false)}>
-            Got it
-          </Button>
+          <Button onClick={() => setBasicModal(false)}>Got it</Button>
         </ModalFooter>
       </Modal>
 
@@ -86,22 +77,21 @@ export const ModalShowcase: React.FC = () => {
         showCloseButton={false}
       >
         <ModalContent>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-warning-100 dark:bg-warning-900 rounded-full flex items-center justify-center">
-              <AlertCircle className="w-5 h-5 text-warning-600 dark:text-warning-400" />
+          <div className="mb-4 flex items-center gap-3">
+            <div className="bg-warning-100 dark:bg-warning-900 flex h-10 w-10 items-center justify-center rounded-full">
+              <AlertCircle className="text-warning-600 dark:text-warning-400 h-5 w-5" />
             </div>
             <div>
-              <h3 className="font-semibold text-secondary-900 dark:text-secondary-100">
+              <h3 className="text-secondary-900 dark:text-secondary-100 font-semibold">
                 Confirm Action
               </h3>
-              <p className="text-sm text-secondary-600 dark:text-secondary-400">
+              <p className="text-secondary-600 dark:text-secondary-400 text-sm">
                 Are you sure you want to delete this item?
               </p>
             </div>
           </div>
           <p className="text-secondary-600 dark:text-secondary-400">
-            This action cannot be undone. The item will be permanently removed
-            from your account.
+            This action cannot be undone. The item will be permanently removed from your account.
           </p>
         </ModalContent>
         <ModalFooter>
@@ -115,22 +105,17 @@ export const ModalShowcase: React.FC = () => {
       </Modal>
 
       {/* Alert Modal */}
-      <Modal
-        isOpen={alertModal}
-        onClose={() => setAlertModal(false)}
-        size="md"
-      >
+      <Modal isOpen={alertModal} onClose={() => setAlertModal(false)} size="md">
         <ModalContent>
           <div className="text-center">
-            <div className="w-16 h-16 bg-success-100 dark:bg-success-900 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="w-8 h-8 text-success-600 dark:text-success-400" />
+            <div className="bg-success-100 dark:bg-success-900 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+              <CheckCircle className="text-success-600 dark:text-success-400 h-8 w-8" />
             </div>
-            <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100 mb-2">
+            <h3 className="text-secondary-900 dark:text-secondary-100 mb-2 text-lg font-semibold">
               Success!
             </h3>
             <p className="text-secondary-600 dark:text-secondary-400">
-              Your changes have been saved successfully. You can now continue
-              with your workflow.
+              Your changes have been saved successfully. You can now continue with your workflow.
             </p>
           </div>
         </ModalContent>
@@ -151,36 +136,30 @@ export const ModalShowcase: React.FC = () => {
         <ModalContent>
           <form className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-2">
+              <label className="text-secondary-700 dark:text-secondary-300 mb-2 block text-sm font-medium">
                 Project Name
               </label>
               <input
                 type="text"
-                className="w-full px-3 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg 
-                         bg-white dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100
-                         focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 focus:ring-primary-500 w-full rounded-lg border bg-white px-3 py-2 focus:border-transparent focus:ring-2"
                 placeholder="Enter project name"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-2">
+              <label className="text-secondary-700 dark:text-secondary-300 mb-2 block text-sm font-medium">
                 Description
               </label>
               <textarea
                 rows={3}
-                className="w-full px-3 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg 
-                         bg-white dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100
-                         focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 focus:ring-primary-500 w-full rounded-lg border bg-white px-3 py-2 focus:border-transparent focus:ring-2"
                 placeholder="Describe your project"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300 mb-2">
+              <label className="text-secondary-700 dark:text-secondary-300 mb-2 block text-sm font-medium">
                 Category
               </label>
-              <select className="w-full px-3 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg 
-                               bg-white dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100
-                               focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+              <select className="border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 focus:ring-primary-500 w-full rounded-lg border bg-white px-3 py-2 focus:border-transparent focus:ring-2">
                 <option value="">Select a category</option>
                 <option value="web">Web Development</option>
                 <option value="mobile">Mobile App</option>
@@ -194,9 +173,7 @@ export const ModalShowcase: React.FC = () => {
           <Button variant="secondary" onClick={() => setFormModal(false)}>
             Cancel
           </Button>
-          <Button onClick={() => setFormModal(false)}>
-            Create Project
-          </Button>
+          <Button onClick={() => setFormModal(false)}>Create Project</Button>
         </ModalFooter>
       </Modal>
 
@@ -210,39 +187,38 @@ export const ModalShowcase: React.FC = () => {
         <ModalContent>
           <div className="space-y-6">
             <div className="flex items-start gap-3">
-              <Info className="w-5 h-5 text-primary-500 mt-0.5" />
+              <Info className="text-primary-500 mt-0.5 h-5 w-5" />
               <div>
-                <h4 className="font-semibold text-secondary-900 dark:text-secondary-100 mb-2">
+                <h4 className="text-secondary-900 dark:text-secondary-100 mb-2 font-semibold">
                   About This Demo
                 </h4>
                 <p className="text-secondary-600 dark:text-secondary-400">
-                  This modal demonstrates how larger content can be displayed effectively.
-                  The modal scales appropriately and maintains good usability even with
-                  substantial content.
+                  This modal demonstrates how larger content can be displayed effectively. The modal
+                  scales appropriately and maintains good usability even with substantial content.
                 </p>
               </div>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
-                <h5 className="font-semibold text-primary-900 dark:text-primary-100 mb-2">
+
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="bg-primary-50 dark:bg-primary-900/20 rounded-lg p-4">
+                <h5 className="text-primary-900 dark:text-primary-100 mb-2 font-semibold">
                   Responsive Design
                 </h5>
-                <p className="text-sm text-primary-700 dark:text-primary-300">
+                <p className="text-primary-700 dark:text-primary-300 text-sm">
                   Modals adapt to different screen sizes while maintaining usability.
                 </p>
               </div>
-              <div className="p-4 bg-success-50 dark:bg-success-900/20 rounded-lg">
-                <h5 className="font-semibold text-success-900 dark:text-success-100 mb-2">
+              <div className="bg-success-50 dark:bg-success-900/20 rounded-lg p-4">
+                <h5 className="text-success-900 dark:text-success-100 mb-2 font-semibold">
                   Accessibility
                 </h5>
-                <p className="text-sm text-success-700 dark:text-success-300">
+                <p className="text-success-700 dark:text-success-300 text-sm">
                   Built with keyboard navigation and screen reader support.
                 </p>
               </div>
             </div>
 
-            <div className="prose prose-sm max-w-none text-secondary-600 dark:text-secondary-400">
+            <div className="prose prose-sm text-secondary-600 dark:text-secondary-400 max-w-none">
               <h4>Additional Features</h4>
               <ul>
                 <li>Smooth animations and transitions</li>
@@ -258,9 +234,7 @@ export const ModalShowcase: React.FC = () => {
           <Button variant="ghost" onClick={() => setLargeModal(false)}>
             Close
           </Button>
-          <Button onClick={() => setLargeModal(false)}>
-            Understood
-          </Button>
+          <Button onClick={() => setLargeModal(false)}>Understood</Button>
         </ModalFooter>
       </Modal>
     </section>
