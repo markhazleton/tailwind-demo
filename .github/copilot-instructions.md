@@ -281,6 +281,19 @@ const seoTags = {
 - Include setup instructions for new developers
 - Document deployment procedures
 
+### Agent-Generated Documentation
+
+- **Always** place agent-generated documents in `/copilot/session={YYYY-MM-DD}/` folders
+- Use the current date in YYYY-MM-DD format for session folders (e.g., `/copilot/session=2025-09-07/`)
+- Organize documents by type within session folders:
+  - `plans/` - Architectural and implementation plans
+  - `analysis/` - Code analysis and audit reports
+  - `documentation/` - Generated technical documentation
+  - `specifications/` - Feature and API specifications
+- Use descriptive filenames with timestamps when multiple documents of the same type are created
+- Include a session summary file (`session-summary.md`) in each session folder
+- Move any existing agent-generated documents from the root or other locations to the appropriate `/copilot/` structure
+
 ## Security Considerations
 
 - Sanitize user inputs in search and forms
