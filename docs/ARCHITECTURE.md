@@ -8,7 +8,7 @@ TailwindSpark is built as a modern monorepo using cutting-edge web development p
 
 - **React 19** - Latest React with concurrent features
 - **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first CSS framework
+- **Tailwind CSS 4.1** - Utility-first CSS with @theme directive
 - **Vite** - Fast build tool and dev server
 
 ### Monorepo Tools
@@ -45,9 +45,10 @@ tailwind-demo/
 
 #### Design Tokens Package
 
-- **Purpose**: Centralized design system
-- **Exports**: Colors, typography, spacing, breakpoints
-- **Usage**: Imported by all other packages
+- **Purpose**: Centralized design system with Tailwind CSS v4 @theme directive
+- **Exports**: Colors, typography, spacing, breakpoints via CSS custom properties
+- **Usage**: Imported by all other packages through theme.css
+- **Architecture**: Uses @theme directive for design token definitions
 
 #### UI Components Package
 
@@ -121,7 +122,7 @@ The monorepo uses Turborepo for efficient task execution with caching:
 
 ### GitHub Actions Workflow
 
-```
+```yaml
 Trigger: Push to main
 ├── Install dependencies
 ├── Security audit
@@ -143,7 +144,7 @@ Trigger: Push to main
 
 ### Token Structure
 
-```
+```text
 Design Tokens
 ├── Colors
 │   ├── Primary palette
@@ -162,7 +163,7 @@ Design Tokens
 
 ### Component Architecture
 
-```
+```text
 Component Structure
 ├── Button/
 │   ├── Button.tsx
@@ -175,10 +176,12 @@ Component Structure
 
 ### Styling Strategy
 
-- **Utility-first** with Tailwind CSS
+- **Utility-first** with Tailwind CSS v4
+- **@theme directive** for centralized design tokens
+- **CSS custom properties** for semantic color system
 - **Component variants** using class composition
 - **Responsive design** with mobile-first approach
-- **Dark mode** support throughout
+- **Dark mode** support with .dark class strategy
 
 ## Performance Considerations
 
