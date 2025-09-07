@@ -7,7 +7,7 @@ TailwindSpark is a comprehensive React TypeScript monorepo demonstrating modern 
 **Key Technologies:**
 
 - React 18+ with TypeScript
-- Tailwind CSS with custom design tokens
+- Tailwind CSS 4.1 with @theme directive and design tokens
 - Vite for build tooling
 - Turborepo for monorepo management
 - ESLint + Prettier for code quality
@@ -89,26 +89,27 @@ export const Button: React.FC<ButtonProps> = ({
 
 ### Tailwind CSS Guidelines
 
-- Use the custom design system defined in `packages/design-tokens`
-- Prefer semantic color names over arbitrary values
+- Use the custom design system defined in `packages/design-tokens` with @theme directive
+- Prefer semantic color names from CSS custom properties over arbitrary values
 - Use responsive design patterns with mobile-first approach
-- Implement dark mode support using `dark:` prefix
+- Implement dark mode support using .dark class strategy with CSS variables
 - Use the `cn()` utility function for conditional classes
 
 ```typescript
 // Good: Using design tokens and conditional classes
 const cardClasses = cn(
-  'rounded-lg border bg-card text-card-foreground shadow-sm',
+  'rounded-lg border bg-surface text-text shadow-sm',
   'transition-colors duration-200',
-  'hover:shadow-md dark:hover:shadow-lg',
+  'hover:shadow-md',
   {
     'border-destructive': variant === 'destructive',
-    'border-primary': variant === 'primary',
+    'border-brand': variant === 'primary',
   }
 );
 
-// Avoid: Arbitrary values when design tokens exist
-const badClasses = 'bg-[#ff0000] text-[14px]'; // Use theme colors instead
+// Avoid: Hard-coded colors when semantic tokens exist
+const badClasses = 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100';
+// Use: bg-surface text-text instead
 ```
 
 ## File Organization

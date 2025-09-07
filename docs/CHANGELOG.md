@@ -5,6 +5,38 @@ All notable changes to TailwindSpark will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-09-07
+
+### Added
+
+- **Tailwind CSS v4.1**: Complete migration to Tailwind CSS v4 with @theme directive
+- **Centralized Design Tokens**: New design token system using CSS custom properties
+- **Enhanced Theme System**: Improved dark/light mode toggle with cross-browser compatibility
+- **PostCSS v4 Configuration**: Updated PostCSS setup for Tailwind CSS v4 compatibility
+- **Semantic Color System**: Abstracted color system using CSS variables for better maintainability
+
+### Enhanced
+
+- **Browser Compatibility**: Fixed theme toggle issues in Firefox and Edge browsers
+- **Performance**: Optimized CSS compilation with new Tailwind v4 engine
+- **Developer Experience**: Better design token organization and theme customization
+- **Build Process**: Updated build pipeline for Tailwind CSS v4 requirements
+- **Documentation**: Comprehensive migration guides and best practices
+
+### Fixed
+
+- **Theme Toggle**: Resolved navigation visibility issues across different browsers
+- **CSS Import Order**: Fixed design token import ordering for proper CSS variable resolution
+- **Build Compatibility**: Updated all PostCSS configurations for v4 compatibility
+
+### Migration Notes
+
+- Upgraded from Tailwind CSS v3.4 to v4.1.13
+- Replaced traditional `tailwind.config.js` approach with `@theme` directive
+- Centralized design tokens in `packages/design-tokens/theme.css`
+- Updated PostCSS configuration to use `@tailwindcss/postcss` plugin
+- Implemented semantic color system with CSS custom properties
+
 ## [1.1.0] - 2024-01-15
 
 ### Added

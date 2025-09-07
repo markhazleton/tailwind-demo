@@ -97,9 +97,14 @@ npm run test # Run component tests
 
 ### Working with Design Tokens
 
+The project uses Tailwind CSS v4 with centralized design tokens:
+
 ```bash
 cd packages/design-tokens
 npm run build  # Build token definitions
+
+# The design tokens use the new @theme directive
+# and are automatically imported by Tailwind CSS v4
 ```
 
 ### Working with Demo App
@@ -114,14 +119,14 @@ npm run test  # Run app tests
 
 ### Common Issues
 
-**Port already in use**
+#### Port already in use
 
 ```bash
 # Kill process on port 5173
 npx kill-port 5173
 ```
 
-**Module resolution errors**
+#### Module resolution errors
 
 ```bash
 # Clear node_modules and reinstall
@@ -129,7 +134,7 @@ rm -rf node_modules package-lock.json
 npm install
 ```
 
-**Build cache issues**
+#### Build cache issues
 
 ```bash
 # Clear Turborepo cache

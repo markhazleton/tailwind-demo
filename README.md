@@ -79,7 +79,7 @@ Explore the showcase of:
 
 - **React 19** with concurrent features
 - **TypeScript** strict mode enabled
-- **Tailwind CSS 3.4** with JIT compilation
+- **Tailwind CSS 4.1** with @theme directive and design tokens
 - **Vite 7** for lightning-fast builds
 - **Vitest** for comprehensive testing
 
