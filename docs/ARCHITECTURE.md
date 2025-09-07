@@ -135,7 +135,7 @@ Trigger: Push to main
 ### Build Artifacts
 
 - **Static assets** optimized by Vite
-- **Code splitting** for better performance  
+- **Code splitting** for better performance
 - **Tree shaking** to remove unused code
 - **Asset optimization** (images, fonts, CSS)
 
@@ -224,7 +224,7 @@ Component Structure
 ### Monorepo Benefits
 
 - **Shared tooling** across packages
-- **Atomic commits** across boundaries  
+- **Atomic commits** across boundaries
 - **Consistent dependencies** and versions
 - **Simplified CI/CD** pipeline
 

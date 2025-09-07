@@ -192,17 +192,17 @@ export const UsersPage: React.FC = () => {
   });
 
   const handleEditUser = (user: User) => {
-    console.log('Edit user:', user);
+    console.warn('Edit user:', user);
     // In a real app, you'd open a modal or navigate to edit page
   };
 
   const handleDeleteUser = (user: User) => {
-    console.log('Delete user:', user);
+    console.warn('Delete user:', user);
     // In a real app, you'd show a confirmation dialog
   };
 
   const handleInviteUser = () => {
-    console.log('Invite new user');
+    console.warn('Invite new user');
     // In a real app, you'd open an invite modal
   };
 

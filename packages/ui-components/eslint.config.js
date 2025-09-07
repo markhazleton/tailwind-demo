@@ -15,14 +15,7 @@ export default [
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       // UI components specific rules
       '@typescript-eslint/no-empty-interface': 'off', // Allow empty interfaces for component props
-      '@typescript-eslint/ban-types': [
-        'error',
-        {
-          types: {
-            '{}': false, // Allow {} type for component props
-          },
-        },
-      ],
+      '@typescript-eslint/no-empty-object-type': 'off', // Allow {} type for component props
     },
   },
 ];

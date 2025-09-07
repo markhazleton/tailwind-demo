@@ -6,6 +6,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
+    "@tailwindspark/demo-app#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["../../dist/**"]
+    },
     "dev": {
       "cache": false,
       "persistent": true
@@ -20,8 +24,7 @@
       "cache": false
     },
     "test": {
-      "dependsOn": ["^build"],
-      "outputs": ["coverage/**"]
+      "dependsOn": ["^build"]
     },
     "test:ui": {
       "cache": false,
