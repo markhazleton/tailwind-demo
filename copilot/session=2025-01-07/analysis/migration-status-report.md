@@ -38,6 +38,7 @@ Type 'Plugin$1<any>[]' is not assignable to type 'PluginOption'
 ### 1. PostCSS is the Recommended Approach for v4
 
 Based on official documentation:
+
 - PostCSS plugin is more stable than Vite plugin during alpha
 - Provides better compatibility across different build tools
 - Official documentation prioritizes PostCSS setup
@@ -45,6 +46,7 @@ Based on official documentation:
 ### 2. CSS-First Configuration Works Well
 
 Our implementation successfully:
+
 - Converts JavaScript config to CSS `@theme`
 - Maintains all color systems (primary, accent, secondary, success, warning, error)
 - Preserves custom spacing, typography, and component systems
@@ -53,6 +55,7 @@ Our implementation successfully:
 ### 3. Breaking Changes Identified
 
 **Border Utilities** (not yet addressed):
+
 ```html
 <!-- v3: border had default color -->
 <div class="border"></div>
@@ -62,6 +65,7 @@ Our implementation successfully:
 ```
 
 **Ring Utilities** (not yet addressed):
+
 ```html
 <!-- v3: ring was 3px blue -->
 <input class="focus:ring" />
@@ -85,11 +89,13 @@ npx vite build --mode development
 ### Option 2: Fix Type Issues (Comprehensive)
 
 1. **Downgrade to fully compatible versions**:
+
    ```bash
    npm install --save-dev vite@5.4.8 @vitejs/plugin-react@4.3.1
    ```
 
 2. **Or add type declarations**:
+
    ```typescript
    // vite-env.d.ts
    /// <reference types="vite/client" />
@@ -104,6 +110,7 @@ npx vite build --mode development
 Since PostCSS is working correctly, we can test CSS generation directly:
 
 1. **Test CSS compilation**:
+
    ```bash
    cd apps/demo-app
    npx postcss src/index.css -o test-output.css
@@ -119,6 +126,7 @@ Since PostCSS is working correctly, we can test CSS generation directly:
 ### TailwindCSS v4 PostCSS Best Practices
 
 1. **Minimal Configuration**:
+
    ```javascript
    // postcss.config.js
    export default {
@@ -129,6 +137,7 @@ Since PostCSS is working correctly, we can test CSS generation directly:
    ```
 
 2. **CSS-First Theme**:
+
    ```css
    @import "tailwindcss";
    
@@ -146,6 +155,7 @@ Since PostCSS is working correctly, we can test CSS generation directly:
 ### Performance Expectations
 
 Based on TailwindCSS v4 promises:
+
 - **10x faster builds** (105ms vs 960ms)
 - **35% smaller CSS bundles**
 - **Better browser optimization**
@@ -153,6 +163,7 @@ Based on TailwindCSS v4 promises:
 ## Success Metrics
 
 ### Completed ✅
+
 - [x] TailwindCSS v4 packages installed
 - [x] PostCSS configuration working
 - [x] CSS-first theme implemented
@@ -160,6 +171,7 @@ Based on TailwindCSS v4 promises:
 - [x] Custom layers preserved
 
 ### Remaining 🔄
+
 - [ ] Resolve Vite type compatibility
 - [ ] Test CSS compilation output
 - [ ] Fix border utility breaking changes

@@ -26,6 +26,7 @@ export default {
 ```
 
 **Key Points:**
+
 - No need for `autoprefixer` - TailwindCSS v4 includes it
 - No need for additional PostCSS plugins for basic functionality
 - Configuration should be minimal for v4
@@ -193,16 +194,19 @@ export default {
 ### Phase 1: Stable PostCSS Setup
 
 1. **Remove Vite Plugin Dependencies**
+
    ```bash
    npm uninstall @tailwindcss/vite
    ```
 
 2. **Ensure PostCSS Dependencies**
+
    ```bash
    npm install postcss@latest
    ```
 
 3. **Verify PostCSS Configuration**
+
    ```javascript
    // postcss.config.js
    export default {
@@ -221,6 +225,7 @@ export default {
 ### Phase 3: Breaking Changes
 
 1. **Border Utilities**: Add explicit colors
+
    ```html
    <!-- Before -->
    <div class="border bg-white"></div>
@@ -230,6 +235,7 @@ export default {
    ```
 
 2. **Ring Utilities**: Adjust defaults
+
    ```html
    <!-- Before (was 3px blue) -->
    <input class="focus:ring" />
@@ -289,7 +295,8 @@ time npm run build
 ### Issue: Build Fails with Module Not Found
 
 **Cause**: Missing PostCSS plugin dependency
-**Solution**: 
+**Solution**:
+
 ```bash
 npm install @tailwindcss/postcss@next
 ```
@@ -298,6 +305,7 @@ npm install @tailwindcss/postcss@next
 
 **Cause**: CSS import not working
 **Solution**: Verify CSS import at top of file:
+
 ```css
 @import "tailwindcss";
 ```
@@ -306,6 +314,7 @@ npm install @tailwindcss/postcss@next
 
 **Cause**: Theme configuration syntax
 **Solution**: Use correct CSS custom property syntax:
+
 ```css
 @theme {
   --color-brand-primary: #0ea5e9;

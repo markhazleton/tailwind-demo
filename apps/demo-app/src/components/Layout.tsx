@@ -76,7 +76,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
   return (
     <div className="min-h-screen bg-white transition-colors dark:bg-gray-900">
       {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
+      <header className="sticky top-0 z-40 border-b border-gray-200 bg-white transition-colors dark:border-gray-700 dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-8">
@@ -92,8 +92,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
                     to={item.path}
                     className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                       location.pathname === item.path
-                        ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-                        : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100'
+                        ? 'bg-brand/10 text-brand'
+                        : 'text-text-muted hover:bg-surface-alt hover:text-text'
                     }`}
                   >
                     {item.label}
@@ -106,8 +106,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
                     onClick={() => setIsDemosOpen(!isDemosOpen)}
                     className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                       isDemoPage
-                        ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-                        : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100'
+                        ? 'bg-brand/10 text-brand'
+                        : 'text-text-muted hover:bg-surface-alt hover:text-text'
                     }`}
                   >
                     Demos
@@ -127,26 +127,26 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
                   </button>
 
                   {isDemosOpen && (
-                    <div className="absolute left-0 top-full z-50 mt-2 w-56 rounded-lg border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+                    <div className="absolute left-0 top-full z-50 mt-2 w-56 rounded-lg border border-border bg-surface py-2 shadow-lg">
                       <Link
                         to="/demos"
-                        className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                        className="block px-4 py-2 text-sm text-text transition-colors hover:bg-surface-alt"
                         onClick={() => setIsDemosOpen(false)}
                       >
                         <div className="font-medium">All Demos Overview</div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                        <div className="text-xs text-text-muted">
                           Compare all examples
                         </div>
                       </Link>
-                      <div className="my-2 border-t border-gray-200 dark:border-gray-600"></div>
+                      <div className="my-2 border-t border-border"></div>
                       {demoItems.map(demo => (
                         <Link
                           key={demo.path}
                           to={demo.path}
                           className={`block px-4 py-2 text-sm transition-colors ${
                             location.pathname === demo.path
-                              ? 'bg-primary-50 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300'
-                              : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700'
+                              ? 'bg-brand/10 text-brand'
+                              : 'text-text hover:bg-surface-alt'
                           }`}
                           onClick={() => setIsDemosOpen(false)}
                         >
@@ -163,7 +163,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               {/* Mobile menu button - only visible on small screens */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-lg bg-gray-100 p-2 transition-colors hover:bg-gray-200 md:hidden dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="rounded-lg bg-surface-alt p-2 transition-colors hover:bg-border md:hidden"
                 aria-label="Toggle mobile menu"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -205,16 +205,16 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="border-t border-gray-200 md:hidden dark:border-gray-700">
-            <div className="space-y-1 bg-white px-4 pb-3 pt-2 dark:bg-gray-900">
+          <div className="border-t border-border md:hidden">
+            <div className="space-y-1 bg-surface px-4 pb-3 pt-2">
               {navItems.map(item => (
                 <Link
                   key={item.path}
                   to={item.path}
                   className={`block rounded-md px-3 py-2 text-base font-medium transition-colors ${
                     location.pathname === item.path
-                      ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100'
+                      ? 'bg-brand/10 text-brand'
+                      : 'text-text-muted hover:bg-surface-alt hover:text-text'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -224,12 +224,12 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
 
               {/* Mobile Demos Section */}
               <div className="pt-2">
-                <div className="px-3 py-2 text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <div className="px-3 py-2 text-sm font-medium uppercase tracking-wider text-text-muted">
                   Demos
                 </div>
                 <Link
                   to="/demos"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-text-muted transition-colors hover:bg-surface-alt hover:text-text"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   All Demos Overview
@@ -240,8 +240,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
                     to={demo.path}
                     className={`block rounded-md px-3 py-2 text-base font-medium transition-colors ${
                       location.pathname === demo.path
-                        ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-                        : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100'
+                        ? 'bg-brand/10 text-brand'
+                        : 'text-text-muted hover:bg-surface-alt hover:text-text'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -268,7 +268,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               <Logo size="lg" showText={false} />
             </div>
             <h3 className="text-4xl font-bold md:text-5xl">
-              <span className="from-primary-600 to-accent-700 bg-gradient-to-r bg-clip-text text-transparent">
+              <span className="from-brand to-accent-700 bg-gradient-to-r bg-clip-text text-transparent">
                 TailwindSpark
               </span>
             </h3>
@@ -288,7 +288,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               href="https://github.com/MarkHazleton/tailwind-demo"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary-600 dark:hover:text-primary-400 text-sm text-gray-600 transition-colors dark:text-gray-400"
+              className="hover:text-brand dark:hover:text-brand text-sm text-gray-600 transition-colors dark:text-gray-400"
             >
               GitHub
             </a>
@@ -296,7 +296,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               href="https://webspark.markhazleton.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary-600 dark:hover:text-primary-400 text-sm text-gray-600 transition-colors dark:text-gray-400"
+              className="hover:text-brand dark:hover:text-brand text-sm text-gray-600 transition-colors dark:text-gray-400"
             >
               WebSpark
             </a>
@@ -304,7 +304,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               href="https://markhazleton.com/articles.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary-600 dark:hover:text-primary-400 text-sm text-gray-600 transition-colors dark:text-gray-400"
+              className="hover:text-brand dark:hover:text-brand text-sm text-gray-600 transition-colors dark:text-gray-400"
             >
               Articles
             </a>
@@ -312,7 +312,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               href="https://tailwindcss.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary-600 dark:hover:text-primary-400 text-sm text-gray-600 transition-colors dark:text-gray-400"
+              className="hover:text-brand dark:hover:text-brand text-sm text-gray-600 transition-colors dark:text-gray-400"
             >
               Tailwind CSS
             </a>
@@ -320,7 +320,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               href="https://reactjs.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary-600 dark:hover:text-primary-400 text-sm text-gray-600 transition-colors dark:text-gray-400"
+              className="hover:text-brand dark:hover:text-brand text-sm text-gray-600 transition-colors dark:text-gray-400"
             >
               React
             </a>

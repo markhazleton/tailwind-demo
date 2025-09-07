@@ -7,6 +7,7 @@ This comprehensive migration plan outlines the strategy to upgrade TailwindSpark
 ## Current State Analysis
 
 ### Current TailwindCSS Setup
+
 - **Version**: TailwindCSS v3.4.17
 - **Architecture**: Traditional JavaScript configuration-based setup
 - **Plugins**: @tailwindcss/typography, @tailwindcss/forms, @tailwindcss/aspect-ratio
@@ -15,6 +16,7 @@ This comprehensive migration plan outlines the strategy to upgrade TailwindSpark
 - **Build Integration**: PostCSS plugin with Vite
 
 ### Key Components Requiring Migration
+
 1. **Design Tokens Package** (`packages/design-tokens/`)
 2. **UI Components Package** (`packages/ui-components/`)
 3. **Demo App** (`apps/demo-app/`)
@@ -24,23 +26,27 @@ This comprehensive migration plan outlines the strategy to upgrade TailwindSpark
 ## TailwindCSS v4 Key Features & Benefits
 
 ### 1. Performance Improvements
+
 - **10x Faster Builds**: 105ms vs 960ms for large projects
 - **35% Smaller Footprint**: Reduced bundle size
 - **Rust Optimization**: Critical parts rewritten in Rust
 - **Lightning CSS Integration**: Native CSS processing
 
 ### 2. CSS-First Configuration
+
 - **@theme Directive**: Define custom properties in CSS
 - **Native CSS Variables**: No more JavaScript configuration
 - **Better Browser Integration**: Natural CSS workflow
 
 ### 3. Modern CSS Features
+
 - **Native Cascade Layers**: Real @layer rules
 - **@property Support**: Defined custom properties with types
 - **color-mix()**: Advanced opacity modifiers
-- **Container Queries**: Built-in @min-* and @max-* variants
+- **Container Queries**: Built-in @min-*and @max-* variants
 
 ### 4. Enhanced Developer Experience
+
 - **Zero-Configuration Content Detection**: Automatic template discovery
 - **Composable Variants**: Enhanced variant composition
 - **Unified Toolchain**: No separate PostCSS configuration needed
@@ -48,6 +54,7 @@ This comprehensive migration plan outlines the strategy to upgrade TailwindSpark
 ## Migration Strategy
 
 ### Phase 1: Preparation & Planning (Week 1)
+
 1. **Environment Setup**
    - Create feature branch: `feat/tailwindcss-v4-migration`
    - Install v4 alpha packages
@@ -66,6 +73,7 @@ This comprehensive migration plan outlines the strategy to upgrade TailwindSpark
 ### Phase 2: Core Migration (Week 2-3)
 
 #### Step 1: Package Installations
+
 ```bash
 # Remove v3 packages
 npm uninstall tailwindcss @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio autoprefixer
@@ -75,6 +83,7 @@ npm install tailwindcss@next @tailwindcss/vite@next
 ```
 
 #### Step 2: Vite Configuration Update
+
 ```typescript
 // apps/demo-app/vite.config.ts
 import tailwindcss from '@tailwindcss/vite';
@@ -96,6 +105,7 @@ export default defineConfig({
 ```
 
 #### Step 3: CSS-First Configuration Migration
+
 Replace JavaScript config with CSS-first approach:
 
 ```css
@@ -259,22 +269,26 @@ Replace JavaScript config with CSS-first approach:
 #### Step 4: Plugin Migration Strategy
 
 **Typography Plugin Replacement:**
+
 - v4 has built-in prose utilities
 - Migrate custom prose configurations to @theme
 - Update component classes to use new prose utilities
 
 **Forms Plugin Replacement:**
+
 - v4 provides enhanced form styling
 - Migrate form components to use native v4 form utilities
 - Update form validation styles
 
 **Aspect Ratio Plugin Replacement:**
+
 - CSS aspect-ratio property is now standard
 - Replace @tailwindcss/aspect-ratio with native aspect-ratio utilities
 
 #### Step 5: Breaking Changes Remediation
 
 **1. Border Color Changes**
+
 ```css
 /* Before (v3): border class had default gray-200 */
 .border-element {
@@ -288,6 +302,7 @@ Replace JavaScript config with CSS-first approach:
 ```
 
 **2. Ring Utility Changes**
+
 ```css
 /* Before (v3): ring was 3px blue by default */
 .focus-ring {
@@ -303,6 +318,7 @@ Replace JavaScript config with CSS-first approach:
 ### Phase 3: Component & Utility Updates (Week 3-4)
 
 #### Step 1: Update Border Utilities
+
 Search and replace border utilities across codebase:
 
 ```bash
@@ -311,6 +327,7 @@ grep -r "border\b(?!\-[a-z])" apps/demo-app/src/
 ```
 
 Update components to be explicit about border colors:
+
 ```typescript
 // Before
 className="border bg-white"
@@ -320,6 +337,7 @@ className="border border-gray-200 bg-white"
 ```
 
 #### Step 2: Update Ring Utilities
+
 Update focus ring utilities:
 
 ```typescript
@@ -333,6 +351,7 @@ className="focus:ring-1 focus:ring-primary-500" // or keep ring-2 if desired
 #### Step 3: Leverage New v4 Features
 
 **Container Queries:**
+
 ```css
 /* New container query variants */
 .responsive-card {
@@ -341,6 +360,7 @@ className="focus:ring-1 focus:ring-primary-500" // or keep ring-2 if desired
 ```
 
 **Composable Variants:**
+
 ```css
 /* Enhanced variant composition */
 .interactive-element {
@@ -349,6 +369,7 @@ className="focus:ring-1 focus:ring-primary-500" // or keep ring-2 if desired
 ```
 
 **Modern CSS Features:**
+
 ```css
 /* Use oklch() colors for wide gamut displays */
 @theme {
@@ -361,6 +382,7 @@ className="focus:ring-1 focus:ring-primary-500" // or keep ring-2 if desired
 ### Phase 4: Package Architecture Refactor (Week 4-5)
 
 #### Step 1: Design Tokens Package Update
+
 Restructure design tokens package to export CSS-first configuration:
 
 ```typescript
@@ -381,6 +403,7 @@ export const designTokens = {
 ```
 
 #### Step 2: Remove Legacy Configuration Files
+
 ```bash
 # Remove old tailwind.config.js files
 rm packages/design-tokens/tailwind.config.js
@@ -392,6 +415,7 @@ rm apps/demo-app/postcss.config.js
 ```
 
 #### Step 3: Update Package Dependencies
+
 ```json
 {
   "packages/design-tokens/package.json": {
@@ -416,6 +440,7 @@ rm apps/demo-app/postcss.config.js
 ### Phase 5: Advanced Features Implementation (Week 5-6)
 
 #### Step 1: Implement Container Queries
+
 Add container query support to components:
 
 ```css
@@ -430,6 +455,7 @@ Add container query support to components:
 ```
 
 #### Step 2: Enhance Animation System
+
 Utilize @property for better animations:
 
 ```css
@@ -450,6 +476,7 @@ Utilize @property for better animations:
 ```
 
 #### Step 3: Implement Wide Gamut Colors
+
 Add wide gamut color support:
 
 ```css
@@ -468,6 +495,7 @@ Add wide gamut color support:
 ### Phase 6: Performance Optimization (Week 6)
 
 #### Step 1: Leverage Zero-Config Content Detection
+
 Remove manual content path configuration and rely on v4's automatic detection:
 
 ```typescript
@@ -476,6 +504,7 @@ Remove manual content path configuration and rely on v4's automatic detection:
 ```
 
 #### Step 2: Bundle Size Analysis
+
 Compare bundle sizes before and after migration:
 
 ```bash
@@ -489,6 +518,7 @@ npm run build:analyze
 ```
 
 #### Step 3: Build Performance Testing
+
 Measure build performance improvements:
 
 ```bash
@@ -504,36 +534,42 @@ time npm run build
 ## Migration Timeline
 
 ### Week 1: Preparation
+
 - [ ] Environment setup
 - [ ] Dependency analysis  
 - [ ] Create migration branch
 - [ ] Backup current configuration
 
 ### Week 2: Core Infrastructure
+
 - [ ] Install v4 packages
 - [ ] Update Vite configuration
 - [ ] Create CSS-first theme configuration
 - [ ] Remove PostCSS configuration
 
 ### Week 3: Component Updates
+
 - [ ] Fix border utility breaking changes
 - [ ] Update ring utility usage
 - [ ] Migrate custom CSS layers
 - [ ] Test component rendering
 
 ### Week 4: Package Architecture
+
 - [ ] Refactor design tokens package
 - [ ] Remove legacy configuration files
 - [ ] Update package dependencies
 - [ ] Test monorepo builds
 
 ### Week 5: Advanced Features
+
 - [ ] Implement container queries
 - [ ] Enhance animation system
 - [ ] Add wide gamut color support
 - [ ] Implement new variant compositions
 
 ### Week 6: Optimization & Testing
+
 - [ ] Performance testing
 - [ ] Bundle size analysis
 - [ ] Cross-browser testing
@@ -542,9 +578,10 @@ time npm run build
 ## Risk Mitigation
 
 ### High Risk Items
+
 1. **Breaking Changes**: Border and ring utility changes could affect many components
    - **Mitigation**: Comprehensive grep search and systematic replacement
-   
+
 2. **Plugin Dependencies**: Loss of official plugin functionality
    - **Mitigation**: Implement equivalent functionality using v4 native features
 
@@ -552,6 +589,7 @@ time npm run build
    - **Mitigation**: Parallel development environment and thorough testing
 
 ### Medium Risk Items
+
 1. **CSS Custom Property Conflicts**: Naming conflicts with existing CSS
    - **Mitigation**: Prefix all custom properties with --tw- or --tailwind-
 
@@ -559,27 +597,32 @@ time npm run build
    - **Mitigation**: Create custom type definitions as needed
 
 ### Low Risk Items
+
 1. **Documentation Gaps**: v4 is still in alpha
    - **Mitigation**: Reference GitHub source code and community discussions
 
 ## Testing Strategy
 
 ### Unit Testing
+
 - Test all components with new v4 utilities
 - Verify color system functionality
 - Test responsive design with container queries
 
 ### Integration Testing  
+
 - Test build process in CI/CD
 - Verify deployed application functionality
 - Test dark mode switching
 
 ### Performance Testing
+
 - Measure build time improvements
 - Analyze bundle size reduction
 - Test runtime performance
 
 ### Cross-Browser Testing
+
 - Test modern CSS features support
 - Verify fallbacks for older browsers
 - Test wide gamut color support
@@ -587,11 +630,13 @@ time npm run build
 ## Rollback Plan
 
 ### Immediate Rollback (< 24 hours)
+
 1. Revert to previous Git commit
 2. Restore v3 package dependencies
 3. Restore original configuration files
 
 ### Extended Rollback (> 24 hours)
+
 1. Create hotfix branch from stable v3 version
 2. Apply critical fixes to v3 codebase
 3. Deploy v3 version while continuing v4 development
@@ -599,21 +644,25 @@ time npm run build
 ## Post-Migration Benefits
 
 ### Performance Improvements
+
 - **10x faster build times**
 - **35% smaller bundle size**
 - **Improved runtime performance**
 
 ### Developer Experience
+
 - **CSS-first configuration** - more intuitive for CSS developers
 - **Zero-configuration content detection** - less setup required
 - **Modern CSS features** - container queries, @property, oklch()
 
 ### Maintainability
+
 - **Native CSS approach** - better integration with CSS tooling
 - **Simplified build chain** - fewer dependencies and configuration files
 - **Future-proof** - leverages latest web platform features
 
 ### Feature Enhancements  
+
 - **Container queries** for better responsive design
 - **Composable variants** for more flexible styling
 - **Wide gamut colors** for modern displays
@@ -622,6 +671,7 @@ time npm run build
 ## Success Criteria
 
 ### Technical Success Metrics
+
 - [ ] All components render correctly with v4
 - [ ] Build time reduced by at least 50%
 - [ ] Bundle size reduced by at least 30%
@@ -629,6 +679,7 @@ time npm run build
 - [ ] All tests passing
 
 ### Business Success Metrics
+
 - [ ] No impact on user experience
 - [ ] Improved page load times
 - [ ] Enhanced visual quality on modern displays
@@ -639,6 +690,7 @@ time npm run build
 This migration plan provides a comprehensive roadmap for upgrading TailwindSpark from TailwindCSS v3 to v4. The phased approach minimizes risk while maximizing the benefits of v4's improved performance, modern CSS features, and enhanced developer experience. The migration will position TailwindSpark as a cutting-edge showcase of the latest CSS and Tailwind technologies.
 
 The key success factors are:
+
 1. **Methodical approach** - systematic phase-by-phase migration
 2. **Thorough testing** - comprehensive testing at each phase
 3. **Risk mitigation** - clear rollback plans and parallel development

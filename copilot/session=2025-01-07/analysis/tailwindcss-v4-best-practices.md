@@ -21,6 +21,7 @@ Based on the official TailwindCSS v4 documentation and alpha release information
 ```
 
 **Benefits**:
+
 - More CSS-native workflow
 - Better integration with CSS tooling
 - Easier for CSS developers to understand
@@ -42,6 +43,7 @@ export default defineConfig({
 ```
 
 **Benefits**:
+
 - Built-in autoprefixer
 - Built-in @import handling
 - Built-in nesting support
@@ -58,6 +60,7 @@ export default defineConfig({
 ```
 
 **How it works**:
+
 - Crawls entire project for template files
 - Uses .gitignore to skip unnecessary directories
 - Ignores binary file formats
@@ -98,6 +101,7 @@ export default defineConfig({
 ```
 
 **Benefits**:
+
 - Unlimited variant composition
 - No need to explicitly define complex variants
 - More flexible than v3's predefined variants
@@ -105,6 +109,7 @@ export default defineConfig({
 ### 6. Breaking Changes to Address
 
 **Border Utility Changes**:
+
 ```css
 /* v3: border had default gray-200 color */
 .old-border { @apply border; }
@@ -114,6 +119,7 @@ export default defineConfig({
 ```
 
 **Ring Utility Changes**:
+
 ```css
 /* v3: ring was 3px blue by default */
 .old-ring { @apply ring; }
@@ -125,18 +131,21 @@ export default defineConfig({
 ### 7. Plugin Migration Strategy
 
 **Typography Plugin**: Built into v4 core
+
 ```css
 /* v4: Enhanced prose utilities built-in */
 .article { @apply prose prose-lg dark:prose-invert; }
 ```
 
 **Forms Plugin**: Enhanced form styling in core
+
 ```css
 /* v4: Better form controls by default */
 .form-input { @apply rounded-lg border-gray-300; }
 ```
 
 **Aspect Ratio Plugin**: Use native CSS aspect-ratio
+
 ```css
 /* v4: Native aspect-ratio support */
 .video-container { @apply aspect-video; }
@@ -145,11 +154,13 @@ export default defineConfig({
 ### 8. Performance Optimization Best Practices
 
 **Build Performance**:
+
 - Expected 10x faster builds (105ms vs 960ms)
 - 35% smaller footprint
 - Leverage Rust-optimized parts
 
 **Runtime Performance**:
+
 - Use CSS custom properties for dynamic theming
 - Leverage container queries for responsive design
 - Utilize modern CSS features for better browser optimization
@@ -157,21 +168,25 @@ export default defineConfig({
 ### 9. Migration Checklist
 
 **Phase 1: Setup**
+
 - [ ] Install `tailwindcss@next` and `@tailwindcss/vite@next`
 - [ ] Remove PostCSS configuration
 - [ ] Update Vite configuration
 
 **Phase 2: Configuration**
+
 - [ ] Convert JavaScript config to CSS-first `@theme`
 - [ ] Update color systems using CSS custom properties
 - [ ] Remove content path configuration
 
 **Phase 3: Breaking Changes**
+
 - [ ] Fix border utilities (add explicit colors)
 - [ ] Update ring utilities (specify size and color)
 - [ ] Remove deprecated utilities
 
 **Phase 4: Enhanced Features**
+
 - [ ] Implement container queries
 - [ ] Add composable variants
 - [ ] Integrate modern CSS features
@@ -181,6 +196,7 @@ export default defineConfig({
 ### 1. Monorepo Architecture Updates
 
 **Design Tokens Package**:
+
 ```css
 /* packages/design-tokens/theme.css */
 @theme {
@@ -192,6 +208,7 @@ export default defineConfig({
 ```
 
 **Component Packages**:
+
 ```typescript
 // Import CSS theme instead of JS config
 import '@tailwindspark/design-tokens/theme.css';
@@ -200,6 +217,7 @@ import '@tailwindspark/design-tokens/theme.css';
 ### 2. Build System Optimization
 
 **Vite Configuration**:
+
 ```typescript
 // Leverage v4's unified toolchain
 export default defineConfig({
@@ -213,6 +231,7 @@ export default defineConfig({
 ### 3. Component Enhancement Strategy
 
 **Leverage Container Queries**:
+
 ```css
 .dashboard-grid {
   container-type: inline-size;
@@ -221,6 +240,7 @@ export default defineConfig({
 ```
 
 **Use Composable Variants**:
+
 ```css
 .interactive-card {
   @apply group-hover:scale-105 group-focus-within:ring-2;
@@ -230,6 +250,7 @@ export default defineConfig({
 ### 4. Testing Strategy
 
 **Build Performance Testing**:
+
 ```bash
 # Before migration
 time npm run build
@@ -239,6 +260,7 @@ time npm run build
 ```
 
 **Bundle Size Analysis**:
+
 ```bash
 # Compare bundle sizes (expected 35% reduction)
 npm run build:analyze
@@ -247,16 +269,19 @@ npm run build:analyze
 ## Expected Benefits for TailwindSpark
 
 ### Performance Improvements
+
 - **Build Time**: 10x faster builds
 - **Bundle Size**: 35% smaller CSS bundles
 - **Runtime**: Better browser optimization
 
 ### Developer Experience
+
 - **CSS-Native**: More intuitive for CSS developers
 - **Auto-Discovery**: No manual content configuration
 - **Modern Features**: Container queries, OKLCH colors, @property
 
 ### Maintainability
+
 - **Simplified Toolchain**: Fewer dependencies
 - **Future-Proof**: Latest web platform features
 - **Better Integration**: Native CSS workflow

@@ -26,7 +26,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
 
   const ProductSkeleton = () => (
     <div className="group animate-pulse overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-      <div className="aspect-w-4 aspect-h-3 bg-gray-200">
+  <div className="aspect-[4/3] bg-gray-200">
         <div className="h-48 w-full bg-gray-200"></div>
       </div>
       <div className="p-4">
@@ -80,7 +80,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
           className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg"
         >
           {/* Product Image */}
-          <div className="aspect-w-4 aspect-h-3 relative overflow-hidden">
+          <div className="aspect-[4/3] relative overflow-hidden">
             {!imageLoadStates[product.id] && (
               <div className="absolute inset-0 animate-pulse bg-gray-200"></div>
             )}
@@ -142,7 +142,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
           {/* Product Info */}
           <div className="p-4">
             <div className="mb-2">
-              <h3 className="line-clamp-2 text-sm font-medium text-gray-900 transition-colors group-hover:text-indigo-600">
+              <h3 className="line-clamp-2 text-sm font-medium text-gray-900 transition-colors group-hover:text-brand">
                 {product.name}
               </h3>
               <p className="text-sm text-gray-500">{product.brand}</p>
@@ -227,7 +227,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
                 disabled={!product.inStock}
                 className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                   product.inStock
-                    ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                    ? 'bg-brand text-brand-fg hover:bg-brand-hover'
                     : 'cursor-not-allowed bg-gray-300 text-gray-500'
                 }`}
                 title={product.inStock ? 'Add to cart' : 'Out of stock'}

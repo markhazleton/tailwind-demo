@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
+import { rules as customRules } from './eslint-rules/no-raw-primary-class.js';
 
 export default [
   // Global ignores
@@ -35,6 +36,7 @@ export default [
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       'prefer-const': 'error',
       'no-var': 'error',
+      'no-raw-primary-class/no-raw-primary-class': 'error',
     },
   },
 
@@ -53,6 +55,14 @@ export default [
           caughtErrorsIgnorePattern: '^_',
         },
       ],
+      'no-raw-primary-class/no-raw-primary-class': 'error',
+    },
+  },
+
+  // Plugin injection for custom rule namespace
+  {
+    plugins: {
+      'no-raw-primary-class': { rules: customRules },
     },
   },
 

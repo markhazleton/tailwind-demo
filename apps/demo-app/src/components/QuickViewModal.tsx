@@ -66,7 +66,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             {/* Product Images */}
             <div className="space-y-4">
-              <div className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg bg-gray-100">
+              <div className="aspect-[4/3] overflow-hidden rounded-lg bg-gray-100">
                 <img
                   src={selectedImage}
                   alt={product.name}
@@ -80,7 +80,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   <button
                     onClick={() => setSelectedImage(product.image)}
                     className={`h-16 w-16 overflow-hidden rounded-md border-2 ${
-                      selectedImage === product.image ? 'border-indigo-500' : 'border-gray-200'
+                      selectedImage === product.image ? 'border-brand' : 'border-gray-200'
                     }`}
                   >
                     <img
@@ -94,7 +94,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                       key={index}
                       onClick={() => setSelectedImage(image)}
                       className={`h-16 w-16 overflow-hidden rounded-md border-2 ${
-                        selectedImage === image ? 'border-indigo-500' : 'border-gray-200'
+                        selectedImage === image ? 'border-brand' : 'border-gray-200'
                       }`}
                     >
                       <img
@@ -177,7 +177,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                         onClick={() => setSelectedColor(color)}
                         className={`h-8 w-8 rounded-full ${getColorClass(color)} ${
                           selectedColor === color
-                            ? 'ring-2 ring-indigo-500 ring-offset-2'
+                            ? 'ring-2 ring-brand ring-offset-2'
                             : 'ring-1 ring-gray-300'
                         } transition-all duration-200`}
                         title={color}
@@ -199,7 +199,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                         onClick={() => setSelectedSize(size)}
                         className={`rounded-md border px-4 py-2 text-sm font-medium transition-colors ${
                           selectedSize === size
-                            ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
+                            ? 'border-brand bg-brand/10 text-brand'
                             : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50'
                         }`}
                       >
@@ -243,7 +243,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   disabled={!product.inStock}
                   className={`flex-1 rounded-md px-6 py-3 font-medium transition-colors ${
                     product.inStock
-                      ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                      ? 'bg-brand text-brand-fg hover:bg-brand-hover'
                       : 'cursor-not-allowed bg-gray-300 text-gray-500'
                   }`}
                 >

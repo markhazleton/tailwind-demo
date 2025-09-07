@@ -187,7 +187,7 @@ export const ModalShowcase: React.FC = () => {
         <ModalContent>
           <div className="space-y-6">
             <div className="flex items-start gap-3">
-              <Info className="text-primary-500 mt-0.5 h-5 w-5" />
+              <Info className="text-brand mt-0.5 h-5 w-5" />
               <div>
                 <h4 className="text-secondary-900 dark:text-secondary-100 mb-2 font-semibold">
                   About This Demo
@@ -200,11 +200,11 @@ export const ModalShowcase: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="bg-primary-50 dark:bg-primary-900/20 rounded-lg p-4">
-                <h5 className="text-primary-900 dark:text-primary-100 mb-2 font-semibold">
+              <div className="bg-brand/10 dark:bg-brand/20 rounded-lg p-4">
+                <h5 className="text-brand dark:text-brand mb-2 font-semibold">
                   Responsive Design
                 </h5>
-                <p className="text-primary-700 dark:text-primary-300 text-sm">
+                <p className="text-brand/80 dark:text-brand/70 text-sm">
                   Modals adapt to different screen sizes while maintaining usability.
                 </p>
               </div>

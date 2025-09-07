@@ -77,8 +77,8 @@ export const CardShowcase: React.FC = () => {
           <Card variant="bordered">
             <div className="p-6">
               <div className="mb-4 flex items-center gap-4">
-                <div className="bg-primary-100 dark:bg-primary-900 flex h-12 w-12 items-center justify-center rounded-full">
-                  <User className="text-primary-600 dark:text-primary-400 h-6 w-6" />
+                <div className="bg-brand/10 dark:bg-brand/20 flex h-12 w-12 items-center justify-center rounded-full">
+                  <User className="text-brand h-6 w-6" />
                 </div>
                 <div>
                   <h4 className="text-secondary-900 dark:text-secondary-100 font-semibold">
@@ -137,8 +137,8 @@ export const CardShowcase: React.FC = () => {
           <Card variant="elevated" padding="lg">
             <CardHeader>
               <div className="flex items-center gap-3">
-                <div className="bg-primary-100 dark:bg-primary-900 flex h-10 w-10 items-center justify-center rounded-lg">
-                  <Star className="text-primary-600 dark:text-primary-400 h-5 w-5" />
+                <div className="bg-brand/10 dark:bg-brand/20 flex h-10 w-10 items-center justify-center rounded-lg">
+                  <Star className="text-brand h-5 w-5" />
                 </div>
                 <div>
                   <h4 className="text-secondary-900 dark:text-secondary-100 font-semibold">
@@ -153,19 +153,19 @@ export const CardShowcase: React.FC = () => {
             <CardContent>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center gap-2">
-                  <div className="bg-primary-500 h-1.5 w-1.5 rounded-full"></div>
+                  <div className="bg-brand h-1.5 w-1.5 rounded-full"></div>
                   Advanced analytics and reporting
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="bg-primary-500 h-1.5 w-1.5 rounded-full"></div>
+                  <div className="bg-brand h-1.5 w-1.5 rounded-full"></div>
                   Priority customer support
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="bg-primary-500 h-1.5 w-1.5 rounded-full"></div>
+                  <div className="bg-brand h-1.5 w-1.5 rounded-full"></div>
                   Custom integrations
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="bg-primary-500 h-1.5 w-1.5 rounded-full"></div>
+                  <div className="bg-brand h-1.5 w-1.5 rounded-full"></div>
                   Team collaboration tools
                 </li>
               </ul>

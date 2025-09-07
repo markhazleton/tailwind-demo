@@ -12,7 +12,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 
 const inputVariants = {
   default:
-    'border-secondary-300 dark:border-secondary-600 focus:border-primary-500 focus:ring-primary-500',
+    'border-border dark:border-border-strong focus:border-brand focus:ring-brand',
   error: 'border-error-300 dark:border-error-600 focus:border-error-500 focus:ring-error-500',
   success:
     'border-success-300 dark:border-success-600 focus:border-success-500 focus:ring-success-500',
@@ -216,7 +216,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             id={checkboxId}
             type="checkbox"
             className={clsx(
-              'border-secondary-300 dark:border-secondary-600 text-primary-600 focus:ring-primary-500 h-4 w-4 rounded focus:ring-offset-0',
+              'border-border dark:border-border-strong text-brand focus:ring-brand h-4 w-4 rounded focus:ring-offset-0',
               'disabled:cursor-not-allowed disabled:opacity-50',
               className
             )}
@@ -266,7 +266,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
           id={radioId}
           type="radio"
           className={clsx(
-            'border-secondary-300 dark:border-secondary-600 text-primary-600 focus:ring-primary-500 h-4 w-4 focus:ring-offset-0',
+            'border-border dark:border-border-strong text-brand focus:ring-brand h-4 w-4 focus:ring-offset-0',
             'disabled:cursor-not-allowed disabled:opacity-50',
             className
           )}

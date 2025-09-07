@@ -183,7 +183,7 @@ export const DashboardPage: React.FC = () => {
   const headerActions = (
     <button
       onClick={handleRefresh}
-      className="bg-primary-600 hover:bg-primary-700 rounded-lg px-4 py-2 font-medium text-white transition-colors duration-200"
+      className="bg-brand hover:bg-brand-hover rounded-lg px-4 py-2 font-medium text-white transition-colors duration-200"
       disabled={isLoading}
     >
       {isLoading ? 'Refreshing...' : 'Refresh Data'}
@@ -200,7 +200,7 @@ export const DashboardPage: React.FC = () => {
       <div className="p-6 pb-0">
         <Link
           to="/demos"
-          className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 mb-6 inline-flex items-center text-sm font-medium transition-colors"
+          className="text-brand hover:text-brand-hover mb-6 inline-flex items-center text-sm font-medium transition-colors"
         >
           <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -237,7 +237,7 @@ export const DashboardPage: React.FC = () => {
                 Revenue Trend
               </h3>
               <div className="flex items-center gap-2">
-                <span className="bg-primary-500 h-3 w-3 rounded-full"></span>
+                <span className="bg-brand h-3 w-3 rounded-full"></span>
                 <span className="text-sm text-gray-600 dark:text-gray-400">This Month</span>
               </div>
             </div>
@@ -259,7 +259,7 @@ export const DashboardPage: React.FC = () => {
               ].map((bar, index) => (
                 <div
                   key={index}
-                  className={`from-primary-500 to-primary-400 hover:from-primary-600 hover:to-primary-500 flex-1 rounded-t-sm bg-gradient-to-t transition-all duration-300 ${bar.height}`}
+                  className={`from-brand to-brand/70 hover:from-brand-hover hover:to-brand flex-1 rounded-t-sm bg-gradient-to-t transition-all duration-300 ${bar.height}`}
                   title={bar.percent}
                 />
               ))}
@@ -368,7 +368,7 @@ export const DashboardPage: React.FC = () => {
                   className="flex items-center justify-between rounded-lg p-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="from-primary-500 to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
+                    <div className="from-brand to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
                       {user.name
                         .split(' ')
                         .map(n => n.charAt(0))

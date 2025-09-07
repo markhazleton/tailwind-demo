@@ -12,6 +12,8 @@
     <link rel="manifest" href="./site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Theme will be handled entirely by React - no early script needed -->
+
     <!-- Primary Meta Tags -->
     <title>TailwindSpark - Interactive Tailwind CSS Showcase | WebSpark Portfolio</title>
     <meta
@@ -158,6 +160,7 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- Use relative module path so Vite prepends correct base (/tailwind-demo/) in production -->
+    <script type="module" src="src/main.tsx"></script>
   </body>
 </html>
