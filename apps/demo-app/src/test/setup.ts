@@ -1,14 +1,20 @@
 import '@testing-library/jest-dom';
-import { vi } from 'vitest';
 import React from 'react';
+import { vi } from 'vitest';
 
 // Mock react-router-dom
-vi.mock('react-router-dom', async (importOriginal) => {
+vi.mock('react-router-dom', async importOriginal => {
   const actual = await importOriginal<typeof import('react-router-dom')>();
   return {
     ...actual,
     useNavigate: vi.fn(() => vi.fn()),
-    useLocation: vi.fn(() => ({ pathname: '/', search: '', hash: '', state: null, key: 'default' })),
+    useLocation: vi.fn(() => ({
+      pathname: '/',
+      search: '',
+      hash: '',
+      state: null,
+      key: 'default',
+    })),
     useParams: vi.fn(() => ({})),
     Link: ({ children, to, ...props }: any) =>
       React.createElement('a', { href: to, ...props }, children),
