@@ -214,7 +214,7 @@ export const HomePage: React.FC = () => {
                   Performance & Modern Stack
                 </h4>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Built with React 19, TypeScript 5.3, Tailwind CSS 3.4, and Vite 7 for optimal
+                  Built with React 19, TypeScript 5.3, Tailwind CSS 4.1, and Vite 7 for optimal
                   performance. Monorepo architecture with Turborepo for efficient builds.
                 </p>
               </div>

@@ -299,7 +299,7 @@ export const DemosPage: React.FC = () => {
             {[
               'React 19',
               'TypeScript 5.3',
-              'Tailwind CSS 3.4',
+              'Tailwind CSS 4.1',
               'Vite 7',
               'Turborepo',
               'React Router',
