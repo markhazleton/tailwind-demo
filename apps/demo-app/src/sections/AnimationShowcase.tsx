@@ -16,71 +16,83 @@ export const AnimationShowcase: React.FC = () => {
       {/* Transition Effects */}
       <section className="space-y-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100">
             Transition Effects
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
+          <p className="mb-8 text-gray-600 dark:text-gray-400">
             Smooth transitions for hover, focus, and state changes
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* Scale Transition */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Scale Transform</h3>
+          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Scale Transform
+            </h3>
             <div className="flex justify-center">
-              <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg transition-transform duration-300 hover:scale-110 cursor-pointer flex items-center justify-center">
-                <span className="text-white font-medium">Hover Me</span>
+              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 transition-transform duration-300 hover:scale-110">
+                <span className="font-medium text-white">Hover Me</span>
               </div>
             </div>
           </div>
 
           {/* Color Transition */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Color Transition</h3>
+          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Color Transition
+            </h3>
             <div className="flex justify-center">
-              <button className="px-6 py-3 bg-blue-500 hover:bg-green-500 text-white rounded-lg transition-colors duration-500 font-medium">
+              <button className="rounded-lg bg-blue-500 px-6 py-3 font-medium text-white transition-colors duration-500 hover:bg-green-500">
                 Hover for Color Change
               </button>
             </div>
           </div>
 
           {/* Opacity Transition */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Opacity Fade</h3>
+          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Opacity Fade
+            </h3>
             <div className="flex justify-center">
-              <div className="w-24 h-24 bg-gradient-to-br from-red-500 to-pink-600 rounded-lg transition-opacity duration-700 hover:opacity-30 cursor-pointer flex items-center justify-center">
-                <span className="text-white font-medium text-center">Hover Me</span>
+              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-red-500 to-pink-600 transition-opacity duration-700 hover:opacity-30">
+                <span className="text-center font-medium text-white">Hover Me</span>
               </div>
             </div>
           </div>
 
           {/* Rotate Transition */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Rotate Transform</h3>
+          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Rotate Transform
+            </h3>
             <div className="flex justify-center">
-              <div className="w-24 h-24 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg transition-transform duration-500 hover:rotate-180 cursor-pointer flex items-center justify-center">
-                <span className="text-white font-medium">🔄</span>
+              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-green-500 to-teal-600 transition-transform duration-500 hover:rotate-180">
+                <span className="font-medium text-white">🔄</span>
               </div>
             </div>
           </div>
 
           {/* Translate Transition */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Slide Transform</h3>
+          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Slide Transform
+            </h3>
             <div className="flex justify-center overflow-hidden">
-              <div className="w-24 h-24 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg transition-transform duration-300 hover:translate-x-4 cursor-pointer flex items-center justify-center">
-                <span className="text-white font-medium">→</span>
+              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-yellow-500 to-orange-600 transition-transform duration-300 hover:translate-x-4">
+                <span className="font-medium text-white">→</span>
               </div>
             </div>
           </div>
 
           {/* Shadow Transition */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Shadow Growth</h3>
+          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Shadow Growth
+            </h3>
             <div className="flex justify-center">
-              <div className="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg transition-shadow duration-300 hover:shadow-2xl cursor-pointer flex items-center justify-center shadow-md">
-                <span className="text-white font-medium">✨</span>
+              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 shadow-md transition-shadow duration-300 hover:shadow-2xl">
+                <span className="font-medium text-white">✨</span>
               </div>
             </div>
           </div>
@@ -90,43 +102,43 @@ export const AnimationShowcase: React.FC = () => {
       {/* Keyframe Animations */}
       <section className="space-y-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100">
             Keyframe Animations
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
+          <p className="mb-8 text-gray-600 dark:text-gray-400">
             Built-in CSS animations with Tailwind utility classes
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {/* Spin Animation */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 text-center">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Spin</h3>
-            <div className="flex justify-center mb-4">
-              <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="rounded-lg border border-gray-200 bg-white p-6 text-center shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">Spin</h3>
+            <div className="mb-4 flex justify-center">
+              <div className="h-12 w-12 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Loading spinner</p>
           </div>
 
           {/* Ping Animation */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 text-center">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Ping</h3>
-            <div className="flex justify-center mb-4">
+          <div className="rounded-lg border border-gray-200 bg-white p-6 text-center shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">Ping</h3>
+            <div className="mb-4 flex justify-center">
               <div className="relative">
-                <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-                <div className="absolute inset-0 w-4 h-4 bg-green-500 rounded-full animate-ping opacity-75"></div>
+                <div className="h-4 w-4 rounded-full bg-green-500"></div>
+                <div className="absolute inset-0 h-4 w-4 animate-ping rounded-full bg-green-500 opacity-75"></div>
               </div>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Notification dot</p>
           </div>
 
           {/* Pulse Animation */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 text-center">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Pulse</h3>
-            <div className="flex justify-center mb-4">
+          <div className="rounded-lg border border-gray-200 bg-white p-6 text-center shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">Pulse</h3>
+            <div className="mb-4 flex justify-center">
               <button
                 onClick={() => setPulseActive(!pulseActive)}
-                className={`w-16 h-16 bg-purple-500 rounded-lg text-white font-medium ${pulseActive ? 'animate-pulse' : ''}`}
+                className={`h-16 w-16 rounded-lg bg-purple-500 font-medium text-white ${pulseActive ? 'animate-pulse' : ''}`}
               >
                 {pulseActive ? 'ON' : 'OFF'}
               </button>
@@ -135,12 +147,12 @@ export const AnimationShowcase: React.FC = () => {
           </div>
 
           {/* Bounce Animation */}
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 text-center">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Bounce</h3>
-            <div className="flex justify-center mb-4">
+          <div className="rounded-lg border border-gray-200 bg-white p-6 text-center shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">Bounce</h3>
+            <div className="mb-4 flex justify-center">
               <button
                 onClick={() => setBounceActive(!bounceActive)}
-                className={`w-12 h-12 bg-red-500 rounded-full text-white font-medium ${bounceActive ? 'animate-bounce' : ''}`}
+                className={`h-12 w-12 rounded-full bg-red-500 font-medium text-white ${bounceActive ? 'animate-bounce' : ''}`}
               >
                 ⚽
               </button>
@@ -153,31 +165,33 @@ export const AnimationShowcase: React.FC = () => {
       {/* Interactive Animations */}
       <section className="space-y-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100">
             Interactive Animations
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
+          <p className="mb-8 text-gray-600 dark:text-gray-400">
             User-triggered animations and state-based transitions
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           {/* Loading Button */}
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">Loading States</h3>
+          <div className="rounded-lg border border-gray-200 bg-white p-8 shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-6 text-xl font-semibold text-gray-900 dark:text-gray-100">
+              Loading States
+            </h3>
             <div className="space-y-4">
               <button
                 onClick={triggerLoading}
                 disabled={isLoading}
-                className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                className={`w-full rounded-lg px-6 py-3 font-medium transition-all duration-200 ${
                   isLoading
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-blue-500 hover:bg-blue-600 hover:scale-105 active:scale-95'
-                } text-white flex items-center justify-center gap-2`}
+                    ? 'cursor-not-allowed bg-gray-400'
+                    : 'bg-blue-500 hover:scale-105 hover:bg-blue-600 active:scale-95'
+                } flex items-center justify-center gap-2 text-white`}
               >
                 {isLoading ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
                     Loading...
                   </>
                 ) : (
@@ -188,11 +202,13 @@ export const AnimationShowcase: React.FC = () => {
           </div>
 
           {/* Modal Animation */}
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">Modal Transitions</h3>
+          <div className="rounded-lg border border-gray-200 bg-white p-8 shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-6 text-xl font-semibold text-gray-900 dark:text-gray-100">
+              Modal Transitions
+            </h3>
             <button
               onClick={() => setShowModal(true)}
-              className="w-full px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors duration-200"
+              className="w-full rounded-lg bg-green-500 px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-green-600"
             >
               Open Animated Modal
             </button>
@@ -203,37 +219,43 @@ export const AnimationShowcase: React.FC = () => {
       {/* Complex Animation Examples */}
       <section className="space-y-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-gray-100">
             Complex Animations
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
+          <p className="mb-8 text-gray-600 dark:text-gray-400">
             Combining multiple animation properties for sophisticated effects
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {/* Floating Card */}
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">Floating Card</h3>
+          <div className="rounded-lg border border-gray-200 bg-white p-8 shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-6 text-xl font-semibold text-gray-900 dark:text-gray-100">
+              Floating Card
+            </h3>
             <div className="flex justify-center">
               <div className="group relative">
-                <div className="w-32 h-32 bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 rounded-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-2xl cursor-pointer flex items-center justify-center">
-                  <span className="text-white text-2xl font-bold transition-transform duration-300 group-hover:scale-125">✨</span>
+                <div className="flex h-32 w-32 cursor-pointer items-center justify-center rounded-xl bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:shadow-2xl">
+                  <span className="text-2xl font-bold text-white transition-transform duration-300 group-hover:scale-125">
+                    ✨
+                  </span>
                 </div>
-                <div className="absolute inset-0 w-32 h-32 bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 rounded-xl opacity-20 blur-xl transition-all duration-500 group-hover:opacity-40 group-hover:blur-2xl"></div>
+                <div className="absolute inset-0 h-32 w-32 rounded-xl bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 opacity-20 blur-xl transition-all duration-500 group-hover:opacity-40 group-hover:blur-2xl"></div>
               </div>
             </div>
           </div>
 
           {/* Morphing Button */}
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">Morphing Button</h3>
+          <div className="rounded-lg border border-gray-200 bg-white p-8 shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <h3 className="mb-6 text-xl font-semibold text-gray-900 dark:text-gray-100">
+              Morphing Button
+            </h3>
             <div className="flex justify-center">
-              <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
                 <span className="relative z-10 transition-all duration-300 group-hover:scale-110">
                   Hover to Transform
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="absolute inset-0 origin-left scale-x-0 transform bg-gradient-to-r from-purple-600 to-pink-600 transition-transform duration-300 group-hover:scale-x-100"></div>
               </button>
             </div>
           </div>
@@ -244,33 +266,33 @@ export const AnimationShowcase: React.FC = () => {
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black bg-opacity-50 animate-pulse"
+          <div
+            className="absolute inset-0 animate-pulse bg-black bg-opacity-50"
             onClick={() => setShowModal(false)}
           ></div>
-          
+
           {/* Modal */}
-          <div className="relative bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-8 max-w-md w-full transform transition-all duration-300 animate-bounce">
+          <div className="relative w-full max-w-md transform animate-bounce rounded-xl bg-white p-8 shadow-2xl transition-all duration-300 dark:bg-gray-800">
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+              className="absolute right-4 top-4 text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
               ✕
             </button>
-            
+
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center animate-pulse">
-                <span className="text-white text-2xl">🎉</span>
+              <div className="mx-auto mb-4 flex h-16 w-16 animate-pulse items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-teal-600">
+                <span className="text-2xl text-white">🎉</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+              <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-gray-100">
                 Animated Modal
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-6">
+              <p className="mb-6 text-gray-600 dark:text-gray-400">
                 This modal demonstrates entrance animations with bounce and backdrop effects.
               </p>
               <button
                 onClick={() => setShowModal(false)}
-                className="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-200"
+                className="rounded-lg bg-blue-500 px-6 py-2 text-white transition-colors duration-200 hover:bg-blue-600"
               >
                 Close
               </button>

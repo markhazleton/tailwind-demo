@@ -11,23 +11,18 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 }
 
 const inputVariants = {
-  default: 'border-secondary-300 dark:border-secondary-600 focus:border-primary-500 focus:ring-primary-500',
+  default:
+    'border-secondary-300 dark:border-secondary-600 focus:border-primary-500 focus:ring-primary-500',
   error: 'border-error-300 dark:border-error-600 focus:border-error-500 focus:ring-error-500',
-  success: 'border-success-300 dark:border-success-600 focus:border-success-500 focus:ring-success-500',
+  success:
+    'border-success-300 dark:border-success-600 focus:border-success-500 focus:ring-success-500',
 };
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({
-    className,
-    label,
-    error,
-    helperText,
-    leftIcon,
-    rightIcon,
-    variant = 'default',
-    id,
-    ...props
-  }, ref) => {
+  (
+    { className, label, error, helperText, leftIcon, rightIcon, variant = 'default', id, ...props },
+    ref
+  ) => {
     const generatedId = React.useId();
     const inputId = id || `input-${generatedId}`;
     const actualVariant = error ? 'error' : variant;
@@ -37,26 +32,24 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-sm font-medium text-secondary-900 dark:text-secondary-100"
+            className="text-secondary-900 dark:text-secondary-100 block text-sm font-medium"
           >
             {label}
           </label>
         )}
         <div className="relative">
           {leftIcon && (
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <div className="h-5 w-5 text-secondary-400">
-                {leftIcon}
-              </div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <div className="text-secondary-400 h-5 w-5">{leftIcon}</div>
             </div>
           )}
           <input
             ref={ref}
             id={inputId}
             className={clsx(
-              'block w-full rounded-lg border px-3 py-2 text-secondary-900 dark:text-secondary-100 bg-white dark:bg-secondary-800 placeholder-secondary-500 dark:placeholder-secondary-400',
-              'focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors',
-              'disabled:cursor-not-allowed disabled:bg-secondary-50 dark:disabled:bg-secondary-900 disabled:text-secondary-500',
+              'text-secondary-900 dark:text-secondary-100 dark:bg-secondary-800 placeholder-secondary-500 dark:placeholder-secondary-400 block w-full rounded-lg border bg-white px-3 py-2',
+              'transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
+              'disabled:bg-secondary-50 dark:disabled:bg-secondary-900 disabled:text-secondary-500 disabled:cursor-not-allowed',
               inputVariants[actualVariant],
               leftIcon && 'pl-10',
               rightIcon && 'pr-10',
@@ -65,18 +58,20 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
           {rightIcon && (
-            <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-              <div className="h-5 w-5 text-secondary-400">
-                {rightIcon}
-              </div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+              <div className="text-secondary-400 h-5 w-5">{rightIcon}</div>
             </div>
           )}
         </div>
         {(error || helperText) && (
-          <p className={clsx(
-            'text-sm',
-            error ? 'text-error-600 dark:text-error-400' : 'text-secondary-500 dark:text-secondary-400'
-          )}>
+          <p
+            className={clsx(
+              'text-sm',
+              error
+                ? 'text-error-600 dark:text-error-400'
+                : 'text-secondary-500 dark:text-secondary-400'
+            )}
+          >
             {error || helperText}
           </p>
         )}
@@ -95,15 +90,7 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
 }
 
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({
-    className,
-    label,
-    error,
-    helperText,
-    variant = 'default',
-    id,
-    ...props
-  }, ref) => {
+  ({ className, label, error, helperText, variant = 'default', id, ...props }, ref) => {
     const generatedId = React.useId();
     const textareaId = id || `textarea-${generatedId}`;
     const actualVariant = error ? 'error' : variant;
@@ -113,7 +100,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         {label && (
           <label
             htmlFor={textareaId}
-            className="block text-sm font-medium text-secondary-900 dark:text-secondary-100"
+            className="text-secondary-900 dark:text-secondary-100 block text-sm font-medium"
           >
             {label}
           </label>
@@ -122,19 +109,23 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           id={textareaId}
           className={clsx(
-            'block w-full rounded-lg border px-3 py-2 text-secondary-900 dark:text-secondary-100 bg-white dark:bg-secondary-800 placeholder-secondary-500 dark:placeholder-secondary-400',
-            'focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors resize-vertical',
-            'disabled:cursor-not-allowed disabled:bg-secondary-50 dark:disabled:bg-secondary-900 disabled:text-secondary-500',
+            'text-secondary-900 dark:text-secondary-100 dark:bg-secondary-800 placeholder-secondary-500 dark:placeholder-secondary-400 block w-full rounded-lg border bg-white px-3 py-2',
+            'resize-vertical transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
+            'disabled:bg-secondary-50 dark:disabled:bg-secondary-900 disabled:text-secondary-500 disabled:cursor-not-allowed',
             inputVariants[actualVariant],
             className
           )}
           {...props}
         />
         {(error || helperText) && (
-          <p className={clsx(
-            'text-sm',
-            error ? 'text-error-600 dark:text-error-400' : 'text-secondary-500 dark:text-secondary-400'
-          )}>
+          <p
+            className={clsx(
+              'text-sm',
+              error
+                ? 'text-error-600 dark:text-error-400'
+                : 'text-secondary-500 dark:text-secondary-400'
+            )}
+          >
             {error || helperText}
           </p>
         )}
@@ -154,16 +145,7 @@ export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElemen
 }
 
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-  ({
-    className,
-    label,
-    error,
-    helperText,
-    variant = 'default',
-    options,
-    id,
-    ...props
-  }, ref) => {
+  ({ className, label, error, helperText, variant = 'default', options, id, ...props }, ref) => {
     const generatedId = React.useId();
     const selectId = id || `select-${generatedId}`;
     const actualVariant = error ? 'error' : variant;
@@ -173,7 +155,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label
             htmlFor={selectId}
-            className="block text-sm font-medium text-secondary-900 dark:text-secondary-100"
+            className="text-secondary-900 dark:text-secondary-100 block text-sm font-medium"
           >
             {label}
           </label>
@@ -182,25 +164,29 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           ref={ref}
           id={selectId}
           className={clsx(
-            'block w-full rounded-lg border px-3 py-2 text-secondary-900 dark:text-secondary-100 bg-white dark:bg-secondary-800',
-            'focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors',
-            'disabled:cursor-not-allowed disabled:bg-secondary-50 dark:disabled:bg-secondary-900 disabled:text-secondary-500',
+            'text-secondary-900 dark:text-secondary-100 dark:bg-secondary-800 block w-full rounded-lg border bg-white px-3 py-2',
+            'transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
+            'disabled:bg-secondary-50 dark:disabled:bg-secondary-900 disabled:text-secondary-500 disabled:cursor-not-allowed',
             inputVariants[actualVariant],
             className
           )}
           {...props}
         >
-          {options.map((option) => (
+          {options.map(option => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
         </select>
         {(error || helperText) && (
-          <p className={clsx(
-            'text-sm',
-            error ? 'text-error-600 dark:text-error-400' : 'text-secondary-500 dark:text-secondary-400'
-          )}>
+          <p
+            className={clsx(
+              'text-sm',
+              error
+                ? 'text-error-600 dark:text-error-400'
+                : 'text-secondary-500 dark:text-secondary-400'
+            )}
+          >
             {error || helperText}
           </p>
         )}
@@ -218,14 +204,7 @@ export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputE
 }
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({
-    className,
-    label,
-    error,
-    helperText,
-    id,
-    ...props
-  }, ref) => {
+  ({ className, label, error, helperText, id, ...props }, ref) => {
     const generatedId = React.useId();
     const checkboxId = id || `checkbox-${generatedId}`;
 
@@ -237,7 +216,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             id={checkboxId}
             type="checkbox"
             className={clsx(
-              'h-4 w-4 rounded border-secondary-300 dark:border-secondary-600 text-primary-600 focus:ring-primary-500 focus:ring-offset-0',
+              'border-secondary-300 dark:border-secondary-600 text-primary-600 focus:ring-primary-500 h-4 w-4 rounded focus:ring-offset-0',
               'disabled:cursor-not-allowed disabled:opacity-50',
               className
             )}
@@ -246,17 +225,21 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           {label && (
             <label
               htmlFor={checkboxId}
-              className="ml-2 block text-sm text-secondary-900 dark:text-secondary-100"
+              className="text-secondary-900 dark:text-secondary-100 ml-2 block text-sm"
             >
               {label}
             </label>
           )}
         </div>
         {(error || helperText) && (
-          <p className={clsx(
-            'text-sm',
-            error ? 'text-error-600 dark:text-error-400' : 'text-secondary-500 dark:text-secondary-400'
-          )}>
+          <p
+            className={clsx(
+              'text-sm',
+              error
+                ? 'text-error-600 dark:text-error-400'
+                : 'text-secondary-500 dark:text-secondary-400'
+            )}
+          >
             {error || helperText}
           </p>
         )}
@@ -272,12 +255,7 @@ export interface RadioProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 }
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
-  ({
-    className,
-    label,
-    id,
-    ...props
-  }, ref) => {
+  ({ className, label, id, ...props }, ref) => {
     const generatedId = React.useId();
     const radioId = id || `radio-${generatedId}`;
 
@@ -288,7 +266,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
           id={radioId}
           type="radio"
           className={clsx(
-            'h-4 w-4 border-secondary-300 dark:border-secondary-600 text-primary-600 focus:ring-primary-500 focus:ring-offset-0',
+            'border-secondary-300 dark:border-secondary-600 text-primary-600 focus:ring-primary-500 h-4 w-4 focus:ring-offset-0',
             'disabled:cursor-not-allowed disabled:opacity-50',
             className
           )}
@@ -297,7 +275,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
         {label && (
           <label
             htmlFor={radioId}
-            className="ml-2 block text-sm text-secondary-900 dark:text-secondary-100"
+            className="text-secondary-900 dark:text-secondary-100 ml-2 block text-sm"
           >
             {label}
           </label>

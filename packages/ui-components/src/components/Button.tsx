@@ -12,11 +12,13 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 const buttonVariants = {
   primary: 'bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 text-white shadow-sm',
-  secondary: 'bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500 text-white shadow-sm',
+  secondary:
+    'bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500 text-white shadow-sm',
   success: 'bg-success-600 hover:bg-success-700 focus:ring-success-500 text-white shadow-sm',
   warning: 'bg-warning-600 hover:bg-warning-700 focus:ring-warning-500 text-white shadow-sm',
   error: 'bg-error-600 hover:bg-error-700 focus:ring-error-500 text-white shadow-sm',
-  ghost: 'bg-transparent hover:bg-secondary-100 focus:ring-secondary-500 text-secondary-700 dark:hover:bg-secondary-800 dark:text-secondary-300',
+  ghost:
+    'bg-transparent hover:bg-secondary-100 focus:ring-secondary-500 text-secondary-700 dark:hover:bg-secondary-800 dark:text-secondary-300',
 };
 
 const buttonSizes = {
@@ -27,18 +29,21 @@ const buttonSizes = {
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({
-    className,
-    variant = 'primary',
-    size = 'md',
-    loading = false,
-    fullWidth = false,
-    leftIcon,
-    rightIcon,
-    children,
-    disabled,
-    ...props
-  }, ref) => {
+  (
+    {
+      className,
+      variant = 'primary',
+      size = 'md',
+      loading = false,
+      fullWidth = false,
+      leftIcon,
+      rightIcon,
+      children,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
     const isDisabled = disabled || loading;
 
     return (
@@ -47,7 +52,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={clsx(
           'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200',
           'focus:outline-none focus:ring-2 focus:ring-offset-2',
-          'disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none',
+          'disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none',
           buttonVariants[variant],
           buttonSizes[size],
           fullWidth && 'w-full',
@@ -57,11 +62,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading && (
-          <svg
-            className="h-4 w-4 animate-spin"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
+          <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
             <circle
               className="opacity-25"
               cx="12"

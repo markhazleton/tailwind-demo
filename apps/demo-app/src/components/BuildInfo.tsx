@@ -5,13 +5,10 @@ interface BuildInfoProps {
   variant?: 'full' | 'version-only' | 'date-only';
 }
 
-export const BuildInfo: React.FC<BuildInfoProps> = ({ 
-  className = '', 
-  variant = 'full' 
-}) => {
+export const BuildInfo: React.FC<BuildInfoProps> = ({ className = '', variant = 'full' }) => {
   const buildDate = __BUILD_DATE__;
   const buildVersion = __BUILD_VERSION__;
-  
+
   // Format the date for display
   const formatDate = (isoString: string) => {
     const date = new Date(isoString);
@@ -21,7 +18,7 @@ export const BuildInfo: React.FC<BuildInfoProps> = ({
       day: 'numeric',
       hour: '2-digit',
       minute: '2-digit',
-      timeZoneName: 'short'
+      timeZoneName: 'short',
     });
   };
 
@@ -44,7 +41,7 @@ export const BuildInfo: React.FC<BuildInfoProps> = ({
   };
 
   return (
-    <div 
+    <div
       className={`text-xs text-gray-500 dark:text-gray-500 ${className}`}
       title={`Build version ${buildVersion}, built on ${formatDate(buildDate)}`}
     >
