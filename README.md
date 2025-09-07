@@ -1,1133 +1,125 @@
 # TailwindSpark ✨
 
-**Part of the [WebSpark](https://webspark.markhazleton.com) Portfolio by [Mark Hazleton](https://markhazleton.com)**
+A comprehensive Tailwind CSS showcase built as a modern React TypeScript monorepo. Part of the WebSpark portfolio by Mark Hazleton.
 
-> _A comprehensive demonstration monorepo showcasing modern web development with React, TypeScript, and Tailwind CSS, designed as an interactive showcase of utility-first CSS framework capabilities with advanced SEO, performance optimizations, and user experience enhancements._
+![TailwindSpark Demo](https://raw.githubusercontent.com/markhazleton/tailwind-demo/main/apps/demo-app/public/TailwindSpark.png)
 
-TailwindSpark is a cutting-edge React TypeScript monorepo that demonstrates the full power of Tailwind CSS through interactive components, animations, and a complete SaaS dashboard implementation. Built with modern development practices, it serves as both a learning resource and a template for production-ready applications with enterprise-grade features.
+## 🚀 Quick Start
 
-## 🎯 About TailwindSpark
+Get up and running in under 5 minutes:
 
-TailwindSpark represents the intersection of design and development, showcasing how utility-first CSS can create beautiful, responsive, and accessible user interfaces. As part of the WebSpark suite of applications, it demonstrates practical implementations of modern web technologies while maintaining focus on real-world usability and performance.
+```bash
+# Clone the repository
+git clone https://github.com/markhazleton/tailwind-demo.git
+cd tailwind-demo
 
-**Created by Mark Hazleton** - Solutions Architect passionate about making technology work for business. This project embodies a lifelong learning approach, focusing on substance over style.
+# Install dependencies
+npm install
 
-### 🌟 Why TailwindSpark?
+# Start development server
+npm run dev
+```
 
-- **Educational Resource**: Learn Tailwind CSS through interactive examples
-- **Production Template**: Use as a starting point for your own projects
-- **Design System Reference**: Comprehensive component library with TypeScript
-- **Modern Architecture**: Monorepo structure with build optimization
-- **Accessibility First**: WCAG compliant components throughout
-- **SEO Optimized**: Comprehensive meta tags, structured data, and social media optimization
-- **Performance Focused**: Service worker caching and optimized loading
-- **User Experience**: Advanced search, keyboard shortcuts, and error handling
+Open [http://localhost:5173](http://localhost:5173) to view the demo.
 
-## 🚀 Features
+## ✨ Features
 
-### **Core Features**
-
-- **Monorepo Architecture**: Organized with Turborepo for optimal build caching and task orchestration
-- **TypeScript First**: Full type safety across all packages with comprehensive interfaces
-- **Tailwind CSS**: Utility-first CSS framework with custom design tokens
-- **Component Library**: Reusable UI components (Button, Card, Modal, Forms) with multiple variants
-- **Design System Showcase**: Comprehensive demonstration of all components with interactive examples
-- **Animation Showcase**: Complete demonstration of Tailwind's transition and animation utilities
-- **SaaS Dashboard**: Full-featured business dashboard for "PromptSpark" with unified navigation
-- **Dashboard Pages**: Analytics, User Management, Settings, and Overview pages with shared layout
-- **Routing**: React Router integration with dedicated pages for different features
-- **Dark Mode**: System preference detection with manual toggle and persistent storage
-- **Form Components**: Complete form library with validation, icons, and accessibility
-- **Responsive Design**: Mobile-first approach with adaptive layouts
-- **Accessibility**: WCAG compliant components with proper ARIA attributes
-- **Modern Tooling**: Vite, ESLint, Prettier, and VS Code integration
-
-### **Advanced Features (v1.1.0+)**
-
-- **SEO Optimization**: Comprehensive meta tags, structured data, and social media optimization
-- **Global Search**: Intelligent search with keyboard shortcuts (Ctrl/Cmd + K)
-- **Error Boundaries**: Graceful error handling with user-friendly fallbacks
-- **Service Worker**: Offline caching and performance optimization
-- **Keyboard Shortcuts**: Enhanced navigation with power user features
-- **Loading Components**: Reusable loading spinners and states
-- **Analytics Integration**: Google Analytics tracking for user behavior insights
-- **Sitemap Generation**: XML sitemap for better search engine indexing
-- **Robots.txt**: Search engine crawling instructions
-- **Social Media Images**: Open Graph and Twitter Card optimization
-- **Performance Monitoring**: Real-time performance metrics and error tracking
-- **Build Versioning**: Auto-incrementing build timestamps and version tracking in footer
-
-## 🌐 Live Demo & Portfolio Integration
-
-### 🔥 TailwindSpark Live Demo
-
-**[https://markhazleton.github.io/tailwind-demo/](https://markhazleton.github.io/tailwind-demo/)**
-
-### 🌐 WebSpark Portfolio
-
-This project is part of the comprehensive WebSpark suite:
-
-- **[WebSpark Main Site](https://webspark.markhazleton.com)** - Complete portfolio overview
-- **[Mark Hazleton](https://markhazleton.com)** - Professional profile and articles
-- **[WebSpark Evolution Article](https://markhazleton.com/articles/webspark-the-next-evolution-of-web-project-mechanics.html)** - The story behind WebSpark
-
-### 🚀 Other WebSpark Applications
-
-- **PromptSpark** - AI prompt management for Large Language Models
-- **RecipeSpark** - Recipe organization and sharing platform
-- **TriviaSpark** - Interactive quizzes and trivia games
-- **TailwindSpark** - This comprehensive Tailwind CSS showcase
-
-**Local Development**: Visit <http://localhost:5173> when running locally
-
-### Available Routes
-
-- **Home** (`/`): Welcome page with feature overview and navigation
-- **Design System** (`/design-system`): Comprehensive showcase of all Tailwind components including:
-  - Button variations (6 variants, 4 sizes, with icons and states)
-  - Form components (inputs, textareas, selects, checkboxes, radio buttons)
-  - Card layouts (3 variants with headers, content, and footers)
-  - Modal dialogs (5 sizes with accessibility features)
-  - Interactive examples with live code demonstration
-- **Animation Showcase** (`/animations`): Complete demonstration of Tailwind's animation utilities including:
-  - Transition effects (scale, color, opacity, rotate, translate, shadow)
-  - Keyframe animations (spin, ping, pulse, bounce)
-  - Interactive animations (loading states, modal transitions)
-  - Complex animations (floating effects, morphing buttons)
-  - User-triggered animations and state-based transitions
-- **SaaS Dashboard** (`/dashboard`): Full-featured business dashboard inspired by "PromptSpark" design patterns with:
-  - **Dashboard Overview**: Revenue metrics, charts, transaction history, and activity feed
-  - **Analytics** (`/dashboard/analytics`): Detailed metrics, traffic sources, top pages, and data visualization
-  - **User Management** (`/dashboard/users`): User filtering, search, role management, and bulk actions
-  - **Settings** (`/dashboard/settings`): General, Security, Notifications, API, and Billing configuration
-  - **Unified Navigation**: Consistent sidebar navigation with responsive design and dark mode support
+- **🎨 Complete Design System** - Comprehensive Tailwind CSS components and utilities
+- **🏗️ Monorepo Architecture** - Turborepo with shared packages and optimized builds
+- **⚡ Modern Stack** - React 19, TypeScript, Vite, and cutting-edge tooling
+- **🔧 Developer Experience** - Hot reload, type safety, linting, and testing
+- **📱 Responsive Design** - Mobile-first approach with dark mode support
+- **🚀 CI/CD Ready** - Automated testing, security scanning, and deployment
 
 ## 📁 Project Structure
 
-```text
+```
 tailwind-demo/
-├── apps/
-│   └── demo-app/                 # Vite React demo application
-│       ├── src/
-│       │   ├── components/       # Shared components (Layout, ThemeToggle, DashboardLayout, SearchComponent, ErrorBoundary, LoadingSpinner)
-│       │   ├── hooks/            # Custom hooks (useKeyboardShortcuts, useAnalytics)
-│       │   ├── pages/            # Route pages (HomePage, DesignSystemPage, AnimationPage, DashboardPage, AnalyticsPage, UsersPage, SettingsPage)
-│       │   ├── sections/         # Component showcases (ButtonShowcase, FormShowcase, AnimationShowcase, etc.)
-│       │   └── App.tsx           # Main application with routing and error boundaries
-│       ├── public/               # Static assets (sitemap.xml, robots.txt, sw.js, og-image.svg)
-│       ├── tailwind.config.js    # Tailwind configuration
-│       └── package.json
+├── apps/demo-app/              # Main React application
 ├── packages/
-│   ├── design-tokens/            # Shared design system
-│   │   ├── tailwind.config.js    # Base Tailwind config
-│   │   ├── tokens/               # Design tokens
-│   │   └── package.json
-│   └── ui-components/            # Reusable UI components
-│       ├── src/
-│       │   ├── components/       # Button, Card, Modal, Form components
-│       │   └── index.ts          # Component exports
-│       ├── tailwind.config.js    # Component-specific config
-│       └── package.json
-├── .vscode/                      # VS Code settings
-│   ├── settings.json             # Editor configuration
-│   └── extensions.json           # Recommended extensions
-├── turbo.json                    # Turborepo configuration
-└── package.json                  # Root dependencies
+│   ├── design-tokens/          # Shared design system
+│   └── ui-components/          # Reusable UI components
+├── docs/                       # Documentation
+└── .github/                    # CI/CD workflows
 ```
 
-## 🔍 SEO & Metadata
-
-**Keywords**: Tailwind CSS, React, TypeScript, Component Library, Design System, SaaS Dashboard, Web Development, UI Components, WebSpark, Mark Hazleton, CSS Framework, Frontend Development
-
-**Description**: TailwindSpark - A comprehensive React TypeScript monorepo showcasing Tailwind CSS capabilities through interactive components, animations, and SaaS dashboard implementations. Features advanced SEO optimization, performance enhancements, and user experience improvements. Part of the WebSpark portfolio by Mark Hazleton.
-
-**Technologies**: React 19, TypeScript 5.3, Tailwind CSS 3.4, Vite 7, Turborepo 1.12, GitHub Pages
-
-**Author**: Mark Hazleton - Solutions Architect | [markhazleton.com](https://markhazleton.com) | [LinkedIn](https://www.linkedin.com/in/markhazleton/) | [GitHub](https://github.com/markhazleton/)
-
-**Portfolio Integration**: This project demonstrates practical application of modern web technologies as part of the WebSpark suite, showcasing real-world implementations rather than theoretical concepts.
-
-## 🛠️ Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm 10+
-
-### Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/MarkHazleton/tailwind-demo.git
-   cd tailwind-demo
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Build all packages**
-
-   ```bash
-   npm run build
-   ```
-
-4. **Start development server**
-
-   ```bash
-   npm run dev
-   ```
-
-The demo app will be available at `http://localhost:5173`
-
-## 📦 Packages
-
-### `@tailwindspark/design-tokens`
-
-Centralized design system containing:
-
-- **Color Palette**: Primary, secondary, success, warning, error colors with 50-950 shades
-- **Typography**: Font families, sizes, and weights
-- **Spacing**: Consistent spacing scale
-- **Border Radius**: Standardized border radius values
-- **Shadows**: Elevation system with multiple shadow levels
-- **Animations**: Custom keyframes and transitions
-
-### `@tailwindspark/ui-components`
-
-Reusable React components with TypeScript interfaces:
-
-#### Button Component
-
-- **Variants**: primary, secondary, success, warning, error, ghost
-- **Sizes**: sm, md, lg, xl
-- **States**: loading, disabled
-- **Features**: icons, full width, custom styling
-
-#### Form Components
-
-Complete form library with accessibility and validation:
-
-- **Input**: Text inputs with icons, validation states, helper text
-- **Textarea**: Multi-line text input with auto-resize
-- **Select**: Dropdown with customizable options
-- **Checkbox**: Checkboxes with labels and helper text
-- **Radio**: Radio button groups for single selection
-- **Features**: TypeScript interfaces, validation states, accessibility
-
-#### Card Component
-
-- **Variants**: default, bordered, elevated
-- **Subcomponents**: CardHeader, CardContent, CardFooter
-- **Flexible**: customizable padding and layout
-
-#### Modal Component
-
-- **Sizes**: sm, md, lg, xl, full
-- **Features**: keyboard navigation, click outside to close, focus management
-- **Subcomponents**: ModalHeader, ModalContent, ModalFooter
-- **Accessible**: ARIA attributes and screen reader support
-
-### Demo Application
-
-Comprehensive showcase featuring:
-
-- **Design System Page**: Interactive examples of all components with live demonstrations
-- **Animation Showcase Page**: Complete demonstration of Tailwind's animation utilities
-- **SaaS Dashboard**: Full-featured business dashboard with modern UI/UX patterns
-- **Component Gallery**: Button, form, card, and modal variations
-- **Animation Gallery**: Transition effects, keyframe animations, and interactive examples
-- **Dashboard Features**: Analytics charts, user management, settings configuration, and real-time data
-- **Routing**: React Router with navigation between Home, Design System, Animation, and Dashboard pages
-- **Responsive Layouts**: Grid systems and flexible designs that work across all devices
-- **Dark Mode Toggle**: System preference detection with manual override across all pages
-- **Form Validation**: Live examples with error states and validation in settings and forms
-- **Animation Interactions**: User-triggered animations and state-based transitions
-- **Accessibility Demos**: Keyboard navigation and screen reader support throughout
-
-## 🎨 Design System
-
-### Animation Showcase
-
-The Animation Showcase demonstrates Tailwind CSS's powerful animation and transition utilities:
-
-#### Transition Effects
-
-- **Scale Transforms**: Hover effects with smooth scaling animations
-- **Color Transitions**: Smooth color changes between states
-- **Opacity Fades**: Elegant fade in/out effects
-- **Rotate Transforms**: Spinning and rotation animations
-- **Translate Animations**: Slide and movement effects
-- **Shadow Growth**: Dynamic shadow changes for depth
-
-#### Keyframe Animations
-
-- **Spin**: Loading spinners and rotating elements
-- **Ping**: Notification dots with expanding ripple effects
-- **Pulse**: Breathing animations for emphasis
-- **Bounce**: Playful bouncing effects for interactive elements
-
-#### Interactive Animations
-
-- **Loading States**: Button animations with loading indicators
-- **Modal Transitions**: Smooth modal entrance and exit animations
-- **User-Triggered**: Click and hover-activated animations
-- **State-Based**: Animations that respond to component state changes
-
-#### Complex Animations
-
-- **Floating Cards**: Multi-property animations with scale, rotate, and shadow
-- **Morphing Buttons**: Gradient transitions with transform effects
-- **Backdrop Effects**: Animated overlays and background transitions
-
-### SaaS Dashboard Demo
-
-The SaaS Dashboard demonstrates a complete business application interface for "PromptSpark":
-
-#### Dashboard Overview Page
-
-- **Revenue Metrics**: Total revenue, monthly recurring revenue, and growth statistics
-- **Interactive Charts**: Revenue trends with data visualization and tooltips
-- **Recent Transactions**: Transaction history with status indicators and amounts
-- **Activity Feed**: Real-time updates of user actions and system events
-- **Quick Stats**: User count, conversion rates, and performance metrics
-
-#### Analytics Page
-
-- **Traffic Analytics**: Page views, unique visitors, and bounce rate metrics
-- **Traffic Sources**: Breakdown of organic, direct, social, and referral traffic
-- **Top Pages**: Most visited pages with performance indicators
-- **Time Range Selector**: Filter data by different time periods
-- **Data Visualization**: Charts and graphs for trend analysis
-
-#### User Management Page
-
-- **User Directory**: Complete user list with search and filtering capabilities
-- **Role Management**: User roles (Admin, Editor, Viewer) with permission controls
-- **Status Tracking**: Active, pending, and suspended user states
-- **Bulk Actions**: Select multiple users for batch operations
-- **User Invitation**: Invite new users with role assignment
-
-#### Settings Page
-
-- **General Settings**: Company information, contact details, and timezone configuration
-- **Security Settings**: Two-factor authentication, password policies, and session management
-- **Notification Preferences**: Email, push notifications, reports, and security alerts
-- **API Configuration**: API key management, webhook URLs, and rate limiting
-- **Billing & Subscription**: Plan details, usage metrics, and payment information
-
-#### Dashboard Features
-
-- **Unified Navigation**: Consistent left sidebar with active state highlighting
-- **Responsive Header**: Search functionality, notifications, and user profile menu
-- **Page-Specific Actions**: Custom header buttons for each dashboard section
-- **Mobile Responsive**: Collapsible sidebar and adaptive layouts for all screen sizes
-- **Dark Mode Support**: Complete theming across all dashboard components
-- **Auto-Save Detection**: Visual indicators and save prompts for unsaved changes
-
-### Color Palette
-
-The design system uses a comprehensive color palette with semantic naming:
-
-```css
-/* Primary Colors */
-primary-50   #f0f9ff
-primary-500  #0ea5e9  /* Main brand color */
-primary-950  #082f49
-
-/* Semantic Colors */
-success-500  #22c55e   /* Success states */
-warning-500  #f59e0b   /* Warning states */
-error-500    #ef4444   /* Error states */
-```
-
-### Component Variants
-
-Each component supports multiple variants for different use cases:
-
-```tsx
-// Button variants
-<Button variant="primary">Primary Action</Button>
-<Button variant="secondary">Secondary Action</Button>
-<Button variant="ghost">Subtle Action</Button>
-
-// Card variants
-<Card variant="default">Basic card</Card>
-<Card variant="bordered">Card with border</Card>
-<Card variant="elevated">Card with shadow</Card>
-
-// Form components
-<Input label="Email" type="email" leftIcon={<Mail />} />
-<Select label="Country" options={countryOptions} />
-<Checkbox label="Subscribe to newsletter" />
-<Radio name="plan" value="pro" label="Pro Plan" />
-
-// Animation examples
-<div className="transition-transform duration-300 hover:scale-110">
-  Scale on hover
-</div>
-<div className="animate-pulse">Pulsing element</div>
-<div className="animate-bounce">Bouncing element</div>
-<div className="transition-colors duration-500 hover:bg-blue-500">
-  Color transition
-</div>
-```
-
-## 🔧 Development
-
-### Available Scripts
+## 📚 Documentation
+
+- **[Getting Started](./docs/GETTING_STARTED.md)** - Setup and development guide
+- **[Architecture](./docs/ARCHITECTURE.md)** - Technical architecture overview  
+- **[Testing](./docs/TESTING.md)** - Testing strategies and best practices
+- **[Deployment](./docs/DEPLOYMENT.md)** - Deployment and CI/CD information
+- **[Branding](./docs/BRANDING.md)** - Brand guidelines and assets
+- **[Changelog](./docs/CHANGELOG.md)** - Version history and updates
+
+## 🛠️ Available Scripts
 
 ```bash
-# Development
-npm run dev          # Start all development servers
+npm run dev          # Start development server
 npm run build        # Build all packages
-npm run lint         # Lint all packages
-npm run type-check   # TypeScript type checking
-npm run clean        # Clean all build artifacts
-
-# Formatting
-npm run format       # Format code with Prettier
-npm run format:check # Check code formatting
+npm run test         # Run tests with coverage
+npm run lint         # Run ESLint
+npm run type-check   # Run TypeScript checks
 ```
 
-### VS Code Integration
+## 🌐 Live Demo
 
-The project includes VS Code configuration for optimal development experience:
+Visit the live demo: **[TailwindSpark Demo](https://markhazleton.github.io/tailwind-demo/)**
 
-- **Tailwind CSS IntelliSense**: Autocomplete and syntax highlighting
-- **Auto-formatting**: Prettier integration with Tailwind class sorting
-- **ESLint Integration**: Real-time linting and error detection
-- **TypeScript Support**: Full IntelliSense and type checking
+Explore the showcase of:
 
-### Recommended Extensions
+- Interactive component demos
+- Responsive layouts and themes
+- Dashboard and e-commerce examples
+- Marketing and analytics pages
 
-- Tailwind CSS IntelliSense
-- Prettier - Code formatter
-- ESLint
-- TypeScript and JavaScript Language Features
+## 🏆 Highlights
 
-## 🌙 Dark Mode Implementation
+### Technology Excellence
 
-The application supports dark mode through:
+- **React 19** with concurrent features
+- **TypeScript** strict mode enabled
+- **Tailwind CSS 3.4** with JIT compilation
+- **Vite 7** for lightning-fast builds
+- **Vitest** for comprehensive testing
 
-1. **System Preference Detection**: Automatically detects user's system theme
-2. **Manual Toggle**: Theme switcher component with persistent storage
-3. **CSS Classes**: Tailwind's `dark:` prefix for dark mode styling
-4. **Local Storage**: Remembers user preference across sessions
+### Development Quality
 
-```tsx
-// Dark mode usage example
-<div className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-  Content that adapts to theme
-</div>
-```
+- **100% TypeScript** - Type-safe throughout
+- **ESLint + Prettier** - Consistent code quality
+- **Automated testing** - Unit and integration tests
+- **Security scanning** - CodeQL and dependency audits
+- **Performance optimized** - Code splitting and lazy loading
 
-## 🧭 Routing & Navigation
+### Production Ready
 
-The application uses React Router for client-side routing:
+- **GitHub Actions CI/CD** - Automated deployments
+- **Dependency management** - Automated updates with Dependabot
+- **Performance monitoring** - Bundle analysis and optimization
+- **Accessibility** - WCAG 2.1 AA compliant components
 
-### Route Structure
+## 🤝 Contributing
 
-- **Home** (`/`): Landing page with feature overview and quick navigation
-- **Design System** (`/design-system`): Complete component showcase with live examples
-- **Animation Showcase** (`/animations`): Comprehensive demonstration of Tailwind's animation utilities
-- **SaaS Dashboard** (`/dashboard`): Business dashboard with unified navigation including:
-  - **Dashboard Overview** (`/dashboard`): Main dashboard with metrics and activity
-  - **Analytics** (`/dashboard/analytics`): Detailed analytics and data visualization
-  - **User Management** (`/dashboard/users`): User directory and management tools
-  - **Settings** (`/dashboard/settings`): Application configuration and preferences
+We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for details.
 
-### Navigation Features
-
-- **Sticky Header**: Persistent navigation with active route highlighting
-- **Dashboard Sidebar**: Collapsible navigation sidebar for dashboard pages
-- **Responsive Menu**: Adapts to different screen sizes with mobile-friendly overlays
-- **Theme Toggle**: Available on all pages with state preservation
-- **Smooth Transitions**: CSS transitions between route changes
-- **Active State Management**: Visual indicators for current page and section
-
-```tsx
-// Routing implementation
-<Router>
-  <Layout isDark={isDark} toggleTheme={toggleTheme}>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/design-system" element={<DesignSystemShowcase />} />
-      <Route path="/animations" element={<AnimationPage />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
-      <Route path="/dashboard/analytics" element={<AnalyticsPage />} />
-      <Route path="/dashboard/users" element={<UsersPage />} />
-      <Route path="/dashboard/settings" element={<SettingsPage />} />
-    </Routes>
-  </Layout>
-</Router>
-```
-
-## 📱 Responsive Design
-
-Mobile-first responsive design using Tailwind's breakpoint system:
-
-```css
-/* Tailwind Breakpoints */
-sm: 640px   /* Small devices */
-md: 768px   /* Medium devices */
-lg: 1024px  /* Large devices */
-xl: 1280px  /* Extra large devices */
-```
-
-Components automatically adapt to different screen sizes with responsive variants:
-
-```tsx
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-  Responsive grid layout
-</div>
-
-// Dashboard Layout with responsive sidebar
-<DashboardLayout
-  pageTitle="Analytics"
-  pageDescription="View detailed analytics and insights"
-  headerActions={<TimeRangeSelector />}
->
-  <div className="space-y-6">
-    {/* Dashboard content */}
-  </div>
-</DashboardLayout>
-```
-
-## ♿ Accessibility
-
-All components are built with accessibility in mind:
-
-- **Semantic HTML**: Proper use of semantic elements
-- **ARIA Attributes**: Screen reader support
-- **Keyboard Navigation**: Full keyboard accessibility
-- **Color Contrast**: WCAG AA compliant color combinations
-- **Focus Management**: Visible focus indicators and logical tab order
-
-## 🚀 Deployment
-
-### GitHub Pages Deployment (Live Demo)
-
-This project is automatically deployed to GitHub Pages at: **<https://markhazleton.github.io/tailwind-demo/>**
-
-#### Automated Deployment Process
-
-The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that:
-
-1. **Triggers**: Automatically deploys on every push to the `main` branch
-2. **Environment**: Runs on Ubuntu with Node.js 18
-3. **Build Process**: Builds packages in dependency order
-4. **Deployment**: Uses GitHub's built-in Pages deployment action
-
-#### GitHub Pages Configuration Requirements
-
-For successful deployment, the following configurations were essential:
-
-**1. Vite Configuration (`apps/demo-app/vite.config.ts`)**
-
-```typescript
-export default defineConfig({
-  plugins: [react()],
-  base: '/tailwind-demo/', // GitHub Pages subdirectory
-  build: {
-    outDir: '../../dist', // Build to root for GitHub Actions
-  },
-});
-```
-
-**2. React Router Configuration (SPA Support)**
-
-```typescript
-// Using HashRouter for GitHub Pages compatibility
-import { HashRouter as Router } from 'react-router-dom';
-
-function App() {
-  return (
-    <Router>
-      {/* Your routes */}
-    </Router>
-  );
-}
-```
-
-**3. 404.html for Single Page Application**
-
-```html
-<!-- public/404.html - Redirects to index.html for SPA routing -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Tailwind Demo</title>
-    <script type="text/javascript">
-      var pathSegmentsToKeep = 1;
-      var l = window.location;
-      l.replace(
-        l.protocol +
-          '//' +
-          l.hostname +
-          (l.port ? ':' + l.port : '') +
-          l.pathname
-            .split('/')
-            .slice(0, 1 + pathSegmentsToKeep)
-            .join('/') +
-          '/?/' +
-          l.pathname
-            .slice(1)
-            .split('/')
-            .slice(pathSegmentsToKeep)
-            .join('/')
-            .replace(/&/g, '~and~') +
-          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-          l.hash
-      );
-    </script>
-  </head>
-  <body></body>
-</html>
-```
-
-#### Common Issues and Solutions
-
-**Issue 1: Module Resolution Errors**
-
-```
-Error: Could not resolve "@tailwindspark/ui-components"
-```
-
-_Solution_: Ensure all packages in the monorepo are tracked in git. Check `.gitignore` doesn't exclude the `packages/` directory.
-
-**Issue 2: ESM/CommonJS Compatibility**
-
-```
-Error [ERR_REQUIRE_ESM]: require() of ES Module not supported
-```
-
-_Solution_: Add `"type": "module"` to package.json and ensure compatible versions:
-
-```json
-{
-  "type": "module",
-  "devDependencies": {
-    "vite": "^7.0.4",
-    "@vitejs/plugin-react": "^4.6.0"
-  }
-}
-```
-
-**Issue 3: Build Dependencies**
-
-```
-Error: Package not found in workspace
-```
-
-_Solution_: Build packages in correct dependency order:
-
-```yaml
-# GitHub Actions workflow
-- name: Build design tokens
-  run: npm run build
-  working-directory: packages/design-tokens
-
-- name: Build UI components
-  run: npm run build
-  working-directory: packages/ui-components
-
-- name: Build demo app
-  run: npm run build
-  working-directory: apps/demo-app
-```
-
-**Issue 4: .gitignore Conflicts**
-
-```
-# Problem: .NET ignore patterns excluded Node.js packages
-**/[Pp]ackages/*
-
-# Solution: Add exceptions for monorepo packages
-**/[Pp]ackages/*
-!packages/
-!packages/*/
-!packages/**/*.ts
-!packages/**/*.tsx
-!packages/**/*.js
-!packages/**/*.json
-!packages/**/*.config.*
-```
-
-#### Manual Deployment Steps
-
-If you need to deploy manually:
-
-```bash
-# 1. Build all packages
-npm run build
-
-# 2. The dist folder contains the built application
-# 3. Deploy the contents of ./dist to your hosting provider
-```
-
-### Alternative Deployment Options
-
-#### Vercel (Recommended for Production)
-
-1. **Connect Repository**: Link your GitHub repo to Vercel
-2. **Build Settings**:
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-   - Install Command: `npm install`
-3. **Environment Variables**: None required for this demo
-
-#### Netlify
-
-1. **Build Settings**:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-2. **Redirects**: Add `_redirects` file for SPA routing:
-
-   ```
-   /*    /index.html   200
-   ```
-
-#### Static Hosting
-
-For any static hosting provider:
-
-```bash
-npm run build
-# Upload the contents of ./dist folder
-```
-
-### Deployment Verification
-
-After deployment, verify these features work correctly:
-
-- ✅ **Routing**: All routes (`/`, `/design-system`, `/animations`, `/dashboard/*`) load correctly
-- ✅ **Assets**: CSS, JS, and image assets load properly
-- ✅ **SPA Navigation**: Browser back/forward buttons work
-- ✅ **Direct URL Access**: Typing URLs directly in browser works
-- ✅ **Mobile Responsive**: Layout adapts to different screen sizes
-- ✅ **Dark Mode**: Theme toggle persists across page refreshes
-
-### Development vs Production
-
-| Feature      | Development          | Production (GitHub Pages) |
-| ------------ | -------------------- | ------------------------- |
-| Base URL     | `/`                  | `/tailwind-demo/`         |
-| Router       | BrowserRouter        | HashRouter                |
-| Build Output | `apps/demo-app/dist` | `./dist`                  |
-| Hot Reload   | ✅ Enabled           | ❌ Static files           |
-| Source Maps  | ✅ Enabled           | ❌ Disabled               |
-
-### Troubleshooting GitHub Pages Deployment
-
-If you encounter deployment issues, follow this systematic troubleshooting approach:
-
-#### Step 1: Check GitHub Actions Logs
-
-1. Go to your repository's **Actions** tab
-2. Click on the failed deployment run
-3. Expand the build steps to see detailed error messages
-
-#### Step 2: Common Error Patterns
-
-**"No such file or directory: packages/[package-name]"**
-
-- **Cause**: Package directories not tracked in git
-- **Fix**: Check `.gitignore` and ensure packages are committed:
-
-  ```bash
-  git add packages/
-  git commit -m "Add packages to git tracking"
-  ```
-
-**"Module not found: @tailwindspark/[package-name]"**
-
-- **Cause**: Monorepo dependencies not built in correct order
-- **Fix**: Update GitHub Actions to build packages individually:
-
-  ```yaml
-  - run: npm run build
-    working-directory: packages/design-tokens
-  - run: npm run build
-    working-directory: packages/ui-components
-  - run: npm run build
-    working-directory: apps/demo-app
-  ```
-
-**"ERR_REQUIRE_ESM" or module system errors**
-
-- **Cause**: Incompatible Vite/plugin versions or missing module type
-- **Fix**: Update package.json in affected packages:
-
-  ```json
-  {
-    "type": "module",
-    "devDependencies": {
-      "vite": "^7.0.4",
-      "@vitejs/plugin-react": "^4.6.0"
-    }
-  }
-  ```
-
-#### Step 3: Local Testing
-
-Before pushing changes, always test locally:
-
-```bash
-# Test individual package builds
-cd packages/design-tokens && npm run build
-cd ../ui-components && npm run build
-cd ../../apps/demo-app && npm run build
-
-# Test the built application
-npm run preview
-```
-
-#### Step 4: Validate Git Tracking
-
-Ensure all necessary files are tracked:
-
-```bash
-# Check what packages files are in git
-git ls-files packages/
-
-# Should include:
-# packages/design-tokens/package.json
-# packages/design-tokens/tailwind.config.js
-# packages/ui-components/src/
-# packages/ui-components/package.json
-# etc.
-```
-
-#### Step 5: Deployment Checklist
-
-Before each deployment, verify:
-
-- [ ] All packages build successfully locally
-- [ ] `dist` folder is excluded from git (build artifact)
-- [ ] `packages/` source files are tracked in git
-- [ ] Vite config has correct `base` path
-- [ ] HashRouter is used instead of BrowserRouter
-- [ ] 404.html exists in public folder
-- [ ] GitHub Pages is enabled in repository settings
-
-### CI/CD Pipeline
-
-The deployment pipeline includes:
-
-1. **Dependency Installation**: `npm install` with workspace support
-2. **Package Builds**: Individual package builds in dependency order
-3. **Type Checking**: TypeScript compilation across all packages
-4. **Asset Optimization**: Vite production build with minification
-5. **Deployment**: GitHub Pages deployment with artifact upload
-6. **Cache Management**: Turborepo caching for faster subsequent builds
-
-## 📖 GitHub Pages Deployment Saga: The Complete Journey
-
-This section documents the complete journey of getting TailwindSpark to work perfectly on GitHub Pages, including all the challenges encountered, solutions attempted, and what ultimately worked. This serves as both a learning resource and troubleshooting guide for similar projects.
-
-### 🎯 The Goal
-
-**Objective**: Make the GitHub Pages deployment (`https://markhazleton.github.io/tailwind-demo/`) function identically to the local development version, with all assets loading correctly and routing working properly.
-
-### 🚧 GitHub Pages Deployment - 404 Asset Issues (RESOLVED ✅)
-
-**Issue Resolved**: The TailwindSpark GitHub Pages deployment previously experienced 404 errors for static assets due to incorrect path resolution when hosted at `https://markhazleton.github.io/tailwind-demo/`.
-
-#### **The Problem**
-
-When deployed to GitHub Pages, the application experienced multiple 404 errors:
-
-```console
-Failed to load resource: the server responded with a status of 404 ()
-- TailwindSpark.png
-- favicon.ico
-- favicon-16x16.png
-- favicon-32x32.png
-- site.webmanifest
-```
-
-**Root Cause**: Static asset paths in HTML, React components, and manifest files were not correctly accounting for the `/tailwind-demo/` base path required by GitHub Pages subdirectory hosting.
-
-#### **The Solution** ✅
-
-The issue was resolved through a comprehensive approach addressing all asset path references:
-
-##### 1. HTML Favicon Links
-
-```html
-<!-- BEFORE (404 errors) -->
-<link rel="icon" href="TailwindSpark.png" type="image/png" />
-
-<!-- AFTER (working) -->
-<link rel="icon" href="/tailwind-demo/TailwindSpark.png" type="image/png" />
-```
-
-##### 2. React Logo Component
-
-```tsx
-// BEFORE: Runtime path construction
-const logoSrc = `${import.meta.env.BASE_URL}TailwindSpark.png`;
-
-// AFTER: Proper Vite import processing
-import logoImage from '/TailwindSpark.png';
-const logoSrc = logoImage; // Vite automatically adds /tailwind-demo/ prefix
-```
-
-##### 3. Web Manifest Configuration
-
-```json
-{
-  "start_url": "/tailwind-demo/",
-  "scope": "/tailwind-demo/",
-  "icons": [
-    {
-      "src": "/tailwind-demo/TailwindSpark.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
-}
-```
-
-##### 4. Vite Configuration
-
-```typescript
-// vite.config.ts
-export default defineConfig({
-  base: '/tailwind-demo/', // Critical for GitHub Pages subdirectory
-  // ...other config
-});
-```
-
-#### **Current Status** ✅
-
-All asset loading issues have been resolved:
-
-| Asset Type           | Status     | URL Resolution                     |
-| -------------------- | ---------- | ---------------------------------- |
-| **Favicons**         | ✅ Working | `/tailwind-demo/favicon.ico`       |
-| **Logo Images**      | ✅ Working | `/tailwind-demo/TailwindSpark.png` |
-| **PWA Manifest**     | ✅ Working | `/tailwind-demo/site.webmanifest`  |
-| **React Components** | ✅ Working | Vite handles path resolution       |
-
-**Live Demo**: [https://markhazleton.github.io/tailwind-demo/](https://markhazleton.github.io/tailwind-demo/)
-
-#### **Key Learnings for GitHub Pages Deployment**
-
-1. **HTML Assets**: Must include full base path for favicon and manifest links
-2. **React Assets**: Use Vite imports (`import image from '/path'`) rather than runtime path construction
-3. **PWA Files**: Manually update `site.webmanifest` with correct base paths
-4. **Build Config**: Ensure `base` setting in `vite.config.ts` matches repository name
-5. **Testing**: Always verify deployment on actual GitHub Pages URL, not just locally
-
-### ✅ Final Working Solution
-
-The complete solution involved addressing asset path resolution across all parts of the application:
-
-#### **Step 1: HTML Template Updates**
-
-```html
-<!-- Updated index.html with correct base paths -->
-<link rel="shortcut icon" href="/tailwind-demo/TailwindSpark.png" type="image/png" />
-<link rel="icon" href="/tailwind-demo/TailwindSpark.png" type="image/png" />
-<link rel="manifest" href="/tailwind-demo/site.webmanifest" />
-```
-
-#### **Step 2: React Component Fixes**
-
-```tsx
-// Logo.tsx - Proper Vite import processing
-import logoImage from '/TailwindSpark.png';
-const logoSrc = logoImage; // Vite handles base path automatically
-```
-
-#### **Step 3: Web Manifest Configuration**
-
-```json
-// site.webmanifest - Updated with full paths
-{
-  "start_url": "/tailwind-demo/",
-  "scope": "/tailwind-demo/",
-  "icons": [
-    {
-      "src": "/tailwind-demo/TailwindSpark.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
-}
-```
-
-#### **Step 4: Build Configuration**
-
-```typescript
-// vite.config.ts - Proper base configuration
-export default defineConfig({
-  base: '/tailwind-demo/', // Essential for GitHub Pages
-  build: {
-    outDir: '../../dist',
-    emptyOutDir: true,
-  },
-});
-```
-
-### 📋 GitHub Pages Deployment Checklist (COMPLETED ✅)
-
-For successful GitHub Pages deployment with subdirectory paths:
-
-#### **React Router Configuration**
-
-- ✅ Use `BrowserRouter` instead of `HashRouter`
-- ✅ Set `basename="/tailwind-demo"` prop
-- ✅ Configure 404.html for SPA routing
-
-#### **Asset Path Management**
-
-- ✅ All HTML assets use `/tailwind-demo/` prefix
-- ✅ Service worker registration uses `BASE_URL`
-- ✅ Web manifest paths include base directory
-- ✅ Service worker cache URLs include base path
-
-#### **Build Configuration**
-
-- ✅ Vite config has correct `base: '/tailwind-demo/'`
-- ✅ Logo component uses proper Vite import system
-- ✅ Build output goes to correct directory structure
-
-#### **Static Files Update**
-
-- ✅ Updated `site.webmanifest` icon paths and start URL
-- ✅ Updated `sw.js` cache URL array
-- ✅ Verified all `index.html` asset references
-
-### 🚀 Deployment Results
-
-**Current Status**: All GitHub Pages deployment issues have been resolved.
-
-| Aspect             | Previous Status | Current Status              |
-| ------------------ | --------------- | --------------------------- |
-| **URL Structure**  | Clean URLs ✅   | Clean URLs ✅               |
-| **Logo Loading**   | ❌ 404 errors   | ✅ Loads perfectly          |
-| **Service Worker** | ✅ Working      | ✅ Caches correctly         |
-| **Web Manifest**   | ❌ 404 errors   | ✅ PWA ready                |
-| **Navigation**     | ✅ Working      | ✅ All routes work          |
-| **CI/CD Pipeline** | ✅ Working      | ✅ Automatic deployment     |
-| **Favicons**       | ❌ 404 errors   | ✅ All sizes load correctly |
-
-### 🎓 Key Learnings
-
-1. **Environment Parity**: Development and production environments can behave differently with asset loading
-2. **Router Impact**: Router choice significantly affects how assets are resolved
-3. **Base Path Consistency**: All static files must be updated when using subdirectory deployment
-4. **CI/CD Considerations**: Build systems may handle imports differently than dev servers
-5. **Static File Management**: PWA files (manifest, service worker) need manual path updates
-
-### 💡 Best Practices Derived
-
-1. **Always use basename** with BrowserRouter for subdirectory deployments
-2. **Audit all static files** when changing base paths - HTML, manifest, service worker
-3. **Test asset loading** in production-like environments before deployment
-4. **Use environment variables** for dynamic path resolution where possible
-5. **Document the deployment path** for future maintenance and troubleshooting
-
-This journey demonstrates the complexity of modern web deployment and the importance of understanding how different systems interact. The final solution is robust, maintainable, and provides a template for similar projects.
-
-### Deployment History
-
-This project overcame several technical challenges during GitHub Pages setup:
-
-1. **Initial Setup**: Configured Vite base path and HashRouter for SPA compatibility
-2. **Module Resolution**: Fixed monorepo package discovery in CI environment
-3. **Build Dependencies**: Resolved Turborepo workspace detection issues
-4. **Git Tracking**: Corrected .gitignore patterns that excluded packages directory
-5. **Version Compatibility**: Updated Vite and React plugin versions for ESM support
-6. **Asset Path Resolution**: Complete overhaul of routing system and static file paths
-7. **PWA Configuration**: Updated manifest and service worker for subdirectory deployment
-
-The current deployment process is stable and automatically deploys on every push to main.
-
-## 🤝 Contributing to TailwindSpark
-
-TailwindSpark is part of the open-source WebSpark portfolio. Contributions are welcome!
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Contributing Guidelines
-
-- Follow the existing code style and conventions
-- Add TypeScript types for new components
-- Include accessibility features (ARIA labels, keyboard navigation)
-- Test responsive design across different screen sizes
-- Update documentation for new features
-
-## 📝 License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments & Credits
+## 👨‍💻 Author
 
-### Technology Stack
+**Mark Hazleton**
 
-- [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
-- [React](https://reactjs.org) - JavaScript library for building user interfaces
-- [React Router](https://reactrouter.com) - Declarative routing for React applications
-- [TypeScript](https://typescriptlang.org) - Typed superset of JavaScript
-- [Vite](https://vitejs.dev) - Next generation frontend tooling
-- [Turborepo](https://turbo.build) - High-performance build system
-- [Lucide React](https://lucide.dev) - Beautiful & consistent icon toolkit
-
-### WebSpark Portfolio
-
-Created by **Mark Hazleton** as part of the WebSpark suite of applications:
-
-- **Portfolio**: [markhazleton.com](https://markhazleton.com)
-- **WebSpark Main**: [webspark.markhazleton.com](https://webspark.markhazleton.com)
-- **Professional**: [LinkedIn](https://www.linkedin.com/in/markhazleton/) | [GitHub](https://github.com/markhazleton/)
-
-## 📞 Support & Community
-
-### Getting Help
-
-1. **Documentation**: Check this comprehensive README first
-2. **Issues**: [GitHub Issues](https://github.com/MarkHazleton/tailwind-demo/issues) for bug reports and feature requests
-3. **Portfolio**: Visit [WebSpark](https://webspark.markhazleton.com) for related projects
-4. **Articles**: Read about the [WebSpark Evolution](https://markhazleton.com/articles/webspark-the-next-evolution-of-web-project-mechanics.html)
-
-### Connect with the Creator
-
-- **Professional Profile**: [Mark Hazleton](https://markhazleton.com)
-- **LinkedIn**: [Connect on LinkedIn](https://www.linkedin.com/in/markhazleton/)
-- **GitHub**: [Follow on GitHub](https://github.com/markhazleton/)
-- **Articles**: [Read Web Development Articles](https://markhazleton.com/articles.html)
+- Website: [markhazleton.com](https://markhazleton.com)
+- GitHub: [@markhazleton](https://github.com/markhazleton)
+- LinkedIn: [Mark Hazleton](https://linkedin.com/in/markhazleton)
 
 ---
 
-## 🌟 About the Creator
+<div align="center">
 
-**Mark Hazleton** is a Solutions Architect passionate about making technology work for business. With over two decades of web development experience, Mark focuses on practical solutions that deliver real value without unnecessary complexity.
+**[View Demo](https://markhazleton.github.io/tailwind-demo/)** • **[Documentation](./docs/)** • **[Report Bug](https://github.com/markhazleton/tailwind-demo/issues)**
 
-### Philosophy
+Built with ❤️ using React, TypeScript, and Tailwind CSS
 
-> "Lifelong learner, not sidetracked by sizzle" - Mark Hazleton
-
-This project embodies that philosophy by focusing on:
-
-- **Practical Implementation** over theoretical concepts
-- **Real-world Usability** over flashy features
-- **Educational Value** over marketing hype
-- **Accessible Design** over exclusive aesthetics
-
----
-
-**TailwindSpark** ✨ | Part of [WebSpark Portfolio](https://webspark.markhazleton.com) | Built with ❤️ by [Mark Hazleton](https://markhazleton.com)
-
-_Showcasing the power of Tailwind CSS through practical, accessible, and beautiful user interfaces with enterprise-grade features and optimizations_
+</div>
