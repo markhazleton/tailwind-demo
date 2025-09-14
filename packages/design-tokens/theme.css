@@ -141,9 +141,9 @@
   --color-focus-ring: var(--color-primary-400);
 }
 
-/* Explicitly define status color utilities that aren't being auto-generated */
+/* Explicitly define utilities that aren't being auto-generated */
 @layer utilities {
-  /* Success utilities */
+  /* Status color utilities */
   .bg-success-600 {
     background-color: var(--color-success-600);
   }
@@ -174,5 +174,13 @@
   }
   .focus\:ring-error-500:focus {
     --tw-ring-color: var(--color-error-500);
+  }
+
+  /* Semantic text utilities - ensure these are available */
+  .text-text {
+    color: var(--color-text);
+  }
+  .text-text-muted {
+    color: var(--color-text-muted);
   }
 }
