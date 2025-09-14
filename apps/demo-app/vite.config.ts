@@ -8,6 +8,14 @@ export default defineConfig(({ command }) => ({
   build: {
     outDir: '../../dist',
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        // Ensure proper cache busting for assets
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+      },
+    },
   },
   define: {
     __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
