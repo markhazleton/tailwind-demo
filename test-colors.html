@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Test</title>
+    <style>
+        /* Copy the exact color definitions from the generated CSS */
+        :root {
+            --color-secondary-900: #1c1917;
+            --color-secondary-600: #57534e;
+            --color-text: var(--color-secondary-900);
+            --color-text-muted: var(--color-secondary-600);
+        }
+        
+        .text-text { color: var(--color-text); }
+        .text-text-muted { color: var(--color-text-muted); }
+        .text-secondary-900 { color: var(--color-secondary-900); }
+        .text-secondary-600 { color: var(--color-secondary-600); }
+        
+        .test-section {
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body style="background: white; font-family: system-ui;">
+    <div class="test-section">
+        <h2>Color Test</h2>
+        <p class="text-text">This should be dark text using .text-text class (--color-text → --color-secondary-900 → #1c1917)</p>
+        <p class="text-text-muted">This should be muted text using .text-text-muted class (--color-text-muted → --color-secondary-600 → #57534e)</p>
+        <p class="text-secondary-900">This should be dark text using .text-secondary-900 class (--color-secondary-900 → #1c1917)</p>
+        <p class="text-secondary-600">This should be muted text using .text-secondary-600 class (--color-secondary-600 → #57534e)</p>
+        <p style="color: #1c1917;">This should be dark text using direct hex #1c1917</p>
+        <p style="color: #57534e;">This should be muted text using direct hex #57534e</p>
+    </div>
+</body>
+</html>
