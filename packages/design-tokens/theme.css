@@ -144,17 +144,35 @@
 /* Explicitly define status color utilities that aren't being auto-generated */
 @layer utilities {
   /* Success utilities */
-  .bg-success-600 { background-color: var(--color-success-600); }
-  .hover\:bg-success-700:hover { background-color: var(--color-success-700); }
-  .focus\:ring-success-500:focus { --tw-ring-color: var(--color-success-500); }
-  
+  .bg-success-600 {
+    background-color: var(--color-success-600);
+  }
+  .hover\:bg-success-700:hover {
+    background-color: var(--color-success-700);
+  }
+  .focus\:ring-success-500:focus {
+    --tw-ring-color: var(--color-success-500);
+  }
+
   /* Warning utilities */
-  .bg-warning-600 { background-color: var(--color-warning-600); }
-  .hover\:bg-warning-700:hover { background-color: var(--color-warning-700); }
-  .focus\:ring-warning-500:focus { --tw-ring-color: var(--color-warning-500); }
-  
+  .bg-warning-600 {
+    background-color: var(--color-warning-600);
+  }
+  .hover\:bg-warning-700:hover {
+    background-color: var(--color-warning-700);
+  }
+  .focus\:ring-warning-500:focus {
+    --tw-ring-color: var(--color-warning-500);
+  }
+
   /* Error utilities */
-  .bg-error-600 { background-color: var(--color-error-600); }
-  .hover\:bg-error-700:hover { background-color: var(--color-error-700); }
-  .focus\:ring-error-500:focus { --tw-ring-color: var(--color-error-500); }
+  .bg-error-600 {
+    background-color: var(--color-error-600);
+  }
+  .hover\:bg-error-700:hover {
+    background-color: var(--color-error-700);
+  }
+  .focus\:ring-error-500:focus {
+    --tw-ring-color: var(--color-error-500);
+  }
 }
