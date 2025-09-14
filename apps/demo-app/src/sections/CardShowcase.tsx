@@ -6,17 +6,17 @@ export const CardShowcase: React.FC = () => {
   return (
     <section className="space-y-8">
       <div>
-        <h2 className="text-secondary-900 dark:text-secondary-100 mb-4 text-2xl font-bold">
+        <h2 className="text-text mb-4 text-2xl font-bold">
           Card Components
         </h2>
-        <p className="text-secondary-600 dark:text-secondary-400 mb-6">
+        <p className="text-text-muted mb-6">
           Versatile card layouts with headers, content, and footers.
         </p>
       </div>
 
       {/* Basic Cards */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           Card Variants
         </h3>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -45,7 +45,7 @@ export const CardShowcase: React.FC = () => {
 
       {/* Profile Cards */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           Profile Cards
         </h3>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -81,15 +81,15 @@ export const CardShowcase: React.FC = () => {
                   <User className="text-brand h-6 w-6" />
                 </div>
                 <div>
-                  <h4 className="text-secondary-900 dark:text-secondary-100 font-semibold">
+                  <h4 className="text-text font-semibold">
                     Alex Chen
                   </h4>
-                  <p className="text-secondary-600 dark:text-secondary-400 text-sm">
+                  <p className="text-text-muted text-sm">
                     UI/UX Designer
                   </p>
                 </div>
               </div>
-              <p className="text-secondary-600 dark:text-secondary-400 mb-4 text-sm">
+              <p className="text-text-muted mb-4 text-sm">
                 Passionate about creating intuitive and beautiful user experiences that solve
                 real-world problems.
               </p>
@@ -110,10 +110,10 @@ export const CardShowcase: React.FC = () => {
                 <div className="bg-success-100 dark:bg-success-900 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
                   <User className="text-success-600 dark:text-success-400 h-8 w-8" />
                 </div>
-                <h4 className="text-secondary-900 dark:text-secondary-100 mb-2 font-semibold">
+                <h4 className="text-text mb-2 font-semibold">
                   Emma Wilson
                 </h4>
-                <p className="text-secondary-600 dark:text-secondary-400 mb-4 text-sm">
+                <p className="text-text-muted mb-4 text-sm">
                   Full Stack Developer
                 </p>
                 <div className="flex justify-center gap-2">
@@ -130,7 +130,7 @@ export const CardShowcase: React.FC = () => {
 
       {/* Feature Cards */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           Feature Cards
         </h3>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -141,10 +141,10 @@ export const CardShowcase: React.FC = () => {
                   <Star className="text-brand h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="text-secondary-900 dark:text-secondary-100 font-semibold">
+                  <h4 className="text-text font-semibold">
                     Premium Features
                   </h4>
-                  <p className="text-secondary-600 dark:text-secondary-400 text-sm">
+                  <p className="text-text-muted text-sm">
                     Unlock advanced capabilities
                   </p>
                 </div>
@@ -180,11 +180,11 @@ export const CardShowcase: React.FC = () => {
           <Card variant="bordered" padding="lg">
             <CardContent>
               <div className="text-center">
-                <h4 className="text-secondary-900 dark:text-secondary-100 mb-2 text-3xl font-bold">
+                <h4 className="text-text mb-2 text-3xl font-bold">
                   99.9%
                 </h4>
-                <p className="text-secondary-600 dark:text-secondary-400 mb-4">Uptime Guarantee</p>
-                <p className="text-secondary-600 dark:text-secondary-400 mb-6 text-sm">
+                <p className="text-text-muted mb-4">Uptime Guarantee</p>
+                <p className="text-text-muted mb-6 text-sm">
                   Our infrastructure is built for reliability and performance, ensuring your
                   applications are always available when you need them.
                 </p>

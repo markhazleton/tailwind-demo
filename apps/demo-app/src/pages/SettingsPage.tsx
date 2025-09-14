@@ -22,15 +22,15 @@ const SettingsSection: React.FC<SettingsSectionProps> = ({
   icon,
   children,
 }) => (
-  <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-    <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
+  <div className="overflow-hidden rounded-xl border border-secondary-200 bg-white shadow-sm dark:border-secondary-700 dark:bg-secondary-800">
+    <div className="border-b border-secondary-200 px-6 py-4 dark:border-secondary-700">
       <div className="flex items-center gap-3">
         <div className="bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex h-8 w-8 items-center justify-center rounded-lg">
           {icon}
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{title}</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">{description}</p>
+          <h3 className="text-lg font-semibold text-text">{title}</h3>
+          <p className="text-sm text-text-muted">{description}</p>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@ const FormField: React.FC<{
   required?: boolean;
 }> = ({ label, type = 'text', value, onChange, placeholder, description, required }) => (
   <div className="space-y-2">
-    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+    <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300">
       {label} {required && <span className="text-red-500">*</span>}
     </label>
     <input
@@ -57,9 +57,9 @@ const FormField: React.FC<{
       onChange={e => onChange(e.target.value)}
       placeholder={placeholder}
       required={required}
-      className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-transparent focus:ring-2 focus:ring-purple-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+      className="w-full rounded-lg border border-secondary-300 bg-white px-3 py-2 text-secondary-900 focus:border-transparent focus:ring-2 focus:ring-brand dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
     />
-    {description && <p className="text-xs text-gray-500 dark:text-gray-400">{description}</p>}
+    {description && <p className="text-xs text-text-muted">{description}</p>}
   </div>
 );
 
@@ -71,13 +71,13 @@ const ToggleField: React.FC<{
 }> = ({ label, description, enabled, onChange }) => (
   <div className="flex items-center justify-between">
     <div className="flex-1">
-      <h4 className="text-sm font-medium text-gray-900 dark:text-gray-100">{label}</h4>
-      <p className="text-sm text-gray-600 dark:text-gray-400">{description}</p>
+      <h4 className="text-sm font-medium text-text">{label}</h4>
+      <p className="text-sm text-text-muted">{description}</p>
     </div>
     <button
       type="button"
-      className={`focus:ring-primary-500 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-        enabled ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'
+      className={`focus:ring-brand relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+        enabled ? 'bg-brand' : 'bg-secondary-200 dark:bg-secondary-700'
       }`}
       role="switch"
       aria-checked={enabled ? 'true' : 'false'}
@@ -143,7 +143,7 @@ export const SettingsPage: React.FC = () => {
         hasUnsavedChanges && (
           <button
             onClick={handleSaveSettings}
-            className="bg-primary-600 hover:bg-primary-700 flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors"
+            className="bg-brand hover:bg-brand/90 flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors"
           >
             <IconSave />
             Save Changes
@@ -189,7 +189,7 @@ export const SettingsPage: React.FC = () => {
               placeholder="https://example.com"
             />
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="mb-2 block text-sm font-medium text-secondary-700 dark:text-secondary-300">
                 Timezone
               </label>
               <select
@@ -199,7 +199,7 @@ export const SettingsPage: React.FC = () => {
                   setHasUnsavedChanges(true);
                 }}
                 title="Select timezone"
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-transparent focus:ring-2 focus:ring-purple-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                className="w-full rounded-lg border border-secondary-300 bg-white px-3 py-2 text-secondary-900 focus:border-transparent focus:ring-2 focus:ring-brand dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
               >
                 <option value="UTC-12">UTC-12 (Baker Island)</option>
                 <option value="UTC-8">UTC-8 (Pacific)</option>
@@ -239,7 +239,7 @@ export const SettingsPage: React.FC = () => {
               }}
             />
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="mb-2 block text-sm font-medium text-secondary-700 dark:text-secondary-300">
                 Session Timeout (minutes)
               </label>
               <input
@@ -253,7 +253,7 @@ export const SettingsPage: React.FC = () => {
                 }}
                 title="Session timeout in minutes"
                 placeholder="Enter timeout in minutes"
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-transparent focus:ring-2 focus:ring-purple-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                className="w-full rounded-lg border border-secondary-300 bg-white px-3 py-2 text-secondary-900 focus:border-transparent focus:ring-2 focus:ring-brand dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
               />
             </div>
           </div>
@@ -313,7 +313,7 @@ export const SettingsPage: React.FC = () => {
         >
           <div className="space-y-6">
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="mb-2 block text-sm font-medium text-secondary-700 dark:text-secondary-300">
                 API Key
               </label>
               <div className="flex gap-2">
@@ -323,11 +323,11 @@ export const SettingsPage: React.FC = () => {
                   readOnly
                   title="API Key (read-only)"
                   placeholder="API Key"
-                  className="flex-1 cursor-not-allowed rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+                  className="flex-1 cursor-not-allowed rounded-lg border border-secondary-300 bg-secondary-50 px-3 py-2 text-secondary-900 dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
                 />
                 <button
                   onClick={handleGenerateApiKey}
-                  className="rounded-lg bg-gray-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-700"
+                  className="rounded-lg bg-secondary-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-secondary-700"
                 >
                   Regenerate
                 </button>
@@ -362,27 +362,27 @@ export const SettingsPage: React.FC = () => {
           icon={<IconCreditCard />}
         >
           <div className="space-y-4">
-            <div className="rounded-lg bg-gray-50 p-4 dark:bg-gray-700">
+            <div className="rounded-lg bg-secondary-50 p-4 dark:bg-secondary-700">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-medium text-gray-900 dark:text-gray-100">Pro Plan</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <h4 className="font-medium text-text">Pro Plan</h4>
+                  <p className="text-sm text-text-muted">
                     $29/month • Next billing: Jan 15, 2024
                   </p>
                 </div>
-                <button className="rounded-lg bg-purple-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-purple-700">
+                <button className="rounded-lg bg-brand px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand/90">
                   Manage Subscription
                 </button>
               </div>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="rounded-lg border border-gray-200 p-4 text-center dark:border-gray-600">
-                <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">1,234</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">API Calls This Month</div>
+              <div className="rounded-lg border border-secondary-200 p-4 text-center dark:border-secondary-600">
+                <div className="text-2xl font-bold text-text">1,234</div>
+                <div className="text-sm text-text-muted">API Calls This Month</div>
               </div>
-              <div className="rounded-lg border border-gray-200 p-4 text-center dark:border-gray-600">
-                <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">89%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Storage Used</div>
+              <div className="rounded-lg border border-secondary-200 p-4 text-center dark:border-secondary-600">
+                <div className="text-2xl font-bold text-text">89%</div>
+                <div className="text-sm text-text-muted">Storage Used</div>
               </div>
             </div>
           </div>

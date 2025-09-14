@@ -39,10 +39,56 @@
   --color-secondary-900: #1c1917;
   --color-secondary-950: #0c0a09;
 
-  /* Status */
+  /* Status Colors */
+  --color-success-50: #f0fdf4;
+  --color-success-100: #dcfce7;
+  --color-success-200: #bbf7d0;
+  --color-success-300: #86efac;
+  --color-success-400: #4ade80;
   --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+  --color-success-800: #166534;
+  --color-success-900: #14532d;
+  --color-success-950: #052e16;
+
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-200: #fde68a;
+  --color-warning-300: #fcd34d;
+  --color-warning-400: #fbbf24;
   --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
+  --color-warning-800: #92400e;
+  --color-warning-900: #78350f;
+  --color-warning-950: #451a03;
+
+  --color-error-50: #fef2f2;
+  --color-error-100: #fee2e2;
+  --color-error-200: #fecaca;
+  --color-error-300: #fca5a5;
+  --color-error-400: #f87171;
   --color-error-500: #ef4444;
+  --color-error-600: #dc2626;
+  --color-error-700: #b91c1c;
+  --color-error-800: #991b1b;
+  --color-error-900: #7f1d1d;
+  --color-error-950: #450a0a;
+
+  /* Semantic Colors - Added to @theme for utility generation */
+  --color-brand: var(--color-primary-600);
+  --color-brand-hover: var(--color-primary-700);
+  --color-brand-fg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-alt: var(--color-secondary-50);
+  --color-surface-inverse: var(--color-secondary-900);
+  --color-text: var(--color-secondary-900);
+  --color-text-inverse: var(--color-secondary-100);
+  --color-text-muted: var(--color-secondary-600);
+  --color-border: var(--color-secondary-200);
+  --color-border-strong: var(--color-secondary-400);
+  --color-focus-ring: var(--color-primary-500);
 
   /* Radii */
   --radius-sm: 0.125rem;
@@ -93,4 +139,22 @@
   --color-border: var(--color-secondary-700);
   --color-border-strong: var(--color-secondary-500);
   --color-focus-ring: var(--color-primary-400);
+}
+
+/* Explicitly define status color utilities that aren't being auto-generated */
+@layer utilities {
+  /* Success utilities */
+  .bg-success-600 { background-color: var(--color-success-600); }
+  .hover\:bg-success-700:hover { background-color: var(--color-success-700); }
+  .focus\:ring-success-500:focus { --tw-ring-color: var(--color-success-500); }
+  
+  /* Warning utilities */
+  .bg-warning-600 { background-color: var(--color-warning-600); }
+  .hover\:bg-warning-700:hover { background-color: var(--color-warning-700); }
+  .focus\:ring-warning-500:focus { --tw-ring-color: var(--color-warning-500); }
+  
+  /* Error utilities */
+  .bg-error-600 { background-color: var(--color-error-600); }
+  .hover\:bg-error-700:hover { background-color: var(--color-error-700); }
+  .focus\:ring-error-500:focus { --tw-ring-color: var(--color-error-500); }
 }

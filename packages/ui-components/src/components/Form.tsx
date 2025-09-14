@@ -32,7 +32,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="text-secondary-900 dark:text-secondary-100 block text-sm font-medium"
+            className="text-text block text-sm font-medium"
           >
             {label}
           </label>
@@ -40,16 +40,16 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div className="relative">
           {leftIcon && (
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <div className="text-secondary-400 h-5 w-5">{leftIcon}</div>
+              <div className="text-text-muted h-5 w-5">{leftIcon}</div>
             </div>
           )}
           <input
             ref={ref}
             id={inputId}
             className={clsx(
-              'text-secondary-900 dark:text-secondary-100 dark:bg-secondary-800 placeholder-secondary-500 dark:placeholder-secondary-400 block w-full rounded-lg border bg-white px-3 py-2',
+              'text-text bg-surface placeholder-text-muted block w-full rounded-lg border px-3 py-2',
               'transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
-              'disabled:bg-secondary-50 dark:disabled:bg-secondary-900 disabled:text-secondary-500 disabled:cursor-not-allowed',
+              'disabled:bg-surface-alt disabled:text-text-muted disabled:cursor-not-allowed',
               inputVariants[actualVariant],
               leftIcon && 'pl-10',
               rightIcon && 'pr-10',
@@ -59,7 +59,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           />
           {rightIcon && (
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <div className="text-secondary-400 h-5 w-5">{rightIcon}</div>
+              <div className="text-text-muted h-5 w-5">{rightIcon}</div>
             </div>
           )}
         </div>
@@ -69,7 +69,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               'text-sm',
               error
                 ? 'text-error-600 dark:text-error-400'
-                : 'text-secondary-500 dark:text-secondary-400'
+                : 'text-text-muted'
             )}
           >
             {error || helperText}
@@ -100,7 +100,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         {label && (
           <label
             htmlFor={textareaId}
-            className="text-secondary-900 dark:text-secondary-100 block text-sm font-medium"
+            className="text-text block text-sm font-medium"
           >
             {label}
           </label>
@@ -109,9 +109,9 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           id={textareaId}
           className={clsx(
-            'text-secondary-900 dark:text-secondary-100 dark:bg-secondary-800 placeholder-secondary-500 dark:placeholder-secondary-400 block w-full rounded-lg border bg-white px-3 py-2',
+            'text-text bg-surface placeholder-text-muted block w-full rounded-lg border px-3 py-2',
             'resize-vertical transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
-            'disabled:bg-secondary-50 dark:disabled:bg-secondary-900 disabled:text-secondary-500 disabled:cursor-not-allowed',
+            'disabled:bg-surface-alt disabled:text-text-muted disabled:cursor-not-allowed',
             inputVariants[actualVariant],
             className
           )}
@@ -123,7 +123,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
               'text-sm',
               error
                 ? 'text-error-600 dark:text-error-400'
-                : 'text-secondary-500 dark:text-secondary-400'
+                : 'text-text-muted'
             )}
           >
             {error || helperText}
@@ -155,7 +155,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label
             htmlFor={selectId}
-            className="text-secondary-900 dark:text-secondary-100 block text-sm font-medium"
+            className="text-text block text-sm font-medium"
           >
             {label}
           </label>
@@ -164,9 +164,9 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           ref={ref}
           id={selectId}
           className={clsx(
-            'text-secondary-900 dark:text-secondary-100 dark:bg-secondary-800 block w-full rounded-lg border bg-white px-3 py-2',
+            'text-text bg-surface block w-full rounded-lg border px-3 py-2',
             'transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
-            'disabled:bg-secondary-50 dark:disabled:bg-secondary-900 disabled:text-secondary-500 disabled:cursor-not-allowed',
+            'disabled:bg-surface-alt disabled:text-text-muted disabled:cursor-not-allowed',
             inputVariants[actualVariant],
             className
           )}
@@ -184,7 +184,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
               'text-sm',
               error
                 ? 'text-error-600 dark:text-error-400'
-                : 'text-secondary-500 dark:text-secondary-400'
+                : 'text-text-muted'
             )}
           >
             {error || helperText}
@@ -225,7 +225,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           {label && (
             <label
               htmlFor={checkboxId}
-              className="text-secondary-900 dark:text-secondary-100 ml-2 block text-sm"
+              className="text-text ml-2 block text-sm"
             >
               {label}
             </label>
@@ -237,7 +237,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
               'text-sm',
               error
                 ? 'text-error-600 dark:text-error-400'
-                : 'text-secondary-500 dark:text-secondary-400'
+                : 'text-text-muted'
             )}
           >
             {error || helperText}
@@ -275,7 +275,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
         {label && (
           <label
             htmlFor={radioId}
-            className="text-secondary-900 dark:text-secondary-100 ml-2 block text-sm"
+            className="text-text ml-2 block text-sm"
           >
             {label}
           </label>

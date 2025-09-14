@@ -26,7 +26,7 @@ const UserRow: React.FC<{
 
   const statusColors = {
     active: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    inactive: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300',
+    inactive: 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-300',
     pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
   };
 
@@ -34,11 +34,11 @@ const UserRow: React.FC<{
     Admin: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
     Manager: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
     Editor: 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300',
-    Viewer: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300',
+    Viewer: 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-300',
   };
 
   return (
-    <tr className="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700">
+    <tr className="transition-colors hover:bg-secondary-50 dark:hover:bg-secondary-700">
       <td className="whitespace-nowrap px-6 py-4">
         <div className="flex items-center">
           <div className="from-primary-500 to-accent-700 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br font-medium text-white">
@@ -48,8 +48,8 @@ const UserRow: React.FC<{
               .join('')}
           </div>
           <div className="ml-4">
-            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{user.name}</div>
-            <div className="text-sm text-gray-500 dark:text-gray-400">{user.email}</div>
+            <div className="text-sm font-medium text-text">{user.name}</div>
+            <div className="text-sm text-text-muted">{user.email}</div>
           </div>
         </div>
       </td>
@@ -67,31 +67,31 @@ const UserRow: React.FC<{
           {user.status}
         </span>
       </td>
-      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+      <td className="whitespace-nowrap px-6 py-4 text-sm text-text-muted">
         {user.lastActive}
       </td>
-      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+      <td className="whitespace-nowrap px-6 py-4 text-sm text-text-muted">
         {user.signupDate}
       </td>
       <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
         <div className="relative">
           <button
             onClick={() => setShowActions(!showActions)}
-            className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+            className="rounded-lg p-2 text-secondary-400 transition-colors hover:bg-secondary-100 hover:text-secondary-600 dark:hover:bg-secondary-700 dark:hover:text-secondary-300"
             aria-label="User actions"
             title="User actions"
           >
             <IconMore />
           </button>
           {showActions && (
-            <div className="absolute right-0 z-10 mt-2 w-48 rounded-md border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
+            <div className="absolute right-0 z-10 mt-2 w-48 rounded-md border border-secondary-200 bg-white shadow-lg dark:border-secondary-700 dark:bg-secondary-800">
               <div className="py-1">
                 <button
                   onClick={() => {
                     onEdit(user);
                     setShowActions(false);
                   }}
-                  className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                  className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-secondary-700 transition-colors hover:bg-secondary-100 dark:text-secondary-300 dark:hover:bg-secondary-700"
                 >
                   <IconEdit /> Edit User
                 </button>
@@ -220,12 +220,12 @@ export const UsersPage: React.FC = () => {
       }
     >
       {/* Filters */}
-      <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div className="mb-6 rounded-xl border border-secondary-200 bg-white p-6 shadow-sm dark:border-secondary-700 dark:bg-secondary-800">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <div>
             <label
               htmlFor="search"
-              className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              className="mb-2 block text-sm font-medium text-secondary-700 dark:text-secondary-300"
             >
               Search Users
             </label>
@@ -235,14 +235,14 @@ export const UsersPage: React.FC = () => {
               placeholder="Search by name or email..."
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
-              className="focus:ring-primary-500 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-transparent focus:ring-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+              className="focus:ring-brand w-full rounded-lg border border-secondary-300 bg-white px-3 py-2 text-secondary-900 focus:border-transparent focus:ring-2 dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
             />
           </div>
 
           <div>
             <label
               htmlFor="role-filter"
-              className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              className="mb-2 block text-sm font-medium text-secondary-700 dark:text-secondary-300"
             >
               Filter by Role
             </label>
@@ -250,7 +250,7 @@ export const UsersPage: React.FC = () => {
               id="role-filter"
               value={roleFilter}
               onChange={e => setRoleFilter(e.target.value)}
-              className="focus:ring-primary-500 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-transparent focus:ring-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+              className="focus:ring-brand w-full rounded-lg border border-secondary-300 bg-white px-3 py-2 text-secondary-900 focus:border-transparent focus:ring-2 dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
             >
               <option value="all">All Roles</option>
               <option value="Admin">Admin</option>
@@ -263,7 +263,7 @@ export const UsersPage: React.FC = () => {
           <div>
             <label
               htmlFor="status-filter"
-              className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
+              className="mb-2 block text-sm font-medium text-secondary-700 dark:text-secondary-300"
             >
               Filter by Status
             </label>
@@ -271,7 +271,7 @@ export const UsersPage: React.FC = () => {
               id="status-filter"
               value={statusFilter}
               onChange={e => setStatusFilter(e.target.value)}
-              className="focus:ring-primary-500 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-transparent focus:ring-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+              className="focus:ring-brand w-full rounded-lg border border-secondary-300 bg-white px-3 py-2 text-secondary-900 focus:border-transparent focus:ring-2 dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
@@ -283,33 +283,33 @@ export const UsersPage: React.FC = () => {
       </div>
 
       {/* Users Table */}
-      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
+      <div className="overflow-hidden rounded-xl border border-secondary-200 bg-white shadow-sm dark:border-secondary-700 dark:bg-secondary-800">
+        <div className="border-b border-secondary-200 px-6 py-4 dark:border-secondary-700">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Team Members</h3>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <h3 className="text-lg font-semibold text-text">Team Members</h3>
+            <span className="text-sm text-text-muted">
               {filteredUsers.length} of {users.length} users
             </span>
           </div>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead className="bg-gray-50 dark:bg-gray-700">
+          <table className="min-w-full divide-y divide-secondary-200 dark:divide-secondary-700">
+            <thead className="bg-secondary-50 dark:bg-secondary-700">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted">
                   User
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted">
                   Role
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted">
                   Last Active
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted">
                   Joined
                 </th>
                 <th className="relative px-6 py-3">
@@ -317,7 +317,7 @@ export const UsersPage: React.FC = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-800">
+            <tbody className="divide-y divide-secondary-200 bg-white dark:divide-secondary-700 dark:bg-secondary-800">
               {filteredUsers.map(user => (
                 <UserRow
                   key={user.id}

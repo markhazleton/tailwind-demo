@@ -12,17 +12,17 @@ export const ModalShowcase: React.FC = () => {
   return (
     <section className="space-y-8">
       <div>
-        <h2 className="text-secondary-900 dark:text-secondary-100 mb-4 text-2xl font-bold">
+        <h2 className="text-text mb-4 text-2xl font-bold">
           Modal Components
         </h2>
-        <p className="text-secondary-600 dark:text-secondary-400 mb-6">
+        <p className="text-text-muted mb-6">
           Accessible modals with various sizes and configurations.
         </p>
       </div>
 
       {/* Modal Triggers */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           Modal Types
         </h3>
         <div className="flex flex-wrap gap-3">
@@ -45,15 +45,15 @@ export const ModalShowcase: React.FC = () => {
       {/* Basic Modal */}
       <Modal isOpen={basicModal} onClose={() => setBasicModal(false)} title="Basic Modal" size="md">
         <ModalContent>
-          <p className="text-secondary-600 dark:text-secondary-400">
+          <p className="text-text-muted">
             This is a basic modal with default configuration. It can contain any content and
             provides a clean, accessible interface for user interactions.
           </p>
-          <div className="bg-secondary-50 dark:bg-secondary-800 mt-4 rounded-lg p-4">
-            <h4 className="text-secondary-900 dark:text-secondary-100 mb-2 font-semibold">
+          <div className="bg-surface-alt mt-4 rounded-lg p-4">
+            <h4 className="text-text mb-2 font-semibold">
               Features:
             </h4>
-            <ul className="text-secondary-600 dark:text-secondary-400 space-y-1 text-sm">
+            <ul className="text-text-muted space-y-1 text-sm">
               <li>• Keyboard navigation (ESC to close)</li>
               <li>• Click outside to close</li>
               <li>• Focus management</li>
@@ -82,15 +82,15 @@ export const ModalShowcase: React.FC = () => {
               <AlertCircle className="text-warning-600 dark:text-warning-400 h-5 w-5" />
             </div>
             <div>
-              <h3 className="text-secondary-900 dark:text-secondary-100 font-semibold">
+              <h3 className="text-text font-semibold">
                 Confirm Action
               </h3>
-              <p className="text-secondary-600 dark:text-secondary-400 text-sm">
+              <p className="text-text-muted text-sm">
                 Are you sure you want to delete this item?
               </p>
             </div>
           </div>
-          <p className="text-secondary-600 dark:text-secondary-400">
+          <p className="text-text-muted">
             This action cannot be undone. The item will be permanently removed from your account.
           </p>
         </ModalContent>
@@ -111,10 +111,10 @@ export const ModalShowcase: React.FC = () => {
             <div className="bg-success-100 dark:bg-success-900 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
               <CheckCircle className="text-success-600 dark:text-success-400 h-8 w-8" />
             </div>
-            <h3 className="text-secondary-900 dark:text-secondary-100 mb-2 text-lg font-semibold">
+            <h3 className="text-text mb-2 text-lg font-semibold">
               Success!
             </h3>
-            <p className="text-secondary-600 dark:text-secondary-400">
+            <p className="text-text-muted">
               Your changes have been saved successfully. You can now continue with your workflow.
             </p>
           </div>
@@ -136,30 +136,30 @@ export const ModalShowcase: React.FC = () => {
         <ModalContent>
           <form className="space-y-4">
             <div>
-              <label className="text-secondary-700 dark:text-secondary-300 mb-2 block text-sm font-medium">
+              <label className="text-text mb-2 block text-sm font-medium">
                 Project Name
               </label>
               <input
                 type="text"
-                className="border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 focus:ring-primary-500 w-full rounded-lg border bg-white px-3 py-2 focus:border-transparent focus:ring-2"
+                className="border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 focus:ring-brand w-full rounded-lg border bg-white px-3 py-2 focus:border-transparent focus:ring-2"
                 placeholder="Enter project name"
               />
             </div>
             <div>
-              <label className="text-secondary-700 dark:text-secondary-300 mb-2 block text-sm font-medium">
+              <label className="text-text mb-2 block text-sm font-medium">
                 Description
               </label>
               <textarea
                 rows={3}
-                className="border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 focus:ring-primary-500 w-full rounded-lg border bg-white px-3 py-2 focus:border-transparent focus:ring-2"
+                className="border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 focus:ring-brand w-full rounded-lg border bg-white px-3 py-2 focus:border-transparent focus:ring-2"
                 placeholder="Describe your project"
               />
             </div>
             <div>
-              <label className="text-secondary-700 dark:text-secondary-300 mb-2 block text-sm font-medium">
+              <label className="text-text mb-2 block text-sm font-medium">
                 Category
               </label>
-              <select className="border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 focus:ring-primary-500 w-full rounded-lg border bg-white px-3 py-2 focus:border-transparent focus:ring-2">
+              <select className="border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 focus:ring-brand w-full rounded-lg border bg-white px-3 py-2 focus:border-transparent focus:ring-2">
                 <option value="">Select a category</option>
                 <option value="web">Web Development</option>
                 <option value="mobile">Mobile App</option>
@@ -189,10 +189,10 @@ export const ModalShowcase: React.FC = () => {
             <div className="flex items-start gap-3">
               <Info className="text-brand mt-0.5 h-5 w-5" />
               <div>
-                <h4 className="text-secondary-900 dark:text-secondary-100 mb-2 font-semibold">
+                <h4 className="text-text mb-2 font-semibold">
                   About This Demo
                 </h4>
-                <p className="text-secondary-600 dark:text-secondary-400">
+                <p className="text-text-muted">
                   This modal demonstrates how larger content can be displayed effectively. The modal
                   scales appropriately and maintains good usability even with substantial content.
                 </p>
@@ -218,7 +218,7 @@ export const ModalShowcase: React.FC = () => {
               </div>
             </div>
 
-            <div className="prose prose-sm text-secondary-600 dark:text-secondary-400 max-w-none">
+            <div className="prose prose-sm text-text-muted max-w-none">
               <h4>Additional Features</h4>
               <ul>
                 <li>Smooth animations and transitions</li>
