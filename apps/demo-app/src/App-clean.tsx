@@ -28,16 +28,16 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white transition-colors dark:bg-gray-900">
+    <div className="min-h-screen bg-white transition-colors dark:bg-secondary-900">
       {/* Header */}
-      <header className="border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
+      <header className="border-b border-secondary-200 bg-white dark:border-secondary-700 dark:bg-secondary-900">
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600"></div>
               <div>
-                <h1 className="font-bold text-gray-900 dark:text-gray-100">Tailwind Demo</h1>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <h1 className="font-bold text-secondary-900 dark:text-secondary-100">Tailwind Demo</h1>
+                <p className="text-sm text-secondary-600 dark:text-secondary-400">
                   React + TypeScript + Tailwind CSS
                 </p>
               </div>
@@ -45,7 +45,7 @@ function App() {
             <div className="flex items-center gap-3">
               <button
                 onClick={toggleTheme}
-                className="rounded-lg bg-gray-100 p-2 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="rounded-lg bg-secondary-100 p-2 transition-colors hover:bg-secondary-200 dark:bg-secondary-800 dark:hover:bg-secondary-700"
                 aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
               >
                 {isDark ? '☀️' : '🌙'}
@@ -59,39 +59,39 @@ function App() {
       <main className="py-16">
         <div className="container mx-auto max-w-4xl px-4">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
+            <h2 className="mb-4 text-4xl font-bold text-secondary-900 dark:text-secondary-100">
               Welcome to Tailwind Demo
             </h2>
-            <p className="mx-auto max-w-2xl text-xl text-gray-600 dark:text-gray-400">
+            <p className="mx-auto max-w-2xl text-xl text-secondary-600 dark:text-secondary-400">
               A modern React application showcasing Tailwind CSS components with TypeScript. Click
               the theme toggle to switch between light and dark mode.
             </p>
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
-              <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <div className="rounded-lg border border-secondary-200 bg-white p-6 shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+              <h3 className="mb-2 text-lg font-semibold text-secondary-900 dark:text-secondary-100">
                 Component Library
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-secondary-600 dark:text-secondary-400">
                 Reusable UI components built with Tailwind CSS and TypeScript.
               </p>
             </div>
 
-            <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
-              <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <div className="rounded-lg border border-secondary-200 bg-white p-6 shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+              <h3 className="mb-2 text-lg font-semibold text-secondary-900 dark:text-secondary-100">
                 Dark Mode
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-secondary-600 dark:text-secondary-400">
                 Automatic dark mode support with system preference detection.
               </p>
             </div>
 
-            <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
-              <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <div className="rounded-lg border border-secondary-200 bg-white p-6 shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+              <h3 className="mb-2 text-lg font-semibold text-secondary-900 dark:text-secondary-100">
                 Monorepo Setup
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-secondary-600 dark:text-secondary-400">
                 Organized with Turborepo for efficient development workflow.
               </p>
             </div>
@@ -99,10 +99,10 @@ function App() {
 
           <div className="mt-12 text-center">
             <div className="inline-flex gap-4">
-              <button className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white shadow-lg transition-colors hover:bg-blue-700 hover:shadow-xl">
+              <button className="rounded-lg bg-primary-600 px-6 py-3 font-medium text-white shadow-lg transition-colors hover:bg-primary-700 hover:shadow-xl">
                 Primary Button
               </button>
-              <button className="rounded-lg border border-gray-300 bg-white px-6 py-3 font-medium text-gray-900 shadow-lg transition-colors hover:bg-gray-50 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700">
+              <button className="rounded-lg border border-secondary-300 bg-white px-6 py-3 font-medium text-secondary-900 shadow-lg transition-colors hover:bg-secondary-50 hover:shadow-xl dark:border-secondary-600 dark:bg-secondary-800 dark:text-secondary-100 dark:hover:bg-secondary-700">
                 Secondary Button
               </button>
             </div>
@@ -111,14 +111,14 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 bg-gray-50 py-12 dark:border-gray-700 dark:bg-gray-800">
+      <footer className="border-t border-secondary-200 bg-secondary-50 py-12 dark:border-secondary-700 dark:bg-secondary-800">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="mb-4 flex items-center justify-center gap-2">
               <div className="h-6 w-6 rounded bg-gradient-to-br from-blue-500 to-blue-600"></div>
-              <span className="font-semibold text-gray-900 dark:text-gray-100">Tailwind Demo</span>
+              <span className="font-semibold text-secondary-900 dark:text-secondary-100">Tailwind Demo</span>
             </div>
-            <p className="mb-4 text-gray-600 dark:text-gray-400">
+            <p className="mb-4 text-secondary-600 dark:text-secondary-400">
               Built with React, TypeScript, and Tailwind CSS in a Turborepo monorepo.
             </p>
             <div className="flex justify-center gap-4">
@@ -126,7 +126,7 @@ function App() {
                 href="https://github.com/MarkHazleton/tailwind-demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                className="text-secondary-600 transition-colors hover:text-primary-600 dark:text-secondary-400 dark:hover:text-primary-400"
               >
                 GitHub
               </a>
@@ -134,7 +134,7 @@ function App() {
                 href="https://tailwindcss.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                className="text-secondary-600 transition-colors hover:text-primary-600 dark:text-secondary-400 dark:hover:text-primary-400"
               >
                 Tailwind CSS
               </a>
@@ -142,7 +142,7 @@ function App() {
                 href="https://reactjs.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                className="text-secondary-600 transition-colors hover:text-primary-600 dark:text-secondary-400 dark:hover:text-primary-400"
               >
                 React
               </a>

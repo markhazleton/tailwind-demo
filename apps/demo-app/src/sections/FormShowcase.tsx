@@ -45,17 +45,17 @@ export const FormShowcase: React.FC = () => {
   return (
     <section className="space-y-8">
       <div>
-        <h2 className="text-secondary-900 dark:text-secondary-100 mb-4 text-2xl font-bold">
+        <h2 className="text-text mb-4 text-2xl font-bold">
           Form Components
         </h2>
-        <p className="text-secondary-600 dark:text-secondary-400 mb-6">
+        <p className="text-text-muted mb-6">
           Complete form controls with validation, icons, and accessibility features.
         </p>
       </div>
 
       {/* Input Variants */}
       <div className="space-y-6">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           Input Fields
         </h3>
 

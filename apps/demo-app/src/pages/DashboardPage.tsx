@@ -17,21 +17,21 @@ interface StatCardProps {
 const StatCard: React.FC<StatCardProps> = ({ title, value, change, trend, isLoading = false }) => {
   if (isLoading) {
     return (
-      <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <div className="rounded-xl border border-secondary-200 bg-white p-6 shadow-sm dark:border-secondary-700 dark:bg-secondary-800">
         <div className="animate-pulse">
-          <div className="mb-4 h-4 w-1/2 rounded bg-gray-300 dark:bg-gray-600"></div>
-          <div className="mb-2 h-8 w-3/4 rounded bg-gray-300 dark:bg-gray-600"></div>
-          <div className="h-3 w-1/3 rounded bg-gray-300 dark:bg-gray-600"></div>
+          <div className="mb-4 h-4 w-1/2 rounded bg-secondary-300 dark:bg-secondary-600"></div>
+          <div className="mb-2 h-8 w-3/4 rounded bg-secondary-300 dark:bg-secondary-600"></div>
+          <div className="h-3 w-1/3 rounded bg-secondary-300 dark:bg-secondary-600"></div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
-      <h3 className="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">{title}</h3>
+    <div className="rounded-xl border border-secondary-200 bg-white p-6 shadow-sm transition-all duration-200 hover:shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+      <h3 className="mb-2 text-sm font-medium text-text-muted">{title}</h3>
       <div className="flex items-end justify-between">
-        <p className="text-3xl font-bold text-gray-900 dark:text-gray-100">{value}</p>
+        <p className="text-3xl font-bold text-text">{value}</p>
         <div className="flex items-center gap-1">
           {trend === 'up' ? <IconArrowUp /> : <IconArrowDown />}
           <span
@@ -65,21 +65,21 @@ const TransactionRow: React.FC<{ transaction: Transaction }> = ({ transaction })
   };
 
   return (
-    <tr className="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700">
+    <tr className="transition-colors hover:bg-secondary-50 dark:hover:bg-secondary-700">
       <td className="whitespace-nowrap px-6 py-4">
         <div className="flex items-center">
           <div className="from-primary-500 to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
             {transaction.customer.charAt(0).toUpperCase()}
           </div>
           <div className="ml-3">
-            <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+            <p className="text-sm font-medium text-text">
               {transaction.customer}
             </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">ID: {transaction.id}</p>
+            <p className="text-sm text-text-muted">ID: {transaction.id}</p>
           </div>
         </div>
       </td>
-      <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">
+      <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-text">
         {transaction.amount}
       </td>
       <td className="whitespace-nowrap px-6 py-4">
@@ -89,7 +89,7 @@ const TransactionRow: React.FC<{ transaction: Transaction }> = ({ transaction })
           {transaction.status}
         </span>
       </td>
-      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+      <td className="whitespace-nowrap px-6 py-4 text-sm text-text-muted">
         {transaction.date}
       </td>
     </tr>
@@ -99,15 +99,15 @@ const TransactionRow: React.FC<{ transaction: Transaction }> = ({ transaction })
 const ActivityItem: React.FC<{ activity: { user: string; action: string; time: string } }> = ({
   activity,
 }) => (
-  <div className="flex items-start gap-3 rounded-lg p-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700">
+  <div className="flex items-start gap-3 rounded-lg p-3 transition-colors hover:bg-secondary-50 dark:hover:bg-secondary-700">
     <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-blue-600 text-sm font-medium text-white">
       {activity.user.charAt(0).toUpperCase()}
     </div>
     <div className="min-w-0 flex-1">
-      <p className="text-sm text-gray-900 dark:text-gray-100">
+      <p className="text-sm text-text">
         <span className="font-medium">{activity.user}</span> {activity.action}
       </p>
-      <p className="text-xs text-gray-500 dark:text-gray-400">{activity.time}</p>
+      <p className="text-xs text-text-muted">{activity.time}</p>
     </div>
   </div>
 );
@@ -231,14 +231,14 @@ export const DashboardPage: React.FC = () => {
 
         {/* Revenue Chart */}
         <div className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm lg:col-span-2 dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-xl border border-secondary-200 bg-white p-6 shadow-sm lg:col-span-2 dark:border-secondary-700 dark:bg-secondary-800">
             <div className="mb-6 flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <h3 className="text-lg font-semibold text-text">
                 Revenue Trend
               </h3>
               <div className="flex items-center gap-2">
                 <span className="bg-brand h-3 w-3 rounded-full"></span>
-                <span className="text-sm text-gray-600 dark:text-gray-400">This Month</span>
+                <span className="text-sm text-text-muted">This Month</span>
               </div>
             </div>
             <div className="flex h-64 items-end justify-between gap-2">
@@ -264,7 +264,7 @@ export const DashboardPage: React.FC = () => {
                 />
               ))}
             </div>
-            <div className="mt-4 flex justify-between text-xs text-gray-500 dark:text-gray-400">
+            <div className="mt-4 flex justify-between text-xs text-text-muted">
               <span>Jan</span>
               <span>Feb</span>
               <span>Mar</span>

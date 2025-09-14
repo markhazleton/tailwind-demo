@@ -89,12 +89,12 @@ export const Modal: React.FC<ModalProps> = ({
         className="flex min-h-full items-center justify-center p-4 text-center sm:p-0"
         onClick={handleOverlayClick}
       >
-        <div className="bg-secondary-900 fixed inset-0 bg-opacity-75 transition-opacity" />
+        <div className="bg-surface-inverse fixed inset-0 bg-opacity-75 transition-opacity" />
 
         <div
           ref={modalRef}
           className={clsx(
-            'dark:bg-secondary-800 relative transform overflow-hidden rounded-xl bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:p-6',
+            'bg-surface relative transform overflow-hidden rounded-xl px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:p-6',
             modalSizes[size],
             'animate-scale-in',
             className
@@ -103,14 +103,14 @@ export const Modal: React.FC<ModalProps> = ({
           {(title || showCloseButton) && (
             <div className="mb-4 flex items-center justify-between">
               {title && (
-                <h3 className="text-secondary-900 dark:text-secondary-100 text-lg font-semibold">
+                <h3 className="text-text text-lg font-semibold">
                   {title}
                 </h3>
               )}
               {showCloseButton && (
                 <button
                   onClick={onClose}
-                  className="text-secondary-400 hover:text-secondary-600 hover:bg-secondary-100 dark:hover:bg-secondary-700 dark:hover:text-secondary-300 rounded-lg p-1 transition-colors"
+                  className="text-text-muted hover:text-text hover:bg-surface-alt rounded-lg p-1 transition-colors"
                   aria-label="Close modal"
                 >
                   <X size={20} />
@@ -119,7 +119,7 @@ export const Modal: React.FC<ModalProps> = ({
             </div>
           )}
 
-          <div className="text-secondary-700 dark:text-secondary-300">{children}</div>
+          <div className="text-text">{children}</div>
         </div>
       </div>
     </div>
@@ -141,11 +141,11 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
   return (
     <div className={clsx('mb-4', className)} {...props}>
       {title && (
-        <h3 className="text-secondary-900 dark:text-secondary-100 mb-1 text-lg font-semibold">
+        <h3 className="text-text mb-1 text-lg font-semibold">
           {title}
         </h3>
       )}
-      {subtitle && <p className="text-secondary-600 dark:text-secondary-400 text-sm">{subtitle}</p>}
+      {subtitle && <p className="text-text-muted text-sm">{subtitle}</p>}
       {children}
     </div>
   );

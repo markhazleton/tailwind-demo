@@ -11,7 +11,7 @@ interface MetricCardProps {
 }
 
 const MetricCard: React.FC<MetricCardProps> = ({ title, value, change, trend, icon, color }) => (
-  <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-200 hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
+  <div className="rounded-xl border border-secondary-200 bg-white p-6 shadow-sm transition-all duration-200 hover:shadow-md dark:border-secondary-700 dark:bg-secondary-800">
     <div className="mb-4 flex items-center justify-between">
       <div
         className={`h-12 w-12 ${color} flex items-center justify-center rounded-lg text-xl text-white`}
@@ -26,8 +26,8 @@ const MetricCard: React.FC<MetricCardProps> = ({ title, value, change, trend, ic
         {change}
       </span>
     </div>
-    <h3 className="mb-1 text-sm font-medium text-gray-600 dark:text-gray-400">{title}</h3>
-    <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{value}</p>
+    <h3 className="mb-1 text-sm font-medium text-text-muted">{title}</h3>
+    <p className="text-2xl font-bold text-text">{value}</p>
   </div>
 );
 
@@ -37,17 +37,17 @@ const TrafficSourceItem: React.FC<{
   percentage: number;
   color: string;
 }> = ({ source, visitors, percentage, color }) => (
-  <div className="flex items-center justify-between rounded-lg p-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700">
+  <div className="flex items-center justify-between rounded-lg p-4 transition-colors hover:bg-secondary-50 dark:hover:bg-secondary-700">
     <div className="flex items-center gap-3">
       <div className={`h-3 w-3 rounded-full ${color}`}></div>
       <div>
-        <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{source}</p>
-        <p className="text-xs text-gray-500 dark:text-gray-400">{visitors} visitors</p>
+        <p className="text-sm font-medium text-text">{source}</p>
+        <p className="text-xs text-text-muted">{visitors} visitors</p>
       </div>
     </div>
     <div className="text-right">
-      <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{percentage}%</p>
-      <div className="relative mt-1 h-2 w-16 rounded-full bg-gray-200 dark:bg-gray-600">
+      <p className="text-sm font-medium text-text">{percentage}%</p>
+      <div className="relative mt-1 h-2 w-16 rounded-full bg-secondary-200 dark:bg-secondary-600">
         <div
           className={`h-full ${color} absolute left-0 top-0 rounded-full`}
           data-width={`${percentage}%`}
@@ -119,7 +119,7 @@ export const AnalyticsPage: React.FC = () => {
         <select
           value={timeRange}
           onChange={e => setTimeRange(e.target.value)}
-          className="focus:ring-primary-500 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:border-transparent focus:ring-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+          className="focus:ring-brand rounded-lg border border-secondary-300 bg-white px-3 py-2 text-sm text-secondary-900 focus:border-transparent focus:ring-2 dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
           aria-label="Select time range"
           title="Select time range"
         >

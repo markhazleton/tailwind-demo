@@ -23,12 +23,12 @@
 
   /* Clean body styling */
   body {
-    @apply bg-white text-gray-900 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100;
+    @apply text-secondary-900 dark:bg-secondary-900 dark:text-secondary-100 bg-white transition-colors duration-300;
   }
 }
 @layer components {
   .prose-custom {
-    @apply max-w-none text-base leading-7 text-gray-700 dark:text-gray-300;
+    @apply text-secondary-900 dark:text-secondary-100 max-w-none text-base leading-7;
   }
 
   .section-padding {

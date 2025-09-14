@@ -6,19 +6,19 @@ import { ModalShowcase } from '../sections/ModalShowcase';
 
 export const DesignSystemShowcase: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white transition-colors dark:bg-gray-900">
+    <div className="min-h-screen bg-white transition-colors dark:bg-secondary-900">
       <div className="container mx-auto max-w-6xl px-4 py-8">
         <div className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="mb-4 text-4xl font-bold text-text">
             TailwindSpark Component Library
           </h1>
-          <p className="mx-auto mb-6 max-w-3xl text-xl text-gray-600 dark:text-gray-400">
+          <p className="mx-auto mb-6 max-w-3xl text-xl text-text-muted">
             A comprehensive showcase of production-ready React components built with Tailwind CSS,
             TypeScript, and accessibility best practices. Featuring buttons, forms, cards, and
             modals with all variants and interactive states.
           </p>
           <div className="flex justify-center gap-3 text-sm">
-            <span className="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 font-medium text-purple-800 dark:bg-purple-900 dark:text-purple-200">
+            <span className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 font-medium text-brand dark:bg-brand/20 dark:text-brand">
               ✨ TailwindSpark
             </span>
             <a

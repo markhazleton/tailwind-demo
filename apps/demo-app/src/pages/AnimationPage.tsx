@@ -3,19 +3,19 @@ import { AnimationShowcase } from '../sections/AnimationShowcase';
 
 export const AnimationPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white transition-colors dark:bg-gray-900">
+    <div className="min-h-screen bg-white transition-colors dark:bg-secondary-900">
       <div className="container mx-auto max-w-6xl px-4 py-8">
         <div className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="mb-4 text-4xl font-bold text-text">
             TailwindSpark Animation Gallery
           </h1>
-          <p className="mx-auto mb-6 max-w-3xl text-xl text-gray-600 dark:text-gray-400">
+          <p className="mx-auto mb-6 max-w-3xl text-xl text-text-muted">
             Discover the power of Tailwind CSS animations and transitions through interactive
             examples. From subtle hover effects to complex keyframe animations, see how
             utility-first CSS creates smooth, performant animations.
           </p>
           <div className="flex justify-center gap-3 text-sm">
-            <span className="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 font-medium text-purple-800 dark:bg-purple-900 dark:text-purple-200">
+            <span className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 font-medium text-brand dark:bg-brand/20 dark:text-brand">
               ✨ Interactive Examples
             </span>
             <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 font-medium text-green-800 dark:bg-green-900 dark:text-green-200">

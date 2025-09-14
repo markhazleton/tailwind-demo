@@ -14,17 +14,17 @@ export const ButtonShowcase: React.FC = () => {
   return (
     <section className="space-y-8">
       <div>
-        <h2 className="text-secondary-900 dark:text-secondary-100 mb-4 text-2xl font-bold">
+        <h2 className="text-text mb-4 text-2xl font-bold">
           Button Components
         </h2>
-        <p className="text-secondary-600 dark:text-secondary-400 mb-6">
+        <p className="text-text-muted mb-6">
           Interactive buttons with multiple variants, sizes, and states.
         </p>
       </div>
 
       {/* Variants */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           Variants
         </h3>
         <div className="flex flex-wrap gap-3">
@@ -39,7 +39,7 @@ export const ButtonShowcase: React.FC = () => {
 
       {/* Sizes */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">Sizes</h3>
+        <h3 className="text-text text-lg font-semibold">Sizes</h3>
         <div className="flex flex-wrap items-center gap-3">
           <Button size="sm">Small</Button>
           <Button size="md">Medium</Button>
@@ -50,7 +50,7 @@ export const ButtonShowcase: React.FC = () => {
 
       {/* With Icons */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           With Icons
         </h3>
         <div className="flex flex-wrap gap-3">
@@ -66,7 +66,7 @@ export const ButtonShowcase: React.FC = () => {
 
       {/* States */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">States</h3>
+        <h3 className="text-text text-lg font-semibold">States</h3>
         <div className="flex flex-wrap gap-3">
           <Button disabled>Disabled</Button>
           <Button loading={loading} onClick={handleAsyncAction}>
@@ -78,7 +78,7 @@ export const ButtonShowcase: React.FC = () => {
 
       {/* Responsive Grid */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           Responsive Layout
         </h3>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
