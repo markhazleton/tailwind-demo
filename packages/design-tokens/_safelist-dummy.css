@@ -5,28 +5,135 @@
  */
 
 /* Success colors */
-.bg-success-50 {} .bg-success-100 {} .bg-success-200 {} .bg-success-300 {} .bg-success-400 {}
-.bg-success-500 {} .bg-success-600 {} .bg-success-700 {} .bg-success-800 {} .bg-success-900 {}
-.hover\:bg-success-50:hover {} .hover\:bg-success-100:hover {} .hover\:bg-success-200:hover {}
-.hover\:bg-success-300:hover {} .hover\:bg-success-400:hover {} .hover\:bg-success-500:hover {}
-.hover\:bg-success-600:hover {} .hover\:bg-success-700:hover {} .hover\:bg-success-800:hover {}
-.hover\:bg-success-900:hover {}
+.bg-success-50 {
+}
+.bg-success-100 {
+}
+.bg-success-200 {
+}
+.bg-success-300 {
+}
+.bg-success-400 {
+}
+.bg-success-500 {
+}
+.bg-success-600 {
+}
+.bg-success-700 {
+}
+.bg-success-800 {
+}
+.bg-success-900 {
+}
+.hover\:bg-success-50:hover {
+}
+.hover\:bg-success-100:hover {
+}
+.hover\:bg-success-200:hover {
+}
+.hover\:bg-success-300:hover {
+}
+.hover\:bg-success-400:hover {
+}
+.hover\:bg-success-500:hover {
+}
+.hover\:bg-success-600:hover {
+}
+.hover\:bg-success-700:hover {
+}
+.hover\:bg-success-800:hover {
+}
+.hover\:bg-success-900:hover {
+}
 
 /* Warning colors */
-.bg-warning-50 {} .bg-warning-100 {} .bg-warning-200 {} .bg-warning-300 {} .bg-warning-400 {}
-.bg-warning-500 {} .bg-warning-600 {} .bg-warning-700 {} .bg-warning-800 {} .bg-warning-900 {}
-.hover\:bg-warning-50:hover {} .hover\:bg-warning-100:hover {} .hover\:bg-warning-200:hover {}
-.hover\:bg-warning-300:hover {} .hover\:bg-warning-400:hover {} .hover\:bg-warning-500:hover {}
-.hover\:bg-warning-600:hover {} .hover\:bg-warning-700:hover {} .hover\:bg-warning-800:hover {}
-.hover\:bg-warning-900:hover {}
+.bg-warning-50 {
+}
+.bg-warning-100 {
+}
+.bg-warning-200 {
+}
+.bg-warning-300 {
+}
+.bg-warning-400 {
+}
+.bg-warning-500 {
+}
+.bg-warning-600 {
+}
+.bg-warning-700 {
+}
+.bg-warning-800 {
+}
+.bg-warning-900 {
+}
+.hover\:bg-warning-50:hover {
+}
+.hover\:bg-warning-100:hover {
+}
+.hover\:bg-warning-200:hover {
+}
+.hover\:bg-warning-300:hover {
+}
+.hover\:bg-warning-400:hover {
+}
+.hover\:bg-warning-500:hover {
+}
+.hover\:bg-warning-600:hover {
+}
+.hover\:bg-warning-700:hover {
+}
+.hover\:bg-warning-800:hover {
+}
+.hover\:bg-warning-900:hover {
+}
 
 /* Error colors */
-.bg-error-50 {} .bg-error-100 {} .bg-error-200 {} .bg-error-300 {} .bg-error-400 {}
-.bg-error-500 {} .bg-error-600 {} .bg-error-700 {} .bg-error-800 {} .bg-error-900 {}
-.hover\:bg-error-50:hover {} .hover\:bg-error-100:hover {} .hover\:bg-error-200:hover {}
-.hover\:bg-error-300:hover {} .hover\:bg-error-400:hover {} .hover\:bg-error-500:hover {}
-.hover\:bg-error-600:hover {} .hover\:bg-error-700:hover {} .hover\:bg-error-800:hover {}
-.hover\:bg-error-900:hover {}
+.bg-error-50 {
+}
+.bg-error-100 {
+}
+.bg-error-200 {
+}
+.bg-error-300 {
+}
+.bg-error-400 {
+}
+.bg-error-500 {
+}
+.bg-error-600 {
+}
+.bg-error-700 {
+}
+.bg-error-800 {
+}
+.bg-error-900 {
+}
+.hover\:bg-error-50:hover {
+}
+.hover\:bg-error-100:hover {
+}
+.hover\:bg-error-200:hover {
+}
+.hover\:bg-error-300:hover {
+}
+.hover\:bg-error-400:hover {
+}
+.hover\:bg-error-500:hover {
+}
+.hover\:bg-error-600:hover {
+}
+.hover\:bg-error-700:hover {
+}
+.hover\:bg-error-800:hover {
+}
+.hover\:bg-error-900:hover {
+}
 
 /* Focus ring colors */
-.focus\:ring-success-500:focus {} .focus\:ring-warning-500:focus {} .focus\:ring-error-500:focus {}
+.focus\:ring-success-500:focus {
+}
+.focus\:ring-warning-500:focus {
+}
+.focus\:ring-error-500:focus {
+}
