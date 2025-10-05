@@ -21,14 +21,27 @@
       sans-serif;
   }
 
-  /* Clean body styling */
+  /* Clean body styling - using CSS custom properties for better dark mode support */
   body {
-    @apply text-secondary-900 dark:bg-secondary-900 dark:text-secondary-100 bg-white transition-colors duration-300;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease;
   }
 }
 @layer components {
   .prose-custom {
-    @apply text-secondary-900 dark:text-secondary-100 max-w-none text-base leading-7;
+    max-width: none;
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+    --tw-leading: calc(var(--spacing) * 7);
+    line-height: calc(var(--spacing) * 7);
+    color: var(--color-secondary-900);
+  }
+
+  .dark .prose-custom {
+    color: var(--color-secondary-100);
   }
 
   .section-padding {
@@ -78,6 +91,12 @@
   /* Parallax background pattern */
   .bg-pattern-dots {
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Parallax scroll effect */
+  .parallax-element {
+    transform: translateY(var(--scroll-offset, 0px));
+    transition: transform 0.1s ease-out;
   }
 
   /* Removed legacy .aspect-w-4 utility; use native aspect-[4/3] (temporary note) */

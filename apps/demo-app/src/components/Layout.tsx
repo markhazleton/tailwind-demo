@@ -74,9 +74,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
     demoItems.some(item => location.pathname === item.path) || location.pathname === '/demos';
 
   return (
-    <div className="min-h-screen bg-white transition-colors dark:bg-gray-900">
+    <div className="min-h-screen bg-surface transition-colors">
       {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-gray-200 bg-white transition-colors dark:border-gray-700 dark:bg-gray-900">
+      <header className="sticky top-0 z-40 border-b border-border bg-surface transition-colors">
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-8">
@@ -187,14 +187,14 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
 
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="rounded-lg bg-gray-100 p-2 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="rounded-lg bg-surface-alt p-2 transition-colors hover:bg-border"
                 aria-label="Search"
               >
                 🔍
               </button>
               <button
                 onClick={toggleTheme}
-                className="rounded-lg bg-gray-100 p-2 transition-colors hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="rounded-lg bg-surface-alt p-2 transition-colors hover:bg-border"
                 aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
               >
                 {isDark ? '☀️' : '🌙'}
@@ -261,7 +261,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
       <SearchComponent isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 bg-gray-50 py-12 dark:border-gray-700 dark:bg-gray-800">
+      <footer className="border-t border-border bg-surface-alt py-12">
         <div className="container mx-auto px-4">
           <div className="mb-4 flex items-center justify-center gap-4">
             <div className="flex items-center gap-2">

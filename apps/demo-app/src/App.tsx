@@ -1,7 +1,7 @@
-import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Layout } from './components/Layout';
+import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { AnalyticsPage } from './pages/AnalyticsPage';
 import { AnimationPage } from './pages/AnimationPage';
 import { DashboardPage } from './pages/DashboardPage';
@@ -13,37 +13,8 @@ import { MarketingPage } from './pages/MarketingPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { UsersPage } from './pages/UsersPage';
 
-function App() {
-  const [isDark, setIsDark] = React.useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      
-      // If user has explicitly set a theme, use that
-      if (savedTheme === 'dark') return true;
-      if (savedTheme === 'light') return false;
-      
-      // Only use system preference if no explicit choice was made
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      return prefersDark;
-    }
-    return false;
-  });
-
-  React.useEffect(() => {
-    const root = window.document.documentElement;
-    
-    if (isDark) {
-      root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDark]);
-
-  const toggleTheme = () => {
-    setIsDark(prev => !prev);
-  };
+function AppContent() {
+  const { isDark, toggleTheme } = useTheme();
 
   // Use basename only in production (GitHub Pages)
   const basename = import.meta.env.PROD ? '/tailwind-demo' : '';
@@ -74,6 +45,14 @@ function App() {
         </Routes>
       </Router>
     </ErrorBoundary>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

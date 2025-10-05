@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../contexts/ThemeContext';
 import { Logo } from './Logo';
 
 interface MarketingLayoutProps {
@@ -9,6 +10,7 @@ interface MarketingLayoutProps {
 export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,11 +30,11 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
   };
 
   return (
-    <div className="min-h-screen scroll-smooth">
+    <div className="min-h-screen scroll-smooth bg-surface text-text">
       {/* Navigation */}
       <nav
         className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white/80 shadow-lg backdrop-blur-md' : 'bg-transparent'
+          isScrolled ? 'bg-surface/80 shadow-lg backdrop-blur-md' : 'bg-transparent'
         }`}
       >
         <div className="mx-auto max-w-7xl px-4">
@@ -53,7 +55,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
                   to="/demos"
                   className={`transform px-3 py-2 text-sm font-medium transition-colors duration-300 hover:scale-105 ${
                     isScrolled
-                      ? 'text-gray-700 hover:text-indigo-600'
+                      ? 'text-text hover:text-brand'
                       : 'text-white hover:text-blue-200'
                   }`}
                 >
@@ -71,7 +73,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
                     onClick={() => scrollToSection(item.id)}
                     className={`transform px-3 py-2 text-sm font-medium transition-colors duration-300 hover:scale-105 ${
                       isScrolled
-                        ? 'text-gray-700 hover:text-indigo-600'
+                        ? 'text-text hover:text-brand'
                         : 'text-white hover:text-blue-200'
                     }`}
                   >
@@ -81,8 +83,40 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
               </div>
             </div>
 
-            {/* CTA Button */}
-            <div className="hidden md:block">
+            {/* CTA Button and Theme Toggle */}
+            <div className="hidden md:flex items-center space-x-4">
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className={`p-2 rounded-lg transition-colors duration-300 ${
+                  isScrolled
+                    ? 'text-text hover:text-brand hover:bg-surface-alt'
+                    : 'text-white hover:text-blue-200 hover:bg-white/10'
+                }`}
+                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {isDark ? (
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                  </svg>
+                ) : (
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                    />
+                  </svg>
+                )}
+              </button>
+              
+              {/* CTA Button */}
               <button
                 onClick={() => scrollToSection('contact')}
                 className={`transform rounded-full px-6 py-2 font-semibold transition-all duration-300 hover:scale-105 ${
