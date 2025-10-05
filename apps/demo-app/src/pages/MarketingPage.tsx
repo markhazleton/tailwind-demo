@@ -41,6 +41,11 @@ export const MarketingPage: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Update CSS custom property for parallax effect
+  useEffect(() => {
+    document.documentElement.style.setProperty('--scroll-offset', `${scrollY * 0.5}px`);
+  }, [scrollY]);
+
   // Auto-rotate testimonials
   useEffect(() => {
     const timer = setInterval(() => {
@@ -183,15 +188,7 @@ export const MarketingPage: React.FC = () => {
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700">
-          <div
-            className="bg-pattern-dots absolute inset-0 transform opacity-30 transition-transform duration-1000 ease-out"
-            style={
-              {
-                '--scroll-offset': `${scrollY * 0.5}px`,
-                transform: 'translateY(var(--scroll-offset))',
-              } as React.CSSProperties
-            }
-          />
+          <div className="bg-pattern-dots parallax-element absolute inset-0 transform opacity-30 transition-transform duration-1000 ease-out" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
@@ -230,11 +227,11 @@ export const MarketingPage: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="bg-gray-50 py-20" id="services">
+      <section className="bg-surface-alt py-20" id="services">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">Our Services</h2>
-            <p className="mx-auto max-w-3xl text-xl text-gray-600">
+            <h2 className="mb-4 text-4xl font-bold text-text md:text-5xl">Our Services</h2>
+            <p className="mx-auto max-w-3xl text-xl text-text-muted">
               We offer comprehensive digital solutions to elevate your brand and drive business
               growth
             </p>
@@ -244,16 +241,16 @@ export const MarketingPage: React.FC = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group transform rounded-2xl bg-white p-8 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                className="group transform rounded-2xl bg-surface p-8 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
               >
                 <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">
                   {service.icon}
                 </div>
-                <h3 className="mb-4 text-2xl font-bold text-gray-900">{service.title}</h3>
-                <p className="mb-6 leading-relaxed text-gray-600">{service.description}</p>
+                <h3 className="mb-4 text-2xl font-bold text-text">{service.title}</h3>
+                <p className="mb-6 leading-relaxed text-text-muted">{service.description}</p>
                 <ul className="space-y-2">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-700">
+                    <li key={idx} className="flex items-center text-text">
                       <svg
                         className="mr-3 h-5 w-5 text-green-500"
                         fill="currentColor"
@@ -276,11 +273,11 @@ export const MarketingPage: React.FC = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section className="bg-white py-20" id="portfolio">
+      <section className="bg-surface py-20" id="portfolio">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">Our Portfolio</h2>
-            <p className="mx-auto max-w-3xl text-xl text-gray-600">
+            <h2 className="mb-4 text-4xl font-bold text-text md:text-5xl">Our Portfolio</h2>
+            <p className="mx-auto max-w-3xl text-xl text-text-muted">
               Discover the impact of our work through these selected case studies
             </p>
           </div>
@@ -313,19 +310,19 @@ export const MarketingPage: React.FC = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-gray-50 py-20" id="testimonials">
+      <section className="bg-surface-alt py-20" id="testimonials">
         <div className="mx-auto max-w-4xl px-4">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
+            <h2 className="mb-4 text-4xl font-bold text-text md:text-5xl">
               What Our Clients Say
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-text-muted">
               Don't just take our word for it - hear from our satisfied clients
             </p>
           </div>
 
           <div className="relative">
-            <div className="rounded-2xl bg-white p-8 shadow-2xl md:p-12">
+            <div className="rounded-2xl bg-surface p-8 shadow-2xl md:p-12">
               <div className="mb-6 flex items-center">
                 {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
                   <svg
@@ -339,7 +336,7 @@ export const MarketingPage: React.FC = () => {
                 ))}
               </div>
 
-              <blockquote className="mb-8 text-xl italic leading-relaxed text-gray-700 md:text-2xl">
+              <blockquote className="mb-8 text-xl italic leading-relaxed text-text-muted md:text-2xl">
                 "{testimonials[activeTestimonial].content}"
               </blockquote>
 
@@ -350,10 +347,10 @@ export const MarketingPage: React.FC = () => {
                   className="mr-4 h-16 w-16 rounded-full object-cover"
                 />
                 <div>
-                  <h4 className="font-bold text-gray-900">
+                  <h4 className="font-bold text-text">
                     {testimonials[activeTestimonial].name}
                   </h4>
-                  <p className="text-gray-600">{testimonials[activeTestimonial].role}</p>
+                  <p className="text-text-muted">{testimonials[activeTestimonial].role}</p>
                 </div>
               </div>
             </div>
@@ -391,12 +388,12 @@ export const MarketingPage: React.FC = () => {
 
           <div className="grid gap-12 lg:grid-cols-2">
             {/* Contact Form */}
-            <div className="rounded-2xl bg-white p-8 shadow-2xl">
-              <h3 className="mb-6 text-2xl font-bold text-gray-900">Send us a message</h3>
+            <div className="rounded-2xl bg-surface p-8 shadow-2xl">
+              <h3 className="mb-6 text-2xl font-bold text-text">Send us a message</h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-700">
+                  <label htmlFor="name" className="mb-2 block text-sm font-medium text-text">
                     Full Name *
                   </label>
                   <input
@@ -418,7 +415,7 @@ export const MarketingPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-700">
+                  <label htmlFor="email" className="mb-2 block text-sm font-medium text-text">
                     Email Address *
                   </label>
                   <input
@@ -440,7 +437,7 @@ export const MarketingPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="mb-2 block text-sm font-medium text-gray-700">
+                  <label htmlFor="company" className="mb-2 block text-sm font-medium text-text">
                     Company
                   </label>
                   <input
@@ -455,7 +452,7 @@ export const MarketingPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-700">
+                  <label htmlFor="message" className="mb-2 block text-sm font-medium text-text">
                     Message *
                   </label>
                   <textarea
