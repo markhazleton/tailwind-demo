@@ -26,7 +26,7 @@
     "@tailwindspark/ui-components": "*",
     "@types/react-router-dom": "^5.3.3",
     "clsx": "^2.1.1",
-    "lightningcss": "^1.30.1",
+    "lightningcss": "^1.30.2",
     "lucide-react": "^0.544.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
