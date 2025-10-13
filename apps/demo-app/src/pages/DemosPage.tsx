@@ -93,20 +93,20 @@ export const DemosPage: React.FC = () => {
   ];
 
   return (
-    <div className="py-16">
+    <div className="bg-surface py-16">
       <div className="container mx-auto max-w-7xl px-4">
         {/* Hero Section */}
         <div className="mb-16 text-center">
-          <h1 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl dark:text-gray-100">
+          <h1 className="mb-6 text-4xl font-bold text-text md:text-5xl">
             Real-World Tailwind CSS Demos
           </h1>
-          <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-gray-600 dark:text-gray-400">
+          <p className="mx-auto mb-8 max-w-4xl text-xl leading-relaxed text-text-muted">
             These three production-style examples showcase Tailwind CSS in real business scenarios,
             demonstrating technical complexity, business value, and modern best practices that
             employers and clients recognize.
           </p>
-          <div className="mx-auto max-w-4xl rounded-xl border border-purple-200 bg-gradient-to-r from-purple-50 to-blue-50 p-6 dark:border-purple-800 dark:from-purple-900/20 dark:to-blue-900/20">
-            <p className="italic text-gray-700 dark:text-gray-300">
+          <div className="mx-auto max-w-4xl rounded-xl border border-border bg-surface-alt p-6">
+            <p className="italic text-text">
               "Each demo represents a different business use case, showcasing advanced Tailwind
               features, responsive design, accessibility considerations, and modern UI patterns that
               solve real problems."
@@ -120,10 +120,10 @@ export const DemosPage: React.FC = () => {
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-cyan-500">
               <span className="text-2xl">🏗️</span>
             </div>
-            <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-100">
+            <h3 className="mb-3 text-xl font-semibold text-text">
               Technical Complexity
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-text-muted">
               Advanced Tailwind features like responsive design, dark mode, animations, and complex
               layouts that mirror actual development projects.
             </p>
@@ -133,10 +133,10 @@ export const DemosPage: React.FC = () => {
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-emerald-500">
               <span className="text-2xl">💼</span>
             </div>
-            <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-100">
+            <h3 className="mb-3 text-xl font-semibold text-text">
               Business Value
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-text-muted">
               Common use cases covering SaaS dashboards, e-commerce, and marketing sites that
               potential employers and clients immediately understand.
             </p>
@@ -146,10 +146,10 @@ export const DemosPage: React.FC = () => {
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-pink-500">
               <span className="text-2xl">✨</span>
             </div>
-            <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-gray-100">
+            <h3 className="mb-3 text-xl font-semibold text-text">
               Best Practices
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-text-muted">
               Proper component organization, semantic HTML, accessibility considerations, and modern
               UI patterns following industry standards.
             </p>
@@ -170,9 +170,9 @@ export const DemosPage: React.FC = () => {
                   <img
                     src={demo.image}
                     alt={demo.title}
-                    className="h-80 w-full rounded-2xl object-cover shadow-2xl transition-transform duration-300 group-hover:scale-105"
+                    className="relative z-10 h-80 w-full rounded-2xl object-cover shadow-2xl transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-20">
+                  <div className="absolute inset-0 z-20 flex items-center justify-center rounded-2xl bg-black/0 transition-all duration-300 group-hover:bg-black/20">
                     <Link
                       to={demo.path}
                       className="translate-y-4 transform rounded-full bg-white px-6 py-3 font-semibold text-gray-900 opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
@@ -187,17 +187,17 @@ export const DemosPage: React.FC = () => {
               <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                 <div className="space-y-6">
                   <div>
-                    <h2 className="mb-3 text-3xl font-bold text-gray-900 dark:text-gray-100">
+                    <h2 className="mb-3 text-3xl font-bold text-text">
                       {demo.title}
                     </h2>
-                    <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                    <p className="text-lg leading-relaxed text-text-muted">
                       {demo.description}
                     </p>
                   </div>
 
                   {/* Features */}
                   <div>
-                    <h4 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
+                    <h4 className="mb-3 text-lg font-semibold text-text">
                       Key Features
                     </h4>
                     <ul className="grid gap-2 md:grid-cols-2">
@@ -214,7 +214,7 @@ export const DemosPage: React.FC = () => {
                               clipRule="evenodd"
                             />
                           </svg>
-                          <span className="text-sm text-gray-600 dark:text-gray-400">
+                          <span className="text-sm text-text-muted">
                             {feature}
                           </span>
                         </li>
@@ -224,14 +224,14 @@ export const DemosPage: React.FC = () => {
 
                   {/* Technical Highlights */}
                   <div>
-                    <h4 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
+                    <h4 className="mb-3 text-lg font-semibold text-text">
                       Tailwind Techniques
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {demo.techHighlights.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-800 dark:bg-purple-900 dark:text-purple-200"
+                          className="rounded-full bg-brand/10 px-3 py-1 text-sm font-medium text-brand"
                         >
                           {tech}
                         </span>
@@ -240,11 +240,11 @@ export const DemosPage: React.FC = () => {
                   </div>
 
                   {/* Business Value */}
-                  <div className="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
-                    <h4 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  <div className="rounded-lg bg-surface-alt p-4">
+                    <h4 className="mb-2 text-lg font-semibold text-text">
                       Business Impact
                     </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{demo.businessValue}</p>
+                    <p className="text-sm text-text-muted">{demo.businessValue}</p>
                   </div>
 
                   {/* CTA */}
@@ -255,7 +255,7 @@ export const DemosPage: React.FC = () => {
                     >
                       Explore {demo.title}
                     </Link>
-                    <button className="rounded-lg border-2 border-gray-300 px-6 py-3 font-semibold text-gray-700 transition-colors duration-300 hover:border-purple-500 hover:text-purple-600 dark:border-gray-600 dark:text-gray-300 dark:hover:text-purple-400">
+                    <button className="rounded-lg border-2 border-border px-6 py-3 font-semibold text-text transition-colors duration-300 hover:border-brand hover:text-brand">
                       View Code
                     </button>
                   </div>
@@ -292,7 +292,7 @@ export const DemosPage: React.FC = () => {
 
         {/* Technology Stack */}
         <div className="mt-16 text-center">
-          <h3 className="mb-8 text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <h3 className="mb-8 text-2xl font-bold text-text">
             Built with Modern Technologies
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
@@ -308,7 +308,7 @@ export const DemosPage: React.FC = () => {
             ].map(tech => (
               <span
                 key={tech}
-                className="rounded-lg bg-gray-100 px-4 py-2 font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                className="rounded-lg bg-surface-alt px-4 py-2 font-medium text-text"
               >
                 {tech}
               </span>

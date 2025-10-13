@@ -1,6 +1,6 @@
 {
   "name": "tailwindspark-monorepo",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "TailwindSpark - A comprehensive Tailwind CSS showcase monorepo with React and TypeScript. Part of the WebSpark portfolio by Mark Hazleton.",
   "keywords": [
     "tailwind",
@@ -29,7 +29,8 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "preversion": "node scripts/increment-version.js",
+    "build": "npm run preversion && turbo run build",
     "prebuild:deploy": "tsx scripts/generate-meta.ts",
     "build:deploy": "npm run prebuild:deploy && turbo run build --filter=@tailwindspark/demo-app",
     "rev": "node scripts/revision.js",
@@ -51,7 +52,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
-    "typescript-eslint": "^8.45.0",
+    "typescript-eslint": "^8.46.0",
     "@vitest/coverage-v8": "^3.2.4",
     "@vitest/ui": "^3.2.4",
     "eslint": "^9.37.0",
@@ -65,7 +66,7 @@
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"
   },
-  "packageManager": "npm@11.6.1",
+  "packageManager": "npm@11.6.2",
   "engines": {
     "node": ">=18"
   },
