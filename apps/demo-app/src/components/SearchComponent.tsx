@@ -132,13 +132,19 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
       setSelectedIndex(prev => Math.max(prev - 1, 0));
     } else if (e.key === 'Enter' && filteredResults[selectedIndex]) {
       e.preventDefault();
-      window.location.hash = filteredResults[selectedIndex].url;
+      setTimeout(() => {
+        window.location.hash = filteredResults[selectedIndex].url;
+      }, 0);
       onClose();
     }
   };
 
   const handleResultClick = (result: SearchResult) => {
-    window.location.hash = result.url;
+    // Use React Router or a more React-friendly navigation approach
+    // For now, we'll use a safe assignment pattern
+    setTimeout(() => {
+      window.location.hash = result.url;
+    }, 0);
     onClose();
   };
 

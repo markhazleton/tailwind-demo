@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import EcommerceLayout from '../components/EcommerceLayout';
 import FilterPanel from '../components/FilterPanel';
@@ -151,7 +151,6 @@ const MOCK_PRODUCTS: Product[] = [
 
 const EcommercePage: React.FC = () => {
   const [products] = useState<Product[]>(MOCK_PRODUCTS);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>(MOCK_PRODUCTS);
   const [filters, setFilters] = useState<FilterState>({
     categories: [],
     brands: [],
@@ -169,8 +168,8 @@ const EcommercePage: React.FC = () => {
 
   const productsPerPage = 8;
 
-  // Filter and search products
-  useEffect(() => {
+  // Filter and search products using useMemo instead of useEffect
+  const filteredProducts = useMemo(() => {
     let filtered = [...products];
 
     // Apply search
@@ -234,9 +233,24 @@ const EcommercePage: React.FC = () => {
         break;
     }
 
-    setFilteredProducts(filtered);
-    setCurrentPage(1);
+    return filtered;
   }, [products, filters, searchQuery, sortBy]);
+
+  // Reset current page when filters change - using a wrapper function
+  const handleFiltersChange = (newFilters: FilterState | ((prev: FilterState) => FilterState)) => {
+    setFilters(newFilters);
+    setCurrentPage(1);
+  };
+
+  const handleSearchQueryChange = (query: string | ((prev: string) => string)) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  };
+
+  const handleSortByChange = (sort: string) => {
+    setSortBy(sort);
+    setCurrentPage(1);
+  };
 
   const handleAddToCart = (product: Product, selectedColor?: string, selectedSize?: string) => {
     const existingItem = cart.find(
@@ -289,7 +303,7 @@ const EcommercePage: React.FC = () => {
       cart={cart}
       setCart={setCart}
       searchQuery={searchQuery}
-      setSearchQuery={setSearchQuery}
+      setSearchQuery={handleSearchQueryChange}
     >
       <div className="min-h-screen bg-gray-50">
         {/* Breadcrumbs */}
@@ -364,7 +378,7 @@ const EcommercePage: React.FC = () => {
                 <select
                   id="sort"
                   value={sortBy}
-                  onChange={e => setSortBy(e.target.value)}
+                  onChange={e => handleSortByChange(e.target.value)}
                   className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 >
                   <option value="featured">Featured</option>
@@ -383,7 +397,7 @@ const EcommercePage: React.FC = () => {
           <div className="flex gap-8">
             {/* Filter Panel */}
             <div className="w-64 flex-shrink-0">
-              <FilterPanel products={products} filters={filters} setFilters={setFilters} />
+              <FilterPanel products={products} filters={filters} setFilters={handleFiltersChange} />
             </div>
 
             {/* Products Grid */}
