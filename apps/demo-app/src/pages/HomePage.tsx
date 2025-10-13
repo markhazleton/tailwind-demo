@@ -5,23 +5,23 @@ import { TailwindSparkBrand } from '../components/TailwindSparkBrand';
 
 export const HomePage: React.FC = () => {
   return (
-    <div className="py-16">
+    <div className="bg-surface py-16">
       <div className="container mx-auto max-w-4xl px-4">
         <div className="mb-12">
           <TailwindSparkBrand variant="hero" logoTitleTogether={true} />
           <div className="mt-8 text-center">
-            <p className="text-lg italic text-gray-500 dark:text-gray-500">
+            <p className="text-lg italic text-text-muted">
               "Making technology work for business - lifelong learner, not sidetracked by sizzle."
             </p>
           </div>
         </div>
 
         {/* WebSpark Portfolio Integration */}
-        <div className="from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 border-primary-200 dark:border-primary-800 mb-12 rounded-lg border bg-gradient-to-r p-6">
-          <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-gray-100">
+        <div className="mb-12 rounded-lg border border-border bg-surface-alt p-6">
+          <h3 className="mb-3 text-lg font-semibold text-text">
             🌐 Part of the WebSpark Ecosystem
           </h3>
-          <p className="mb-4 text-gray-700 dark:text-gray-300">
+          <p className="mb-4 text-text-muted">
             TailwindSpark demonstrates practical application of modern web technologies as part of
             the WebSpark suite, showcasing real-world implementations rather than theoretical
             concepts. Explore other WebSpark applications:
@@ -31,7 +31,7 @@ export const HomePage: React.FC = () => {
               href="https://webspark.markhazleton.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 hover:bg-primary-200 dark:hover:bg-primary-800 inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors"
+              className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-sm font-medium text-brand transition-colors hover:bg-brand/20"
             >
               🌟 WebSpark Portfolio
             </a>
@@ -48,85 +48,85 @@ export const HomePage: React.FC = () => {
         </div>
 
         <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
-            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
+            <h3 className="mb-2 text-lg font-semibold text-text">
               Component Library
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-text-muted">
               Production-ready UI components built with Tailwind CSS, TypeScript, and accessibility
               best practices.
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
-            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
+            <h3 className="mb-2 text-lg font-semibold text-text">
               Dark Mode & Accessibility
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-text-muted">
               WCAG compliant components with automatic dark mode support and system preference
               detection.
             </p>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
-            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
+            <h3 className="mb-2 text-lg font-semibold text-text">
               TailwindSpark Dashboard
             </h3>
-            <p className="mb-3 text-gray-600 dark:text-gray-400">
+            <p className="mb-3 text-text-muted">
               Full-featured SaaS dashboard showcasing modern UI patterns with responsive design and
               interactive analytics.
             </p>
             <Link
               to="/dashboard"
-              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-sm font-medium"
+              className="text-sm font-medium text-brand hover:text-brand-hover"
             >
               View Dashboard →
             </Link>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
-            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
+            <h3 className="mb-2 text-lg font-semibold text-text">
               E-commerce Store
             </h3>
-            <p className="mb-3 text-gray-600 dark:text-gray-400">
+            <p className="mb-3 text-text-muted">
               Modern online store with product grids, filtering, shopping cart, and responsive
               checkout flow.
             </p>
             <Link
               to="/ecommerce"
-              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-sm font-medium"
+              className="text-sm font-medium text-brand hover:text-brand-hover"
             >
               View Store →
             </Link>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
-            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
+            <h3 className="mb-2 text-lg font-semibold text-text">
               Marketing Landing Page
             </h3>
-            <p className="mb-3 text-gray-600 dark:text-gray-400">
+            <p className="mb-3 text-text-muted">
               Agency-style landing page with hero sections, testimonials, portfolio gallery, and
               contact forms.
             </p>
             <Link
               to="/marketing"
-              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-sm font-medium"
+              className="text-sm font-medium text-brand hover:text-brand-hover"
             >
               View Landing Page →
             </Link>
           </div>
 
-          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-md dark:border-gray-700 dark:bg-gray-800">
-            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
+            <h3 className="mb-2 text-lg font-semibold text-text">
               Animation Showcase
             </h3>
-            <p className="mb-3 text-gray-600 dark:text-gray-400">
+            <p className="mb-3 text-text-muted">
               Interactive animations, transitions, and micro-interactions demonstrating Tailwind's
               animation utilities.
             </p>
             <Link
               to="/animations"
-              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-sm font-medium"
+              className="text-sm font-medium text-brand hover:text-brand-hover"
             >
               View Animations →
             </Link>
@@ -166,7 +166,7 @@ export const HomePage: React.FC = () => {
               href="https://webspark.markhazleton.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium"
+              className="font-medium text-brand hover:text-brand-hover"
             >
               Visit WebSpark Portfolio →
             </a>
@@ -176,10 +176,10 @@ export const HomePage: React.FC = () => {
         {/* Features Section */}
         <div className="mt-20">
           <div className="mb-12 text-center">
-            <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <h3 className="mb-4 text-2xl font-bold text-text">
               TailwindSpark Features
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-text-muted">
               Professional-grade components and patterns for modern web applications
             </p>
           </div>
@@ -192,10 +192,10 @@ export const HomePage: React.FC = () => {
                 </div>
               </div>
               <div>
-                <h4 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+                <h4 className="mb-2 text-lg font-semibold text-text">
                   Professional Design System
                 </h4>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-text-muted">
                   Production-ready component library with buttons, forms, cards, modals, and
                   animations. All components include TypeScript definitions and accessibility
                   features.
@@ -210,10 +210,10 @@ export const HomePage: React.FC = () => {
                 </div>
               </div>
               <div>
-                <h4 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+                <h4 className="mb-2 text-lg font-semibold text-text">
                   Performance & Modern Stack
                 </h4>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-text-muted">
                   Built with React 19, TypeScript 5.3, Tailwind CSS 4.1, and Vite 7 for optimal
                   performance. Monorepo architecture with Turborepo for efficient builds.
                 </p>
@@ -227,10 +227,10 @@ export const HomePage: React.FC = () => {
                 </div>
               </div>
               <div>
-                <h4 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+                <h4 className="mb-2 text-lg font-semibold text-text">
                   Dark Mode Support
                 </h4>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-text-muted">
                   Seamless dark mode with system preference detection and manual toggle. All
                   components adapt automatically.
                 </p>
@@ -244,10 +244,10 @@ export const HomePage: React.FC = () => {
                 </div>
               </div>
               <div>
-                <h4 className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
+                <h4 className="mb-2 text-lg font-semibold text-text">
                   Monorepo Architecture
                 </h4>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-text-muted">
                   Organized with Turborepo for efficient development. Shared design tokens and UI
                   components across projects.
                 </p>

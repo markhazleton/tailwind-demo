@@ -6,7 +6,7 @@ import { ModalShowcase } from '../sections/ModalShowcase';
 
 export const DesignSystemShowcase: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white transition-colors dark:bg-secondary-900">
+    <div className="min-h-screen bg-surface transition-colors">
       <div className="container mx-auto max-w-6xl px-4 py-8">
         <div className="mb-12 text-center">
           <h1 className="mb-4 text-4xl font-bold text-text">
@@ -18,14 +18,14 @@ export const DesignSystemShowcase: React.FC = () => {
             modals with all variants and interactive states.
           </p>
           <div className="flex justify-center gap-3 text-sm">
-            <span className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 font-medium text-brand dark:bg-brand/20 dark:text-brand">
+            <span className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 font-medium text-brand">
               ✨ TailwindSpark
             </span>
             <a
               href="https://webspark.markhazleton.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 font-medium text-blue-800 transition-colors hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
+              className="inline-flex items-center rounded-full bg-surface-alt px-3 py-1 font-medium text-text transition-colors hover:bg-border"
             >
               🌐 WebSpark Portfolio
             </a>

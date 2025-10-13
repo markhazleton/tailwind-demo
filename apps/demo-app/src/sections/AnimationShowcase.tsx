@@ -26,7 +26,7 @@ export const AnimationShowcase: React.FC = () => {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* Scale Transition */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-6 shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
             <h3 className="mb-4 text-lg font-semibold text-text">
               Scale Transform
             </h3>
@@ -38,7 +38,7 @@ export const AnimationShowcase: React.FC = () => {
           </div>
 
           {/* Color Transition */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-6 shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
             <h3 className="mb-4 text-lg font-semibold text-text">
               Color Transition
             </h3>
@@ -50,7 +50,7 @@ export const AnimationShowcase: React.FC = () => {
           </div>
 
           {/* Opacity Transition */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-6 shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
             <h3 className="mb-4 text-lg font-semibold text-text">
               Opacity Fade
             </h3>
@@ -62,7 +62,7 @@ export const AnimationShowcase: React.FC = () => {
           </div>
 
           {/* Rotate Transition */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-6 shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
             <h3 className="mb-4 text-lg font-semibold text-text">
               Rotate Transform
             </h3>
@@ -74,7 +74,7 @@ export const AnimationShowcase: React.FC = () => {
           </div>
 
           {/* Translate Transition */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-6 shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
             <h3 className="mb-4 text-lg font-semibold text-text">
               Slide Transform
             </h3>
@@ -86,7 +86,7 @@ export const AnimationShowcase: React.FC = () => {
           </div>
 
           {/* Shadow Transition */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-6 shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
             <h3 className="mb-4 text-lg font-semibold text-text">
               Shadow Growth
             </h3>
@@ -112,7 +112,7 @@ export const AnimationShowcase: React.FC = () => {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {/* Spin Animation */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-6 text-center shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-6 text-center shadow-md">
             <h3 className="mb-4 text-lg font-semibold text-text">Spin</h3>
             <div className="mb-4 flex justify-center">
               <div className="h-12 w-12 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
@@ -121,7 +121,7 @@ export const AnimationShowcase: React.FC = () => {
           </div>
 
           {/* Ping Animation */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-6 text-center shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-6 text-center shadow-md">
             <h3 className="mb-4 text-lg font-semibold text-text">Ping</h3>
             <div className="mb-4 flex justify-center">
               <div className="relative">
@@ -133,7 +133,7 @@ export const AnimationShowcase: React.FC = () => {
           </div>
 
           {/* Pulse Animation */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-6 text-center shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-6 text-center shadow-md">
             <h3 className="mb-4 text-lg font-semibold text-text">Pulse</h3>
             <div className="mb-4 flex justify-center">
               <button
@@ -147,7 +147,7 @@ export const AnimationShowcase: React.FC = () => {
           </div>
 
           {/* Bounce Animation */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-6 text-center shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-6 text-center shadow-md">
             <h3 className="mb-4 text-lg font-semibold text-text">Bounce</h3>
             <div className="mb-4 flex justify-center">
               <button
@@ -175,7 +175,7 @@ export const AnimationShowcase: React.FC = () => {
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           {/* Loading Button */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-8 shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-8 shadow-md">
             <h3 className="mb-6 text-xl font-semibold text-text">
               Loading States
             </h3>
@@ -202,7 +202,7 @@ export const AnimationShowcase: React.FC = () => {
           </div>
 
           {/* Modal Animation */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-8 shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-8 shadow-md">
             <h3 className="mb-6 text-xl font-semibold text-text">
               Modal Transitions
             </h3>
@@ -229,7 +229,7 @@ export const AnimationShowcase: React.FC = () => {
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {/* Floating Card */}
-          <div className="rounded-lg border border-secondary-200 bg-white p-8 shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+          <div className="rounded-lg border border-border bg-surface p-8 shadow-md">
             <h3 className="mb-6 text-xl font-semibold text-text">
               Floating Card
             </h3>
@@ -246,7 +246,7 @@ export const AnimationShowcase: React.FC = () => {
           </div>
 
           {/* Morphing Button */}
-          <div className="rounded-lg border border-gray-200 bg-white p-8 shadow-md dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-lg border border-border bg-surface p-8 shadow-md">
             <h3 className="mb-6 text-xl font-semibold text-text">
               Morphing Button
             </h3>
@@ -272,10 +272,10 @@ export const AnimationShowcase: React.FC = () => {
           ></div>
 
           {/* Modal */}
-          <div className="relative w-full max-w-md transform animate-bounce rounded-xl bg-white p-8 shadow-2xl transition-all duration-300 dark:bg-secondary-800">
+          <div className="relative w-full max-w-md transform animate-bounce rounded-xl bg-surface p-8 shadow-2xl transition-all duration-300">
             <button
               onClick={() => setShowModal(false)}
-              className="absolute right-4 top-4 text-secondary-500 transition-colors hover:text-secondary-700 dark:text-secondary-400 dark:hover:text-secondary-200"
+              className="absolute right-4 top-4 text-text-muted transition-colors hover:text-text"
             >
               ✕
             </button>
