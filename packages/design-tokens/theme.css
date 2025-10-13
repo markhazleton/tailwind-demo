@@ -184,3 +184,99 @@
     color: var(--color-text-muted);
   }
 }
+
+/* Enhanced Accessibility Features */
+@layer base {
+  /* Enhanced focus indicators for better accessibility */
+  :focus {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Ensure focus indicators are visible in all themes */
+  .dark :focus-visible {
+    outline-color: var(--color-primary-400);
+  }
+
+  /* Skip link for keyboard users */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: var(--radius);
+    border: 2px solid var(--color-border-strong);
+    font-weight: 500;
+    transition: top var(--duration-fast) var(--ease-out);
+  }
+
+  .skip-link:focus {
+    top: 6px;
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* Ensure interactive elements have proper focus states */
+  button:focus-visible,
+  [role='button']:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  a:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :focus-visible {
+      outline-width: 3px;
+      outline-style: solid;
+    }
+
+    .skip-link {
+      border-width: 3px;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .skip-link {
+      transition: none;
+    }
+
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Screen reader only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Focus trap container */
+  .focus-trap {
+    /* Ensures focus stays within modal/dialog */
+    isolation: isolate;
+  }
+}

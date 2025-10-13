@@ -40,11 +40,25 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       rightIcon,
       children,
       disabled,
+      onClick,
+      onKeyDown,
       ...props
     },
     ref
   ) => {
     const isDisabled = disabled || loading;
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+      // Call any existing onKeyDown handler first
+      onKeyDown?.(event);
+      
+      // Handle Enter and Space keys for accessibility
+      if ((event.key === 'Enter' || event.key === ' ') && onClick && !isDisabled) {
+        event.preventDefault();
+        // Trigger click event programmatically
+        event.currentTarget.click();
+      }
+    };
 
     return (
       <button
@@ -59,6 +73,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           className
         )}
         disabled={isDisabled}
+        {...(isDisabled && { 'aria-disabled': 'true' })}
+        onClick={onClick}
+        onKeyDown={handleKeyDown}
         {...props}
       >
         {loading && (

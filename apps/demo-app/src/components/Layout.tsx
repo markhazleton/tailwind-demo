@@ -75,6 +75,11 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
 
   return (
     <div className="min-h-screen bg-surface transition-colors">
+      {/* Skip Link for Accessibility */}
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+      
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border bg-surface transition-colors">
         <div className="container mx-auto px-4">
@@ -255,7 +260,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
       </header>
 
       {/* Main Content */}
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
 
       {/* Search Component */}
       <SearchComponent isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />

@@ -1,20 +1,54 @@
+import { Suspense, lazy, useEffect } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { BundleAnalyzer } from './components/BundleAnalyzer';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Layout } from './components/Layout';
+import { PageLoadingSpinner } from './components/LoadingSpinner';
+import { MemoryMonitorDisplay } from './components/MemoryMonitorDisplay';
+import { PerformanceMonitor } from './components/PerformanceMonitor';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
-import { AnalyticsPage } from './pages/AnalyticsPage';
-import { AnimationPage } from './pages/AnimationPage';
-import { DashboardPage } from './pages/DashboardPage';
-import { DemosPage } from './pages/DemosPage';
-import { DesignSystemShowcase } from './pages/DesignSystemPage';
-import EcommercePage from './pages/EcommercePage';
-import { HomePage } from './pages/HomePage';
-import { MarketingPage } from './pages/MarketingPage';
-import { SettingsPage } from './pages/SettingsPage';
-import { UsersPage } from './pages/UsersPage';
+import { cdnOptimizer } from './utils/cdnOptimizer';
+import { ResourcePriorityManager, setupCdnPreconnections } from './utils/resourceHints';
+
+// Lazy load page components for better performance
+const AnalyticsPage = lazy(() => import('./pages/AnalyticsPage').then(m => ({ default: m.AnalyticsPage })));
+const AnimationPage = lazy(() => import('./pages/AnimationPage').then(m => ({ default: m.AnimationPage })));
+const DashboardPage = lazy(() => import('./pages/DashboardPage').then(m => ({ default: m.DashboardPage })));
+const DemosPage = lazy(() => import('./pages/DemosPage').then(m => ({ default: m.DemosPage })));
+const DesignSystemShowcase = lazy(() => import('./pages/DesignSystemPage').then(m => ({ default: m.DesignSystemShowcase })));
+const EcommercePage = lazy(() => import('./pages/EcommercePage'));
+const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
+const MarketingPage = lazy(() => import('./pages/MarketingPage').then(m => ({ default: m.MarketingPage })));
+const SettingsPage = lazy(() => import('./pages/SettingsPage').then(m => ({ default: m.SettingsPage })));
+const UsersPage = lazy(() => import('./pages/UsersPage').then(m => ({ default: m.UsersPage })));
 
 function AppContent() {
   const { isDark, toggleTheme } = useTheme();
+
+  // Setup resource optimization
+  useEffect(() => {
+    // Setup CDN preconnections for external resources
+    setupCdnPreconnections();
+
+    // Initialize CDN optimization for production
+    if (process.env.NODE_ENV === 'production') {
+      cdnOptimizer.init();
+    }
+
+    // Preload critical resources
+    const resourceManager = ResourcePriorityManager.getInstance();
+    resourceManager.preloadCritical([
+      { url: '/TailwindSpark.svg', type: 'image' },
+      { url: '/og-image.svg', type: 'image' },
+    ]);
+
+    // Prefetch likely future pages
+    resourceManager.prefetchFuture([
+      '/demos',
+      '/design-system',
+      '/animations',
+    ]);
+  }, []);
 
   // Use basename only in production (GitHub Pages)
   const basename = import.meta.env.PROD ? '/tailwind-demo' : '';
@@ -23,26 +57,99 @@ function AppContent() {
     <ErrorBoundary>
       <Router basename={basename}>
         <Routes>
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/analytics" element={<AnalyticsPage />} />
-          <Route path="/users" element={<UsersPage />} />
-          <Route path="/settings" element={<SettingsPage />} />
-          <Route path="/ecommerce" element={<EcommercePage />} />
-          <Route path="/marketing" element={<MarketingPage />} />
+          <Route 
+            path="/dashboard" 
+            element={
+              <Suspense fallback={<PageLoadingSpinner message="Loading Dashboard..." />}>
+                <DashboardPage />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="/analytics" 
+            element={
+              <Suspense fallback={<PageLoadingSpinner message="Loading Analytics..." />}>
+                <AnalyticsPage />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="/users" 
+            element={
+              <Suspense fallback={<PageLoadingSpinner message="Loading Users..." />}>
+                <UsersPage />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="/settings" 
+            element={
+              <Suspense fallback={<PageLoadingSpinner message="Loading Settings..." />}>
+                <SettingsPage />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="/ecommerce" 
+            element={
+              <Suspense fallback={<PageLoadingSpinner message="Loading E-commerce..." />}>
+                <EcommercePage />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="/marketing" 
+            element={
+              <Suspense fallback={<PageLoadingSpinner message="Loading Marketing..." />}>
+                <MarketingPage />
+              </Suspense>
+            } 
+          />
           <Route
             path="*"
             element={
               <Layout isDark={isDark} toggleTheme={toggleTheme}>
                 <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/demos" element={<DemosPage />} />
-                  <Route path="/design-system" element={<DesignSystemShowcase />} />
-                  <Route path="/animations" element={<AnimationPage />} />
+                  <Route 
+                    path="/" 
+                    element={
+                      <Suspense fallback={<PageLoadingSpinner message="Loading Home..." />}>
+                        <HomePage />
+                      </Suspense>
+                    } 
+                  />
+                  <Route 
+                    path="/demos" 
+                    element={
+                      <Suspense fallback={<PageLoadingSpinner message="Loading Demos..." />}>
+                        <DemosPage />
+                      </Suspense>
+                    } 
+                  />
+                  <Route 
+                    path="/design-system" 
+                    element={
+                      <Suspense fallback={<PageLoadingSpinner message="Loading Design System..." />}>
+                        <DesignSystemShowcase />
+                      </Suspense>
+                    } 
+                  />
+                  <Route 
+                    path="/animations" 
+                    element={
+                      <Suspense fallback={<PageLoadingSpinner message="Loading Animations..." />}>
+                        <AnimationPage />
+                      </Suspense>
+                    } 
+                  />
                 </Routes>
               </Layout>
             }
           />
         </Routes>
+        <PerformanceMonitor />
+        <BundleAnalyzer />
+        <MemoryMonitorDisplay />
       </Router>
     </ErrorBoundary>
   );

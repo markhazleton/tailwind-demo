@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
+import { renderWithA11yTest, testA11y, testAriaAttributes, testKeyboardNavigation } from '../test/a11y-utils';
 import { Button } from './Button';
 
 describe('Button', () => {
@@ -56,5 +57,69 @@ describe('Button', () => {
 
     fireEvent.click(screen.getByRole('button'));
     expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  // Accessibility Tests
+  describe('Accessibility', () => {
+    it('should have no accessibility violations', async () => {
+      await renderWithA11yTest(<Button>Accessible Button</Button>);
+    });
+
+    it('should have correct ARIA attributes when disabled', async () => {
+      const { container } = render(<Button disabled>Disabled Button</Button>);
+      const button = screen.getByRole('button');
+      
+      testAriaAttributes(button, {
+        'aria-disabled': 'true',
+      });
+      
+      await testA11y(container);
+    });
+
+    it('should be keyboard accessible', () => {
+      const handleClick = vi.fn();
+      render(<Button onClick={handleClick}>Keyboard Test</Button>);
+      const button = screen.getByRole('button');
+      
+      // Test that button is focusable
+      button.focus();
+      expect(button).toHaveFocus();
+      
+      // Test keyboard activation
+      fireEvent.keyDown(button, { key: 'Enter', code: 'Enter' });
+      fireEvent.keyDown(button, { key: ' ', code: 'Space' });
+      
+      // Button should respond to Enter and Space keys when clicked via keyboard
+      expect(handleClick).toHaveBeenCalledTimes(2);
+    });
+
+    it('should support custom aria-label', async () => {
+      const { container } = render(
+        <Button aria-label="Close dialog">×</Button>
+      );
+      const button = screen.getByRole('button');
+      
+      testAriaAttributes(button, {
+        'aria-label': 'Close dialog',
+      });
+      
+      await testA11y(container);
+    });
+
+    it('should be discoverable by keyboard navigation', () => {
+      const { container } = render(
+        <div>
+          <Button>First</Button>
+          <Button>Second</Button>
+          <Button disabled>Disabled</Button>
+        </div>
+      );
+      
+      const focusableElements = testKeyboardNavigation(container, 3);
+      expect(focusableElements).toHaveLength(3);
+      
+      // Disabled button should still be in tab order but not clickable
+      expect(focusableElements[2]).toBeDisabled();
+    });
   });
 });

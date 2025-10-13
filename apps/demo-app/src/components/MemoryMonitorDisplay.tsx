@@ -1,0 +1,204 @@
+/**
+ * Memory Monitor Display Component
+ * Shows real-time memory usage and leak detection in development
+ */
+
+import React, { useEffect, useState } from 'react';
+import { memoryMonitor } from '../utils/memoryMonitor';
+
+interface MemoryMetrics {
+  current: {
+    usedJSHeapSize: number;
+    totalJSHeapSize: number;
+    jsHeapSizeLimit: number;
+  };
+  peak: {
+    usedJSHeapSize: number;
+    totalJSHeapSize: number;
+    jsHeapSizeLimit: number;
+  };
+  growthRate: number;
+  potentialLeaks: Array<{
+    name: string;
+    mountTime: number;
+    unmountTime?: number;
+    memoryAtMount: number;
+    memoryAtUnmount?: number;
+  }>;
+}
+
+export const MemoryMonitorDisplay: React.FC = () => {
+  const [metrics, setMetrics] = useState<MemoryMetrics | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isSupported, setIsSupported] = useState(true);
+
+  useEffect(() => {
+    const updateMetrics = () => {
+      const currentMetrics = memoryMonitor.getMemoryMetrics();
+      if (currentMetrics) {
+        setMetrics(currentMetrics);
+      } else {
+        setIsSupported(false);
+      }
+    };
+
+    // Initial check
+    updateMetrics();
+
+    // Update every 5 seconds
+    const interval = setInterval(updateMetrics, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Only show in development
+  if (process.env.NODE_ENV !== 'development') {
+    return null;
+  }
+
+  if (!isSupported) {
+    return (
+      <div className="fixed bottom-4 right-4 bg-amber-100 text-amber-800 p-2 rounded text-xs">
+        Memory monitoring not supported
+      </div>
+    );
+  }
+
+  if (!isVisible) {
+    return (
+      <button
+        onClick={() => setIsVisible(true)}
+        className="fixed bottom-4 right-4 bg-blue-600 text-white p-2 rounded text-xs hover:bg-blue-700 transition-colors"
+        aria-label="Show memory monitor"
+      >
+        Memory
+      </button>
+    );
+  }
+
+  if (!metrics) {
+    return (
+      <div className="fixed bottom-4 right-4 bg-gray-100 text-gray-800 p-2 rounded text-xs">
+        Loading memory data...
+      </div>
+    );
+  }
+
+  const formatBytes = (bytes: number): string => {
+    const units = ['B', 'KB', 'MB', 'GB'];
+    let size = bytes;
+    let unitIndex = 0;
+
+    while (size >= 1024 && unitIndex < units.length - 1) {
+      size /= 1024;
+      unitIndex++;
+    }
+
+    return `${size.toFixed(1)} ${units[unitIndex]}`;
+  };
+
+  const getMemoryStatus = (): { color: string; status: string } => {
+    const usagePercent = (metrics.current.usedJSHeapSize / metrics.current.jsHeapSizeLimit) * 100;
+    
+    if (usagePercent > 80) return { color: 'text-red-600', status: 'High' };
+    if (usagePercent > 60) return { color: 'text-amber-600', status: 'Medium' };
+    return { color: 'text-green-600', status: 'Low' };
+  };
+
+  const { color, status } = getMemoryStatus();
+  const usagePercent = (metrics.current.usedJSHeapSize / metrics.current.jsHeapSizeLimit) * 100;
+
+  return (
+    <div className="fixed bottom-4 right-4 bg-white shadow-lg rounded-lg p-4 text-xs max-w-sm z-50 border">
+      <div className="flex justify-between items-center mb-2">
+        <h3 className="font-semibold text-gray-800">Memory Monitor</h3>
+        <button
+          onClick={() => setIsVisible(false)}
+          className="text-gray-500 hover:text-gray-700"
+          aria-label="Hide memory monitor"
+        >
+          ×
+        </button>
+      </div>
+
+      <div className="space-y-2">
+        <div>
+          <div className="flex justify-between">
+            <span>Usage:</span>
+            <span className={color}>{formatBytes(metrics.current.usedJSHeapSize)} ({status})</span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-1 mt-1">
+            <div 
+              className={`h-1 rounded-full transition-all duration-300 ${
+                usagePercent > 80 ? 'bg-red-500' : 
+                usagePercent > 60 ? 'bg-amber-500' : 'bg-green-500'
+              }`}
+              data-width={Math.min(usagePercent, 100)}
+              style={{
+                width: `${Math.min(usagePercent, 100)}%`
+              } as React.CSSProperties}
+            />
+          </div>
+        </div>
+
+        <div className="flex justify-between">
+          <span>Peak:</span>
+          <span>{formatBytes(metrics.peak.usedJSHeapSize)}</span>
+        </div>
+
+        <div className="flex justify-between">
+          <span>Limit:</span>
+          <span>{formatBytes(metrics.current.jsHeapSizeLimit)}</span>
+        </div>
+
+        <div className="flex justify-between">
+          <span>Growth Rate:</span>
+          <span className={metrics.growthRate > 5 ? 'text-red-600' : 'text-gray-600'}>
+            {metrics.growthRate.toFixed(1)}%
+          </span>
+        </div>
+
+        {metrics.potentialLeaks.length > 0 && (
+          <div className="border-t pt-2">
+            <div className="flex justify-between">
+              <span className="text-red-600 font-medium">Potential Leaks:</span>
+              <span className="text-red-600">{metrics.potentialLeaks.length}</span>
+            </div>
+            <div className="mt-1 max-h-20 overflow-y-auto">
+              {metrics.potentialLeaks.slice(0, 3).map((leak, index) => (
+                <div key={index} className="text-red-600 text-xs">
+                  {leak.name}
+                </div>
+              ))}
+              {metrics.potentialLeaks.length > 3 && (
+                <div className="text-red-600 text-xs">
+                  +{metrics.potentialLeaks.length - 3} more
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        <div className="border-t pt-2 flex space-x-2">
+          <button
+            onClick={() => memoryMonitor.clearData()}
+            className="text-xs text-blue-600 hover:text-blue-800"
+          >
+            Clear Data
+          </button>
+          <button
+            onClick={() => {
+              // eslint-disable-next-line no-console
+              console.log(memoryMonitor.generateReport());
+            }}
+            className="text-xs text-blue-600 hover:text-blue-800"
+          >
+            Log Report
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MemoryMonitorDisplay;

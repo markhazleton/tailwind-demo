@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { onCLS, onFCP, onLCP, onTTFB, type Metric } from 'web-vitals';
+import { RuntimePerformanceBudget } from '../utils/performanceBudget';
 
 // Extend Window interface to include gtag
 declare global {
@@ -10,6 +12,7 @@ declare global {
 
 export const useAnalytics = () => {
   const location = useLocation();
+  const budgetMonitor = RuntimePerformanceBudget.getInstance();
 
   useEffect(() => {
     // Track page views
@@ -20,6 +23,44 @@ export const useAnalytics = () => {
       });
     }
   }, [location]);
+
+  // Core Web Vitals tracking with performance budget monitoring
+  useEffect(() => {
+    const trackWebVitals = () => {
+      const sendToAnalytics = (metric: Metric) => {
+        // Check against performance budget
+        const metricName = metric.name.toLowerCase() as keyof ReturnType<
+          typeof budgetMonitor.getBudgets
+        >;
+        if (metricName in budgetMonitor.getBudgets()) {
+          budgetMonitor.checkMetric(metricName, metric.value);
+        }
+
+        // Send to Google Analytics
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', metric.name, {
+            event_category: 'Web Vitals',
+            event_label: metric.id,
+            value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
+            non_interaction: true,
+          });
+        }
+
+        // Also log to console in development
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('Web Vital tracked:', metric);
+        }
+      };
+
+      // Track all Core Web Vitals
+      onCLS(sendToAnalytics);
+      onFCP(sendToAnalytics);
+      onLCP(sendToAnalytics);
+      onTTFB(sendToAnalytics);
+    };
+
+    trackWebVitals();
+  }, [budgetMonitor]);
 
   const trackEvent = (action: string, category: string, label?: string, value?: number) => {
     if (typeof window !== 'undefined' && window.gtag) {
@@ -48,6 +89,7 @@ export const useAnalytics = () => {
     trackComponentInteraction,
     trackAnimationInteraction,
     trackDemoInteraction,
+    budgetMonitor,
   };
 };
 

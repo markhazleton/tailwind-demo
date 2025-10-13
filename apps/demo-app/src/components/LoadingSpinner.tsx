@@ -23,7 +23,7 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   };
 
   const colorClasses = {
-    primary: 'text-primary-600',
+    primary: 'text-brand',
     secondary: 'text-secondary-600',
     white: 'text-white',
   };
@@ -33,7 +33,7 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
       <div className={`flex flex-col items-center justify-center gap-4 ${className}`}>
         <div className="relative">
           <Logo size={size === 'sm' ? 'md' : size === 'md' ? 'lg' : 'xl'} showText={false} />
-          <div className="bg-primary-500/20 absolute inset-0 animate-pulse rounded-full"></div>
+          <div className="bg-brand/20 absolute inset-0 animate-pulse rounded-full"></div>
         </div>
         {message && (
           <p className="animate-pulse text-sm text-gray-600 dark:text-gray-400">{message}</p>
@@ -59,6 +59,19 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
         />
       </svg>
+    </div>
+  );
+};
+
+/**
+ * Full page loading component for route-level lazy loading
+ */
+export const PageLoadingSpinner: React.FC<{ message?: string }> = ({ 
+  message = 'Loading page...' 
+}) => {
+  return (
+    <div className="flex min-h-[50vh] items-center justify-center">
+      <LoadingSpinner size="lg" withLogo={true} message={message} />
     </div>
   );
 };
