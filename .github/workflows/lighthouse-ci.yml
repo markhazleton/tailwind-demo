@@ -51,7 +51,7 @@ jobs:
                   LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
 
             - name: Upload Lighthouse results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v5
               if: always()
               with:
                   name: lighthouse-results
