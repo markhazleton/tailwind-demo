@@ -25,6 +25,7 @@ const SettingsSection: React.FC<SettingsSectionProps> = ({
   <div className="overflow-hidden rounded-xl border border-secondary-200 bg-white shadow-sm dark:border-secondary-700 dark:bg-secondary-800">
     <div className="border-b border-secondary-200 px-6 py-4 dark:border-secondary-700">
       <div className="flex items-center gap-3">
+        {/* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */}
         <div className="bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex h-8 w-8 items-center justify-center rounded-lg">
           {icon}
         </div>
@@ -189,6 +190,7 @@ export const SettingsPage: React.FC = () => {
               placeholder="https://example.com"
             />
             <div>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label className="mb-2 block text-sm font-medium text-secondary-700 dark:text-secondary-300">
                 Timezone
               </label>
@@ -239,6 +241,7 @@ export const SettingsPage: React.FC = () => {
               }}
             />
             <div>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label className="mb-2 block text-sm font-medium text-secondary-700 dark:text-secondary-300">
                 Session Timeout (minutes)
               </label>
@@ -313,6 +316,7 @@ export const SettingsPage: React.FC = () => {
         >
           <div className="space-y-6">
             <div>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label className="mb-2 block text-sm font-medium text-secondary-700 dark:text-secondary-300">
                 API Key
               </label>

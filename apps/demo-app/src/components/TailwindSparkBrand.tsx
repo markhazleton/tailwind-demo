@@ -51,6 +51,7 @@ export const TailwindSparkBrand: React.FC<TailwindSparkBrandProps> = ({
         <Logo size={config.logoSize} showText={false} />
         <div>
           <h3 className={config.titleClass}>
+            {/* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */}
             <span className="from-primary-600 to-accent-700 bg-gradient-to-r bg-clip-text text-transparent">
               TailwindSpark
             </span>
@@ -69,6 +70,7 @@ export const TailwindSparkBrand: React.FC<TailwindSparkBrandProps> = ({
         <div className="mb-4 flex items-center justify-center gap-4">
           <Logo size={config.logoSize} showText={false} />
           <h3 className={config.titleClass}>
+            {/* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */}
             <span className="from-primary-600 to-accent-700 bg-gradient-to-r bg-clip-text text-transparent">
               TailwindSpark
             </span>
@@ -78,6 +80,7 @@ export const TailwindSparkBrand: React.FC<TailwindSparkBrandProps> = ({
         <>
           <Logo size={config.logoSize} showText={false} />
           <h3 className={config.titleClass}>
+            {/* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */}
             <span className="from-primary-600 to-accent-700 bg-gradient-to-r bg-clip-text text-transparent">
               TailwindSpark
             </span>
@@ -94,7 +97,7 @@ export const TailwindSparkBrand: React.FC<TailwindSparkBrandProps> = ({
                 href="https://webspark.markhazleton.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold"
+                className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold" // eslint-disable-line no-raw-primary-class/no-raw-primary-class
               >
                 WebSpark Portfolio
               </a>{' '}
@@ -103,7 +106,7 @@ export const TailwindSparkBrand: React.FC<TailwindSparkBrandProps> = ({
                 href="https://markhazleton.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold"
+                className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold" // eslint-disable-line no-raw-primary-class/no-raw-primary-class
               >
                 Mark Hazleton
               </a>

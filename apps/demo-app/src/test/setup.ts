@@ -16,9 +16,9 @@ vi.mock('react-router-dom', async importOriginal => {
       key: 'default',
     })),
     useParams: vi.fn(() => ({})),
-    Link: ({ children, to, ...props }: any) =>
+    Link: ({ children, to, ...props }: { children: React.ReactNode; to: string; [key: string]: unknown }) =>
       React.createElement('a', { href: to, ...props }, children),
-    NavLink: ({ children, to, ...props }: any) =>
+    NavLink: ({ children, to, ...props }: { children: React.ReactNode; to: string; [key: string]: unknown }) =>
       React.createElement('a', { href: to, ...props }, children),
   };
 });

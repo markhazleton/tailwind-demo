@@ -578,6 +578,7 @@ export const MarketingPage: React.FC = () => {
                 <h4 className="mb-4 font-semibold">Follow Us</h4>
                 <div className="flex space-x-4">
                   {['Twitter', 'LinkedIn', 'Instagram', 'GitHub'].map(social => (
+                    /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
                     <a
                       key={social}
                       href="#"

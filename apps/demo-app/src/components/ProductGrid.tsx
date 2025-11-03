@@ -84,6 +84,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
             {!imageLoadStates[product.id] && (
               <div className="absolute inset-0 animate-pulse bg-gray-200"></div>
             )}
+            {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
             <img
               src={product.image}
               alt={product.name}

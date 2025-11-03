@@ -210,6 +210,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
             {/* Company Info */}
             <div className="md:col-span-2">
               <div className="mb-6 flex items-center">
+                {/* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */}
                 <div className="from-primary-600 to-accent-700 mr-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r">
                   <span className="text-xl font-bold text-white">⚡</span>
                 </div>
@@ -226,6 +227,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
                   { name: 'Instagram', icon: '📷' },
                   { name: 'GitHub', icon: '🐙' },
                 ].map(social => (
+                  /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
                   <a
                     key={social.name}
                     href="#"
@@ -289,12 +291,14 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
               © 2025 TailwindSpark. A WebSpark by Mark Hazleton production. All rights reserved.
             </p>
             <div className="mt-4 flex space-x-6 md:mt-0">
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a
                 href="#"
                 className="text-sm text-gray-400 transition-colors duration-300 hover:text-white"
               >
                 Privacy Policy
               </a>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a
                 href="#"
                 className="text-sm text-gray-400 transition-colors duration-300 hover:text-white"

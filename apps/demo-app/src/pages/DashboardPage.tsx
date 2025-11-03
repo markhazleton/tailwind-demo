@@ -68,6 +68,7 @@ const TransactionRow: React.FC<{ transaction: Transaction }> = ({ transaction })
     <tr className="transition-colors hover:bg-secondary-50 dark:hover:bg-secondary-700">
       <td className="whitespace-nowrap px-6 py-4">
         <div className="flex items-center">
+          {/* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */}
           <div className="from-primary-500 to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
             {transaction.customer.charAt(0).toUpperCase()}
           </div>

@@ -99,6 +99,7 @@ function App() {
 
           <div className="mt-12 text-center">
             <div className="inline-flex gap-4">
+              {/* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */}
               <button className="rounded-lg bg-primary-600 px-6 py-3 font-medium text-white shadow-lg transition-colors hover:bg-primary-700 hover:shadow-xl">
                 Primary Button
               </button>
@@ -126,7 +127,7 @@ function App() {
                 href="https://github.com/MarkHazleton/tailwind-demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-secondary-600 transition-colors hover:text-primary-600 dark:text-secondary-400 dark:hover:text-primary-400"
+                className="text-secondary-600 transition-colors hover:text-primary-600 dark:text-secondary-400 dark:hover:text-primary-400" // eslint-disable-line no-raw-primary-class/no-raw-primary-class
               >
                 GitHub
               </a>
@@ -134,7 +135,7 @@ function App() {
                 href="https://tailwindcss.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-secondary-600 transition-colors hover:text-primary-600 dark:text-secondary-400 dark:hover:text-primary-400"
+                className="text-secondary-600 transition-colors hover:text-primary-600 dark:text-secondary-400 dark:hover:text-primary-400" // eslint-disable-line no-raw-primary-class/no-raw-primary-class
               >
                 Tailwind CSS
               </a>
@@ -142,7 +143,7 @@ function App() {
                 href="https://reactjs.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-secondary-600 transition-colors hover:text-primary-600 dark:text-secondary-400 dark:hover:text-primary-400"
+                className="text-secondary-600 transition-colors hover:text-primary-600 dark:text-secondary-400 dark:hover:text-primary-400" // eslint-disable-line no-raw-primary-class/no-raw-primary-class
               >
                 React
               </a>

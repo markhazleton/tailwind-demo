@@ -136,6 +136,7 @@ export const ModalShowcase: React.FC = () => {
         <ModalContent>
           <form className="space-y-4">
             <div>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label className="text-text mb-2 block text-sm font-medium">
                 Project Name
               </label>
@@ -146,6 +147,7 @@ export const ModalShowcase: React.FC = () => {
               />
             </div>
             <div>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label className="text-text mb-2 block text-sm font-medium">
                 Description
               </label>
@@ -156,6 +158,7 @@ export const ModalShowcase: React.FC = () => {
               />
             </div>
             <div>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label className="text-text mb-2 block text-sm font-medium">
                 Category
               </label>

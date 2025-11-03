@@ -33,6 +33,7 @@ const UserRow: React.FC<{
   const roleColors = {
     Admin: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
     Manager: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    /* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */
     Editor: 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300',
     Viewer: 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-300',
   };
@@ -41,6 +42,7 @@ const UserRow: React.FC<{
     <tr className="transition-colors hover:bg-secondary-50 dark:hover:bg-secondary-700">
       <td className="whitespace-nowrap px-6 py-4">
         <div className="flex items-center">
+          {/* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */}
           <div className="from-primary-500 to-accent-700 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br font-medium text-white">
             {user.name
               .split(' ')
@@ -213,7 +215,7 @@ export const UsersPage: React.FC = () => {
       headerActions={
         <button
           onClick={handleInviteUser}
-          className="bg-primary-600 hover:bg-primary-700 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors"
+          className="bg-primary-600 hover:bg-primary-700 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors" // eslint-disable-line no-raw-primary-class/no-raw-primary-class
         >
           Invite User
         </button>

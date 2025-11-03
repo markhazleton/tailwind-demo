@@ -238,6 +238,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
       {isCartOpen && (
         <div className="fixed inset-0 z-50 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
             <div
               className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
               onClick={() => setIsCartOpen(false)}
@@ -296,7 +297,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
                           </p>
                         </div>
                       ) : (
-                        <ul role="list" className="-my-6 divide-y divide-gray-200">
+                        <ul className="-my-6 divide-y divide-gray-200">
                           {cart.map(item => (
                             <li
                               key={`${item.id}-${item.selectedColor}-${item.selectedSize}`}

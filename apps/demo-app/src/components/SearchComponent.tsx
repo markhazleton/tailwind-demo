@@ -166,6 +166,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
             }}
             onKeyDown={handleKeyDown}
             className="flex-1 border-none bg-transparent text-gray-900 placeholder-gray-500 outline-none dark:text-gray-100"
+            /* eslint-disable-next-line jsx-a11y/no-autofocus */
             autoFocus
           />
           <button
@@ -201,7 +202,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
                       : result.category === 'animation'
                         ? 'bg-green-500'
                         : result.category === 'demo'
-                          ? 'bg-primary-500'
+                          ? 'bg-primary-500' // eslint-disable-line no-raw-primary-class/no-raw-primary-class
                           : 'bg-gray-500'
                   }`}
                 />

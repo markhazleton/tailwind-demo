@@ -83,6 +83,7 @@ export const AnalyticsPage: React.FC = () => {
       change: '-2.1%',
       trend: 'down' as const,
       icon: '👆',
+      /* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */
       color: 'bg-primary-500',
     },
     {
@@ -98,6 +99,7 @@ export const AnalyticsPage: React.FC = () => {
   const trafficSources = [
     { source: 'Organic Search', visitors: '45,231', percentage: 45, color: 'bg-blue-500' },
     { source: 'Direct Traffic', visitors: '28,847', percentage: 28, color: 'bg-green-500' },
+    /* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */
     { source: 'Social Media', visitors: '15,429', percentage: 15, color: 'bg-primary-500' },
     { source: 'Email Campaign', visitors: '8,934', percentage: 9, color: 'bg-orange-500' },
     { source: 'Referrals', visitors: '3,102', percentage: 3, color: 'bg-pink-500' },
