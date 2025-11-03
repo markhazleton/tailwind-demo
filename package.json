@@ -36,6 +36,7 @@
     "rev": "node scripts/revision.js",
     "build:ci": "npx turbo run build --filter=@tailwindspark/design-tokens && npx turbo run build --filter=@tailwindspark/ui-components && npx turbo run build --filter=@tailwindspark/demo-app",
     "dev": "turbo run dev",
+    "preview": "npm run preview --workspace=@tailwindspark/demo-app",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
     "type-check": "turbo run type-check",
