@@ -50,7 +50,7 @@ jobs:
             - name: Optimize assets for CDN delivery
               run: |
                   # Create optimized directory structure
-                  cd apps/demo-app/dist
+                  cd dist
 
                   # Add cache headers configuration for GitHub Pages
                   cat > _headers << 'EOF'
@@ -152,7 +152,7 @@ jobs:
 
             - name: Generate sitemap with CDN optimization
               run: |
-                  cd apps/demo-app/dist
+                  cd dist
 
                   # Create optimized sitemap
                   cat > sitemap.xml << 'EOF'
@@ -206,7 +206,7 @@ jobs:
 
             - name: Create robots.txt with CDN-friendly settings
               run: |
-                  cd apps/demo-app/dist
+                  cd dist
 
                   cat > robots.txt << 'EOF'
                   User-agent: *
@@ -238,7 +238,7 @@ jobs:
             - name: Upload artifact for Pages
               uses: actions/upload-pages-artifact@v3
               with:
-                  path: apps/demo-app/dist
+                  path: dist
 
             - name: Deploy to GitHub Pages
               id: deployment
