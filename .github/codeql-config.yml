@@ -1,0 +1,19 @@
+name: "CodeQL Configuration"
+
+# Exclude generated files and reports from CodeQL analysis
+paths-ignore:
+  - reports/**
+  - dist/**
+  - coverage/**
+  - node_modules/**
+  - "**/*.min.js"
+  - "**/*.bundle.js"
+
+# Include all source files
+paths:
+  - apps/**
+  - packages/**
+  - scripts/**
+
+queries:
+  - uses: security-and-quality

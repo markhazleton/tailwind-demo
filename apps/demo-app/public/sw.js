@@ -29,9 +29,9 @@ const cachePatterns = {
   // API calls (if any)
   api: /\/api\//,
   // Google Fonts
-  fonts: /^https:\/\/fonts\.(googleapis|gstatic)\.com/,
+  fonts: /^https:\/\/fonts\.(googleapis|gstatic)\.com\//,
   // Google Analytics
-  analytics: /^https:\/\/www\.(google-analytics|googletagmanager)\.com/,
+  analytics: /^https:\/\/www\.(google-analytics|googletagmanager)\.com\//,
 };
 
 // Utility functions

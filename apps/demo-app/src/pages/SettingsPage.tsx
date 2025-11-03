@@ -128,10 +128,10 @@ export const SettingsPage: React.FC = () => {
   };
 
   const handleGenerateApiKey = () => {
-    const newKey =
-      'sk-' +
-      Math.random().toString(36).substring(2, 15) +
-      Math.random().toString(36).substring(2, 15);
+    // Generate cryptographically secure random API key
+    const array = new Uint32Array(4);
+    crypto.getRandomValues(array);
+    const newKey = 'sk-' + Array.from(array, num => num.toString(36)).join('');
     setApiKey(newKey);
     setHasUnsavedChanges(true);
   };

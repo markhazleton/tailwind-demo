@@ -49,11 +49,8 @@ class PerformanceTester {
   async buildProject() {
     console.log('📦 Building project...');
     try {
-      const { stdout, stderr } = await execAsync('npm run build');
+      await execAsync('npm run build');
       console.log('✅ Build completed successfully\n');
-      if (stderr && !stderr.includes('warning')) {
-        console.warn('Build warnings:', stderr);
-      }
     } catch (error) {
       console.error('❌ Build failed:', error.message);
       process.exit(1);
@@ -122,7 +119,7 @@ class PerformanceTester {
           '--quiet',
         ].join(' ');
 
-        const { stdout, stderr } = await execAsync(lighthouseCmd);
+        await execAsync(lighthouseCmd);
 
         // Read the generated report
         const reportData = JSON.parse(await fs.readFile(outputPath, 'utf8'));
